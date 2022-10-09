@@ -1,23 +1,17 @@
-import { useRouter } from "next/router";
-import { useEffect } from "react";
-
-const searchResult = ({data}) => {
+const searchResult = (data) => {
     return(
         <>
-            검색 내용 : {data.value}
+            {data.result.map(i => <div key={i.id}>{i.name}</div>)}
         </>
     )
 }
 
-export async function getServerSideProps() {
-
-    
-
-    const res = await fetch(`http://localhost:3000/api/search/result?q=`+"12");
-
+export const getServerSideProps = async (context) => {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/search/result?q=` + context.query.q);
     const data = await res.json();
-
-    return {props: {data}};
+    
+    console.log("client에서 받은 데이터 : ", data)
+    
+    return {props: data};
 }
-
 export default searchResult;
