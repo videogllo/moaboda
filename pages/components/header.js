@@ -94,7 +94,7 @@ const Header = () => {
                 <div>
                     <a href="#" className="flex">
                         <span className="sr-only">Your Company</span>
-                        <Image src="/logo.png" width={150} height={40} alt="logo"></Image>
+                        <Image src="/asset/logo.png" width={150} height={40} alt="logo"></Image>
                     </a>
                 </div>
                 <div className="-my-2 -mr-2 md:hidden">
