@@ -1,6 +1,6 @@
 //next.js module
 import Head from "next/head";
-import Link from "next/link";
+// import Link from "next/link";
 
 //components
 import Header from "./components/header";
