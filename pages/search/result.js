@@ -1,4 +1,4 @@
-const searchResult = (data) => {
+const Result = (data) => {
     return(
         <>
             {data.result.map(i => <div key={i.id}>{i.name}</div>)}
@@ -14,4 +14,4 @@ export const getServerSideProps = async (context) => {
     
     return {props: data};
 }
-export default searchResult;
+export default Result;

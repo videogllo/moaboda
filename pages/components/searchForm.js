@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useRouter } from "next/router";
 
-const searchForm = () => {
+const SearchForm = () => {
     const router = useRouter();
     const searchRef = useRef();
 
@@ -61,4 +61,4 @@ const searchForm = () => {
     );
 };
 
-export default searchForm;
+export default SearchForm;

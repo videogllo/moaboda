@@ -93,12 +93,7 @@ const Header = () => {
                 <div>
                     <a href="#" className="flex">
                         <span className="sr-only">Your Company</span>
-                        {/* <img
-                            className="h-8 w-auto sm:h-10"
-                            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                            alt=""
-                        /> */}
-                        <Image src="/logo.png" width={150} height={40}></Image>
+                        <Image src="/logo.png" width={150} height={40} alt="logo"></Image>
                     </a>
                 </div>
                 <div className="-my-2 -mr-2 md:hidden">
@@ -301,10 +296,12 @@ const Header = () => {
                         <div className="px-5 pt-5 pb-6">
                             <div className="flex items-center justify-between">
                                 <div>
-                                    <img
+                                    <Image
                                         className="h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                                         alt="Your Company"
+                                        height={30}
+                                        width={30}
                                     />
                                 </div>
                                 <div className="-mr-2">
