@@ -116,7 +116,7 @@ const Header = () => {
                                             "group inline-flex items-center rounded-md bg-white text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                         )}
                                     >
-                                        <span>Solutions</span>
+                                        <span>Solutions2</span>
                                         <ChevronDownIcon
                                             className={classNames(
                                                 open
