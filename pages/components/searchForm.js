@@ -1,17 +1,25 @@
-import { useRef } from "react";
+//functional
+import { useRef, useState } from "react";
 import { useRouter } from "next/router";
+
+//components
+import Loading from "./loading";
 
 const SearchForm = () => {
     const router = useRouter();
     const searchRef = useRef();
+    const [isLoading, setIsLoading] = useState(false);
 
-    const search = (e) => {
+    const search = async (e) => {
         e.preventDefault();
+        setIsLoading(true);
 
-        router.push({
+        await router.push({
             pathname: "/search/result",
             query: { q: searchRef.current.value },
         });
+
+        // const result = await setIsLoading(false);
     };
 
     return (
@@ -57,6 +65,7 @@ const SearchForm = () => {
                     </button>
                 </div>
             </form>
+            {isLoading && <Loading></Loading>}
         </>
     );
 };
