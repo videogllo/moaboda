@@ -8,18 +8,17 @@ import Loading from "./loading";
 const SearchForm = () => {
     const router = useRouter();
     const searchRef = useRef();
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
 
     const search = async (e) => {
         e.preventDefault();
         setIsLoading(true);
 
-        await router.push({
+        router.push({
             pathname: "/search/result",
             query: { q: searchRef.current.value },
         });
 
-        // const result = await setIsLoading(false);
     };
 
     return (
@@ -65,7 +64,8 @@ const SearchForm = () => {
                     </button>
                 </div>
             </form>
-            {isLoading && <Loading></Loading>}
+
+            {/* {isLoading && <Loading></Loading>} */}
         </>
     );
 };
