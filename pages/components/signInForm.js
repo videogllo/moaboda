@@ -6,7 +6,7 @@ const SignInForm = () => {
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
                 {/* <div className="mx-auto h-12 w-auto">
                     <Image
-                        src="/asset/logo.png"
+                        src="/image/logo/logo.png"
                         alt="signInLogo"
                         width={120}
                         height={30}

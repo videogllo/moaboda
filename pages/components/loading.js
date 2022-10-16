@@ -7,7 +7,7 @@ const Loading = () => {
             </div>
                 <div className="absolute left-1/2 top-[45%] -translate-x-1/2">
                     <Image
-                        src="/asset/logo.svg"
+                        src="/image/logo/logo.svg"
                         width={200}
                         height={100}
                     ></Image>
