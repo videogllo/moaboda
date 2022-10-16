@@ -12,7 +12,7 @@ const SearchForm = () => {
 
     const search = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        // setIsLoading(true);
 
         router.push({
             pathname: "/search/result",

@@ -2,6 +2,7 @@
 import Header from "./components/header";
 import Footer from "./components/footer";
 import SearchForm from "./components/searchForm";
+import Modal from "./components/modal"
 
 const Main = () => {
     return (
@@ -13,6 +14,8 @@ const Main = () => {
             </div>
 
             <Footer></Footer>
+
+            <Modal></Modal>
         </div>
     );
 };
