@@ -28,12 +28,14 @@ export default async function handler(req, res) {
         let items = data.data;
         let twitch = [];
 
-        for(let i = 0; i < items.length; i++){
-            if(items[i].title != ''){
-                twitch.push({id: items[i].id, url: items[i].thumbnail_url.replace("{width}x{height}", "440x240"), title: items[i].title})
+        if(data.status != 401){
+            for(let i = 0; i < items.length; i++){
+                if(items[i].title != ''){
+                    twitch.push({id: items[i].id, url: items[i].thumbnail_url.replace("{width}x{height}", "440x240"), title: items[i].title})
+                }
             }
+
         }
-        
         results.push({twitch:twitch});
     });
 
