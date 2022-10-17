@@ -7,13 +7,13 @@ import { Dialog, Transition } from "@headlessui/react";
 //form
 import SignInForm from "./signInForm";
 
-const Modal = (props) => {
-    // const [open, setOpen] = useState(true);
-    const [isLogin, setIsLogin] = useState(false);
+const Modal = () => {
+    const [open, setOpen] = useState(true);
+    // const [isLogin, setIsLogin] = useState(false);
 
     return (
-        <Transition.Root show={props.open} as={Fragment}>
-            <Dialog as="div" className="relative z-30" onClose={props.setOpen}>
+        <Transition.Root show={open} as={Fragment}>
+            <Dialog as="div" className="relative z-30" onClose={setOpen}>
                 <Transition.Child
                     as={Fragment}
                     enter="ease-out duration-300"
