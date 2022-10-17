@@ -4,7 +4,9 @@ import Head from "next/head";
 //default page
 import Main from "./main";
 
-export default function Home() {
+import Image from "next/image";
+
+export default function Home(props) {
     return (
         <div className="bg-slate-100 p-4">
             <Head>
@@ -19,6 +21,35 @@ export default function Home() {
             <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
                 <Main></Main>
             </div>
+
+            <Image src="/image/etc/youtube.svg" width={150} height={40} alt="logo"></Image>
+            {props.result[0].youtube.map((i) => (
+                <div key={i.id}>
+                    <img src={i.url} />
+                    <p>{i.title}</p>
+                    <br />
+                </div>
+            ))}
+
+            <Image src="/image/etc/twitch.svg" width={150} height={40} alt="logo"></Image>
+            {props.result[1].twitch.map((i) => (
+                <div key={i.id}>
+                    <img src={i.url} />
+                    <p>{i.title}</p>
+                    <br />
+                </div>
+            ))}
         </div>
     );
 }
+
+export const getServerSideProps = async (context) => {
+    const res = await fetch(
+        process.env.NEXT_PUBLIC_API_URL + `api/main`
+    );
+    const data = await res.json();
+
+    console.log("client에서 받은 데이터 : ", data);
+
+    return { props: data };
+};
