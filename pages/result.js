@@ -7,7 +7,7 @@ const Result = (data) => {
 }
 
 export const getServerSideProps = async (context) => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/search/result?q=` + context.query.q);
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
     const data = await res.json();
     
     console.log("client에서 받은 데이터 : ", data)

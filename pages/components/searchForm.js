@@ -2,66 +2,55 @@
 import { useRef, useState } from "react";
 import { useRouter } from "next/router";
 
-//components
-import Loading from "./loading";
+//icon
+import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 const SearchForm = () => {
     const router = useRouter();
-    const searchRef = useRef();
+    const inputRef = useRef();
     // const [isLoading, setIsLoading] = useState(false);
 
     const search = async (e) => {
         e.preventDefault();
-        setIsLoading(true);
+        // setIsLoading(true);
 
         router.push({
-            pathname: "/search/result",
-            query: { q: searchRef.current.value },
+            pathname: "/result",
+            query: { q: inputRef.current.value },
         });
-
     };
 
     return (
         <>
-            <form onSubmit={search} className="w-1/2">
-                <label
-                    htmlFor="default-search"
-                    className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
-                >
-                    Search
-                </label>
-                <div className="relative">
-                    <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-                        <svg
-                            aria-hidden="true"
-                            className="w-5 h-5 text-gray-500 dark:text-gray-400"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
+            <form onSubmit={search}>
+                <div>
+                    <div className="mt-1 flex rounded-md shadow-sm">
+                        <div className="relative flex flex-grow items-stretch focus-within:z-10">
+                            <label htmlFor="searchInput">
+                                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                    🕵️‍♀️
+                                </div>
+                            </label>
+                            <input
+                                type="text"
+                                id="searchInput"
+                                name="text"
+                                ref={inputRef}
+                                className="block border w-full focus:outline-none rounded-none rounded-l-md border-gray-300 pl-10 focus:border-blue-900 focus:ring-blue-900 focus:ring-1 sm:text-lg py-2 px-6"
+                                placeholder="좋아하는 장르, 관심사를 검색해보세요."
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="relative -ml-px border inline-flex items-center space-x-2 rounded-r-md border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-blue-900 focus:outline-none focus:ring-1 focus:ring-blue-900"
                         >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            ></path>
-                        </svg>
+                            {/* <MagnifyingGlassIcon
+                                className="h-5 w-5 text-gray-400"
+                                aria-hidden="true"
+                            /> */}
+                            <MagnifyingGlassIcon className="h-4 w-4"></MagnifyingGlassIcon>
+                        </button>
                     </div>
-                    <input
-                        type="search"
-                        id="default-search"
-                        className="focus:outline-none block p-4 pl-10 w-full text-base text-gray-900 bg-gray-50 rounded-lg border-2 border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Search Mockups, Logos..."
-                        required
-                        ref={searchRef}
-                    />
-                    <button
-                        type="submit"
-                        className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                    >
-                        Search
-                    </button>
                 </div>
             </form>
 
