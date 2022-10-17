@@ -45,7 +45,7 @@ export default function Home(props) {
 
 export const getServerSideProps = async (context) => {
     const res = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + `api/main`
+        process.env.NEXT_PUBLIC_API_URL + `api/index`
     );
     const data = await res.json();
 

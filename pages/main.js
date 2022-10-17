@@ -3,7 +3,7 @@ import SearchForm from "./components/searchForm";
 import UserForm from "./components/userForm";
 import Logo from "./components/logo";
 import LogoSmall from "./components/logoSmall";
-import MainListYoutube from "./components/mainListYoutube";
+import MainList from "./components/mainList";
 import Keyword from "./components/keyword";
 import Category from "./components/category";
 
@@ -32,7 +32,7 @@ const Main = () => {
             </div>
 
             <Category></Category>
-            <MainListYoutube></MainListYoutube>
+            <MainList></MainList>
         </>
     );
 };
