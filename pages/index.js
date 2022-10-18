@@ -6,7 +6,7 @@ import Main from "./main";
 
 export default function Home(props) {
     return (
-        <div className="bg-slate-100 p-4">
+        <div className="bg-slate-200 p-4">
             <Head>
                 <title>Videogllo</title>
                 <meta

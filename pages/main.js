@@ -4,6 +4,7 @@ import UserForm from "./components/userForm";
 import Logo from "./components/logo";
 import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
+import MainListCopy from "./components/mainList copy";
 import Keyword from "./components/keyword";
 import Category from "./components/category";
 
@@ -27,12 +28,15 @@ const Main = (props) => {
                 {/* search input */}
                 <div className="w-full md:w-5/6 lg:w-4/6 xl:w-3/6 order-2 md:order-3 mx-6">
                     <SearchForm></SearchForm>
-                    <Keyword></Keyword>
                 </div>
+            </div>
+            <div className="mx-auto w-full md:w-5/6 lg:w-4/6 xl:w-3/6 order-2 md:order-3">
+                <Keyword></Keyword>
             </div>
 
             <Category></Category>
             <MainList result={props.result}></MainList>
+            <MainListCopy result={props.result}></MainListCopy>
         </>
     );
 };
