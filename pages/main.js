@@ -7,7 +7,7 @@ import MainList from "./components/mainList";
 import Keyword from "./components/keyword";
 import Category from "./components/category";
 
-const Main = () => {
+const Main = (props) => {
     return (
         <>
             <div className="flex flex-row items-center justify-center md:flex-col">
@@ -32,7 +32,7 @@ const Main = () => {
             </div>
 
             <Category></Category>
-            <MainList></MainList>
+            <MainList result={props.result}></MainList>
         </>
     );
 };

@@ -12,7 +12,7 @@ export default async function handler(req, res){
             youtube.push({id: items[i].snippet.channelId, url: items[i].snippet.thumbnails.high.url, title: items[i].snippet.title});
         }
 
-        console.log('main으로 보낼 최종 youtube 데이터! : ', youtube);
+        // console.log('main으로 보낼 최종 youtube 데이터! : ', youtube);
         
         results.push({youtube:youtube});
     });
