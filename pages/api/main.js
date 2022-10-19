@@ -1,7 +1,7 @@
 export default async function handler(req, res){
     let results = [];
 
-    await fetch('https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&chart=mostPopular&regionCode=kr&maxResults=10')
+    await fetch('https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&chart=mostPopular&regionCode=kr&maxResults=9')
     .then((response) => response.json())
     .then((data) => {
         let items = data.items;
@@ -17,7 +17,7 @@ export default async function handler(req, res){
         results.push({youtube:youtube});
     });
 
-    await fetch("https://api.twitch.tv/helix/streams?language=ko&first=10", {
+    await fetch("https://api.twitch.tv/helix/streams?language=ko&first=9", {
         method: 'get',
         headers: {
             'Authorization':'Bearer oimn0lk86ydwcxvqacucwhzfkq8hjo',

@@ -9,7 +9,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import { Pagination, Navigation } from "swiper";
+import { Pagination, Mousewheel } from "swiper";
 
 const MainList = () => {
     const [data, setData] = useState(null);
@@ -32,7 +32,7 @@ const MainList = () => {
                 <div>
                     <>
                         <div className="mx-auto pt-16">
-                            <div className="items-baseline justify-between flex">
+                            <div className="items-baseline justify-between flex pb-2">
                                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">
                                     Youtube
                                 </h2>
@@ -45,17 +45,17 @@ const MainList = () => {
                                 </a>
                             </div>
 
-                            {/* <Swiper
+                            <Swiper
                                 slidesPerView={3}
-                                spaceBetween={30}
-                                slidesPerGroup={3}
+                                spaceBetween={20}
+                                // slidesPerGroup={3}
                                 loop={true}
+                                mousewheel={true}
                                 loopFillGroupWithBlank={true}
                                 pagination={{
-                                    clickable: true,
+                                    type:"progressbar",
                                 }}
-                                navigation={true}
-                                modules={[Pagination, Navigation]}
+                                modules={[Pagination, Mousewheel]}
                                 className="mySwiper"
                             >
                                 {data.result[0].youtube.map((i) => (
@@ -75,13 +75,13 @@ const MainList = () => {
                                         </SwiperSlide>
                                     </a>
                                 ))}
-                            </Swiper> */}
+                            </Swiper>
                         </div>
                     </>
 
                     <>
                         <div className="mx-auto pt-16">
-                            <div className="items-baseline justify-between flex">
+                            <div className="items-baseline justify-between flex pb-2">
                                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">
                                     Twitch
                                 </h2>
@@ -94,33 +94,37 @@ const MainList = () => {
                                 </a>
                             </div>
 
-                            <div className="mt-4 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
-                                {data.result[1]?.twitch?.map((i) => (
+                            <Swiper
+                                slidesPerView={3}
+                                spaceBetween={20}
+                                // slidesPerGroup={3}
+                                loop={true}
+                                mousewheel={true}
+                                loopFillGroupWithBlank={true}
+                                pagination={{
+                                    type:"progressbar",
+                                }}
+                                modules={[Pagination, Mousewheel]}
+                                className="mySwiper"
+                            >
+                                {data.result[1].twitch.map((i) => (
                                     <a
                                         key={i.id}
                                         href={i.url}
-                                        className="group"
+                                        className="group cursor-pointer"
                                     >
-                                        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                        <SwiperSlide>
                                             <img
                                                 src={i.url}
                                                 alt={i.title}
-                                                className="h-full w-full object-cover object-center group-hover:opacity-75"
+                                                className="h-full w-full object-cover object-center hover:opacity-75"
                                                 width={100}
                                                 height={100}
                                             />
-                                        </div>
-                                        <div className="mt-4 flex items-center">
-                                            <h3 className="text-sm text-gray-700 text-ellipsis w-full whitespace-nowrap overflow-hidden">
-                                                {i.title}
-                                            </h3>
-                                            {/* <p className="text-lg font-medium text-gray-900 ml-auto">
-                                            22
-                                        </p> */}
-                                        </div>
+                                        </SwiperSlide>
                                     </a>
                                 ))}
-                            </div>
+                            </Swiper>
                         </div>
                     </>
                 </div>
