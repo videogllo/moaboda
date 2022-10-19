@@ -4,11 +4,10 @@ import UserForm from "./components/userForm";
 import Logo from "./components/logo";
 import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
-import MainListCopy from "./components/mainListcopy";
 import Keyword from "./components/keyword";
 import Category from "./components/category";
 
-const Main = (props) => {
+const Main = () => {
     return (
         <>
             <div className="flex flex-row items-center justify-center md:flex-col">
@@ -35,8 +34,7 @@ const Main = (props) => {
             </div>
 
             <Category></Category>
-            <MainList result={props.result}></MainList>
-            <MainListCopy result={props.result}></MainListCopy>
+            <MainList></MainList>
         </>
     );
 };

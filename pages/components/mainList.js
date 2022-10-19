@@ -1,150 +1,111 @@
 //statement
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-const MainList = (props) => {
+const MainList = () => {
+    const [data, setData] = useState(null);
+
     useEffect(() => {
-        console.log(props.result[0].youtube[0].id);
+        async function fnMainList() {
+            await fetch("/api/main")
+                .then((res) => res.json())
+                .then((data) => {
+                    console.log(data);
+                    setData(data);
+                });
+        }
+        fnMainList()
     }, []);
 
-    return (
-        <div>
-            {/* props.result[0].youtube[0].url */}
+    if(data !== null ){
+        return (
             <div>
-                <div className="flex flex-col md:flex-row w-full h-[500px] gap-4">
-                    <div className="flex flex-col w-full h-full gap-1">
-                        <div className="items-baseline justify-between flex">
-                            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-                                Youtube
-                            </h2>
-                            <a
-                                href="#"
-                                className="text-sm font-semibold text-blue-800 hover:text-blue-700"
-                            >
-                                More
-                                <span aria-hidden="true"> &rarr;</span>
-                            </a>
-                        </div>
-                        <div className="gap-1 w-full h-full flex flex-row overflow-x-auto">
-                            <div className=" w-full h-full flex flex-col md:w-3/4">
-                                <div className="rounded-lg shadow-lg h-full w-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                <p className="truncate">
-                                    youtube title area
-                                </p>
+                <div>
+                    <>
+                        <div className="mx-auto pt-16">
+                            <div className="items-baseline justify-between flex">
+                                <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+                                    Youtube
+                                </h2>
+                                <a
+                                    href="#"
+                                    className="text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                >
+                                    More
+                                    <span aria-hidden="true"> &rarr;</span>
+                                </a>
                             </div>
-
-                            <div className="gap-1 h-full w-full md:w-1/4 flex flex-row md:flex-col flex-none">
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="rounded-lg shadow-lg w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        youtube title area
-                                    </p>
-                                </div>
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="rounded-lg shadow-lg w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        youtube title area
-                                    </p>
-                                </div>
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="rounded-lg shadow-lg w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        youtube title area
-                                    </p>
-                                </div>
+    
+                            <div className="mt-4 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+                                {data.result[0]?.youtube?.map((i) => (
+                                    <a key={i.id} href={i.url} className="group">
+                                        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                            <img
+                                                src={i.url}
+                                                alt={i.title}
+                                                className="h-full w-full object-cover object-center group-hover:opacity-75"
+                                                width={100}
+                                                height={100}
+                                            />
+                                        </div>
+                                        <div className="mt-4 flex items-center">
+                                            <h3 className="text-sm text-gray-700 text-ellipsis w-full whitespace-nowrap overflow-hidden">
+                                                {i.title}
+                                            </h3>
+                                            {/* <p className="text-lg font-medium text-gray-900 ml-auto">
+                                            22
+                                        </p> */}
+                                        </div>
+                                    </a>
+                                ))}
                             </div>
                         </div>
-                    </div>
-
-                    <div className="flex flex-col w-full h-full gap-1">
-                        <div className="items-baseline justify-between flex">
-                            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-                                Youtube
-                            </h2>
-                            <a
-                                href="#"
-                                className="text-sm font-semibold text-blue-800 hover:text-blue-700"
-                            >
-                                More
-                                <span aria-hidden="true"> &rarr;</span>
-                            </a>
-                        </div>
-                        <div className="gap-1 w-full h-full flex flex-row overflow-x-auto">
-                            <div className=" w-full h-full flex flex-col md:w-3/4">
-                                <div className="rounded-lg shadow-lg h-full w-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                <p className="truncate">
-                                    youtube title area
-                                </p>
+                    </>
+    
+                    <>
+                        <div className="mx-auto pt-16">
+                            <div className="items-baseline justify-between flex">
+                                <h2 className="text-2xl font-bold tracking-tight text-gray-900">
+                                    Twitch
+                                </h2>
+                                <a
+                                    href="#"
+                                    className="text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                >
+                                    More
+                                    <span aria-hidden="true"> &rarr;</span>
+                                </a>
                             </div>
-
-                            <div className="gap-1 h-full w-full md:w-1/4 flex flex-row md:flex-col flex-none">
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="rounded-lg shadow-lg w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        youtube title area
-                                    </p>
-                                </div>
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="rounded-lg shadow-lg w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        youtube title area
-                                    </p>
-                                </div>
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="rounded-lg shadow-lg w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        youtube title area
-                                    </p>
-                                </div>
+    
+                            <div className="mt-4 grid grid-cols-2 gap-y-10 gap-x-6 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 xl:gap-x-8">
+                                {data.result[1]?.twitch?.map((i) => (
+                                    <a key={i.id} href={i.url} className="group">
+                                        <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                                            <img
+                                                src={i.url}
+                                                alt={i.title}
+                                                className="h-full w-full object-cover object-center group-hover:opacity-75"
+                                                width={100}
+                                                height={100}
+                                            />
+                                        </div>
+                                        <div className="mt-4 flex items-center">
+                                            <h3 className="text-sm text-gray-700 text-ellipsis w-full whitespace-nowrap overflow-hidden">
+                                                {i.title}
+                                            </h3>
+                                            {/* <p className="text-lg font-medium text-gray-900 ml-auto">
+                                            22
+                                        </p> */}
+                                        </div>
+                                    </a>
+                                ))}
                             </div>
                         </div>
-                    </div>
-
-                    {/* <div className="flex flex-col w-full h-full gap-1">
-                        <div className="items-baseline justify-between flex">
-                            <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-                                Youtube
-                            </h2>
-                            <a
-                                href="#"
-                                className="text-sm font-semibold text-blue-800 hover:text-blue-700"
-                            >
-                                More
-                                <span aria-hidden="true"> &rarr;</span>
-                            </a>
-                        </div>
-                        <div className="gap-1 w-full h-full flex flex-row overflow-x-auto">
-                            <div className=" w-full h-full flex flex-col md:w-3/4">
-                                <div className="h-full w-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                <p className="truncate">
-                                    asdaasdkl;asdkl;daskl;asdkl;
-                                </p>
-                            </div>
-
-                            <div className="gap-1 h-full w-full md:w-1/4 flex flex-row md:flex-col flex-none">
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        asdaasdkl;asdkl;daskl;asdkl;
-                                    </p>
-                                </div>
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        asdaasdkl;asdkl;daskl;asdkl;
-                                    </p>
-                                </div>
-                                <div className="w-full h-full flex flex-col">
-                                    <div className="w-full h-full bg-center bg-[url('https://i.ytimg.com/vi/_PPUN5IFbtE/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDXkN1iedWchcxc-pX1etPwH940pA')]"></div>
-                                    <p className="truncate">
-                                        asdaasdkl;asdkl;daskl;asdkl;
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
+                    </>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
+
+    
 };
 export default MainList;

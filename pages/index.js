@@ -4,7 +4,7 @@ import Head from "next/head";
 //default page
 import Main from "./main";
 
-export default function Home(props) {
+export default function Home() {
     return (
         <div className="bg-slate-200 p-4">
             <Head>
@@ -17,18 +17,18 @@ export default function Home(props) {
             </Head>
 
             <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
-                <Main result={props.result}></Main>
+                <Main></Main>
             </div>
         </div>
     );
 }
 
-export const getServerSideProps = async () => {
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/main`);
+// export const getServerSideProps = async () => {
+//     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/main`);
 
-    const data = await res.json();
+//     const data = await res.json();
 
-    console.log("client에서 받은 데이터 : ", data);
+//     console.log("client에서 받은 데이터 : ", data);
 
-    return { props: data };
-};
+//     return { props: data };
+// };
