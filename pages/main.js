@@ -5,7 +5,6 @@ import Logo from "./components/logo";
 import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
 import Keyword from "./components/keyword";
-import Category from "./components/category";
 
 const Main = () => {
     return (
@@ -33,7 +32,6 @@ const Main = () => {
                 <Keyword></Keyword>
             </div>
 
-            <Category></Category>
             <MainList></MainList>
         </>
     );

@@ -12,11 +12,6 @@ const UserForm = () => {
 
     return (
         <div className="relative">
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
-            
             <button
                 type="button"
                 className="inline-flex relative items-center rounded-full border border-transparent bg-blue-800 px-2 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
