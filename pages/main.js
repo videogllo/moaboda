@@ -4,7 +4,7 @@ import UserForm from "./components/userForm";
 import Logo from "./components/logo";
 import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
-import MainListCopy from "./components/mainList copy";
+import MainListCopy from "./components/mainListcopy";
 import Keyword from "./components/keyword";
 import Category from "./components/category";
 
