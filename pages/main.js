@@ -33,6 +33,9 @@ const Main = () => {
             </div>
 
             <MainList></MainList>
+
+            {/* 나중에 footer로 쓸 예정 */}
+            <div className="h-32"></div>
         </>
     );
 };
