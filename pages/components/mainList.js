@@ -35,12 +35,6 @@ const searchRanking = [
     {name: "야구"},
     {name: "배구"},
     {name: "공구"},
-
-    {name: "입구"},
-    {name: "옛구"},
-    {name: "마구마구"},
-    {name: "비둘기구구"},
-    {name: "개발재밌다구"},
 ]
 
 const MainList = () => {
@@ -62,7 +56,7 @@ const MainList = () => {
         return (
             <div>
                 <div className="mt-12">
-                    <h1 className="text-3xl font-bold">지금 인기있는 영상</h1>
+                    <h1 className="text-3xl font-extrabold font-NanumSquareNeo">지금 인기있는 영상</h1>
 
                     <div className="bg-slate-300 p-4 mt-4 rounded-xl shadow-xl">
                         <div className="mx-auto">
@@ -102,7 +96,7 @@ const MainList = () => {
                                             <img
                                                 src={i.url}
                                                 alt={i.title}
-                                                className="h-full w-full object-cover object-center cursor-grab hover:opacity-90 p-0.5 md:p-1 bg-slate-800 rounded-lg"
+                                                className="h-full w-full object-cover object-center cursor-grab hover:opacity-90 duration-150 ease-in-out p-0.5 md:p-1 bg-slate-800 rounded-lg"
                                                 width={100}
                                                 height={100}
                                             />
@@ -151,7 +145,7 @@ const MainList = () => {
                                             <img
                                                 src={i.url}
                                                 alt={i.title}
-                                                className="h-full w-full object-cover object-center cursor-grab hover:opacity-90 p-0.5 md:p-1 bg-slate-800 rounded-lg"
+                                                className="h-full w-full object-cover object-center cursor-grab hover:opacity-90 duration-150 ease-in-out p-0.5 md:p-1 bg-slate-800 rounded-lg"
                                                 width={100}
                                                 height={100}
                                             />
@@ -164,7 +158,7 @@ const MainList = () => {
                 </div>
 
                 <div className="mt-12">
-                    <h1 className="text-3xl font-bold">영상 소식</h1>
+                    <h1 className="text-3xl font-extrabold font-NanumSquareNeo">영상 소식</h1>
 
                     <div className="flex gap-4">
                         <div className="flex flex-col w-3/4">
@@ -206,14 +200,14 @@ const MainList = () => {
                                                                             key={
                                                                                 i.title
                                                                             }
-                                                                            className="hover:bg-slate-400/20 cursor-pointer"
+                                                                            className="hover:bg-slate-400/20 duration-150 ease-in-out cursor-pointer text-sm font-semibold"
                                                                         >
                                                                             <td className="whitespace-nowrap py-4 px-3 text-sm text-gray-500">
                                                                                 {
                                                                                     i.from
                                                                                 }
                                                                             </td>
-                                                                            <td className="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 md:pl-0">
+                                                                            <td className="py-4 pl-4 pr-3 text-gray-900 sm:pl-6 md:pl-0">
                                                                                 {
                                                                                     i.title
                                                                                 }
@@ -238,7 +232,7 @@ const MainList = () => {
                                         </h2>
                                         <a
                                             href="#"
-                                            className="text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                            className="text-sm font-bold text-blue-800 hover:text-blue-700"
                                         >
                                             More
                                             <span aria-hidden="true">
@@ -269,14 +263,14 @@ const MainList = () => {
                                                                         key={
                                                                             i.title
                                                                         }
-                                                                        className="hover:bg-slate-400/20 cursor-pointer"
+                                                                        className="hover:bg-slate-400/20 duration-150 ease-in-out cursor-pointer text-sm font-semibold"
                                                                     >
                                                                         <td className="whitespace-nowrap py-4 px-3 text-sm text-gray-500">
                                                                             {
                                                                                 i.from
                                                                             }
                                                                         </td>
-                                                                        <td className="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 md:pl-0">
+                                                                        <td className="py-4 pl-4 pr-3 text-gray-900 sm:pl-6 md:pl-0">
                                                                             {
                                                                                 i.title
                                                                             }
@@ -293,10 +287,10 @@ const MainList = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="bg-slate-300 p-4 mt-4 rounded-xl shadow-xl w-1/4">
+                        <div className="bg-slate-300 p-4 mt-4 rounded-xl shadow-xl w-1/4 h-full">
                             <div className="mx-auto">
                                 <div className="items-baseline justify-between flex pb-2">
-                                    <h2 className="text-xl font-bold tracking-tight text-gray-900">
+                                    <h2 className="text-xl font-extrabold tracking-tight text-gray-900">
                                         실시간 검색어 순위
                                     </h2>
                                 </div>
@@ -313,10 +307,10 @@ const MainList = () => {
                                                                         key={
                                                                             i.name
                                                                         }
-                                                                        className="hover:bg-slate-400/20 cursor-pointer"
+                                                                        className="hover:bg-slate-400/20 duration-150 ease-in-out cursor-pointer text-sm font-semibold"
                                                                     >
                                                                         <td className="w-4">{idx+1}.&nbsp;</td>
-                                                                        <td className="py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 md:pl-0 truncate">
+                                                                        <td className="py-4 pl-4 pr-3 text-gray-900 sm:pl-6 md:pl-0 truncate">
                                                                             {
                                                                                 i.name
                                                                             }

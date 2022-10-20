@@ -4,15 +4,48 @@
 
 
 @font-face {
-    font-family: "Kanit";
-    src: local("/font/Kanit-SemiBold.ttf") format('ttf');
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareB.ttf");
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareEB.ttf");
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareL.ttf");
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareR.ttf");
+}
+
+@font-face {
+    font-family: "NanumSquareNeo";
+    src: url("/font/NanumSquareNeo/NanumSquareNeoTTF-aLt.woff");
+}
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff");
+}
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff");
+}
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo/NanumSquareNeoTTF-dEb.woff");
+}
+@font-face {
+  font-family: "NanumSquareNeo";
+  src: url("/font/NanumSquareNeo/NanumSquareNeoTTF-eHv.woff");
 }
 
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, 'Kanit', BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    font-family: -apple-system, 'NanumSquare', 'NanumSquareNeo', BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 

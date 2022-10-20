@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'NanumSquareNeo': ['NanumSquareNeo'],
+      'NanumSquare': ['NanumSquare'],
+    }
   },
   plugins: [],
   darkMode: 'class',
