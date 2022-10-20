@@ -11,7 +11,14 @@ const Result = (props) => {
         <>
             <div className="bg-slate-100">
                 <div className="relative flex justify-center py-7">
-                    <div className="w-1/5 mr-5"><Logo ></Logo></div>
+                    <div className="w-1/5 mr-8">
+                        <Image
+                            src="/image/logo/logo.png"
+                            alt="logo"
+                            width={550}
+                            height={170}
+                        ></Image>
+                    </div>
                     <div className="w-3/5"><SearchForm></SearchForm><Keyword></Keyword></div>
                 </div>
                 <div className="relative flex justify-center py-7">
