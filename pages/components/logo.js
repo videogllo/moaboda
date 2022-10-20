@@ -4,11 +4,12 @@ const Logo = () => {
     return (
         <div>
             <Image
-                src="/image/logo/logo.png"
+                src="/image/logo/logo.svg"
                 alt="logo"
-                width={360}
                 height={100}
+                width={351}
             ></Image>
+
         </div>
     );
 };

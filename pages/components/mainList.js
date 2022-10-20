@@ -29,9 +29,11 @@ const MainList = () => {
     if (data !== null) {
         return (
             <div>
-                <div>
-                    <>
-                        <div className="mx-auto pt-16">
+                <div className="mt-12">
+                    <h1 className="text-3xl font-bold">지금 인기있는 영상</h1>
+    
+                    <div className="bg-slate-300 p-4 mt-4 rounded-xl shadow-xl">
+                        <div className="mx-auto">
                             <div className="items-baseline justify-between flex pb-2">
                                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">
                                     Youtube
@@ -44,7 +46,7 @@ const MainList = () => {
                                     <span aria-hidden="true"> &rarr;</span>
                                 </a>
                             </div>
-
+    
                             <Swiper
                                 slidesPerView={3}
                                 spaceBetween={20}
@@ -53,7 +55,7 @@ const MainList = () => {
                                 mousewheel={true}
                                 loopFillGroupWithBlank={true}
                                 pagination={{
-                                    type:"progressbar",
+                                    type: "progressbar",
                                 }}
                                 modules={[Pagination, Mousewheel]}
                                 className="mySwiper"
@@ -77,10 +79,10 @@ const MainList = () => {
                                 ))}
                             </Swiper>
                         </div>
-                    </>
-
-                    <>
-                        <div className="mx-auto pt-16">
+                    </div>
+    
+                    <div className="bg-slate-300 p-4 mt-4 rounded-xl shadow-xl">
+                        <div className="mx-auto">
                             <div className="items-baseline justify-between flex pb-2">
                                 <h2 className="text-2xl font-bold tracking-tight text-gray-900">
                                     Twitch
@@ -93,7 +95,7 @@ const MainList = () => {
                                     <span aria-hidden="true"> &rarr;</span>
                                 </a>
                             </div>
-
+    
                             <Swiper
                                 slidesPerView={3}
                                 spaceBetween={20}
@@ -102,7 +104,7 @@ const MainList = () => {
                                 mousewheel={true}
                                 loopFillGroupWithBlank={true}
                                 pagination={{
-                                    type:"progressbar",
+                                    type: "progressbar",
                                 }}
                                 modules={[Pagination, Mousewheel]}
                                 className="mySwiper"
@@ -126,7 +128,12 @@ const MainList = () => {
                                 ))}
                             </Swiper>
                         </div>
-                    </>
+                    </div>
+                </div>
+
+                <div className="mt-12">
+                    <h1 className="text-3xl font-bold">영상 소식</h1>
+                    
                 </div>
             </div>
         );
