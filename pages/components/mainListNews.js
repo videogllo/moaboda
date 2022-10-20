@@ -41,7 +41,7 @@ const MainListNews = () => {
                                         </h2>
                                         <a
                                             href="#"
-                                            className="text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                            className="text-xs md:text-sm font-semibold text-blue-800 hover:text-blue-700"
                                         >
                                             More
                                             <span aria-hidden="true">
@@ -101,7 +101,7 @@ const MainListNews = () => {
                                         </h2>
                                         <a
                                             href="#"
-                                            className="text-sm font-bold text-blue-800 hover:text-blue-700"
+                                            className="text-xs md:text-sm font-bold text-blue-800 hover:text-blue-700"
                                         >
                                             More
                                             <span aria-hidden="true">
@@ -149,7 +149,7 @@ const MainListNews = () => {
                         <div className="bg-slate-300 p-4 mt-4 rounded-xl shadow-xl w-full md:w-1/4 h-full">
                             <div className="mx-auto">
                                 <div className="items-baseline justify-between flex pb-2">
-                                    <h2 className="text-xl font-extrabold tracking-tight text-gray-900">
+                                    <h2 className="text-xl font-bold tracking-tight text-gray-900">
                                         실시간 검색어 순위
                                     </h2>
                                 </div>

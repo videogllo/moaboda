@@ -40,7 +40,7 @@ const MainListPopular = () => {
                             </h2>
                             <a
                                 href="#"
-                                className="text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                className="text-xs md:text-sm font-semibold text-blue-800 hover:text-blue-700"
                             >
                                 More
                                 <span aria-hidden="true"> &rarr;</span>
@@ -74,6 +74,11 @@ const MainListPopular = () => {
                                             width={100}
                                             height={100}
                                         />
+                                        <div className="absolute bottom-0 bg-black/70 w-full">
+                                            <p className="w-5/6 text-slate-100 text-xs md:text-sm truncate mx-auto font-NanumSquareNeo font-semibold">
+                                                {i.title}
+                                            </p>
+                                        </div>
                                     </SwiperSlide>
                                 </a>
                             ))}
@@ -89,7 +94,7 @@ const MainListPopular = () => {
                             </h2>
                             <a
                                 href="#"
-                                className="text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                className="text-xs md:text-sm font-semibold text-blue-800 hover:text-blue-700"
                             >
                                 More
                                 <span aria-hidden="true"> &rarr;</span>
@@ -123,6 +128,11 @@ const MainListPopular = () => {
                                             width={100}
                                             height={100}
                                         />
+                                        <div className="absolute bottom-0 bg-black/70 w-full">
+                                            <p className="w-5/6 text-slate-100 text-xs md:text-sm truncate mx-auto font-NanumSquareNeo font-semibold">
+                                                {i.title}
+                                            </p>
+                                        </div>
                                     </SwiperSlide>
                                 </a>
                             ))}
