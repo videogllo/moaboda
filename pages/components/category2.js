@@ -198,9 +198,9 @@ const Category = () => {
                     <ul className="flex p-2">
                         {/* {<li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5">{currentClick}</li>} */}
 
-                        {selectArr.map(item, index => {
+                        {/* {selectArr.map(item, index => {
                             <li key={index} className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5">{item}</li>
-                        })}
+                        })} */}
                     </ul>
                 </div>
             </div>
