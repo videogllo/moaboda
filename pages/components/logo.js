@@ -2,14 +2,13 @@ import Image from "next/image";
 
 const Logo = () => {
     return (
-        <div>
+        <div className="w-[400px] h-32 relative">
             <Image
-                src="/image/logo/logo.svg"
+                src="/image/logo/logo.png"
                 alt="logo"
-                height={100}
-                width={351}
+                layout="fill"
+                objectFit="contain"
             ></Image>
-
         </div>
     );
 };

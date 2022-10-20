@@ -2,14 +2,14 @@ import Image from "next/image";
 
 const LogoSmall = () => {
     return (
-        <>
+        <div className="w-[40px] h-[40px] relative">
             <Image
                 src="/image/logo/logo_small.png"
-                alt="smalllogo"
-                width={40}
-                height={40}
+                alt="logo"
+                layout="fill"
+                objectFit="contain"
             ></Image>
-        </>
+        </div>
     );
 };
 export default LogoSmall;

@@ -16,7 +16,7 @@ const Main = () => {
                 </div>
 
                 {/* logo */}
-                <div className="order-1 hidden md:order-2 md:block my-12">
+                <div className="order-1 hidden md:order-2 md:block mb-4">
                     <Logo></Logo>
                 </div>
                 <div className="block md:hidden">

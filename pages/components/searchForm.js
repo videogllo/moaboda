@@ -24,7 +24,7 @@ const SearchForm = () => {
         <>
             <form onSubmit={search}>
                 <div>
-                    <div className="mt-1 flex rounded-md shadow-sm">
+                    <div className="flex rounded-md shadow-sm">
                         <div className="relative flex flex-grow items-stretch focus-within:z-10">
                             <label htmlFor="searchInput">
                                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">

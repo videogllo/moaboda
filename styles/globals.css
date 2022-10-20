@@ -2,33 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* @font-face {
-  font-family: "NanumSquare";
-  src: url("/font/NanumSquareL.ttf");
-}
-@font-face {
-  font-family: "NanumSquare";
-  src: url("/font/NanumSquareR.ttf");
-}
-@font-face {
-  font-family: "NanumSquare";
-  src: url("/font/NanumSquareB.ttf");
-}
-@font-face {
-  font-family: "NanumSquare";
-  src: url("/font/NanumSquareEB.ttf");
-} */
 
 @font-face {
     font-family: "Kanit";
-    src: url("/font/Kanit-SemiBold.ttf");
+    src: local("/font/Kanit-SemiBold.ttf") format('ttf');
 }
 
 html,
 body {
     padding: 0;
     margin: 0;
-    font-family: -apple-system, Kanit, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    font-family: -apple-system, 'Kanit', BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
         Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
@@ -64,9 +48,13 @@ body {
 /* swiper - progress bar style */
 .swiper-pagination-progressbar-fill {
     border: 2px solid rgb(6 182 212);
-    border-radius: 5px;
+    border-radius: 0.75rem;
 }
-/* .swiper-pagination-progressbar {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 5px;
-} */
+
+/* swiper slider bg color */
+.swiper-slide{
+  background: none;
+}
+.swiper-slide-shadow{
+  background: none;
+}
