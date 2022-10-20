@@ -14,7 +14,7 @@ const Category = () => {
 
 export const Platform = () => {
     const [currentClick, setCurrentClick] = useState();
-    const [arr, setArr] = useState(['전체']);
+    const [arr, setArr] = useState([{id:'전체', var: 1}]);
     
     const GetClick = (e) => {
 
@@ -28,7 +28,7 @@ export const Platform = () => {
 
             if(arr.length > 0){
                 for(let i = 0; i < arr.length; i++){
-                    let prev = document.getElementById(arr[i]);
+                    let prev = document.getElementById(arr[i].id);
                     prev.style.color = "black";
                     prev.style.backgroundColor = "white";
                     prev.style.borderRadius = "0";
@@ -36,7 +36,7 @@ export const Platform = () => {
                     prev.style.paddingRight = "0";
                 }
             }
-            setArr(['전체']);
+            setArr([{id:'전체', var: 1}]);
             let current = document.getElementById('전체');
             current.style.color = "white";
             current.style.backgroundColor = "#1c28f4";
@@ -47,7 +47,7 @@ export const Platform = () => {
         } else {
 
             /* 버튼을 클릭 할 경우 전체 버튼의 색이 사라지고 클릭한 버튼에 파란색 배경색이 생기도록 설정 */
-            if(arr[0] == '전체'){
+            if(arr[0].id == '전체'){
                 arr.splice(0, 1);
                 let prev = document.getElementById('전체');
                 prev.style.color = "black";
@@ -57,8 +57,13 @@ export const Platform = () => {
                 prev.style.paddingRight = "0";
             }
 
-            if(arr.indexOf(e.target.id) == -1){
-                arr.push(e.target.id);
+            if(arr.findIndex(i => i.id == e.target.id) == -1){
+                arr.push({id:e.target.id, var: e.target.value});
+
+                arr.sort(function(a, b){
+                    return a.var - b.var;
+                });
+
                 let current = document.getElementById(e.target.id);
                 current.style.color = "white";
                 current.style.backgroundColor = "#1c28f4";
@@ -76,15 +81,14 @@ export const Platform = () => {
                 prev.style.paddingRight = "0";
     
                 for(let i = 0; i < arr.length; i++){
-                    console.log(document.getElementById)
-                    if(arr[i] == (e.target.id)){
+                    if(arr[i].id == (e.target.id)){
                         arr.splice(i, 1);
                         i--;
                     }
                 }
 
-                if(arr.length == 0){
-                    setArr(['전체']);
+                if(arr.length < 1){
+                    setArr([{id:'전체', var: 1}]);
                     let current = document.getElementById('전체');
                     current.style.color = "white";
                     current.style.backgroundColor = "#1c28f4";
@@ -97,11 +101,11 @@ export const Platform = () => {
     }
 
     const Reset = (e) => {
-        setArr(['전체']);
+        setArr([{id:'전체', var: 1}]);
 
         if(arr.length > 0){
             for(let i = 0; i < arr.length; i++){
-                let prev = document.getElementById(arr[i]);
+                let prev = document.getElementById(arr[i].id);
                 prev.style.color = "black";
                 prev.style.backgroundColor = "white";
                 prev.style.borderRadius = "0";
@@ -109,7 +113,7 @@ export const Platform = () => {
                 prev.style.paddingRight = "0";
             }
         }
-        setArr(['전체']);
+        setArr([{id:'전체', var: 1}]);
         let current = document.getElementById('전체');
         current.style.color = "white";
         current.style.backgroundColor = "#1c28f4";
@@ -168,13 +172,12 @@ export const Platform = () => {
                 </div>
                 <div className="w-4/5 border-y border-r bg-white">
                     <ul className="flex p-2">
-                        <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex"> 플랫폼: {arr.map((v,i) => <p key={i} className="text-sky-500 ml-2" onClick={Delete}>{v}</p>)}<p>x</p></li>
+                        <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex"> 플랫폼: {arr.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
                     </ul>
                 </div>
             </div>
         </>
     );
-
 }
 
 export default Category;
