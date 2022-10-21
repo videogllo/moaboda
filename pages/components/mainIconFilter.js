@@ -2,27 +2,27 @@
 import Image from "next/image";
 
 const iconData = [
-    { name: "afreecaTV", url: "/image/icon/afreecaTV.png" },
-    { name: "appleTV", url: "/image/icon/apple-tv.png" },
-    { name: "coupangPlay", url: "/image/icon/coupangPlay.png" },
-    { name: "disney+", url: "/image/icon/disney+.png" },
-    { name: "hboMax", url: "/image/icon/hboMax.png" },
-    { name: "neflix", url: "/image/icon/neflix.png" },
-    { name: "primeVideo", url: "/image/icon/primeVideo.png" },
-    { name: "tiktok", url: "/image/icon/tiktok.png" },
-    { name: "tving", url: "/image/icon/tving.png" },
-    { name: "twitch", url: "/image/icon/twitch.png" },
-    { name: "watcha", url: "/image/icon/watcha.png" },
-    { name: "wayvve", url: "/image/icon/wayvve.png" },
-    { name: "youtube", url: "/image/icon/youtube.png" },
+    { name: "afreecaTV", imgUrl: "/image/icon/afreecaTV.png" },
+    { name: "appleTV", imgUrl: "/image/icon/apple-tv.png" },
+    { name: "coupangPlay", imgUrl: "/image/icon/coupangPlay.png" },
+    { name: "disney+", imgUrl: "/image/icon/disney+.png" },
+    { name: "hboMax", imgUrl: "/image/icon/hboMax.png" },
+    { name: "neflix", imgUrl: "/image/icon/neflix.png" },
+    { name: "primeVideo", imgUrl: "/image/icon/primeVideo.png" },
+    { name: "tiktok", imgUrl: "/image/icon/tiktok.png" },
+    { name: "tving", imgUrl: "/image/icon/tving.png" },
+    { name: "twitch", imgUrl: "/image/icon/twitch.png" },
+    { name: "watcha", imgUrl: "/image/icon/watcha.png" },
+    { name: "wayvve", imgUrl: "/image/icon/wayvve.png" },
+    { name: "youtube", imgUrl: "/image/icon/youtube.png" },
 ];
 
 const MainIconFilter = () => {
     return (
-        <div className="my-12 flex gap-4">
+        <div className="my-12 flex gap-4 w-screen">
             {iconData.map((i) => (
-                <button className="w-16 h-16 bg-slate-400 rounded-lg opacity-50 hover:opacity-100 ease-in-out duration-200">
-                    <Image src={i.url} width={100} height={100}></Image>
+                <button className="w-[50px] h-[50px] bg-slate-400 rounded-lg opacity-50 hover:opacity-100 ease-in-out duration-200">
+                    {/* <Image src={i.imgUrl} width={50} height={50}></Image> */}
                 </button>
             ))}
         </div>

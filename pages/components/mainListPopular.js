@@ -50,7 +50,7 @@ const MainListPopular = () => {
                             </a>
                         </div>
 
-                        {data == null ? (
+                        {data === null || data.result[0].youtube.length === 0 ? (
                             <Loading></Loading>
                         ) : (
                             <Swiper
@@ -124,7 +124,7 @@ const MainListPopular = () => {
                             </a>
                         </div>
 
-                        {data == null ? (
+                        {data === null || data.result[1].twitch.length === 0 ? (
                             <Loading></Loading>
                         ) : (
                             <Swiper

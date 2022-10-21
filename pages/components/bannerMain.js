@@ -19,26 +19,26 @@ const BannerMain = () => {
         {
             id: 1,
             name: "첫번째광고",
-            imgUrl: "https://picsum.photos/1920/400",
-            tarUrl: "https://picsum.photos/1920/400",
+            imgUrl: "https://picsum.photos/1920/600",
+            tarUrl: "https://picsum.photos/1920/600",
         },
         {
             id: 2,
             name: "두번째광고",
-            imgUrl: "https://picsum.photos/1919/400",
-            tarUrl: "https://picsum.photos/1919/400",
+            imgUrl: "https://picsum.photos/1919/600",
+            tarUrl: "https://picsum.photos/1919/600",
         },
         {
             id: 3,
             name: "세번째광고",
-            imgUrl: "https://picsum.photos/1918/400",
-            tarUrl: "https://picsum.photos/1918/400",
+            imgUrl: "https://picsum.photos/1918/600",
+            tarUrl: "https://picsum.photos/1918/600",
         },
     ]);
 
     return (
         <div className="mt-12">
-            <div className="w-full rounded-lg" id="banner">
+            <div className="w-full rounded-lg">
                 {data == null ? (
                     <Loading></Loading>
                 ) : (
