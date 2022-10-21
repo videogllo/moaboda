@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 
-@font-face {
+/* @font-face {
   font-family: "NanumSquare";
   src: url("/font/NanumSquare/NanumSquareL.ttf");
   font-weight: 300;
@@ -22,27 +22,48 @@
   font-family: "NanumSquare";
   src: url("/font/NanumSquare/NanumSquareEB.ttf");
   font-weight: 800;
+} */
+
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareL.woff2");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareR.woff2");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareB.woff2");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "NanumSquare";
+  src: url("/font/NanumSquare/NanumSquareEB.woff2");
+  font-weight: 800;
 }
 
 
 @font-face {
     font-family: "NanumSquareNeo";
-    src: url("/font/NanumSquareNeo/NanumSquareNeoL.woff");
+    src: url("/font/NanumSquareNeo/NanumSquareNeoL.woff2");
     font-weight: 300;
 }
 @font-face {
   font-family: "NanumSquareNeo";
-  src: url("/font/NanumSquareNeo/NanumSquareNeor.woff");
+  src: url("/font/NanumSquareNeo/NanumSquareNeor.woff2");
   font-weight: 400;
 }
 @font-face {
   font-family: "NanumSquareNeo";
-  src: url("/font/NanumSquareNeo/NanumSquareNeoB.woff");
+  src: url("/font/NanumSquareNeo/NanumSquareNeoB.woff2");
   font-weight: 700;
 }
 @font-face {
   font-family: "NanumSquareNeo";
-  src: url("/font/NanumSquareNeo/NanumSquareNeoEB.woff");
+  src: url("/font/NanumSquareNeo/NanumSquareNeoEB.woff2");
   font-weight: 800;
 }
 
