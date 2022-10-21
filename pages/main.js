@@ -5,6 +5,7 @@ import Logo from "./components/logo";
 import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
 import Keyword from "./components/keyword";
+import BannerMain from "./components/bannerMain";
 
 const Main = () => {
     return (
@@ -32,6 +33,7 @@ const Main = () => {
                 <Keyword></Keyword>
             </div>
 
+            <BannerMain></BannerMain>
             <MainList></MainList>
 
             {/* 나중에 footer로 쓸 예정 */}

@@ -9,7 +9,7 @@ export default async function handler(req, res){
 
         for(let i = 0; i < items.length; i++){
             // console.log(items[i]);
-            youtube.push({id: items[i].snippet.channelId, url: items[i].snippet.thumbnails.high.url, title: items[i].snippet.title});
+            youtube.push({id: items[i].snippet.channelId, url: items[i].snippet.thumbnails.standard.url, title: items[i].snippet.title});
         }
 
         // console.log('main으로 보낼 최종 youtube 데이터! : ', youtube);
@@ -31,7 +31,7 @@ export default async function handler(req, res){
 
         for(let i = 0; i < items.length; i++){
             if(items[i].title != ''){
-                twitch.push({id: items[i].id, url: items[i].thumbnail_url.replace("{width}x{height}", "440x240"), title: items[i].title})
+                twitch.push({id: items[i].id, url: items[i].thumbnail_url.replace("{width}x{height}", "640x480"), title: items[i].title})
             }
         }
         

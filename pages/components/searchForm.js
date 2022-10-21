@@ -36,7 +36,7 @@ const SearchForm = () => {
                                 id="searchInput"
                                 name="text"
                                 ref={inputRef}
-                                className="block border w-full focus:outline-none rounded-none rounded-l-md border-gray-300 pl-10 focus:border-blue-900 focus:ring-blue-900 focus:ring-1 sm:text-lg py-2 px-6"
+                                className="block border w-full focus:outline-none rounded-none rounded-l-md border-gray-300 pl-10 focus:border-blue-900 focus:ring-blue-900 focus:ring-1 text-sm md:text-base lg:text-lg py-2 px-6"
                                 placeholder="좋아하는 장르, 관심사를 검색해보세요."
                             />
                         </div>
