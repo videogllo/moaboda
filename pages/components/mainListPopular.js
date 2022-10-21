@@ -29,7 +29,7 @@ const MainListPopular = () => {
     }, []);
 
     return (
-        <div className="mt-12">
+        <>
             <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
                 지금 인기있는 영상
             </h1>
@@ -49,7 +49,7 @@ const MainListPopular = () => {
                                 <span aria-hidden="true"> &rarr;</span>
                             </a>
                         </div>
-    
+
                         {data == null ? (
                             <Loading></Loading>
                         ) : (
@@ -87,15 +87,16 @@ const MainListPopular = () => {
                                         className="group cursor-pointer"
                                     >
                                         <SwiperSlide>
-                                            <img
-                                                src={i.url}
-                                                id={i.id}
-                                                alt={i.title}
-                                                className="h-full w-full object-cover object-center cursor-grab hover:opacity-90 duration-150 ease-in-out p-0.5 md:p-1 bg-slate-800 rounded-lg"
-                                                width={100}
-                                                height={100}
-                                            />
-                                            <div className="absolute bottom-0 bg-black/70 w-full">
+                                            <div className="relative">
+                                                <img
+                                                    src={i.url}
+                                                    alt={i.title}
+                                                    className="h-full w-full object-cover object-center cursor-grab hover:opacity-80 duration-150 ease-in-out p-[2px] bg-slate-800 rounded-lg"
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                />
+                                            </div>
+                                            <div className="absolute bottom-0 bg-black/70 w-full rounded-b-lg">
                                                 <p className="w-5/6 text-slate-100 text-xs md:text-sm truncate mx-auto font-NanumSquareNeo font-semibold p-1">
                                                     {i.title}
                                                 </p>
@@ -107,7 +108,7 @@ const MainListPopular = () => {
                         )}
                     </div>
                 </div>
-    
+
                 <div className="bg-slate-300 p-4 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline justify-between flex pb-2">
@@ -122,7 +123,7 @@ const MainListPopular = () => {
                                 <span aria-hidden="true"> &rarr;</span>
                             </a>
                         </div>
-    
+
                         {data == null ? (
                             <Loading></Loading>
                         ) : (
@@ -159,14 +160,14 @@ const MainListPopular = () => {
                                         className="group cursor-pointer"
                                     >
                                         <SwiperSlide>
-                                            <img
-                                                src={i.url}
-                                                alt={i.title}
-                                                className="h-full w-full object-cover object-center cursor-grab hover:opacity-90 duration-150 ease-in-out p-0.5 md:p-1 bg-slate-800 rounded-lg"
-                                                width={100}
-                                                height={100}
-                                            />
-                                            <div className="absolute bottom-0 bg-black/70 w-full">
+                                            <div className="relative">
+                                                <img
+                                                    src={i.url}
+                                                    alt={i.title}
+                                                    className="h-full w-full object-cover object-center cursor-grab hover:opacity-80 duration-150 ease-in-out p-[2px] bg-slate-800 rounded-lg"
+                                                />
+                                            </div>
+                                            <div className="absolute bottom-0 bg-black/70 w-full rounded-b-lg">
                                                 <p className="w-5/6 text-slate-100 text-xs md:text-sm truncate mx-auto font-NanumSquareNeo font-semibold py-1">
                                                     {i.title}
                                                 </p>
@@ -179,7 +180,7 @@ const MainListPopular = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 export default MainListPopular;

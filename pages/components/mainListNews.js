@@ -57,12 +57,12 @@ const MainListNews = () => {
                                 <Loading></Loading>
                             ) : (
                                 <div className="flex items-center">
-                                    <div className="bg-cyan-500 w-1/2 h-44 relative rounded-lg hover:opacity-90">
+                                    <div className="bg-cyan-500 w-1/2 h-44 relative rounded-lg hover:opacity-80">
                                         <Image
                                             src="/image/logo/logo.png"
                                             layout="fill"
                                             objectFit="contain"
-                                            alt=""
+                                            alt="movieNewsMain"
                                         />
                                     </div>
                                     <div className="px-2 sm:px-3 lg:px-4 w-1/2">
@@ -111,12 +111,12 @@ const MainListNews = () => {
                             <Loading></Loading>
                         ) : (
                             <div className="flex items-center">
-                                <div className="bg-cyan-500 w-1/2 h-44 relative rounded-lg hover:opacity-90">
+                                <div className="bg-cyan-500 w-1/2 h-44 relative rounded-lg hover:opacity-80">
                                     <Image
                                         src="/image/logo/logo.png"
                                         layout="fill"
                                         objectFit="contain"
-                                        alt=""
+                                        alt="dramaNewsMain"
                                     />
                                 </div>
                                 <div className="px-2 sm:px-3 lg:px-4 w-1/2">

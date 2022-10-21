@@ -1,11 +1,13 @@
 //component
 import MainListPopular from "./mainListPopular";
 import MainListNews from "./mainListNews";
+import MainIconFilter from "./mainIconFilter";
 
 const MainList = () => {
     
         return (
-            <div>
+            <div className="mt-12" id="mainList">
+                <MainIconFilter></MainIconFilter>
                 <MainListPopular></MainListPopular>
                 <MainListNews></MainListNews>
             </div>

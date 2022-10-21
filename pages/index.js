@@ -16,7 +16,7 @@ export default function Home() {
                 <link rel="icon" href="/image/logo/logo_small.svg" />
             </Head>
 
-            <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] mx-auto">
+            <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto">
                 <Main></Main>
             </div>
         </div>

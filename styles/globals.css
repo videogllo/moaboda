@@ -103,6 +103,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 0.5rem;
+    /* background: none; */
 }
 /* swiper - progress bar style */
 .swiper-pagination-progressbar-fill {
@@ -113,7 +115,12 @@ body {
 /* swiper slider bg color */
 .swiper-slide{
   background: none;
+  overflow: hidden;
 }
 .swiper-slide-shadow{
-  background: none;
+  background: none; 
 }
+/* .swiper-slide-active{
+  margin: 0 auto;
+  width: 50% !important;
+} */
