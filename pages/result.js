@@ -41,7 +41,7 @@ const Result = (props) => {
                 </div>
                 <div className="relative flex justify-center">
                     <div className="max-w-screen-2xl w-4/5">
-                        {props.result[0].youtube[0].id != '' ? props.result[0].youtube.map((i) => (
+                        {/* {props.result[0].youtube[0].id != '' ? props.result[0].youtube.map((i) => (
                                 <div key={i.id} className="relative flex items-start py-3 border-b">
                                     <img src={i.url} width={350} height={200}/>
                                     <div className="relative h-[190px] py-2 pl-1.5">
@@ -59,22 +59,19 @@ const Result = (props) => {
                                         <small className="relative">{i.date}</small>
                                     </div>
                                 </div>
-                        )) : ''}
+                        )) : ''} */}
                     </div>
                 </div>
                 <div className="relative flex justify-center">
                     <div className="max-w-screen-2xl w-4/5">
-                        {props.result[1].twitch[0].id != '' ? props.result[1].twitch.map((i) => (
+                        {/* {props.result[1].twitch[0].id != '' ? props.result[1].twitch.map((i) => (
                             <div key={i.id} id={i.link} className="relative flex items-start py-3 border-b" onClick={twitchClick}>
                                 <img id={i.link} src={i.url} width={350} height={200}/>
                                 <div id={i.link} className="relative h-[190px] py-2 pl-1.5">
                                     <h4 id={i.link} className="relative text-xl h-1/4 font-extrabold">{i.title}</h4>
                                     <p id={i.link} className="relative text-base">{i.channel}</p>
                                     <ul id={i.link} className="relative flex mt-6 mb-5">
-                                        {/* <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[0]}</li>
-                                        <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[1]}</li>
-                                        <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[2]}</li>
-                                        <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[3]}</li> */}
+                                        
                                     </ul>
                                     <div id={i.link} className="relative w-[70px] h-[40px]">
                                         <Image id={i.link} src="/image/etc/twitch.svg" alt="logo" layout="fill" objectFit='contain'></Image>
@@ -82,7 +79,7 @@ const Result = (props) => {
                                     <small id={i.link} className="relative">{i.date}</small>
                                 </div>
                             </div>
-                        )) : ''}
+                        )) : ''} */}
                     </div>
                 </div>
                 <div className="h-40"></div>
@@ -92,10 +89,10 @@ const Result = (props) => {
     )
 }
 
-export const getServerSideProps = async (context) => {
-    console.log(context.query.q);
-    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
-    const data = await res.json();
-    return {props: data};
-}
-export default Result;
+// export const getServerSideProps = async (context) => {
+//     console.log(context.query.q);
+//     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
+//     const data = await res.json();
+//     return {props: data};
+// }
+// export default Result;
