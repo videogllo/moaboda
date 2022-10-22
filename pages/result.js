@@ -95,4 +95,4 @@ const Result = (props) => {
 //     const data = await res.json();
 //     return {props: data};
 // }
-// export default Result;
+export default Result;
