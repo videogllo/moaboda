@@ -93,6 +93,7 @@ const Result = (props) => {
 }
 
 export const getServerSideProps = async (context) => {
+    console.log(context.query.q);
     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
     const data = await res.json();
     return {props: data};

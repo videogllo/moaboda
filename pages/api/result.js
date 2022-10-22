@@ -5,34 +5,34 @@ export default async function handler(req, res) {
     let twitch = [];
     let twitchCateIds = [];
 
-    await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + req.query.q)
-    .then((response) => response.json())
-    .then((data) => {
-        if(data.items != undefined){
-            let items = data.items;
+    // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + req.query.q)
+    // .then((response) => response.json())
+    // .then((data) => {
+    //     if(data.items != undefined){
+    //         let items = data.items;
     
-            for(let i = 0; i < items.length; i++){
-                videoId.push({id: items[i].id.videoId});
-            }
-        }
-    });
+    //         for(let i = 0; i < items.length; i++){
+    //             videoId.push({id: items[i].id.videoId});
+    //         }
+    //     }
+    // });
 
-    for(let i = 0 ; i < videoId.length; i++){
-        await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&id=" + videoId[i].id)
-        .then((response) => response.json())
-        .then((data) => {
-            let items = data.items;
-            let temp = ['', '', '']
+    // for(let i = 0 ; i < videoId.length; i++){
+    //     await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&id=" + videoId[i].id)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         let items = data.items;
+    //         let temp = ['', '', '']
 
 
-            if(items[0].snippet.tags == undefined){
-                youtube.push({id: items[0].id, url: items[0].snippet.thumbnails.medium.url, title: items[0].snippet.title, channel: items[0].snippet.channelTitle, date: items[0].snippet.publishedAt, tags: temp});
-            } else {
-                youtube.push({id: items[0].id, url: items[0].snippet.thumbnails.medium.url, title: items[0].snippet.title, channel: items[0].snippet.channelTitle, date: items[0].snippet.publishedAt, tags: items[0].snippet.tags});
-            }
-        });
-    }
-    results.push({youtube:youtube});
+    //         if(items[0].snippet.tags == undefined){
+    //             youtube.push({id: items[0].id, url: items[0].snippet.thumbnails.medium.url, title: items[0].snippet.title, channel: items[0].snippet.channelTitle, date: items[0].snippet.publishedAt, tags: temp});
+    //         } else {
+    //             youtube.push({id: items[0].id, url: items[0].snippet.thumbnails.medium.url, title: items[0].snippet.title, channel: items[0].snippet.channelTitle, date: items[0].snippet.publishedAt, tags: items[0].snippet.tags});
+    //         }
+    //     });
+    // }
+    // results.push({youtube:youtube});
 
 
 
