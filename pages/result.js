@@ -41,7 +41,7 @@ const Result = (props) => {
                 </div>
                 <div className="relative flex justify-center">
                     <div className="max-w-screen-2xl w-4/5">
-                        {/* {props.result[0].youtube[0].id != '' ? props.result[0].youtube.map((i) => (
+                        {props.result[0].youtube[0].id != '' ? props.result[0].youtube.map((i) => (
                                 <div key={i.id} className="relative flex items-start py-3 border-b">
                                     <img src={i.url} width={350} height={200}/>
                                     <div className="relative h-[190px] py-2 pl-1.5">
@@ -59,12 +59,12 @@ const Result = (props) => {
                                         <small className="relative">{i.date}</small>
                                     </div>
                                 </div>
-                        )) : ''} */}
+                        )) : ''}
                     </div>
                 </div>
                 <div className="relative flex justify-center">
                     <div className="max-w-screen-2xl w-4/5">
-                        {/* {props.result[1].twitch[0].id != '' ? props.result[1].twitch.map((i) => (
+                        {props.result[1].twitch[0].id != '' ? props.result[1].twitch.map((i) => (
                             <div key={i.id} id={i.link} className="relative flex items-start py-3 border-b" onClick={twitchClick}>
                                 <img id={i.link} src={i.url} width={350} height={200}/>
                                 <div id={i.link} className="relative h-[190px] py-2 pl-1.5">
@@ -79,7 +79,7 @@ const Result = (props) => {
                                     <small id={i.link} className="relative">{i.date}</small>
                                 </div>
                             </div>
-                        )) : ''} */}
+                        )) : ''}
                     </div>
                 </div>
                 <div className="h-40"></div>
@@ -89,10 +89,10 @@ const Result = (props) => {
     )
 }
 
-// export const getServerSideProps = async (context) => {
-//     console.log(context.query.q);
-//     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
-//     const data = await res.json();
-//     return {props: data};
-// }
+export async function getServerSideProps(context) {
+    const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
+    const data = await res.json();
+    return  { props: data };
+}
+
 export default Result;
