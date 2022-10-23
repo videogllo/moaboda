@@ -5,59 +5,92 @@ import { useState } from "react";
 //component
 import Loading from "./loading";
 
-const movieNews = [
+const news = [
     {
-        from: "Naver",
-        title: "2022 흥행작",
+        from: "from1",
+        title: "title1",
     },
-    {
-        from: "Daum",
-        title: "블록버스터 신작",
-    },
-    {
-        from: "Kakao",
-        title: "Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum",
-    },
+
+    [
+        {
+            from: "from2",
+            title: "title2",
+        },
+        {
+            from: "from3",
+            title: "title3",
+        },
+        {
+            from: "from4",
+            title: "title4",
+        },
+    ],
 ];
 
-const searchRanking = [
-    { name: "농구농구" },
-    { name: "축구축구" },
-    { name: "야구야구" },
-    { name: "배구배구" },
-    { name: "공구공구" },
-];
+const test = "test";
 
 const MainListNews = () => {
     const [data, setData] = useState("test"); //임시로 데이터 있게함 => default null로 변경할 것
 
     return (
         <div className="mt-12">
-            <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
+            {/* <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
                 영상 소식
-            </h1>
+            </h1> */}
 
-            <div className="flex flex-col md:flex-row gap-6 mt-6">
-                <div className="flex flex-col !md:flex-row w-full md:w-3/4 gap-6">
-                    <div className="bg-slate-300 p-4 rounded-xl shadow-xl">
-                        <div className="mx-auto">
-                            <div className="items-baseline justify-between flex pb-2">
-                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-gray-900">
-                                    영화
-                                </h2>
-                                <a
-                                    href="#"
-                                    className="text-xs md:text-sm font-semibold text-blue-800 hover:text-blue-700"
-                                >
-                                    More
-                                    <span aria-hidden="true"> &rarr;</span>
-                                </a>
-                            </div>
-                            {data == null ? (
-                                <Loading></Loading>
-                            ) : (
-                                <div className="flex items-center">
-                                    <div className="bg-cyan-500 w-1/2 h-44 relative rounded-lg hover:opacity-80">
+            <div className="flex flex-col w-full gap-6">
+                <div className="bg-slate-700 p-4 rounded-xl shadow-xl">
+                    <div className="mx-auto">
+                        <div className="items-baseline justify-between flex pb-2">
+                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
+                                정보
+                            </h2>
+                            <a
+                                href="#"
+                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all"
+                            >
+                                More
+                                <span aria-hidden="true"> &rarr;</span>
+                            </a>
+                        </div>
+                        {data == null ? (
+                            <Loading></Loading>
+                        ) : (
+                            <div className="flex items-center">
+                                {news.map((el, i) => (
+                                    <>
+                                        {i === 0 ? (
+                                            <div
+                                                key={i}
+                                                className="flex flex-col w-1/2"
+                                            >
+                                                <div className="relative rounded-lg hover:opacity-80 w-full h-32 bg-slate-900">
+                                                    <Image
+                                                        src="/image/logo/logo.png"
+                                                        layout="fill"
+                                                        objectFit="contain"
+                                                        alt="1"
+                                                    />
+                                                </div>
+                                                <div>{el.title}</div>
+                                            </div>
+                                        ) : (
+                                            <div
+                                                key={i}
+                                                className="flex flex-col w-1/2 bg-red-500"
+                                            >
+                                                {/* {el.map((e) => {
+                                                    <div key={e.title}>
+                                                        {e.title}
+                                                    </div>;
+                                                })} */}
+                                            </div>
+                                        )}
+                                    </>
+                                ))}
+
+                                {/* <div className="flex flex-col w-1/2">
+                                    <div className="bg-cyan-500 h-44 relative rounded-lg hover:opacity-80">
                                         <Image
                                             src="/image/logo/logo.png"
                                             layout="fill"
@@ -65,74 +98,24 @@ const MainListNews = () => {
                                             alt="movieNewsMain"
                                         />
                                     </div>
-                                    <div className="px-2 sm:px-3 lg:px-4 w-1/2">
-                                        <div className="flex flex-col truncate">
-                                            <div className="overflow-hidden">
-                                                <table className="divide-y divide-gray-300 w-full table-fixed">
-                                                    <tbody className="divide-y divide-gray-200">
-                                                        {movieNews.map((i) => (
-                                                            <tr
-                                                                key={i.title}
-                                                                className="hover:bg-slate-400/20 duration-150 ease-in-out cursor-pointer text-sm xl:text-base font-semibold"
-                                                            >
-                                                                <td className="whitespace-nowrap py-4 px-3 text-gray-500 w-16 md:w-20">
-                                                                    {i.from}
-                                                                </td>
-                                                                <td className="text-slate-900 truncate">
-                                                                    {i.title}
-                                                                </td>
-                                                            </tr>
-                                                        ))}
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
+    
+                                    <p>title1</p>
                                 </div>
-                            )}
-                        </div>
-                    </div>
-                    <div className="bg-slate-300 p-4 rounded-xl shadow-xl w-full">
-                        <div className="mx-auto">
-                            <div className="items-baseline justify-between flex pb-2">
-                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-gray-900">
-                                    드라마
-                                </h2>
-                                <a
-                                    href="#"
-                                    className="text-xs md:text-sm font-bold text-blue-800 hover:text-blue-700"
-                                >
-                                    More
-                                    <span aria-hidden="true"> &rarr;</span>
-                                </a>
-                            </div>
-                        </div>
-                        {data == null ? (
-                            <Loading></Loading>
-                        ) : (
-                            <div className="flex items-center">
-                                <div className="bg-cyan-500 w-1/2 h-44 relative rounded-lg hover:opacity-80">
-                                    <Image
-                                        src="/image/logo/logo.png"
-                                        layout="fill"
-                                        objectFit="contain"
-                                        alt="dramaNewsMain"
-                                    />
-                                </div>
+                                
                                 <div className="px-2 sm:px-3 lg:px-4 w-1/2">
                                     <div className="flex flex-col truncate">
                                         <div className="overflow-hidden">
-                                            <table className="divide-y divide-gray-300 table-fixed">
+                                            <table className="divide-y divide-gray-300 w-full table-fixed">
                                                 <tbody className="divide-y divide-gray-200">
-                                                    {movieNews.map((i) => (
+                                                    {news.map((i) => (
                                                         <tr
                                                             key={i.title}
-                                                            className="hover:bg-slate-400/20 duration-150 ease-in-out cursor-pointer text-sm xl:text-base font-semibold"
+                                                            className="cursor-pointer text-sm xl:text-base"
                                                         >
-                                                            <td className="whitespace-nowrap py-4 px-3 text-gray-500 w-16 md:w-20">
+                                                            <td className="whitespace-nowrap py-4 px-3w-16 md:w-20">
                                                                 {i.from}
                                                             </td>
-                                                            <td className="text-slate-900 truncate">
+                                                            <td className="truncate">
                                                                 {i.title}
                                                             </td>
                                                         </tr>
@@ -141,47 +124,7 @@ const MainListNews = () => {
                                             </table>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        )}
-                    </div>
-                </div>
-
-                <div className="bg-slate-300 p-4 rounded-xl shadow-xl w-full md:w-1/4 h-full">
-                    <div className="mx-auto">
-                        <div className="items-baseline justify-between flex pb-2">
-                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-gray-900">
-                                실시간 검색어 순위
-                            </h2>
-                        </div>
-                        {data == null ? (
-                            <Loading></Loading>
-                        ) : (
-                            <div className="flex items-center">
-                                <div className="px-2 sm:px-3 lg:px-4 w-full">
-                                    <div className="flex flex-col truncate">
-                                        <div className="overflow-hidden">
-                                            <table className="divide-y divide-gray-300 w-full table-fixed">
-                                                <tbody className="divide-y divide-gray-200">
-                                                    {searchRanking.map(
-                                                        (i, idx) => (
-                                                            <tr
-                                                                key={i.name}
-                                                                className="hover:bg-slate-400/20 duration-150 ease-in-out cursor-pointer text-sm xl:text-base font-semibold"
-                                                            >
-                                                                <td className="py-4 px-3 text-slate-900 text-center truncate">
-                                                                    {idx + 1}
-                                                                    &#46;&ensp;
-                                                                    {i.name}
-                                                                </td>
-                                                            </tr>
-                                                        )
-                                                    )}
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> */}
                             </div>
                         )}
                     </div>

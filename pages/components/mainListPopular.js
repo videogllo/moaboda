@@ -17,7 +17,7 @@ const MainListPopular = () => {
     const [data, setData] = useState(null);
 
     useEffect(() => {
-        async function fnMainList() {
+        const fnMainList = async () => {
             await fetch("/api/main")
                 .then((res) => res.json())
                 .then((data) => {
@@ -30,20 +30,20 @@ const MainListPopular = () => {
 
     return (
         <>
-            <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
+            {/* <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
                 지금 인기있는 영상
-            </h1>
+            </h1> */}
 
-            <div className="flex flex-col gap-6 mt-6">
-                <div className="bg-slate-300 p-4 rounded-xl shadow-xl">
+            <div className="flex flex-col gap-6 mt-12">
+                <div className="bg-slate-700 p-4 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline justify-between flex pb-2">
-                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-gray-900">
+                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                 Youtube
                             </h2>
                             <a
                                 href="#"
-                                className="text-xs md:text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all"
                             >
                                 More
                                 <span aria-hidden="true"> &rarr;</span>
@@ -97,7 +97,7 @@ const MainListPopular = () => {
                                                 />
                                             </div>
                                             <div className="absolute bottom-0 bg-black/70 w-full rounded-b-lg">
-                                                <p className="w-5/6 text-slate-100 text-xs md:text-sm truncate mx-auto font-NanumSquareNeo font-semibold p-1">
+                                                <p className="w-5/6 text-xs md:text-sm truncate mx-auto font-NanumSquareNeo font-semibold p-1">
                                                     {i.title}
                                                 </p>
                                             </div>
@@ -109,15 +109,15 @@ const MainListPopular = () => {
                     </div>
                 </div>
 
-                <div className="bg-slate-300 p-4 rounded-xl shadow-xl">
+                <div className="bg-slate-700 p-4 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline justify-between flex pb-2">
-                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight text-gray-900">
+                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                 Twitch
                             </h2>
                             <a
                                 href="#"
-                                className="text-xs md:text-sm font-semibold text-blue-800 hover:text-blue-700"
+                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all"
                             >
                                 More
                                 <span aria-hidden="true"> &rarr;</span>

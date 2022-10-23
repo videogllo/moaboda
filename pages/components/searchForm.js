@@ -22,7 +22,7 @@ const SearchForm = () => {
 
     return (
         <>
-            <form onSubmit={search}>
+            <form>
                 <div>
                     <div className="flex rounded-md shadow-sm">
                         <div className="relative flex flex-grow items-stretch focus-within:z-10">
@@ -36,18 +36,14 @@ const SearchForm = () => {
                                 id="searchInput"
                                 name="text"
                                 ref={inputRef}
-                                className="block border w-full focus:outline-none rounded-none rounded-l-md border-gray-300 pl-10 focus:border-blue-900 focus:ring-blue-900 focus:ring-1 text-sm md:text-base lg:text-lg py-2 px-6"
+                                className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-700 placeholder:text-slate-200 text-cyan-300 pl-10 text-sm md:text-base lg:text-lg py-2 px-6"
                                 placeholder="좋아하는 장르, 관심사를 검색해보세요."
                             />
                         </div>
                         <button
                             type="submit"
-                            className="relative -ml-px border inline-flex items-center space-x-2 rounded-r-md border-gray-300 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:border-blue-900 focus:outline-none focus:ring-1 focus:ring-blue-900"
+                            className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md bg-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-800 focus:outline-none transition-all"
                         >
-                            {/* <MagnifyingGlassIcon
-                                className="h-5 w-5 text-gray-400"
-                                aria-hidden="true"
-                            /> */}
                             <MagnifyingGlassIcon className="h-4 w-4"></MagnifyingGlassIcon>
                         </button>
                     </div>

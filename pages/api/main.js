@@ -50,7 +50,7 @@ export default async function handler(req, res){
         results.push({twitch:twitch});
     });
 
-    console.log(results)
+    // console.log(results)
 
     res.send({result: results});
 }

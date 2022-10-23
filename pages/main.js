@@ -6,10 +6,33 @@ import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
 import Keyword from "./components/keyword";
 import BannerMain from "./components/bannerMain";
+import SideMenu from "./components/sideMenu";
+
+//firestore test
+import { db } from "../firebase";
+import { collection, doc, addDoc, setDoc, deleteDoc, deleteField, updateDoc,deleteData  } from "firebase/firestore";
 
 const Main = () => {
+    const addData = async () => {
+        try {
+            const res = await setDoc(doc(db, "users2", "1243"), {
+                title: "title name",
+                imgUrl: "https://naver.com",
+            });
+            console.log(res);
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
+    const deleteData = async () => {
+        await deleteDoc(doc(db, "users2", "1243"));
+    }
+
     return (
         <>
+            {/* <div className="text-3xl" onClick={deleteData}>button</div> */}
+
             <div className="flex flex-row items-center justify-center md:flex-col">
                 {/* user */}
                 <div className="ml-auto order-3 md:order-1">
@@ -35,6 +58,8 @@ const Main = () => {
 
             <BannerMain></BannerMain>
             <MainList></MainList>
+
+            {/* <SideMenu></SideMenu> */}
 
             {/* 나중에 footer로 쓸 예정 */}
             <div className="h-32"></div>

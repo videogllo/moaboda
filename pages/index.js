@@ -6,7 +6,7 @@ import Main from "./main";
 
 export default function Home() {
     return (
-        <div className="bg-slate-200 p-4">
+        <div className="bg-slate-900 overflow-hidden flex">
             <Head>
                 <title>Videogllo</title>
                 <meta
@@ -16,9 +16,11 @@ export default function Home() {
                 <link rel="icon" href="/image/logo/logo_small.svg" />
             </Head>
 
-            <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto">
+            <div className="w-full flex-0"></div>
+            <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3">
                 <Main></Main>
             </div>
+            <div className="w-full flex-0"></div>
         </div>
     );
 }
