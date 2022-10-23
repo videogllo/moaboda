@@ -1,20 +1,14 @@
 import Image from "next/image";
 
-import Logo from "./components/logo";
 import SearchForm from "./components/searchForm";
 import Keyword from "./components/keyword";
 import Banners from "./components/banners"
 import Category from "./components/category";
 import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
-import { LifebuoyIcon } from "@heroicons/react/24/outline";
+import ResultList from "./components/resultList";
 
 const Result = (props) => {
-
-    const twitchClick = (e) => {
-        console.log(e.target.id);
-        location.href='https://www.twitch.tv/' + e.target.id;
-    }
     return(
         <>
             {/* {props.result} */}
@@ -34,53 +28,13 @@ const Result = (props) => {
                     <Banners></Banners>
                 </div>
                 <div className="relative flex justify-center py-7">
-                    <Category></Category>
+                    <Category props={props}></Category>
                 </div>
                 <div className="relative flex justify-center py-7">
                     <VideoAd></VideoAd>
                 </div>
                 <div className="relative flex justify-center">
-                    <div className="max-w-screen-2xl w-4/5">
-                        {props.result[0].youtube[0].id != '' ? props.result[0].youtube.map((i) => (
-                                <div key={i.id} className="relative flex items-start py-3 border-b">
-                                    <img src={i.url} width={350} height={200}/>
-                                    <div className="relative h-[190px] py-2 pl-1.5">
-                                        <h4 className="relative text-xl h-1/4 font-extrabold">{i.title}</h4>
-                                        <p className="relative text-base">{i.channel}</p>
-                                        <ul className="relative flex mt-6 mb-5">
-                                            <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[0]}</li>
-                                            <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[1]}</li>
-                                            <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[2]}</li>
-                                            <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{i.tags[3]}</li>
-                                        </ul>
-                                        <div className="relative w-[90px] h-[20px]">
-                                            <Image src="/image/etc/youtube.svg" alt="logo" layout="fill" objectFit='contain'></Image>
-                                        </div>
-                                        <small className="relative">{i.date}</small>
-                                    </div>
-                                </div>
-                        )) : ''}
-                    </div>
-                </div>
-                <div className="relative flex justify-center">
-                    <div className="max-w-screen-2xl w-4/5">
-                        {props.result[1].twitch[0].id != '' ? props.result[1].twitch.map((i) => (
-                            <div key={i.id} id={i.link} className="relative flex items-start py-3 border-b" onClick={twitchClick}>
-                                <img id={i.link} src={i.url} width={350} height={200}/>
-                                <div id={i.link} className="relative h-[190px] py-2 pl-1.5">
-                                    <h4 id={i.link} className="relative text-xl h-1/4 font-extrabold">{i.title}</h4>
-                                    <p id={i.link} className="relative text-base">{i.channel}</p>
-                                    <ul id={i.link} className="relative flex mt-6 mb-5">
-                                        
-                                    </ul>
-                                    <div id={i.link} className="relative w-[70px] h-[40px]">
-                                        <Image id={i.link} src="/image/etc/twitch.svg" alt="logo" layout="fill" objectFit='contain'></Image>
-                                    </div>
-                                    <small id={i.link} className="relative">{i.date}</small>
-                                </div>
-                            </div>
-                        )) : ''}
-                    </div>
+                    <ResultList props={props.result}/>
                 </div>
                 <div className="h-40"></div>
                 <Footer></Footer>

@@ -1,9 +1,31 @@
+/** 카테고리 JSON */
+import jsonList from "../api/category.json";
+
 export default async function handler(req, res) {
     let results = [];
     let videoId = [];
     let youtube = [];
     let twitch = [];
     let twitchCateIds = [];
+
+    if(jsonList.태그[0].게임.indexOf(req.query.q) >= 0 || jsonList.대분류[0].게임.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"게임"});
+    } else if(jsonList.태그[0].스포츠.indexOf(req.query.q) >= 0 || jsonList.대분류[0].스포츠.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"스포츠"});
+    } else if(jsonList.태그[0].영화.indexOf(req.query.q) >= 0 || jsonList.대분류[0].영화.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"영화"});
+    } else if(jsonList.태그[0].음악.indexOf(req.query.q) >= 0 || jsonList.대분류[0].음악.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"음악"});
+    } else if(jsonList.태그[0].일상.indexOf(req.query.q) >= 0 || jsonList.대분류[0].일상.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"일상"});
+    } else if(jsonList.태그[0].크리에이티브.indexOf(req.query.q) >= 0 || jsonList.대분류[0].크리에이티브.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"크리에이티브"});
+    } else if(jsonList.태그[0].학습.indexOf(req.query.q) >= 0 || jsonList.대분류[0].학습.indexOf(req.query.q) >= 0){
+        results.push({mainCategory:"학습"});
+    } else {
+        results.push({mainCategory:""});
+    }
+
 
     await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + req.query.q)
     .then((response) => response.json())
@@ -107,7 +129,5 @@ export default async function handler(req, res) {
         results.push({twitch:twitch});
     }
     
-
-    console.log(results);
     res.send({result: results});
 }
