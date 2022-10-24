@@ -11,6 +11,8 @@ import ResultList from "./components/resultList";
 
 const Result = (props) => {
 
+    
+
     if(props != undefined && props != null && props.result != '없음'){
         return(
             <>

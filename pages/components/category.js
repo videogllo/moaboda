@@ -18,7 +18,6 @@ function Category({props}){
     if(props != undefined && props != null){
 
         const mainCategory = props.result[0].mainCategory;
-        // const mainCategory = '영화';
     
         const [currentClick, setCurrentClick] = useState();
         const [platformList, setPlatformList] = useState([{id:'전체', var: 0}]);
@@ -123,7 +122,6 @@ function Category({props}){
                         test.length = 0;
                     }
                 }
-
             }
         }
     
@@ -137,6 +135,21 @@ function Category({props}){
     
             if(categoryList.findIndex(i => i.id == e.target.id) == -1){
                 categoryList.push({id:e.target.id, var: e.target.value});
+
+                list.push(e.target.id);
+                if(test.length == 0){
+                    
+                }
+
+                if(test.length == 0){
+                    setTest(props.result.filter(i =>{
+                        return Object.keys(i).includes(e.target.id);
+                    }));
+                } else {
+                    setTest(...test,props.result.filter(i =>{
+                        return Object.keys(i).includes(e.target.id);
+                    }));
+                }
     
                 categoryList.sort(function(a, b){
                     return a.var - b.var;
@@ -158,12 +171,14 @@ function Category({props}){
                 for(let i = 0; i < categoryList.length; i++){
                     if(categoryList[i].id == (e.target.id)){
                         categoryList.splice(i, 1);
+                        list.splice(i, 1);
                         i--;
                     }
                 }
     
                 if(categoryList.length < 1){
                     setTagList([]);
+                    list.length = 0;
                     let cateLi = document.getElementById('cateLi');
                     cateLi.classList.add('hidden');
                 }
@@ -231,6 +246,7 @@ function Category({props}){
                     prev.classList.add('prevStyle');
                 }
                 setcategoryList([]);
+                list.length = 0;
                 let cateLi = document.getElementById('cateLi');
                 cateLi.classList.add('hidden');
             }
@@ -300,7 +316,8 @@ function Category({props}){
         return (
             <>
                 <div className="flex justify-center">
-                    <div className="w-full md:w-[57%]">
+                    <div className="w-full md:w-[59%]">
+                        {/* 플랫폼 */}
                         <div className="flex justify-center divide-y divide-slate-200 w-full">
                             <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">플랫폼</div>
                             <div className="w-[85%] border-r">
@@ -321,6 +338,8 @@ function Category({props}){
                                 </ul>
                             </div>
                         </div>
+
+                        {/* 카테고리 */}
                         {
                             mainCategory == '' ? '' : 
                             <div className="flex justify-center divide-y divide-slate-200">
@@ -361,6 +380,8 @@ function Category({props}){
                                 </div>
                             </div>
                         }
+
+                        {/* 태그 */}
                         {
                             mainCategory == '' ? '' : 
                             <div className="flex justify-center divide-y divide-slate-200">
@@ -437,39 +458,29 @@ function Category({props}){
                 </div>
         </>
         )
-    } else {
-        // return(
-        //     <div className="w-full md:w-[57%]">
-        //         <div className="flex justify-center divide-y divide-slate-200 w-full">
-        //             <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">플랫폼</div>
-        //             <div className="w-[85%] border-r">
-        //                 <ul className="flex p-2 pt-4">
-        //                     {jsonList.플랫폼.map((item, index) => 
-        //                         item == "전체" ? <li key={index} className="currentStyle" value={index+1} id={item} >{item}</li> : <li key={index} className="prevStyle" value={index+1} id={item}>{item}</li>
-        //                     )}
-        //                 </ul>
-        //             </div>
-        //         </div>
-        //     </div>
-        // );
-    }
+    } 
 }
 
-const addSearchFilter = async(list) => {
-    let results = [];
-    let videoId = [];
-    let youtube = [];
-    let twitch = [];
-    let twitchCateIds = [];
+// const addSearchFilter = async(list) => {
+//     let results = [];
+//     let videoId = [];
+//     let youtube = [];
+//     let twitch = [];
+//     let twitchCateIds = [];
 
-    for(let i = 0; i < list.length; i++){
-        const response = await axios.get({
-            url: 'https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=' + list[i]
-        });
+//     console.log('함수 실행 확인!');
+//     console.log(list);
 
-        console.log(response);
-    }
-
-}
+//     for(let i = 0; i < list.length; i++){
+//         const response = await axios.get("https://api.twitch.tv/helix/search/channels?query=" + list[i],{
+//             headers: {
+//                 'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
+//                 'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
+//             }
+//         });
+//         console.log('결과는????');
+//         console.log(response.data.data);
+//     }
+// }
 
 export default Category;
