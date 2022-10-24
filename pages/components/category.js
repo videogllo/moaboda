@@ -7,6 +7,7 @@ import jsonList from "../api/category.json";
 function Category({props}){
     
     const mainCategory = props.result[0].mainCategory;
+    console.log(mainCategory);
     // const mainCategory = '영화';
 
     const [currentClick, setCurrentClick] = useState();
