@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import SearchForm from "./components/searchForm";
 import Keyword from "./components/keyword";
-import Banners from "./components/banners"
+import BannerMain from "./components/bannerMain";
 import Category from "./components/category";
 import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
@@ -14,20 +14,24 @@ const Result = (props) => {
         return(
             <>
                 {/* {props.result} */}
-                <div className="bg-slate-100">
-                    <div className="relative flex justify-center py-7">
-                        <div className="w-1/5 mr-8">
-                            <Image
-                                src="/image/logo/logo.png"
-                                alt="logo"
-                                width={550}
-                                height={170}
-                            ></Image>
+                <div className="bg-slate-900 overflow-hidden">
+                    <div className="relative flex justify-center pt-7">
+                        <div className="w-[60%] flex justify-center items-center">
+                            <div className="w-fit mr-8 flex justify-end ">
+                                <Image
+                                    src="/image/logo/logo.png"
+                                    alt="logo"
+                                    width={300}
+                                    height={80}
+                                ></Image>
+                            </div>
+                            <div className="w-[75%]"><SearchForm></SearchForm><Keyword></Keyword></div>
                         </div>
-                        <div className="w-3/5"><SearchForm></SearchForm><Keyword></Keyword></div>
                     </div>
-                    <div className="relative flex justify-center py-7">
-                        <Banners></Banners>
+                    <div className="relative flex justify-center items-center pb-7">
+                        <div className="w-[58%]">
+                            <BannerMain></BannerMain>
+                        </div>
                     </div>
                     <div className="relative flex justify-center py-7">
                         {

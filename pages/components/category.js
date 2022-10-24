@@ -250,10 +250,10 @@ function Category({props}){
             }
         }
         return (
-            <div className="max-w-screen-2xl w-4/5">
-                <div className="flex justify-center divide-y divide-slate-200">
-                    <div className="w-1/6 min-h-full bg-blue-100 p-4 border-b border-white font-semibold">플랫폼</div>
-                    <div className="w-4/5 border-r">
+            <div className="w-[57%]">
+                <div className="flex justify-center divide-y divide-slate-200 w-full">
+                    <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">플랫폼</div>
+                    <div className="w-[85%] border-r">
                         <ul className="flex p-2 pt-4">
                             {jsonList.플랫폼.map((item, index) => 
                                 item == "전체" ? <li key={index} className="currentStyle" value={index+1} id={item} onClick={platformClick}>{item}</li> : <li key={index} className="prevStyle" value={index+1} id={item} onClick={platformClick}>{item}</li>
@@ -264,8 +264,8 @@ function Category({props}){
                 {
                     mainCategory == '' ? '' : 
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-1/6 min-h-full bg-blue-100 p-4 border-b border-white font-semibold">{mainCategory}</div>
-                        <div className="w-4/5 border-r">
+                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">{mainCategory}</div>
+                        <div className="w-[85%] border-r">
                             <ul className="flex p-2 pt-4">
                                 {mainCategory == "게임" ?
                                     jsonList.대분류[0].게임.map((item, index) => 
@@ -304,8 +304,8 @@ function Category({props}){
                 {
                     mainCategory == '' ? '' : 
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-1/6 min-h-full bg-blue-100 p-4 border-b border-white font-semibold">추천 키워드</div>
-                        <div className="w-4/5 border-r ">
+                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">추천 키워드</div>
+                        <div className="w-[85%] border-r ">
                             <ul className="flex p-2 pt-4">
                                 {mainCategory == "게임" ?
                                     jsonList.태그[0].게임.map((item, index) => 
@@ -342,11 +342,11 @@ function Category({props}){
                     </div>
                 }
                 
-                <div className="flex justify-center">
-                <div className="flex w-1/6 items-center border-y border-l bg-white text-center ">
+                <div className="flex justify-center ">
+                <div className="flex w-[13%] items-center border-y border-l bg-white text-gray-500 text-center ">
                     <p className="p-2 font-semibold mr-3">선택한 필터</p>
-                    <div className="flex" onClick={Reset}>
-                        <div>
+                    <div className="flex items-center" onClick={Reset}>
+                        <div className="flex items-center">
                             <Image 
                             src="/image/etc/reset.png"
                             alt="logo"
@@ -357,11 +357,11 @@ function Category({props}){
                         <p className="flex cursor-pointer text-sm">초기화</p>
                     </div>
                 </div>
-                <div className="w-4/5 border-y border-r bg-white">
+                <div className="w-[85%] border-y border-r bg-white">
                     <ul className="flex p-2">
-                        <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex"> 플랫폼: {platformList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
-                        <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex hidden" id="cateLi"> {mainCategory}: {categoryList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
-                        <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex hidden" id="tagLi"> 키워드: {tagList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
+                        <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex"> 플랫폼: {platformList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
+                        <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex hidden" id="cateLi"> {mainCategory}: {categoryList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
+                        <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex hidden" id="tagLi"> 키워드: {tagList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
                     </ul>
                 </div>
                 </div>
