@@ -28,7 +28,6 @@ function ResultListItem({item, platform}){
 
 
 function ResultList({props}) {
-
     if(props != undefined && props != null){
 
         const youtube = props[1].youtube;

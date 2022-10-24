@@ -165,7 +165,6 @@ function Category({props}){
         }
         
         const Reset = (e) => {
-    
             if(platformList.length > 0){
                 for(let i = 0; i < platformList.length; i++){
                     let prev = document.getElementById(platformList[i].id);
@@ -250,7 +249,6 @@ function Category({props}){
                 tagLi.classList.add('hidden');
             }
         }
-    
         return (
             <div className="max-w-screen-2xl w-4/5">
                 <div className="flex justify-center divide-y divide-slate-200">
