@@ -6,8 +6,8 @@ import jsonList from "../api/category.json";
 
 function Category({props}){
     
-    const mainCategory = props.result[0].mainCategory;
-    console.log(mainCategory);
+    // const mainCategory = props.result[0].mainCategory;
+    // console.log(mainCategory);
     // const mainCategory = '영화';
 
     const [currentClick, setCurrentClick] = useState();
@@ -262,7 +262,7 @@ function Category({props}){
                     </ul>
                 </div>
             </div>
-            {
+            {/* {
                 mainCategory == '' ? '' : 
                 <div className="flex justify-center divide-y divide-slate-200">
                     <div className="w-1/6 min-h-full bg-blue-100 p-4 border-b border-white font-semibold">{mainCategory}</div>
@@ -341,7 +341,7 @@ function Category({props}){
                         </ul>
                     </div>
                 </div>
-            }
+            } */}
             
             <div className="flex justify-center">
             <div className="flex w-1/6 items-center border-y border-l bg-white text-center ">
@@ -360,9 +360,9 @@ function Category({props}){
             </div>
             <div className="w-4/5 border-y border-r bg-white">
                 <ul className="flex p-2">
-                    <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex"> 플랫폼: {platformList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
+                    {/* <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex"> 플랫폼: {platformList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
                     <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex hidden" id="cateLi"> {mainCategory}: {categoryList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
-                    <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex hidden" id="tagLi"> 키워드: {tagList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
+                    <li className="mx-2.5 cursor-pointer border border-sky-500 rounded-full px-1.5 flex hidden" id="tagLi"> 키워드: {tagList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li> */}
                 </ul>
             </div>
             </div>

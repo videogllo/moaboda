@@ -28,25 +28,25 @@ function ResultListItem({item, platform}){
 
 
 function ResultList({props}) {
-    const youtube = props[1].youtube;
-    const twitch = props[2].twitch;
+    // const youtube = props[1].youtube;
+    // const twitch = props[2].twitch;
 
-    const youtubeClick = (e) => {
-        const id = e.target.id;
-        location.href='https://www.youtube.com/watch?v=' + id;
-    }
+    // const youtubeClick = (e) => {
+    //     const id = e.target.id;
+    //     location.href='https://www.youtube.com/watch?v=' + id;
+    // }
 
-    const twitchClick = (e) => {
-        const id = e.target.id;
-        console.log(id);
-        location.href='https://www.twitch.tv/videos/' + id;
-    }
+    // const twitchClick = (e) => {
+    //     const id = e.target.id;
+    //     console.log(id);
+    //     location.href='https://www.twitch.tv/videos/' + id;
+    // }
 
     return (
         <div className="max-w-screen-2xl w-4/5">
             <ul>
-                {youtube[0].id == '' ? '' : youtube.map((item) => <li key={item.id} id={item.id} onClick={youtubeClick}><ResultListItem item={item} platform={'youtube'}/></li>)}
-                {twitch[0].id == '' ? '' : twitch.map((item) => <li key={item.id} id={item.id} onClick={twitchClick}><ResultListItem item={item} platform={'twitch'}/></li>)}
+                {/* {youtube[0].id == '' ? '' : youtube.map((item) => <li key={item.id} id={item.id} onClick={youtubeClick}><ResultListItem item={item} platform={'youtube'}/></li>)}
+                {twitch[0].id == '' ? '' : twitch.map((item) => <li key={item.id} id={item.id} onClick={twitchClick}><ResultListItem item={item} platform={'twitch'}/></li>)} */}
             </ul>
         </div>
     )  
