@@ -1,26 +1,26 @@
 export default async function handler(req, res){
     let results = [];
 
-    await fetch('https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&chart=mostPopular&regionCode=kr&maxResults=9')
-    .then((response) => response.json())
-    .then((data) => {
-        let items = data.items;
-        let youtube = [];
+    // await fetch('https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&chart=mostPopular&regionCode=kr&maxResults=9')
+    // .then((response) => response.json())
+    // .then((data) => {
+    //     let items = data.items;
+    //     let youtube = [];
 
-        /**
-         * dongseob - 빈값 에러 분기 추가
-         * channelId - 채널ID
-         * thumbnails.크기.url - 썸네일의 크기와 url
-         * title - 영상 제목
-         */
-        if(items){
-            for(let i = 0; i < items.length; i++){
-                youtube.push({id: items[i].snippet.channelId, url: items[i].snippet.thumbnails.standard.url, title: items[i].snippet.title});
-            }
-        }
-        // console.log('main으로 보낼 최종 youtube 데이터! : ', youtube);
-        results.push({youtube:youtube});
-    });
+    //     /**
+    //      * dongseob - 빈값 에러 분기 추가
+    //      * channelId - 채널ID
+    //      * thumbnails.크기.url - 썸네일의 크기와 url
+    //      * title - 영상 제목
+    //      */
+    //     if(items){
+    //         for(let i = 0; i < items.length; i++){
+    //             youtube.push({id: items[i].snippet.channelId, url: items[i].snippet.thumbnails.standard.url, title: items[i].snippet.title});
+    //         }
+    //     }
+    //     // console.log('main으로 보낼 최종 youtube 데이터! : ', youtube);
+    //     results.push({youtube:youtube});
+    // });
 
     await fetch("https://api.twitch.tv/helix/streams?language=ko&first=9", {
         method: 'get',
@@ -50,7 +50,7 @@ export default async function handler(req, res){
         results.push({twitch:twitch});
     });
 
-    // console.log(results)
+    console.log(results)
 
     res.send({result: results});
 }

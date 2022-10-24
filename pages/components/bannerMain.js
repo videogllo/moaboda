@@ -12,27 +12,28 @@ import Loading from "./loading";
 
 //functional
 import { useState } from "react";
+import Image from "next/image";
 
 const BannerMain = () => {
     // const [data, setData] = useState(null);
     const [data, setData] = useState([
         {
             id: 1,
-            name: "첫번째광고",
-            imgUrl: "https://picsum.photos/1920/600",
-            tarUrl: "https://picsum.photos/1920/600",
+            title: "tencent",
+            imgUrl: "/image/banners/mainBanner3.jpg",
+            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
         },
         {
             id: 2,
-            name: "두번째광고",
-            imgUrl: "https://picsum.photos/1919/600",
-            tarUrl: "https://picsum.photos/1919/600",
+            title: "huawei",
+            imgUrl: "/image/banners/mainBanner2.jpg",
+            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
         },
         {
             id: 3,
-            name: "세번째광고",
-            imgUrl: "https://picsum.photos/1918/600",
-            tarUrl: "https://picsum.photos/1918/600",
+            title: "mercedes benz",
+            imgUrl: "/image/banners/mainBanner1.jpg",
+            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
         },
     ]);
 
@@ -70,12 +71,13 @@ const BannerMain = () => {
                                         window.open(i.tarUrl);
                                     }}
                                 >
-                                    <div className="relative">
-                                        <img
+                                    <div className="relative h-80 w-full bg-slate-800/40">
+                                        {/* <img
                                             src={i.imgUrl}
                                             alt={i.name}
-                                            className="h-full w-full object-cover object-center cursor-grab hover:opacity-80 duration-150 ease-in-out"
-                                        />
+                                            className="h-32 w-full object-cover object-center cursor-grab hover:opacity-80 duration-150 ease-in-out"
+                                        /> */}
+                                        <Image src={i.imgUrl} alt={i.title} layout="fill" objectFit="contain"></Image>
                                     </div>
                                 </SwiperSlide>
                             </a>

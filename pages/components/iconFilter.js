@@ -39,7 +39,6 @@ const IconFilter = () => {
             const tar = document.getElementById(name);
             tar.style.opacity=".3";
         }
-
     };
 
     return (

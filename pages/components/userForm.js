@@ -19,7 +19,7 @@ const UserForm = () => {
             >
                 <UserIcon className="h-4 w-4 md:h-6 md:w-6" aria-hidden="true" />
                 {/* Button text */}
-                <span className="absolute -bottom-1 -right-1 block h-3 w-3 rounded-full bg-gray-500 ring-2 ring-white" />
+                <span className="absolute -bottom-1 -right-1 block h-3 w-3 rounded-full bg-gray-500 ring-2 ring-slate-200" />
             </button>
 
             {isModal && <Modal setIsModal={setIsModal}></Modal>}

@@ -2,28 +2,20 @@ import Image from "next/image";
 
 const SignInForm = () => {
     return (
-        <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8 w-full">
+        <div className="flex min-h-full flex-col justify-center py-6 sm:px-6 lg:px-8 w-full">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
-                {/* <div className="mx-auto h-12 w-auto">
-                    <Image
-                        src="/image/logo/logo.png"
-                        alt="signInLogo"
-                        width={120}
-                        height={30}
-                    />
-                </div> */}
-                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+                <h2 className="mt-6 text-center text-3xl font-bold tracking-tight font-NanumSquareNeo">
                     로그인
                 </h2>
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                <div className="py-8 px-4 sm:rounded-lg sm:px-10">
                     <form className="space-y-6" action="#" method="POST">
                         <div>
                             <label
                                 htmlFor="email"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium"
                             >
                                 Email address
                             </label>
@@ -34,7 +26,7 @@ const SignInForm = () => {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    className="bg-slate-700 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
                                 />
                             </div>
                         </div>
@@ -42,7 +34,7 @@ const SignInForm = () => {
                         <div>
                             <label
                                 htmlFor="password"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium"
                             >
                                 Password
                             </label>
@@ -53,7 +45,7 @@ const SignInForm = () => {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                                    className="bg-slate-700 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
                                 />
                             </div>
                         </div>
@@ -64,11 +56,11 @@ const SignInForm = () => {
                                     id="remember-me"
                                     name="remember-me"
                                     type="checkbox"
-                                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                    className="h-4 w-4 rounded border-gray-300"
                                 />
                                 <label
                                     htmlFor="remember-me"
-                                    className="ml-2 block text-sm text-gray-900"
+                                    className="ml-2 block text-sm"
                                 >
                                     아이디 저장
                                 </label>
@@ -76,7 +68,7 @@ const SignInForm = () => {
                             <div className="text-sm">
                                 <a
                                     href="#"
-                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                    className="font-medium"
                                 >
                                     비밀번호 찾기
                                 </a>
@@ -86,7 +78,7 @@ const SignInForm = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                className="flex w-full justify-center rounded-md bg-cyan-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-cyan-800 transition-all focus:outline-none"
                             >
                                 Sign in
                             </button>
@@ -99,7 +91,7 @@ const SignInForm = () => {
                                 <div className="w-full border-t border-gray-300" />
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="bg-white px-2 text-gray-500">
+                                <span className="bg-slate-800 px-2">
                                     소셜 로그인
                                 </span>
                             </div>
@@ -109,7 +101,7 @@ const SignInForm = () => {
                             <div>
                                 <a
                                     href="#"
-                                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-700"
                                 >
                                     <span className="sr-only">
                                         Sign in with Facebook
@@ -132,7 +124,7 @@ const SignInForm = () => {
                             <div>
                                 <a
                                     href="#"
-                                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-700"
                                 >
                                     <span className="sr-only">
                                         Sign in with Twitter
@@ -151,7 +143,7 @@ const SignInForm = () => {
                             <div>
                                 <a
                                     href="#"
-                                    className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-700"
                                 >
                                     <span className="sr-only">
                                         Sign in with GitHub
@@ -179,7 +171,7 @@ const SignInForm = () => {
                                 <div className="w-full border-t border-gray-300" />
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="bg-white px-2 text-gray-500">
+                                <span className="bg-slate-800 px-2">
                                     회원가입
                                 </span>
                             </div>
@@ -187,7 +179,7 @@ const SignInForm = () => {
                         <div className="mt-6">
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                className="flex w-full justify-center rounded-md bg-cyan-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-cyan-800 transition-all focus:outline-none"
                             >
                                 Sign up
                             </button>
