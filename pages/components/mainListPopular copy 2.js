@@ -18,59 +18,50 @@ const testData = [
         from: "twitch",
         iconUrl: "/image/icon/twitch.png",
         playingTime: "7:31",
-        hit: 7237,
     },
     {
         id: 2,
         imgUrl: "https://static-cdn.jtvnw.net/previews-ttv/live_user_paka9999-640x480.jpg",
         href: "https://www.twitch.tv/paka9999",
         title: "title2",
-        from: "twitch",
         iconUrl: "/image/icon/twitch.png",
         playingTime: "17:31",
-        hit: 30000,
     },
     {
         id: 3,
         imgUrl: "https://static-cdn.jtvnw.net/previews-ttv/live_user_paka9999-640x480.jpg",
         href: "https://www.twitch.tv/paka9999",
         title: "title3",
-        from: "twitch",
         iconUrl: "/image/icon/twitch.png",
         playingTime: "1:17:31",
-        hit: 5000,
     },
     {
         id: 4,
         imgUrl: "https://static-cdn.jtvnw.net/previews-ttv/live_user_paka9999-640x480.jpg",
         href: "https://www.twitch.tv/paka9999",
         title: "title4",
-        from: "youtube",
         iconUrl: "/image/icon/youtube.png",
         playingTime: "7:31",
-        hit: 82300,
     },
     {
         id: 5,
         imgUrl: "https://static-cdn.jtvnw.net/previews-ttv/live_user_paka9999-640x480.jpg",
         href: "https://www.twitch.tv/paka9999",
         title: "title5",
-        from: "youtube",
         iconUrl: "/image/icon/youtube.png",
         playingTime: "7:31",
-        hit: 5082,
     },
     {
         id: 6,
         imgUrl: "https://static-cdn.jtvnw.net/previews-ttv/live_user_paka9999-640x480.jpg",
         href: "https://www.twitch.tv/paka9999",
         title: "title6",
-        from: "youtube",
         iconUrl: "/image/icon/youtube.png",
         playingTime: "7:31",
-        hit: 157,
     },
 ];
+
+// const testData2 = ["youtube", "twitch", "afreeca"];
 
 const MainListPopular = () => {
     const [data, setData] = useState(null);
@@ -136,14 +127,11 @@ const MainListPopular = () => {
                                     {SELECTFILTER.length > 0 ? (
                                         <>
                                             {testData
-                                                .filter((el) =>
-                                                    SELECTFILTER.some(
-                                                        (el2) => el.from === el2
+                                                .filter((e) =>
+                                                    e.from.includes(
+                                                        SELECTFILTER
                                                     )
                                                 )
-                                                .sort(function (a, b) {
-                                                    return b.hit - a.hit;
-                                                })
                                                 .map((el) => (
                                                     <div key={el.id}>
                                                         <div className="relative">
@@ -176,9 +164,7 @@ const MainListPopular = () => {
                                                                     />
                                                                 </div>
                                                                 <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
-                                                                    {
-                                                                        el.playingTime
-                                                                    }
+                                                                    {el.playingTime}
                                                                 </div>
                                                             </div>
                                                             <div>
@@ -192,56 +178,45 @@ const MainListPopular = () => {
                                         </>
                                     ) : (
                                         <>
-                                            {testData
-                                                .sort(function (a, b) {
-                                                    return b.hit - a.hit;
-                                                })
-                                                .map((el) => (
-                                                    <div key={el.id}>
-                                                        <div className="relative">
-                                                            <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 hover:opacity-75 lg:aspect-none relative">
-                                                                <img
+                                            {testData.map((el) => (
+                                                <div key={el.id}>
+                                                    <div className="relative">
+                                                        <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 hover:opacity-75 lg:aspect-none relative">
+                                                            <img
+                                                                src={el.imgUrl}
+                                                                alt={el.title}
+                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer"
+                                                                onClick={() =>
+                                                                    window.open(
+                                                                        el.href
+                                                                    )
+                                                                }
+                                                            />
+                                                            <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
+                                                                <Image
                                                                     src={
-                                                                        el.imgUrl
+                                                                        el.iconUrl
                                                                     }
                                                                     alt={
                                                                         el.title
                                                                     }
-                                                                    className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer"
-                                                                    onClick={() =>
-                                                                        window.open(
-                                                                            el.href
-                                                                        )
-                                                                    }
+                                                                    layout="fill"
+                                                                    objectFit="contain"
+                                                                    className="rounded-md"
                                                                 />
-                                                                <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
-                                                                    <Image
-                                                                        src={
-                                                                            el.iconUrl
-                                                                        }
-                                                                        alt={
-                                                                            el.title
-                                                                        }
-                                                                        layout="fill"
-                                                                        objectFit="contain"
-                                                                        className="rounded-md"
-                                                                    />
-                                                                </div>
-                                                                <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
-                                                                    {
-                                                                        el.playingTime
-                                                                    }
-                                                                </div>
                                                             </div>
-                                                            <div>
-                                                                <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">
-                                                                    {el.title}
-                                                                    {el.hit}
-                                                                </h3>
+                                                            <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
+                                                                {el.playingTime}
                                                             </div>
                                                         </div>
+                                                        <div>
+                                                            <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">
+                                                                {el.title}
+                                                            </h3>
+                                                        </div>
                                                     </div>
-                                                ))}
+                                                </div>
+                                            ))}
                                         </>
                                     )}
                                 </div>
