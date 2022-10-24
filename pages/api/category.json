@@ -1,12 +1,30 @@
 {
     "플랫폼" : [
-        "전체",
-        "Youtube",
-        "Shorts",
-        "Twitch",
-        "Instagram",
-        "TikTok",
-        "afreecaTV"
+        {
+            "비디오" : [
+                "전체",
+                "Youtube",
+                "Twitch",
+                "afreecaTV"
+            ],
+            "숏" : [
+                "Shorts",
+                "TikTok",
+                "Instagram",
+                "kakaoTV"
+            ],
+            "스트리밍": [
+                "NETFLIX",
+                "Disney+",
+                "왓챠",
+                "웨이브",
+                "티빙",
+                "쿠팡플레이",
+                "프라임 비디오",
+                "애플TV",
+                "HBO max"
+            ]
+        }
     ],
     "대분류" : [
         {
