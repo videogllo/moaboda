@@ -22,7 +22,7 @@ const SearchForm = () => {
 
     return (
         <>
-            <form>
+            <form onSubmit={search}>
                 <div>
                     <div className="flex rounded-md shadow-sm">
                         <div className="relative flex flex-grow items-stretch focus-within:z-10">

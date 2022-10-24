@@ -9,38 +9,47 @@ import Footer from "./components/footer";
 import ResultList from "./components/resultList";
 
 const Result = (props) => {
-    return(
-        <>
-            {/* {props.result} */}
-            <div className="bg-slate-100">
-                <div className="relative flex justify-center py-7">
-                    <div className="w-1/5 mr-8">
-                        <Image
-                            src="/image/logo/logo.png"
-                            alt="logo"
-                            width={550}
-                            height={170}
-                        ></Image>
+
+    if(props != undefined && props != null){
+        return(
+            <>
+                {/* {props.result} */}
+                <div className="bg-slate-100">
+                    <div className="relative flex justify-center py-7">
+                        <div className="w-1/5 mr-8">
+                            <Image
+                                src="/image/logo/logo.png"
+                                alt="logo"
+                                width={550}
+                                height={170}
+                            ></Image>
+                        </div>
+                        <div className="w-3/5"><SearchForm></SearchForm><Keyword></Keyword></div>
                     </div>
-                    <div className="w-3/5"><SearchForm></SearchForm><Keyword></Keyword></div>
+                    <div className="relative flex justify-center py-7">
+                        <Banners></Banners>
+                    </div>
+                    <div className="relative flex justify-center py-7">
+                        {
+                            props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
+                        }
+                    </div>
+                    <div className="relative flex justify-center py-7">
+                        <VideoAd></VideoAd>
+                    </div>
+                    <div className="relative flex justify-center">
+                        {
+                            props.result.length > 0 && props != undefined ? <ResultList props={props.result}/> : ''
+                        }
+                    </div>
+                    <div className="h-40"></div>
+                    <Footer></Footer>
                 </div>
-                <div className="relative flex justify-center py-7">
-                    <Banners></Banners>
-                </div>
-                <div className="relative flex justify-center py-7">
-                    <Category props={props}></Category>
-                </div>
-                <div className="relative flex justify-center py-7">
-                    <VideoAd></VideoAd>
-                </div>
-                <div className="relative flex justify-center">
-                    <ResultList props={props.result}/>
-                </div>
-                <div className="h-40"></div>
-                <Footer></Footer>
-            </div>
-        </>
-    )
+            </>
+        )
+    } else {
+        return('');
+    }
 }
 
 export async function getServerSideProps(context) {
