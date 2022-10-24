@@ -1,9 +1,13 @@
 import Image from "next/image";
 
 function ResultListItem({item, platform}){
+    let platformImg = '';
+    if(platform == 'youtube'){
+        platformImg = '/image/etc/youtube.svg';
+    } else if(platform == 'twitch'){
+        platformImg = '/image/etc/twitch.svg';
 
-    const youtubeImg = '/image/etc/youtube.svg';
-    const twitchImg = '/image/etc/twitch.svg';
+    }
 
     return(
         <div key={item.id} id={item.id} className="relative flex-col md:flex-row md:flex items-start py-3 border-b">
@@ -20,7 +24,7 @@ function ResultListItem({item, platform}){
                     <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{item.tags[3]}</li>
                 </ul> */}
                 <div id={item.id} className="relative w-[90px] h-[20px]">
-                    <Image id={item.id} src={platform == 'youtube' ? youtubeImg : twitchImg} alt="logo" layout="fill" objectFit='contain'></Image>
+                    <Image id={item.id} src={platformImg} alt="logo" layout="fill" objectFit='contain'></Image>
                 </div>
                 <small id={item.id} className="relative">{item.date}</small>
             </div>
@@ -29,7 +33,8 @@ function ResultListItem({item, platform}){
 }
 
 
-function ResultList({props, test}) {
+function ResultList({filterData, result}) {
+    console.log('오긴 왔는지?ㅋㅋㅎㅎ??????');
 
     const youtubeClick = (e) => {
         const id = e.target.id;
@@ -41,33 +46,40 @@ function ResultList({props, test}) {
         console.log(id);
         location.href='https://www.twitch.tv/videos/' + id;
     }
-
-    let youtube = null;
-    let twitch =null;
-
     
-    if(test != undefined && test != null){
-        for(let i = 0; i < test.length; i++){
-            if(Object.keys(test[i]) == "Youtube"){
-                youtube = test[i].Youtube;
-            } else if(Object.keys(test[i]) == "Twitch"){
-                twitch = test[i].Twitch;
-            }
-        }
-    }else if(props != undefined && props != null){
-        youtube = props[1].Youtube;
-        twitch = props[2].Twitch;
-    
-    } 
-    
-    return (
-        <div className=" w-full md:w-[58%] ">
-            <ul>
-                {youtube != null ? youtube[0].id == '' ? '' : youtube.map((item) => <li key={item.id} id={item.id} onClick={youtubeClick}><ResultListItem item={item} platform={'youtube'}/></li>) : ''}
-                {twitch != null ? twitch[0].id == '' ? '' : twitch.map((item) => <li key={item.id} id={item.id} onClick={twitchClick}><ResultListItem item={item} platform={'twitch'}/></li>) : ''}
-            </ul>
-        </div>
-    )  
+    if(filterData != undefined){
+        console.log('resultPage!!!!!!!!!!!!!! filterData');
+        console.log(filterData);
+        return (
+            <div className=" w-full md:w-[58%] ">
+                <ul>
+                    {filterData.length < 1 ? '' :
+                        filterData.map((item) => item.platform == 'Youtube' ? 
+                        <li key={item.id} id={item.id} onClick={youtubeClick} ><ResultListItem item={item} platform={'youtube'}/></li>
+                        : item.platform == 'Twitch' ? 
+                        <li key={item.id} id={item.id} onClick={twitchClick} ><ResultListItem item={item} platform={'twitch'}/></li>
+                        : ''
+                    )}
+                </ul>
+            </div>
+        )  
+    } else if(result != undefined) {
+        console.log('resultPage!!!!!!!!!!!!!! result');
+        console.log(result);
+        return (
+            <div className=" w-full md:w-[58%] ">
+                <ul>
+                    {result.length < 1 ? '' :
+                        result.map((item) => item.platform == 'Youtube' ? 
+                        <li key={item.id} id={item.id} onClick={youtubeClick} ><ResultListItem item={item} platform={'youtube'}/></li>
+                        : item.platform == 'Twitch' ? 
+                        <li key={item.id} id={item.id} onClick={twitchClick} ><ResultListItem item={item} platform={'twitch'}/></li>
+                        : ''
+                    )}
+                </ul>
+            </div>
+        )  
+    }
 }
 
 export default ResultList;

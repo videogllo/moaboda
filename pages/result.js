@@ -11,8 +11,6 @@ import ResultList from "./components/resultList";
 
 const Result = (props) => {
 
-    
-
     if(props != undefined && props != null && props.result != '없음'){
         return(
             <>
@@ -41,7 +39,7 @@ const Result = (props) => {
                     </div>
                     <div className="relative flex justify-center items-center pb-7">
                         <div className="w-full md:w-[58%]">
-                            <BannerMain></BannerMain>
+                            {/* <BannerMain></BannerMain> */}
                         </div>
                     </div>
                     <div className="relative flex-col justify-center py-7">
@@ -109,9 +107,7 @@ const Result = (props) => {
 export async function getServerSideProps(context) {
     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q);
     const data = await res.json();
-
     return  { props: data };
-
 }
 
 export default Result;
