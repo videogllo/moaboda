@@ -46,7 +46,7 @@ const Result = (props) => {
                             {/* <BannerMain></BannerMain> */}
                         </div>
                     </div>
-                    <div className="hidden relative md:flex-col md:justify-center md:py-7">
+                    <div className="hidden relative md:flex md:flex-col md:justify-center md:py-7">
                         {
                             props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
                         }

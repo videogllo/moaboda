@@ -48,7 +48,7 @@ function ResultList({result, filterData}) {
         location.href='https://www.twitch.tv/videos/' + id;
     }
     
-    if(filterData != undefined && filterData.length > 0){
+    if(filterData != undefined && filterData.length > 0 && filterData[0] != undefined){
         console.log('resultPage!!!!!!!!!!!!!! filterData');
         console.log(filterData);
         for(let i = 0; i < filterData.length; i++){

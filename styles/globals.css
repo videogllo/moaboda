@@ -171,3 +171,28 @@ body {
 .iconActive{
     opacity: 1;
 }
+
+
+/* 스크롤바 */
+#scroll::-webkit-scrollbar {
+
+    width: 10px;
+    background-color: rgb(15 23 42);;
+  
+  }
+  
+  
+  
+#scroll::-webkit-scrollbar-track {
+  
+    background: rgba(255, 255, 255, 0.2);
+    
+  }
+  
+   
+  
+  #scroll::-webkit-scrollbar-thumb  {
+  
+    background-color: white;
+  
+  }
