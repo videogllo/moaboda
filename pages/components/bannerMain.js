@@ -20,19 +20,31 @@ const BannerMain = () => {
         {
             id: 1,
             title: "tencent",
-            imgUrl: "/image/banners/mainBanner3.jpg",
+            imgUrl: "/image/banners/mainBanner1.png",
             tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
         },
         {
             id: 2,
-            title: "huawei",
-            imgUrl: "/image/banners/mainBanner2.jpg",
+            title: "tencent",
+            imgUrl: "/image/banners/mainBanner2.png",
             tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
         },
         {
             id: 3,
-            title: "mercedes benz",
-            imgUrl: "/image/banners/mainBanner1.jpg",
+            title: "tencent",
+            imgUrl: "/image/banners/mainBanner3.png",
+            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+        },
+        {
+            id: 4,
+            title: "tencent",
+            imgUrl: "/image/banners/mainBanner4.png",
+            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+        },
+        {
+            id: 5,
+            title: "tencent",
+            imgUrl: "/image/banners/mainBanner5.png",
             tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
         },
     ]);

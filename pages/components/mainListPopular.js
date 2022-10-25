@@ -46,9 +46,9 @@ const MainListPopular = () => {
     return (
         <>
             <div className="flex flex-col gap-6 mt-12">
-                <div className="bg-slate-700 p-4 rounded-xl shadow-xl">
+                <div className="bg-slate-700 px-4 py-6 rounded-xl shadow-xl">
                     <div className="mx-auto">
-                        <div className="items-baseline justify-between flex pb-2">
+                        {/* <div className="items-baseline justify-between flex pb-2">
                             <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                 모든 영상
                             </h2>
@@ -60,12 +60,12 @@ const MainListPopular = () => {
                                 더보기
                                 <span aria-hidden="true"> &rarr;</span>
                             </a>
-                        </div>
+                        </div> */}
 
                         {data === null ? (
                             <Loading></Loading>
                         ) : (
-                            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                            <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                                 {SELECTFILTER.length > 0 ? (
                                     <>
                                         {data
