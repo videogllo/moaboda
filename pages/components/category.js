@@ -18,8 +18,11 @@ function Category({props}){
         const [platformList, setPlatformList] = useState([]);
         const [categoryList, setCategoryList] = useState([]);
 
+        const [twitchId, setTwitchId] = useState([]);
+
         const platformClick = (e) => {
             setTest(e.target.id);
+            setFilterData([]);
             const selectTag = document.getElementById(e.target.id);
 
             if(e.target.id == '전체'){
@@ -34,11 +37,11 @@ function Category({props}){
                 setPlatformList([]);
                 setFilterData([]);
 
-                if(categoryList.length > 0){
-                    setFilterData(addSearchFilter({platformList, categoryList}));
-                }
+                // if(categoryList.length > 0){
+                //     setFilterData(addSearchFilter({platformList, categoryList}));
+                // }
             } else {
-                setTest(e.target.id);
+                setFilterData([]);
                 document.getElementById('전체').classList.remove('currentStyle');
                 document.getElementById('전체').classList.add('prevStyle');
 
@@ -66,22 +69,23 @@ function Category({props}){
                         document.getElementById('전체').classList.add('currentStyle');
                     }
 
-                    if(categoryList.length > 0){
-                        setFilterData(addSearchFilter({platformList, categoryList}));
-                    }
+                    // if(categoryList.length > 0){
+                    //     setFilterData(addSearchFilter({platformList, categoryList}));
+                    // }
                 }
-
-                setFilterData([]);
-                console.log('platformList 수정? : ' , platformList);
-                console.log('platformList 수정? : ' , platformList.length);
-                for(let i = 0; i < platformList.length; i++){
-                    console.log(result.filter((item) => item.platform === platformList[i]));
-                    if(result.filter((item) => item.platform === platformList[i]).length > 0){
-                        setFilterData(...filterData, [result.filter((item) => item.platform === platformList[i])]);
-                    }
-                }
-                console.log(filterData);
+                
             }
+            console.log('platformList 수정? : ' , platformList);
+            console.log('platformList 수정? : ' , platformList.length);
+            for(let i = 0; i < platformList.length; i++){
+                if(result.filter((item) => item.platform === platformList[i]).length > 0){
+                    setFilterData(...filterData, result.filter((item) => item.platform === platformList[i]));
+                    // filterData.push(result.filter((item) => item.platform === platformList[i]));
+                }
+            }
+            console.log('???????????')
+            console.log(filterData);
+            console.log(filterData.length);
         }
 
         const categoryClick = (e) => {
@@ -109,92 +113,99 @@ function Category({props}){
                 }
             }
 
-            setFilterData(addSearchFilter({platformList, categoryList}));
-
-            console.log('카테고리는???');
-            console.log(categoryList);
-            console.log('filterData : ' , filterData);
+        //    addSearchFilter({platformList, categoryList});
         }
 
-        const addSearchFilter = async({platformList, categoryList}) => {
+        const addSearchFilter = ({platformList, categoryList}) => {
 
-            console.log('함수 실행 확인!');
-            console.log(platformList);
-            console.log(categoryList);
-
-            for(let i = 0; i < categoryList.length; i++){
-                const response = await axios.get("https://api.twitch.tv/helix/search/channels?query=" + categoryList[i],{
-                    headers: {
-                        'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
-                        'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
-                    }
-                });
-                console.log(response.data.data);
-
-
-            }
-        
-        
-            // /* Twitch */
-            // await fetch("https://api.twitch.tv/helix/search/categories?query=" + req.query.q, {
-            //     method: 'get',
-            //     headers: {
-            //         'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
-            //         'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
-            //     }
-            // })
-            // .then((response) => response.json())
-            // .then((data) => {
-            //     if(data.data != undefined){
-            //         let items = data.data;
             
-            //         for(let i = 0; i < items.length; i++){
-            //             twitchCateIds.push({id: items[i].id});
-            //         }
-            //     }
-            // });
-        
-            // if(twitchCateIds.length < 1){
-            //     await fetch("https://api.twitch.tv/helix/search/channels?query=" + req.query.q, {
-            //     method: 'get',
-            //     headers: {
-            //         'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
-            //         'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
-            //     }
-            //     })
-            //     .then((response) => response.json())
-            //     .then((data) => {
-            //         if(data.data != undefined){
-            //             let items = data.data;
+            // setFilterData([]);
+            // setTwitchId([]);
+
+            // console.log('함수 실행 확인!');
+            // console.log(platformList);
+            // console.log(categoryList);
+
+            // const filterResult = [];
             
-            //             for(let i = 0; i < items.length; i++){
-            //                 if(items[i].game_id > 0){
-            //                     twitchCateIds.push({id: items[i].game_id});
-            //                 }
-            //             }
-            //         }
-            //     });
-            // }
-        
-            // for(let i = 0; i < twitchCateIds.length; i++){
-            //     await fetch("https://api.twitch.tv/helix/streams?language=ko&first=5&game_id=" + twitchCateIds[i].id, {
-            //         method: 'get',
+            // for(let i = 0; i < categoryList.length; i++){
+            //     axios.get("https://api.twitch.tv/helix/search/channels?query=" + categoryList[i],{
             //         headers: {
             //             'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
             //             'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
             //         }
             //     })
-            //     .then((response) => response.json())
-            //     .then((data) => {
-            //         let items = data.data;
-                    
-            //         for(let i = 0; i < items.length; i++){
-            //             result.push({id: items[i].id, url: items[i].thumbnail_url.replace('{width}x{height}', '350x200'), title: items[i].title, channel: items[i].user_name, date: items[i].started_at, link: items[i].user_login, platform: 'Twitch'});
+            //     .then(function(response){
+            //         if(response.status == 200){
+            //             const items = response.data.data;
+            //             console.log('---------------------');
+            //             console.log(items.map((index) => index));
+
+            //             // for(let i = 0; i < items.length; i++){
+            //             //     let itemsArr = {id: items[i].id};
+            //             //     twitchId.push(itemsArr);
+            //             // }
             //         }
+            //     })
+            //     .catch(function(error){
+            //         console.log(error);
+            //     });
+            // }
+
+
+
+            // console.log(typeof(twitchId));
+            // console.log(twitchId.length);
+            
+
+            // if(twitchId.length < 1){
+            //     for(let i = 0; i < categoryList.length; i++){
+            //         axios.get("https://api.twitch.tv/helix/search/channels?query=" + categoryList[i], {
+            //             headers: {
+            //                 'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
+            //                 'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
+            //             }
+            //         })
+            //         .then(function(response){
+            //             if(response.status == 200){
+            //                 const items = response.data.data;
+    
+            //                 for(let i = 0; i < items.length; i++){
+            //                     if(items[i].game_id > 0){
+            //                         twitchId.push({id: items[i].game_id});
+            //                     }
+            //                 }
+            //             }
+            //         })
+            //         .catch(function(error){
+            //             console.log(error);
+            //         });
+            //     }
+            // }
+
+            // for(let i = 0; i < twitchId.length; i++){
+            //     axios.get("https://api.twitch.tv/helix/streams?language=ko&first=5&game_id=" + twitchId[i].id, {
+            //         headers: {
+            //             'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
+            //             'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
+            //         }
+            //     })
+            //     .then(function(response){
+            //         if(response.status == 200){
+            //             const items = response.data.data;
+
+            //             for(let i = 0; i < items.length; i++){
+            //                 filterResult.push({id: items[i].id, url: items[i].thumbnail_url.replace('{width}x{height}', '350x200'), title: items[i].title, channel: items[i].user_name, date: items[i].started_at, link: items[i].user_login, platform: 'Twitch'});
+            //             }
+            //         }
+            //     })
+            //     .catch(function(error){
+            //         console.log(error);
             //     });
             // }
             
-            // results.push([...new Set(result.map(JSON.stringify))].map(JSON.parse));
+            // results.push([...new Set(filterResult.map(JSON.stringify))].map(JSON.parse));
+
         }
         
         
@@ -204,21 +215,21 @@ function Category({props}){
                 <div className="w-full md:w-[59%]">
                     {/* 플랫폼 */}
                     <div className="flex justify-center divide-y divide-slate-200 w-full">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">플랫폼</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">플랫폼</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="currentStyle" onClick={platformClick} id="전체" value="0">전체</li>
                                 <li className="prevStyle" onClick={platformClick} id="Youtube" value="1">Youtube</li>
                                 <li className="prevStyle" onClick={platformClick} id="Twitch" value="2">Twitch</li>
                                 <li className="prevStyle" onClick={platformClick} id="afreecaTV" value="3">afreecaTV</li>
                             </ul>
-                            <ul className="flex p-2 pt-4">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="Shorts" value="4">Shorts</li>
                                 <li className="prevStyle" onClick={platformClick} id="TikTok" value="5">TikTok</li>
                                 <li className="prevStyle" onClick={platformClick} id="Instagram" value="6">Instagram</li>
                                 <li className="prevStyle" onClick={platformClick} id="kakaoTV" value="7">kakaoTV</li>
                             </ul>
-                            <ul className="flex p-2 pt-4">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="NETFLIX" value="8">NETFLIX</li>
                                 <li className="prevStyle" onClick={platformClick} id="Disney+" value="9">Disney+</li>
                                 <li className="prevStyle" onClick={platformClick} id="왓챠" value="10">왓챠</li>
@@ -233,17 +244,17 @@ function Category({props}){
 
                     {/* 카테고리 */}
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">인기</div>
-                        <div className="w-[85%] border-r">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">인기</div>
+                        <div className="w-[82%] border-r">
                             <ul className="flex p-2 pt-4">
                                 <li className="prevStyle" onClick={categoryClick} id="인기" value="20">인기</li>
                             </ul>
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">게임</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">게임</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={categoryClick} id="League of Legends" value="21">League of Legends</li>
                                 <li className="prevStyle" onClick={categoryClick} id="배그" value="22">배그</li>
                                 <li className="prevStyle" onClick={categoryClick} id="스타크래프트" value="23">스타크래프트</li>
@@ -261,9 +272,9 @@ function Category({props}){
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">스포츠</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">스포츠</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="피트니스" value="50">피트니스</li>
                                 <li className="prevStyle" onClick={platformClick} id="축구" value="51">축구</li>
                                 <li className="prevStyle" onClick={platformClick} id="농구" value="52">농구</li>
@@ -274,9 +285,9 @@ function Category({props}){
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">취미</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">취미</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="패션" value="70">패션</li>
                                 <li className="prevStyle" onClick={platformClick} id="요리" value="71">요리</li>
                                 <li className="prevStyle" onClick={platformClick} id="산악/등산" value="72">산악/등산</li>
@@ -290,9 +301,9 @@ function Category({props}){
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">엔터테인먼트</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">엔터테인먼트</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="공식채널" value="90">공식채널</li>
                                 <li className="prevStyle" onClick={platformClick} id="코미디" value="91">코미디</li>
                                 <li className="prevStyle" onClick={platformClick} id="음악" value="92">음악</li>
@@ -310,9 +321,9 @@ function Category({props}){
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">일상</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">일상</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="브이로그" value="120">브이로그</li>
                                 <li className="prevStyle" onClick={platformClick} id="동물" value="121">동물</li>
                                 <li className="prevStyle" onClick={platformClick} id="커플/연인" value="122">커플/연인</li>
@@ -322,9 +333,9 @@ function Category({props}){
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">리뷰</div>
-                        <div className="w-[85%] border-r">
-                            <ul className="flex p-2 pt-4">
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">리뷰</div>
+                        <div className="w-[82%] border-r">
+                            <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={platformClick} id="영화" value="140">영화</li>
                                 <li className="prevStyle" onClick={platformClick} id="드라마" value="141">드라마</li>
                                 <li className="prevStyle" onClick={platformClick} id="전자기기" value="142">전자기기</li>
