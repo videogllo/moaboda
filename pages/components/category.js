@@ -289,8 +289,59 @@ function Category({props}){
                             </ul>
                         </div>
                     </div>
+                    <div className="flex justify-center divide-y divide-slate-200">
+                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">엔터테인먼트</div>
+                        <div className="w-[85%] border-r">
+                            <ul className="flex p-2 pt-4">
+                                <li className="prevStyle" onClick={platformClick} id="공식채널" value="90">공식채널</li>
+                                <li className="prevStyle" onClick={platformClick} id="코미디" value="91">코미디</li>
+                                <li className="prevStyle" onClick={platformClick} id="음악" value="92">음악</li>
+                                <li className="prevStyle" onClick={platformClick} id="춤" value="93">춤</li>
+                                <li className="prevStyle" onClick={platformClick} id="만화/애니" value="94">만화/애니</li>
+                                <li className="prevStyle" onClick={platformClick} id="먹방" value="95">먹방</li>
+                                <li className="prevStyle" onClick={platformClick} id="크리에이터" value="96">크리에이터</li>
+                                <li className="prevStyle" onClick={platformClick} id="메이크업" value="97">메이크업</li>
+                                <li className="prevStyle" onClick={platformClick} id="짤/숏" value="98">짤/숏</li>
+                                <li className="prevStyle" onClick={platformClick} id="키즈" value="99">키즈</li>
+                                <li className="prevStyle" onClick={platformClick} id="연예인" value="100">연예인</li>
+                                <li className="prevStyle" onClick={platformClick} id="국내↔해외" value="101">국내↔해외</li>
+                                <li className="prevStyle" onClick={platformClick} id="관찰" value="102">관찰</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="flex justify-center divide-y divide-slate-200">
+                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">일상</div>
+                        <div className="w-[85%] border-r">
+                            <ul className="flex p-2 pt-4">
+                                <li className="prevStyle" onClick={platformClick} id="브이로그" value="120">브이로그</li>
+                                <li className="prevStyle" onClick={platformClick} id="동물" value="121">동물</li>
+                                <li className="prevStyle" onClick={platformClick} id="커플/연인" value="122">커플/연인</li>
+                                <li className="prevStyle" onClick={platformClick} id="겟레디윗미" value="123">겟레디윗미</li>
+                                <li className="prevStyle" onClick={platformClick} id="학습/공부" value="124">학습/공부</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="flex justify-center divide-y divide-slate-200">
+                        <div className="w-[13%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">리뷰</div>
+                        <div className="w-[85%] border-r">
+                            <ul className="flex p-2 pt-4">
+                                <li className="prevStyle" onClick={platformClick} id="영화" value="140">영화</li>
+                                <li className="prevStyle" onClick={platformClick} id="드라마" value="141">드라마</li>
+                                <li className="prevStyle" onClick={platformClick} id="전자기기" value="142">전자기기</li>
+                                <li className="prevStyle" onClick={platformClick} id="화장품" value="143">화장품</li>
+                                <li className="prevStyle" onClick={platformClick} id="자동차" value="144">자동차</li>
+                                <li className="prevStyle" onClick={platformClick} id="의류" value="145">의류</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            {/* 비디오광고 */}
+            <div className="relative flex justify-center py-7">
+                    <VideoAd></VideoAd>
+            </div>
+
             <div className="relative flex justify-center">
                 {
                    platformList.length > 0 ? <ResultList filterData={filterData} /> : <ResultList result={result} />

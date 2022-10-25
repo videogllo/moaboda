@@ -39,7 +39,7 @@ const Result = (props) => {
                     </div>
                     <div className="relative flex justify-center items-center pb-7">
                         <div className="w-full md:w-[58%]">
-                            {/* <BannerMain></BannerMain> */}
+                            <BannerMain></BannerMain>
                         </div>
                     </div>
                     <div className="relative flex-col justify-center py-7">
