@@ -106,11 +106,6 @@ body {
     border-radius: 0.5rem;
     /* background: none; */
 }
-/* swiper - progress bar style */
-.swiper-pagination-progressbar-fill {
-    border: 2px solid rgb(6 182 212);
-    border-radius: 0.75rem;
-}
 
 /* swiper slider bg color */
 .swiper-slide {
@@ -120,10 +115,25 @@ body {
 .swiper-slide-shadow {
     background: none;
 }
-/* .swiper-slide-active{
-  margin: 0 auto;
-  width: 50% !important;
-} */
+
+/* swiper navigation style */
+.swiper-button-prev::after{
+    color:rgb(226 232 240);
+    background-color: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: .5rem;
+}
+.swiper-button-next::after{
+    color:rgb(226 232 240);
+    background-color: rgba(0,0,0,0.3);
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+/* swiper pagination style */
+.swiper-pagination-bullet{
+    background-color: rgb(226 232 240) !important;
+}
 
 /* Category css */
 .prevStyle {

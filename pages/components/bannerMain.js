@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Mousewheel, Autoplay } from "swiper";
+import { Pagination, Mousewheel, Autoplay, Navigation } from "swiper";
 
 //component
 import Loading from "./loading";
@@ -57,7 +57,8 @@ const BannerMain = () => {
                         pagination={{
                             clickable: true,
                         }}
-                        modules={[Pagination, Mousewheel, Autoplay]}
+                        navigation={true}
+                        modules={[Pagination, Mousewheel, Autoplay, Navigation]}
                         className="mySwiper-bannerMain"
                     >
                         {data.map((i) => (
