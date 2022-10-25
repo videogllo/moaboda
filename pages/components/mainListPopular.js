@@ -27,7 +27,7 @@ const MainListPopular = () => {
     /**
      * 플랫폼별로 사용하는 아이콘이 달라서 분기 함수
      * @param val 
-     * @returns returnValue
+     * @returns
      */
     const dynamicIcon = (val) => {
         let returnValue = "";
@@ -104,9 +104,9 @@ const MainListPopular = () => {
                                                                     className="rounded-md"
                                                                 />
                                                             </div>
-                                                            <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
+                                                            {/* <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
                                                                 {el.playTime}
-                                                            </div>
+                                                            </div> */}
                                                         </div>
                                                         <div>
                                                             <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">
@@ -152,9 +152,9 @@ const MainListPopular = () => {
                                                                     className="rounded-md"
                                                                 />
                                                             </div>
-                                                            <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
+                                                            {/* <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
                                                                 {el.playTime}
-                                                            </div>
+                                                            </div> */}
                                                         </div>
                                                         <div>
                                                             <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">

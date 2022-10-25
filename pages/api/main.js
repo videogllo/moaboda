@@ -1,3 +1,5 @@
+import * as Common from "../../js/common";
+
 export default async function handler(req, res) {
     let results = [];
 
@@ -20,7 +22,7 @@ export default async function handler(req, res) {
                         uploadDate: items[i].snippet.publishedAt, //업로드 시간
                         imgUrl: items[i].snippet.thumbnails.medium.url, //썸네일 경로
                         tag: items[i].snippet.tags, //영상에 등록된 태그
-                        playTime: items[i].contentDetails.duration, //재생시간
+                        playTime: Common.Iso8601_to_datetime(items[i].contentDetails.duration), //재생시간
                         viewCount: items[i].statistics.viewCount, //총 재생수
                         hit: items[i].statistics.viewCount, //videoowl의 인기도 점수
                     });
@@ -60,7 +62,7 @@ export default async function handler(req, res) {
             }
         });
 
-    console.log(results);
+    // console.log(results);
 
     res.send({ result: results });
 }
