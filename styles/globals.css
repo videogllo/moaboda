@@ -157,3 +157,13 @@ body {
     margin-right: 0.625rem;
     cursor: pointer;
 }
+
+.categoryBtn{
+    background-color: rgb(15 23 42);
+    color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 30px;
+    padding: 2px 8px;
+    margin: 0 5px;
+    cursor: pointer;
+}

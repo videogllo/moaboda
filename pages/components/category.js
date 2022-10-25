@@ -96,15 +96,21 @@ function Category({props}){
         const categoryClick = (e) => {
             setTest(e.target.id);
             const selectTag = document.getElementById(e.target.id);
-
+            
             if(selectTag.className === 'prevStyle'){
                 selectTag.classList.remove('prevStyle');
                 selectTag.classList.add('currentStyle');
                 categoryList.push(e.target.id);
 
+                document.getElementById('cateLi').classList.remove('hidden');
+                document.getElementById('cateLi').classList.add('flex');
+
             } else if(selectTag.className === 'currentStyle') {
                 selectTag.classList.remove('currentStyle');
                 selectTag.classList.add('prevStyle');
+
+                document.getElementById('cateLi').classList.remove('hidden');
+                document.getElementById('cateLi').classList.add('flex');
 
                 for(let i = 0; i < categoryList.length; i++){
                     if(categoryList[i] === e.target.id){
@@ -115,6 +121,8 @@ function Category({props}){
 
                 if(categoryList.length === 0){
                     setCategoryList([]);
+                    document.getElementById('cateLi').classList.remove('flex');
+                    document.getElementById('cateLi').classList.add('hidden');
                 }
             }
 
@@ -122,7 +130,8 @@ function Category({props}){
         }
 
         const reset = (e) => {
-
+            setPlatformList([]);
+            setCategoryList([]);
         }
 
         const addSearchFilter = async({platformList, categoryList}) => {
@@ -222,7 +231,6 @@ function Category({props}){
             <>
             <div className="flex justify-center">
                 <div className="w-full md:w-[59%]">
-                    {/* 플랫폼 */}
                     <div className="flex justify-center divide-y divide-slate-200 w-full">
                         <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">플랫폼</div>
                         <div className="w-[82%] border-r">
@@ -355,7 +363,7 @@ function Category({props}){
                         </div>
                     </div>
                     <div className="flex justify-center divide-y divide-slate-200">
-                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">유투버 성별</div>
+                        <div className="w-[16%] min-h-full bg-blue-600 p-4 border-t border-l border-white font-semibold">크리에이터 성별</div>
                         <div className="w-[82%] border-r">
                             <ul className="flex flex-wrap p-2 pt-4">
                                 <li className="prevStyle" onClick={categoryClick} id="영화" value="160">남자</li>
@@ -380,9 +388,9 @@ function Category({props}){
                         </div>
                         <div className="w-[78%] lg:w-[82%] border-y border-r bg-white">
                             <ul className="flex p-2">
-                                <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex"> 플랫폼: {platformList.map((i) => <p key={i.var} className="text-sky-500 ml-2" >{i.id}</p>)}</li>
-                                {/* <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex hidden" id="cateLi">  {categoryList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li>
-                                <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex hidden" id="tagLi"> 키워드: {tagList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li> */}
+                                <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex"> 플랫폼: {platformList.length < 1 ? <p className="text-sky-500 ml-2" >전체</p> : platformList.map((i, index) => <p key={i+index} className="text-sky-500 ml-2" >{i}</p>)}</li>
+                                <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex hidden" id="cateLi">  {categoryList.map((i, index) => <p key={i+index} className="text-sky-500 mx-1">{i}</p>)}</li>
+                                {/* <li className="mx-2.5 cursor-pointer border border-sky-500 text-gray-500 rounded-full px-1.5 flex hidden" id="tagLi"> 키워드: {tagList.map((i) => <p key={i.var} className="text-sky-500 ml-2" onClick={Delete}>{i.id}</p>)}</li> */}
                             </ul>
                         </div>
                     </div>

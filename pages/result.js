@@ -5,6 +5,7 @@ import SearchForm from "./components/searchForm";
 import Keyword from "./components/keyword";
 import BannerMain from "./components/bannerMain";
 import Category from "./components/category";
+import CategoryM from "./components/category_m"
 import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
 import ResultList from "./components/resultList";
@@ -45,9 +46,14 @@ const Result = (props) => {
                             {/* <BannerMain></BannerMain> */}
                         </div>
                     </div>
-                    <div className="relative flex-col justify-center py-7">
+                    <div className="hidden relative md:flex-col md:justify-center md:py-7">
                         {
                             props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
+                        }
+                    </div>
+                    <div className="relative block md:hidden">
+                        {
+                            props.result.length > 0 && props != undefined ? <CategoryM props={props}></CategoryM> : ''
                         }
                     </div>
                     {/* <div className="relative flex justify-center py-7">
