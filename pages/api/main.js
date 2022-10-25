@@ -37,12 +37,6 @@ export default async function handler(req, res) {
             let items = data.data;
             let twitch = [];
 
-            /**
-             * dongseob - 빈값 에러 분기 추가
-             * id - 영상ID
-             * thumbnail_url - 썸네일의 크기와 url ({width}x{height}값을 변경해주어 사용)
-             * title - 영상 제목
-             */
             if (items) {
                 for (let i = 0; i < items.length; i++) {
                     if (items[i].title != "") {
