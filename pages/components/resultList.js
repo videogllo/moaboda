@@ -51,22 +51,22 @@ function ResultList({result, filterData}) {
     if(filterData != undefined && filterData.length > 0){
         console.log('resultPage!!!!!!!!!!!!!! filterData');
         console.log(filterData);
-        // for(let i = 0; i < filterData.length; i++){
-        //     console.log(filterData[i]);
-        //     return (
-        //         <div className=" w-full md:w-[58%] ">
-        //             <ul>
-        //                 {filterData[i].length < 1 ? '' :
-        //                     filterData[i].map((item) => item.platform == 'Youtube' ? 
-        //                     <li key={item.id} id={item.id} onClick={youtubeClick} ><ResultListItem item={item} platform={'youtube'}/></li>
-        //                     : item.platform == 'Twitch' ? 
-        //                     <li key={item.id} id={item.id} onClick={twitchClick} ><ResultListItem item={item} platform={'twitch'}/></li>
-        //                     : ''
-        //                 )}
-        //             </ul>
-        //         </div>
-        //     )  
-        // }
+        for(let i = 0; i < filterData.length; i++){
+            console.log(filterData[i]);
+            return (
+                <div className=" w-full md:w-[58%] ">
+                    <ul>
+                        {filterData[i].length < 1 ? '' :
+                            filterData[i].map((item) => item.platform == 'Youtube' ? 
+                            <li key={item.id} id={item.id} onClick={youtubeClick} ><ResultListItem item={item} platform={'youtube'}/></li>
+                            : item.platform == 'Twitch' ? 
+                            <li key={item.id} id={item.id} onClick={twitchClick} ><ResultListItem item={item} platform={'twitch'}/></li>
+                            : ''
+                        )}
+                    </ul>
+                </div>
+            )  
+        }
 
     } else if(result != undefined) {
         console.log('resultPage!!!!!!!!!!!!!! result');

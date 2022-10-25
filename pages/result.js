@@ -10,6 +10,9 @@ import Footer from "./components/footer";
 import ResultList from "./components/resultList";
 
 const Result = (props) => {
+    const locationMain = (e) => {
+        location.href=process.env.NEXT_PUBLIC_API_URL;
+    }
 
     if(props != undefined && props != null && props.result != '없음'){
         return(
@@ -18,7 +21,7 @@ const Result = (props) => {
                 <div className="bg-slate-900 overflow-hidden">
                     <div className="relative flex justify-center pt-7">
                         <div className="w-full md:w-[60%] flex justify-center items-center">
-                            <div className="md:w-[180px] md:h-[80px] lg:w-[200px] lg:h-[100px] 2xl:w-[350px] 2xl:h-[150px] mr-8 relative hidden md:flex">
+                            <div className="md:w-[180px] md:h-[80px] lg:w-[200px] lg:h-[100px] 2xl:w-[350px] 2xl:h-[150px] mr-8 relative hidden md:flex md:cursor-pointer" onClick={locationMain}>
                                 <Image
                                     src="/image/logo/logo_dark_border.png"
                                     alt="logo"
@@ -26,7 +29,7 @@ const Result = (props) => {
                                     objectFit="contain"
                                 ></Image>
                             </div>
-                            <div className="block mr-3 md:hidden">
+                            <div className="block mr-3 md:hidden cursor-pointer" onClick={locationMain}>
                                 <LogoSmall></LogoSmall>
                             </div>
                             <div className="w-[75%]">
@@ -67,7 +70,7 @@ const Result = (props) => {
                 <div className="bg-slate-900 overflow-hidden">
                     <div className="relative flex justify-center pt-7">
                         <div className="w-full md:w-[60%] flex justify-center items-center">
-                            <div className="md:w-[180px] md:h-[80px] lg:w-[200px] lg:h-[100px] 2xl:w-[350px] 2xl:h-[150px] mr-8 relative hidden md:flex">
+                            <div className="md:w-[180px] md:h-[80px] lg:w-[200px] lg:h-[100px] 2xl:w-[350px] 2xl:h-[150px] mr-8 relative hidden md:flex md:cursor-pointer" onClick={locationMain}>
                                 <Image
                                     src="/image/logo/logo_dark_border.png"
                                     alt="logo"
@@ -75,7 +78,7 @@ const Result = (props) => {
                                     objectFit="contain"
                                 ></Image>
                             </div>
-                            <div className="block mr-3 md:hidden">
+                            <div className="block mr-3 md:hidden cursor-pointer" onClick={locationMain}>
                                 <LogoSmall></LogoSmall>
                             </div>
                             <div className="w-[75%]">
