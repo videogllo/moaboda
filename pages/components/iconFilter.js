@@ -6,10 +6,21 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { SELECT_FILTER } from "../../store/atom";
 
+//swiper
+import "swiper/css/bundle";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+
 //image assets
 const iconData = [
     { name: "Youtube", imgUrl: "/image/icon/youtube.png" },
     { name: "Twitch", imgUrl: "/image/icon/twitch.png" },
+    { name: "Shorts", imgUrl: "/image/icon/shorts.png" },
+    { name: "Reels", imgUrl: "/image/icon/reels2.png" },
     { name: "Netflix", imgUrl: "/image/icon/netflix.png" },
     { name: "Tiktok", imgUrl: "/image/icon/tiktok.png" },
     { name: "AfreecaTV", imgUrl: "/image/icon/afreecaTV.png" },
@@ -27,90 +38,164 @@ const IconFilter = () => {
     const [SELECTFILTER, setSELECTFILTER] = useRecoilState(SELECT_FILTER);
 
     useEffect(() => {
-        //최초 로드에 youtube default
-        // selectFilter("Youtube");
-        // console.log(SELECTFILTER)
+        console.log(SELECTFILTER);
     }, [SELECTFILTER]);
 
     const selectFilter = (name) => {
         if (SELECTFILTER.includes(name)) {
             //중복된다면 배열에서 제거
             setSELECTFILTER(SELECTFILTER.filter((el) => el !== name));
-            //active효과 해제
-            // if (SELECTFILTER.length > 1) {
-            //     const tar = document.getElementById(name);
-            //     tar.style.opacity = "1";
-            // } else if (SELECTFILTER.length === 1) {
-            //     const tar = document.getElementById(name);
-            //     tar.style.opacity = "1";
-            // } else {
-            //     const tar = document.getElementById(name);
-            //     tar.style.opacity = ".3";
-            // }
 
-            const tar = document.getElementById(name);
+            //active효과 해제
+            // const tar = document.getElementById(name);
             // tar.classList.remove("iconActive");
+            // tar.classList.add("iconActiveNone");
         } else {
             //중복안되면 배열에 추가
             setSELECTFILTER((prev) => [...prev, name]);
             //active효과 추가
-            const tar = document.getElementById(name);
-            // tar.style.opacity = "1";
+            // const tar = document.getElementById(name);
             // tar.classList.add("iconActive");
         }
     };
 
     return (
         <div className="mt-12">
-            <div className="">
-                {SELECTFILTER.length > 0 ? (
-                    <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                        {/* 필터가 적용되었다면 적용된 필터명 출력 */}
-                        {SELECTFILTER.map((el, i) => (
-                            <span className="text-lg xl:text-xl">
-                                {i > 0 ? (
-                                    <span key={el}>&#44;&ensp;{el}</span>
-                                ) : (
-                                    <span key={el}>{el}</span>
-                                )}
-                            </span>
-                        ))}
-                    </h2>
-                ) : null}
+            <div className="flex items-center w-full">
+                <div className="truncate">
+                    {SELECTFILTER.length > 0 ? (
+                        <>
+                            {/* 필터 2개 이상 적용 */}
+                            {SELECTFILTER.length > 1 ? (
+                                <div className="flex truncate">
+                                    {iconData
+                                        .filter((el) =>
+                                            SELECTFILTER.some(
+                                                (el2) => el.name === el2
+                                            )
+                                        )
+                                        .map((el, i) => (
+                                            <div key={el.name}>
+                                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
+                                                    <span>
+                                                        {i > 0 ? (
+                                                            <span key={el.name}>
+                                                                &#44;&nbsp;
+                                                                {el.name}
+                                                            </span>
+                                                        ) : (
+                                                            <span key={el.name}>
+                                                                {el.name}
+                                                            </span>
+                                                        )}
+                                                    </span>
+                                                </h2>
+                                            </div>
+                                        ))}
+                                    <span className="text-xl xl:text-2xl font-bold tracking-tight">
+                                        &nbsp;선택된 플랫폼에 대한 미디어 컨텐츠
+                                    </span>
+                                </div>
+                            ) : (
+                                //필터 1개 적용
+                                <>
+                                    {iconData
+                                        .filter((el) =>
+                                            SELECTFILTER.some(
+                                                (el2) => el.name === el2
+                                            )
+                                        )
+                                        .map((el) => (
+                                            <div key={el.name}>
+                                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
+                                                    {el.name}에서 검색된 미디어 컨텐츠
+                                                </h2>
+                                            </div>
+                                        ))}
+                                </>
+                            )}
+                        </>
+                    ) : (
+                        //필터 미적용
+                        <>
+                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
+                                인기 영화 및 TV 프로그램
+                            </h2>
+                            {/* <p className="my-2">내용</p> */}
+                        </>
+                    )}
+                </div>
+
+                <div className="ml-auto">
+                    <a
+                        href="#"
+                        className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all whitespace-nowrap ml-4"
+                        onClick={() => setSELECTFILTER([])}
+                    >
+                        초기화
+                        <span aria-hidden="true">&nbsp;&#8635;</span>
+                    </a>
+                </div>
             </div>
 
-            <div className="mt-2 overflow-auto flex flex-wrap">
+            <div className="mt-2 w-full">
                 {/* 필터가 1개라도 적용이 되었다면 */}
                 {SELECTFILTER.length > 0 ? (
-                    <>
+                    <div className="w-full">
                         {iconData.map((el) => (
                             <>
-                                <button
-                                    key={el.name}
-                                    onClick={() => selectFilter(el.name)}
-                                    className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 opacity-30 transition-all"
-                                    id={el.name}
-                                >
-                                    <Image
-                                        src={el.imgUrl}
-                                        layout="fill"
-                                        objectFit="contain"
-                                        className="rounded-lg scale-[1.02]"
-                                    ></Image>
-                                </button>
+                                {iconData.filter((el) =>
+                                    SELECTFILTER.some((el2) => el.name === el2)
+                                ) ? (
+                                    <>
+                                        <button
+                                            key={el.name}
+                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 iconActive transition-all"
+                                            id={el.name}
+                                            onClick={() =>
+                                                selectFilter(el.name)
+                                            }
+                                        >
+                                            <Image
+                                                src={el.imgUrl}
+                                                layout="fill"
+                                                objectFit="contain"
+                                                className="rounded-lg scale-[1.02]"
+                                            ></Image>
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <button
+                                            key={el.name}
+                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 iconActiveNone transition-all"
+                                            id={el.name}
+                                            onClick={() =>
+                                                selectFilter(el.name)
+                                            }
+                                        >
+                                            <Image
+                                                src={el.imgUrl}
+                                                layout="fill"
+                                                objectFit="contain"
+                                                className="rounded-lg scale-[1.02]"
+                                            ></Image>
+                                        </button>
+                                    </>
+                                )}
                             </>
                         ))}
-                    </>
+                    </div>
                 ) : (
                     // 필터가 적용이 안되었다면
-                    <>
+                    <div className="w-full">
                         {iconData.map((el) => (
                             <>
                                 <button
                                     key={el.name}
-                                    onClick={() => selectFilter(el.name)}
-                                    className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all"
+                                    className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all iconActive"
                                     id={el.name}
+                                    onClick={() => selectFilter(el.name)}
                                 >
                                     <Image
                                         src={el.imgUrl}
@@ -121,7 +206,7 @@ const IconFilter = () => {
                                 </button>
                             </>
                         ))}
-                    </>
+                    </div>
                 )}
             </div>
         </div>

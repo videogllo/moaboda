@@ -20,7 +20,7 @@ const VideoAd = () => {
             <div className="flex 2xl:flex-nowrap">
                 <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
                     <Image
-                        src={"/image/banners/" + imgname[randomarr[0]] + ".jpg"}
+                        src={"/image/banner/" + imgname[randomarr[0]] + ".jpg"}
                         layout='fill'
                         objectFit='cover'
                         onClick={locationFunc}
@@ -30,7 +30,7 @@ const VideoAd = () => {
                 
                 <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
                     <Image
-                        src={"/image/banners/" + imgname[randomarr[1]] + ".jpg"}
+                        src={"/image/banner/" + imgname[randomarr[1]] + ".jpg"}
                         layout='fill'
                         objectFit='cover'
                         onClick={locationFunc}
@@ -40,7 +40,7 @@ const VideoAd = () => {
                 
                 <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
                     <Image
-                        src={"/image/banners/" + imgname[randomarr[2]] + ".jpg"}
+                        src={"/image/banner/" + imgname[randomarr[2]] + ".jpg"}
                         layout='fill'
                         objectFit='cover'
                         onClick={locationFunc}
@@ -50,7 +50,7 @@ const VideoAd = () => {
                 
                 <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
                     <Image
-                        src={"/image/banners/" + imgname[randomarr[3]] + ".jpg"}
+                        src={"/image/banner/" + imgname[randomarr[3]] + ".jpg"}
                         layout='fill'
                         objectFit='cover'
                         onClick={locationFunc}
@@ -60,7 +60,7 @@ const VideoAd = () => {
                 
                 <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
                     <Image
-                        src={"/image/banners/" + imgname[randomarr[4]] + ".jpg"}
+                        src={"/image/banner/" + imgname[randomarr[4]] + ".jpg"}
                         layout='fill'
                         objectFit='cover'
                         onClick={locationFunc}

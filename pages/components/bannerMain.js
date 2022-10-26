@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Mousewheel, Autoplay, Navigation } from "swiper";
+import { Pagination, Autoplay, Navigation } from "swiper";
 
 //component
 import Loading from "./loading";
@@ -20,32 +20,32 @@ const BannerMain = () => {
         {
             id: 1,
             title: "tencent",
-            imgUrl: "/image/banners/mainBanner1.png",
-            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+            imgUrl: "/image/banner/mainBanner1.jpg",
+            tarUrl: "https://www.netflix.com/kr/title/81040344",
         },
         {
             id: 2,
             title: "tencent",
-            imgUrl: "/image/banners/mainBanner2.png",
-            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+            imgUrl: "/image/banner/mainBanner2.jpg",
+            tarUrl: "https://www.netflix.com/kr/title/81343748",
         },
         {
             id: 3,
             title: "tencent",
-            imgUrl: "/image/banners/mainBanner3.png",
-            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+            imgUrl: "/image/banner/mainBanner3.png",
+            tarUrl: "https://www.youtube.com/channel/UC1B6SalAoiJD7eHfMUA9QrA",
         },
         {
             id: 4,
             title: "tencent",
-            imgUrl: "/image/banners/mainBanner4.png",
-            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+            imgUrl: "/image/banner/mainBanner4.png",
+            tarUrl: "https://www.youtube.com/channel/UCdtRAcd3L_UpV4tMXCw63NQ",
         },
         {
             id: 5,
             title: "tencent",
-            imgUrl: "/image/banners/mainBanner5.png",
-            tarUrl: "https://namu.wiki/w/%EB%A9%94%EB%A5%B4%EC%84%B8%EB%8D%B0%EC%8A%A4-%EB%B2%A4%EC%B8%A0%20G%ED%81%B4%EB%9E%98%EC%8A%A4",
+            imgUrl: "/image/banner/mainBanner5.png",
+            tarUrl: "https://www.youtube.com/c/%EB%B9%A0%EB%8B%88%EB%B3%B4%ED%8B%80PaniBottle",
         },
     ]);
 
@@ -57,7 +57,6 @@ const BannerMain = () => {
                 ) : (
                     <Swiper
                         loop={true}
-                        mousewheel={true}
                         slidesPerView={"auto"}
                         centeredSlides={true}
                         spaceBetween={20}
@@ -70,7 +69,7 @@ const BannerMain = () => {
                             clickable: true,
                         }}
                         navigation={true}
-                        modules={[Pagination, Mousewheel, Autoplay, Navigation]}
+                        modules={[Pagination, Autoplay, Navigation]}
                         className="mySwiper-bannerMain"
                     >
                         {data.map((i) => (
