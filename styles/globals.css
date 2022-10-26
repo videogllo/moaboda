@@ -141,7 +141,7 @@ body {
 /* Category css */
 .prevStyle {
     color: white;
-    background-color: rgb(15 23 42);
+    background-color: rgba(15 23 42, 0);
     border-radius: 0;
     padding-left: 0;
     padding-right: 0;
@@ -162,7 +162,7 @@ body {
 }
 
 .categoryBtn {
-    background-color: rgb(15 23 42);
+    background-color: rgba(15 23 42, 0);
     color: lightgray;
     border: 1px solid lightgray;
     border-radius: 30px;
@@ -170,6 +170,7 @@ body {
     margin: 0 5px;
     cursor: pointer;
 }
+
 /* iconFilter */
 .iconActive {
     opacity: 1;

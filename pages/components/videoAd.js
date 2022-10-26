@@ -16,9 +16,10 @@ const VideoAd = () => {
 
     return(
         // <div className="grid grid-cols-5 gap-4 place-content-evenly place-items-center w-full md:w-[57%] border-y-2 border-gray-600">
-        <div className="flex overflow-auto justify-start border-y-2 border-gray-600 md:w-[57%] 2xl:overflow-visible 2xl:justify-center" id="scroll">
-            <div className="flex 2xl:flex-nowrap">
-                <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
+        <div className="flex overflow-auto justify-start border-y-2 border-gray-600 w-full xl:justify-start 2xl:overflow-visible 2xl:justify-center" id="scroll">
+            <div className="flex ">
+                
+                <div className="relative w-[140px] h-[100px] xl:w-64 xl:h-40 m-2 cursor-pointer">
                     <Image
                         src={"/image/banner/" + imgname[randomarr[0]] + ".jpg"}
                         layout='fill'
@@ -28,7 +29,7 @@ const VideoAd = () => {
                     ></Image>
                 </div>
                 
-                <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
+                <div className="relative w-[140px] h-[100px] xl:w-64 xl:h-40 m-2 cursor-pointer">
                     <Image
                         src={"/image/banner/" + imgname[randomarr[1]] + ".jpg"}
                         layout='fill'
@@ -38,7 +39,7 @@ const VideoAd = () => {
                     ></Image>
                 </div>
                 
-                <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
+                <div className="relative w-[140px] h-[100px] xl:w-64 xl:h-40 m-2 cursor-pointer">
                     <Image
                         src={"/image/banner/" + imgname[randomarr[2]] + ".jpg"}
                         layout='fill'
@@ -48,7 +49,7 @@ const VideoAd = () => {
                     ></Image>
                 </div>
                 
-                <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
+                <div className="relative w-[140px] h-[100px] xl:w-64 xl:h-40 m-2 cursor-pointer">
                     <Image
                         src={"/image/banner/" + imgname[randomarr[3]] + ".jpg"}
                         layout='fill'
@@ -58,7 +59,7 @@ const VideoAd = () => {
                     ></Image>
                 </div>
                 
-                <div className="relative w-[140px] h-[100px] 2xl:w-64 2xl:h-40 m-2 cursor-pointer">
+                <div className="relative w-[140px] h-[100px] xl:w-64 xl:h-40 m-2 cursor-pointer">
                     <Image
                         src={"/image/banner/" + imgname[randomarr[4]] + ".jpg"}
                         layout='fill'

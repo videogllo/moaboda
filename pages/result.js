@@ -64,6 +64,8 @@ const Result = (props) => {
                             <BannerMain></BannerMain>
                         </div>
                     </div>
+                    
+                    {/* 카테고리 웹 */}
                     <div className="relative hidden md:flex md:flex-col md:justify-center md:py-7">
                         {
                             props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
@@ -75,6 +77,7 @@ const Result = (props) => {
                             props.result.length > 0 && props != undefined ? <CategoryM props={props}></CategoryM> : ''
                         }
                     </div>
+
                     {/* <div className="relative flex justify-center py-7">
                         <VideoAd></VideoAd>
                     </div>

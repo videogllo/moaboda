@@ -403,7 +403,8 @@ export async function addSearchFilter({platformList, categoryList}) {
         for(let i = 0; i < categoryList.length; i++){
             if(categoryList[i] === '인기'){
                 await fetch(
-                    "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=kr"
+                    "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=kr"
+                    // "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=kr"
                 )
                 .then((response) => response.json())
                 .then((data) => {
@@ -424,7 +425,8 @@ export async function addSearchFilter({platformList, categoryList}) {
                     }
                 });
             } else {
-                await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + categoryList[i])
+                await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&q=" + categoryList[i])
+                // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + categoryList[i])
                 // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&q=" + categoryList[i])
                 .then((response) => response.json())
                 .then((data) => {
@@ -440,7 +442,8 @@ export async function addSearchFilter({platformList, categoryList}) {
         }
     
         for(let i = 0 ; i < videoId.length; i++){
-            await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&id=" + videoId[i].id)
+            await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&part=snippet&id=" + videoId[i].id)
+            // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&id=" + videoId[i].id)
             // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&part=snippet&id=" + videoId[i].id)
             .then((response) => response.json())
             .then((data) => {
