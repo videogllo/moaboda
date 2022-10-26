@@ -5,7 +5,7 @@ import SearchForm from "./components/searchForm";
 import Keyword from "./components/keyword";
 import BannerMain from "./components/bannerMain";
 import Category from "./components/category";
-import CategoryM from "./components/category_m"
+import CategoryM from "./components/categoryM";
 import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
 import ResultList from "./components/resultList";
@@ -43,15 +43,16 @@ const Result = (props) => {
                     </div>
                     <div className="relative flex justify-center items-center pb-7">
                         <div className="w-full md:w-[58%]">
-                            {/* <BannerMain></BannerMain> */}
+                            <BannerMain></BannerMain>
                         </div>
                     </div>
-                    <div className="hidden relative md:flex md:flex-col md:justify-center md:py-7">
+                    <div className="relative hidden md:flex md:flex-col md:justify-center md:py-7">
                         {
                             props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
                         }
                     </div>
-                    <div className="relative block md:hidden">
+                    {/* 카테고리 모바일 */}
+                    <div className="relative flex flex-col justify-center py-7 md:hidden">
                         {
                             props.result.length > 0 && props != undefined ? <CategoryM props={props}></CategoryM> : ''
                         }
