@@ -68,30 +68,6 @@ const IconFilter = () => {
                             {/* 필터 2개 이상 적용 */}
                             {SELECTFILTER.length > 1 ? (
                                 <div className="flex truncate">
-                                    {iconData
-                                        .filter((el) =>
-                                            SELECTFILTER.some(
-                                                (el2) => el.name === el2
-                                            )
-                                        )
-                                        .map((el, i) => (
-                                            <div key={el.name}>
-                                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                                                    <span>
-                                                        {i > 0 ? (
-                                                            <span key={el.name}>
-                                                                &#44;&nbsp;
-                                                                {el.name}
-                                                            </span>
-                                                        ) : (
-                                                            <span key={el.name}>
-                                                                {el.name}
-                                                            </span>
-                                                        )}
-                                                    </span>
-                                                </h2>
-                                            </div>
-                                        ))}
                                     <span className="text-xl xl:text-2xl font-bold tracking-tight">
                                         &nbsp;선택된 플랫폼에 대한 미디어 컨텐츠
                                     </span>
@@ -108,7 +84,8 @@ const IconFilter = () => {
                                         .map((el) => (
                                             <div key={el.name}>
                                                 <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                                                    {el.name}에서 검색된 미디어 컨텐츠
+                                                    {el.name}에서 검색된 미디어
+                                                    컨텐츠
                                                 </h2>
                                             </div>
                                         ))}

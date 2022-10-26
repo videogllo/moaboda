@@ -8,12 +8,12 @@ const BannerLine = () => {
     return (
         <>
             <div className="w-full">
-                <div className="bg-cyan-600 p-3 flex justify-center items-center">
+                <div className="bg-black/20 p-3 flex justify-center items-center shadow-lg">
                     {/* <div className="font-NanumSquareNeo text-slate-50 text-md md:text-lg font-semibold">
                         종합 미디어 컨텐츠 플랫폼 비데오아울
                     </div> */}
 
-                    <div className="w-full h-12 relative">
+                    <div className="w-full h-6 sm:h-8 md:h-10 lg:h-12 relative">
                         <Image
                             src="/image/banner/bannerLine.png"
                             alt="bannerLine"

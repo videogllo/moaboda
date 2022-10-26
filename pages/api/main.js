@@ -53,6 +53,7 @@ export default async function handler(req, res) {
                             "{width}x{height}",
                             "640x480"
                         ), //썸네일 경로
+                        href: "https://www.twitch.tv/" + items[i].user_login, //영상 주소
                         channelName: items[i].user_name, //채널명
                         viewerCount: items[i].viewer_count, //시청자 수 (라이브 영상만 해당)
                         startTime: items[i].started_at, //라이브 시작 시간 (라이브 영상만 해당)
