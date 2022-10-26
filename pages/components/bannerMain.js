@@ -83,7 +83,7 @@ const BannerMain = () => {
                                         window.open(i.tarUrl);
                                     }}
                                 >
-                                    <div className="relative h-80 w-full bg-slate-800/40">
+                                    <div className="relative h-32 sm:h-48 md:h-64 lg:h-80 w-full bg-slate-800/40">
                                         {/* <img
                                             src={i.imgUrl}
                                             alt={i.name}

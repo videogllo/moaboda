@@ -1,6 +1,6 @@
 const Keyword = () => {
     return(
-        <div className="flex items-center mt-2 text-xs md:text-sm truncate">
+        <div className="flex items-center mt-2 text-xs md:text-sm truncate mx-2">
             <p>추천 검색어&#58;&ensp;</p>
             <div className="text-cyan-500">
                 <span className="mr-4 hover:text-cyan-700 cursor-pointer transition-all">#롤</span>
