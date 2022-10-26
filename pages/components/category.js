@@ -883,11 +883,18 @@ function Category({props}){
 
 export async function addSearchFilter({platformList, categoryList}) {
 
+    console.log('함수 실행 확인!');
+    console.log(platformList);
+    console.log(categoryList);
+
     const filterResult = [];
     const twitchIds = [];
     const videoId = [];
     const result = [];
     const results = [];
+
+    console.log('플랫폼 확인 : ' + platformList.includes('Youtube'));
+    console.log('플랫폼 확인 : ' + platformList.includes('Twitch'));
 
     if(platformList.length === 0 || platformList.includes('Youtube')){
         for(let i = 0; i < categoryList.length; i++){
@@ -923,8 +930,6 @@ export async function addSearchFilter({platformList, categoryList}) {
                     if(data.items != undefined){
                         let items = data.items;
                 
-                        console.log('test');
-
                         for(let i = 0; i < items.length; i++){
                             videoId.push({id: items[i].id.videoId});
                         }
@@ -1019,7 +1024,7 @@ export async function addSearchFilter({platformList, categoryList}) {
                 });
             }
         }
-     
+    
         for(let i = 0; i < twitchIds.length; i++){
             await fetch("https://api.twitch.tv/helix/streams?language=ko&first=5&game_id=" + twitchIds[i].id, {
                 method: 'get',
@@ -1046,6 +1051,7 @@ export async function addSearchFilter({platformList, categoryList}) {
 
     return {results};
 }
+    
 
 
 export default Category;
