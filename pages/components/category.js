@@ -506,7 +506,7 @@ export async function addSearchFilter({platformList, categoryList}) {
                 });
             }
         }
-    
+     
         for(let i = 0; i < twitchIds.length; i++){
             await fetch("https://api.twitch.tv/helix/streams?language=ko&first=5&game_id=" + twitchIds[i].id, {
                 method: 'get',
