@@ -3,9 +3,9 @@ import Image from "next/image";
 function ResultListItem({item, platform}){
     let platformImg = '';
     if(platform == 'youtube'){
-        platformImg = '/image/etc/youtube.svg';
+        platformImg = '/image/etc/youtube.png';
     } else if(platform == 'twitch'){
-        platformImg = '/image/etc/twitch.svg';
+        platformImg = '/image/etc/twitch.png';
 
     }
 
@@ -15,7 +15,7 @@ function ResultListItem({item, platform}){
                 <img id={item.id} src={item.url} width={450} height={150}/>
             </div>
             <div id={item.id} className="relative flex flex-col items-center md:py-2 md:pl-1.5 md:items-start">
-                <h4 id={item.id} className="relative w-[100%] text-center font-extrabold  md:text-lg md:text-left md:w-[350px] lg:text-lg lg:w-[500px] lg:h-[40px] truncate">{item.title}</h4>
+                <h4 id={item.id} className="relative w-[100%] text-center font-extrabold mt-2.5 md:mt-1  md:text-lg md:text-left md:w-[350px] lg:text-lg lg:w-[500px] lg:h-[40px] truncate">{item.title}</h4>
                 <p id={item.id} className="relative text-base">{item.channel}</p>
                 {/* <ul className="relative flex mt-6 mb-5">
                     <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{item.tags[0]}</li>
@@ -23,7 +23,7 @@ function ResultListItem({item, platform}){
                     <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{item.tags[2]}</li>
                     <li className="mr-2 bg-slate-200 text-blue-800 text-sm rounded-full px-2 pt-0.5">{item.tags[3]}</li>
                 </ul> */}
-                <div id={item.id} className="relative w-[90px] h-[20px]">
+                <div id={item.id} className="relative w-[90px] h-[20px] my-4">
                     <Image id={item.id} src={platformImg} alt="logo" layout="fill" objectFit='contain'></Image>
                 </div>
                 <small id={item.id} className="relative">{item.date}</small>

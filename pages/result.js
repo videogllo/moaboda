@@ -18,6 +18,15 @@ const Result = (props) => {
         location.href = process.env.NEXT_PUBLIC_API_URL;
     };
 
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    let queryValue = getParameterByName('q');
+
     if (props != undefined && props != null && props.result != "없음") {
         return (
             <>
@@ -68,13 +77,13 @@ const Result = (props) => {
                     {/* 카테고리 웹 */}
                     <div className="relative hidden md:flex md:flex-col md:justify-center md:py-7">
                         {
-                            props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
+                            props.result.length > 0 && props != undefined ? <Category props={props} queryValue={queryValue}></Category> : ''
                         }
                     </div>
                     {/* 카테고리 모바일 */}
                     <div className="relative flex flex-col justify-center py-7 md:hidden">
                         {
-                            props.result.length > 0 && props != undefined ? <CategoryM props={props}></CategoryM> : ''
+                            props.result.length > 0 && props != undefined ? <CategoryM props={props} queryValue={queryValue}></CategoryM> : ''
                         }
                     </div>
 

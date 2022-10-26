@@ -15,7 +15,7 @@ const people = [
     // More people...
 ];
 
-function Category({props}){
+function Category({props, queryValue}){
     // let URLSearch = new URLSearchParams(location.search);
     
     if(props != undefined && props != ''){
@@ -854,11 +854,11 @@ function Category({props}){
                 </div>
 
                 {/* 결과 재검색 */}
-                <div className="flex justify-end mt-12">
+                <div className="flex justify-end mt-12 ">
                     
                     <div className="flex items-center">
-                        <p className="whitespace-nowrap mr-2">결과 내 재검색</p>
-                        <Research></Research>
+                        {/* <p className="whitespace-nowrap mr-2">결과 내 재검색</p> */}
+                        <Research queryValue={queryValue}></Research>
                     </div>
                 </div>
 

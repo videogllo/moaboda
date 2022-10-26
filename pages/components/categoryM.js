@@ -6,7 +6,7 @@ import ResultList from "./resultList";
 import Research from "./research";
 
 
-export default function CategoryM({props}){
+export default function CategoryM({props, queryValue}){
     // let URLSearch = new URLSearchParams(location.search);
     
     if(props != undefined && props != ''){
@@ -370,7 +370,7 @@ export default function CategoryM({props}){
             {/* 결과 재검색 */}
             <div className="flex justify-center mt-7">
                 <div className="w-[80%] md:w-[50%]">
-                    <Research></Research>
+                    <Research queryValue={queryValue}></Research>
                 </div>
             </div>
 

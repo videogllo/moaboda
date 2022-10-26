@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 //icon
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
-const Research = () => {
+const Research = ({queryValue}) => {
     const router = useRouter();
     const inputRef = useRef();
     // const [isLoading, setIsLoading] = useState(false);
@@ -37,7 +37,7 @@ const Research = () => {
                                 name="text"
                                 ref={inputRef}
                                 className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-700 placeholder:text-slate-200 text-cyan-300 pl-10 text-sm md:text-base lg:text-lg py-2 px-6"
-                                // placeholder={query}
+                                placeholder={queryValue}
                             />
                         </div>
                         <button
