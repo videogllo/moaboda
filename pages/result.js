@@ -154,6 +154,8 @@ export async function getServerSideProps(context) {
     const res = await fetch(
         process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q
     );
+    console.log('res 확인~!');
+    console.log(res);
     const data = await res.json();
     return { props: data };
 }

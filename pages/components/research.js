@@ -10,8 +10,17 @@ const Research = ({queryValue}) => {
     const inputRef = useRef();
     // const [isLoading, setIsLoading] = useState(false);
 
+    
+
     const search = async (e) => {
         e.preventDefault();
+        
+        if(document.getElementById('searchInput').value == null || document.getElementById('searchInput').value == ''){
+            alert('검색어를 입력해주세요!');
+            return false;
+        }
+
+        
         // setIsLoading(true);
 
         router.push({
