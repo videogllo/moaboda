@@ -42,7 +42,7 @@ const SearchForm = () => {
                                 id="searchInput"
                                 name="text"
                                 ref={inputRef}
-                                className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-700 placeholder:text-slate-200 text-cyan-300 pl-10 text-sm md:text-base lg:text-lg py-2 px-6"
+                                className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-700 placeholder:text-slate-200 text-cyan-300 pl-10 text-base md:text-lg lg:text-xl py-3 px-6"
                                 placeholder="좋아하는 장르, 관심사를 검색해보세요."
                             />
                         </div>

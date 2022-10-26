@@ -7,13 +7,11 @@ import { useRecoilState } from "recoil";
 import { SELECT_FILTER } from "../../store/atom";
 
 //swiper
-import "swiper/css/bundle";
+// import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/effect-cards";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
 import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
 
 //image assets
 const iconData = [
@@ -165,25 +163,42 @@ const IconFilter = () => {
                     </div>
                 ) : (
                     // 필터가 적용이 안되었다면
-                    <div className="w-full">
-                        {iconData.map((el) => (
-                            <>
-                                <button
-                                    key={el.name}
-                                    className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all iconActive"
-                                    id={el.name}
-                                    onClick={() => selectFilter(el.name)}
-                                >
-                                    <Image
-                                        src={el.imgUrl}
-                                        layout="fill"
-                                        objectFit="contain"
-                                        className="rounded-lg scale-[1.02]"
-                                    ></Image>
-                                </button>
-                            </>
-                        ))}
-                    </div>
+                    <>
+                        {/* <Swiper
+                            slidesPerView={10}
+                            slidesPerGroup={10}
+                            spaceBetween={20}
+                            navigation={true}
+                            modules={[Navigation]}
+                            className="mySwiper-iconFilter"
+                        >
+                            {iconData.map((el) => (
+                                <a
+                                key={el.id}
+                                href="#"
+                                className="group cursor-pointer"
+                            >
+                                    <SwiperSlide className="!w-auto">
+                                        <button
+                                            key={el.name}
+                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all iconActive"
+                                            id={el.name}
+                                            onClick={() =>
+                                                selectFilter(el.name)
+                                            }
+                                        >
+                                            <Image
+                                                src={el.imgUrl}
+                                                layout="fill"
+                                                objectFit="contain"
+                                                className="rounded-lg scale-[1.02]"
+                                            ></Image>
+                                        </button>
+                                    </SwiperSlide>
+                                </a>
+                            ))}
+                        </Swiper> */}
+                    </>
                 )}
             </div>
         </div>

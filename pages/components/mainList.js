@@ -6,7 +6,7 @@ import IconFilter from "./iconFilter";
 const MainList = () => {
     
         return (
-            <div className="mt-12">
+            <div>
                 <IconFilter></IconFilter>
                 <MainListPopular></MainListPopular>
                 <MainListNews></MainListNews>

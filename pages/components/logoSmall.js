@@ -5,13 +5,15 @@ const LogoSmall = () => {
     return (
         <div className="w-[40px] h-[40px] relative">
             <Link href="/">
-                <Image
-                    src="/image/logo/logo_small.png"
-                    alt="logo"
-                    layout="fill"
-                    objectFit="contain"
-                    className="cursor-pointer"
-                ></Image>
+                <a href="#">
+                    <Image
+                        src="/image/logo/logo_small.png"
+                        alt="logo_small"
+                        layout="fill"
+                        objectFit="contain"
+                        className="cursor-pointer"
+                    ></Image>
+                </a>
             </Link>
         </div>
     );
