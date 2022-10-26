@@ -52,7 +52,7 @@ const Main = () => {
                     <SearchForm></SearchForm>
                 </div>
             </div>
-            <div className="mx-auto w-5/6 md:w-5/6 lg:w-4/6 xl:w-3/6">
+            <div className="mx-auto w-full md:w-5/6 lg:w-4/6 xl:w-3/6">
                 <Keyword></Keyword>
             </div>
 
@@ -60,9 +60,6 @@ const Main = () => {
             <MainList></MainList>
 
             {/* <SideMenu></SideMenu> */}
-
-            {/* 나중에 footer로 쓸 예정 */}
-            <div className="h-12"></div>
         </>
     );
 };

@@ -26,7 +26,7 @@ const MainListPopular = () => {
 
     /**
      * 플랫폼별로 사용하는 아이콘이 달라서 분기 함수
-     * @param val 
+     * @param val
      * @returns
      */
     const dynamicIcon = (val) => {
@@ -48,19 +48,46 @@ const MainListPopular = () => {
             <div className="flex flex-col gap-6 mt-12">
                 <div className="bg-slate-700 px-4 py-6 rounded-xl shadow-xl">
                     <div className="mx-auto">
-                        {/* <div className="items-baseline justify-between flex pb-2">
-                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                                모든 영상
-                            </h2>
+                        <div className="items-baseline flex pb-4">
+                            {SELECTFILTER.length > 0 ? (
+                                <>
+                                    {SELECTFILTER.map((el, i) => (
+                                        <>
+                                            {i > 0 ? (
+                                                <span
+                                                    key={el}
+                                                    className="text-xl xl:text-2xl font-bold tracking-tight"
+                                                >
+                                                    &#44;&nbsp;{el}
+                                                </span>
+                                            ) : (
+                                                <span
+                                                    key={el}
+                                                    className="text-xl xl:text-2xl font-bold tracking-tight"
+                                                >
+                                                    {el}
+                                                </span>
+                                            )}
+                                        </>
+                                    ))}
+                                    <span className="text-xl xl:text-2xl font-bold tracking-tight">
+                                        검색 결과
+                                    </span>
+                                </>
+                            ) : (
+                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
+                                    인기 컨텐츠
+                                </h2>
+                            )}
 
                             <a
                                 href="#"
-                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all"
+                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all ml-auto"
                             >
                                 더보기
                                 <span aria-hidden="true"> &rarr;</span>
                             </a>
-                        </div> */}
+                        </div>
 
                         {data === null ? (
                             <Loading></Loading>
@@ -93,9 +120,9 @@ const MainListPopular = () => {
                                                             />
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
-                                                                    src={
-                                                                        dynamicIcon(el.type)
-                                                                    }
+                                                                    src={dynamicIcon(
+                                                                        el.type
+                                                                    )}
                                                                     alt={
                                                                         el.title
                                                                     }
@@ -128,9 +155,7 @@ const MainListPopular = () => {
                                                     <div className="relative">
                                                         <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 hover:opacity-75 lg:aspect-none relative">
                                                             <img
-                                                                src={
-                                                                    el.imgUrl
-                                                                }
+                                                                src={el.imgUrl}
                                                                 alt={el.title}
                                                                 className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer"
                                                                 onClick={() =>
@@ -141,9 +166,9 @@ const MainListPopular = () => {
                                                             />
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
-                                                                    src={
-                                                                        dynamicIcon(el.type)
-                                                                    }
+                                                                    src={dynamicIcon(
+                                                                        el.type
+                                                                    )}
                                                                     alt={
                                                                         el.title
                                                                     }

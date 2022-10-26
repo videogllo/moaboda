@@ -10,11 +10,11 @@ function ResultListItem({item, platform}){
     }
 
     return(
-        <div key={item.id} id={item.id} className="relative flex-col md:flex-row md:flex items-start py-3 border-b">
+        <div key={item.id} id={item.id} className="relative flex-col md:flex-row md:flex items-start py-8 border-b">
             <div className="flex justify-center w-[100%] md:w-[30%] md:mr-[15px]">
                 <img id={item.id} src={item.url} width={450} height={150}/>
             </div>
-            <div id={item.id} className="relative flex flex-col items-center md:w-[60%] md:h-[190px] md:py-2 md:pl-1.5 md:items-start">
+            <div id={item.id} className="relative flex flex-col items-center md:py-2 md:pl-1.5 md:items-start">
                 <h4 id={item.id} className="relative w-[100%] text-center font-extrabold  md:text-lg md:text-left md:w-[350px] lg:text-lg lg:w-[500px] lg:h-[40px] truncate">{item.title}</h4>
                 <p id={item.id} className="relative text-base">{item.channel}</p>
                 {/* <ul className="relative flex mt-6 mb-5">
@@ -54,7 +54,7 @@ function ResultList({result, filterData}) {
         for(let i = 0; i < filterData.length; i++){
             console.log(filterData[i]);
             return (
-                <div className=" w-full md:w-[58%] ">
+                <div className=" w-full">
                     <ul>
                         {filterData[i].length < 1 ? '' :
                             filterData[i].map((item) => item.platform == 'Youtube' ? 
@@ -72,7 +72,7 @@ function ResultList({result, filterData}) {
         console.log('resultPage!!!!!!!!!!!!!! result');
         // console.log(result);
         return (
-            <div className=" w-full md:w-[58%] ">
+            <div className=" w-full">
                 <ul>
                     {result.length < 1 ? '' :
                         result.map((item) => item.platform == 'Youtube' ? 
