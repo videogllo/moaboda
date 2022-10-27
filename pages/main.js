@@ -6,7 +6,7 @@ import LogoSmall from "./components/logoSmall";
 import MainList from "./components/mainList";
 import Keyword from "./components/keyword";
 import BannerMain from "./components/bannerMain";
-import SideMenu from "./components/sideMenu";
+import IconFilter from "./components/iconFilter";
 
 //firestore test
 import { db } from "../firebase";
@@ -44,7 +44,7 @@ const Main = () => {
 
             <div className="flex flex-row items-center justify-center md:flex-col">
                 {/* user */}
-                <div className="ml-auto order-3 md:order-1">
+                <div className="ml-auto order-3 md:order-1 md:absolute md:right-3 md:top-3">
                     <UserForm></UserForm>
                 </div>
 
@@ -65,10 +65,12 @@ const Main = () => {
                 <Keyword></Keyword>
             </div>
 
-            <BannerMain></BannerMain>
-            <MainList></MainList>
+            <div className="w-full mx-auto sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
+                <BannerMain></BannerMain>
+                <IconFilter></IconFilter>
+            </div>
 
-            {/* <SideMenu></SideMenu> */}
+            <MainList></MainList>
         </>
     );
 };

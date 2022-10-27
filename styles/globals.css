@@ -197,3 +197,8 @@ body {
 #categoryScroll::-webkit-scrollbar-thumb  {
     background-color: rgba(15, 23, 42, 0);
 }
+
+/* swiper에서 border-radius를 컨트롤 하기 위한 용도 */
+.border-g span{
+    border-radius: .5rem;
+}

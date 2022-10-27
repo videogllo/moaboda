@@ -3,19 +3,19 @@ import Link from "next/link";
 
 const LogoSmall = () => {
     return (
-        <div className="w-[40px] h-[40px] relative">
-            <Link href="/">
-                <a href="#">
+        <Link href="/">
+            <a href="#">
+                <div className="w-[50px] h-[50px] relative">
                     <Image
-                        src="/image/logo/logo_small.png"
+                        src="/image/logo/logo_small_dark.png"
                         alt="logo_small"
                         layout="fill"
                         objectFit="contain"
                         className="cursor-pointer"
                     ></Image>
-                </a>
-            </Link>
-        </div>
+                </div>
+            </a>
+        </Link>
     );
 };
 export default LogoSmall;

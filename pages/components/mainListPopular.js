@@ -18,6 +18,7 @@ const MainListPopular = () => {
             await fetch("/api/main")
                 .then((res) => res.json())
                 .then((data) => {
+                    console.log(data.result);
                     setData(data.result);
                 });
         };
@@ -92,7 +93,8 @@ const MainListPopular = () => {
                         {data === null ? (
                             <Loading></Loading>
                         ) : (
-                            <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                            <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                                {/* 필터 활성화 */}
                                 {SELECTFILTER.length > 0 ? (
                                     <>
                                         {data
@@ -145,6 +147,7 @@ const MainListPopular = () => {
                                             ))}
                                     </>
                                 ) : (
+                                    // 필터 미활성화
                                     <>
                                         {data
                                             .sort(function (a, b) {
@@ -177,9 +180,53 @@ const MainListPopular = () => {
                                                                     className="rounded-md"
                                                                 />
                                                             </div>
-                                                            {/* <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
-                                                                {el.playTime}
-                                                            </div> */}
+                                                            {/* 데이터 중 playTime이 존재 하다면 출력 */}
+                                                            {el.playTime !==
+                                                                undefined ||
+                                                            null ? (
+                                                                <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
+                                                                    <span>
+                                                                        {/* 배열의 첫번째 값을 제외한 값 출력 */}
+                                                                        {el.playTime
+                                                                            .slice(
+                                                                                1
+                                                                            )
+                                                                            .map(
+                                                                                (
+                                                                                    el,
+                                                                                    i
+                                                                                ) => (
+                                                                                    <>
+                                                                                        {/* 첫번째 값을 제외한 값의 앞에 ":" 추가 */}
+                                                                                        {i !==
+                                                                                        0 ? (
+                                                                                            <span
+                                                                                                key={
+                                                                                                    i
+                                                                                                }
+                                                                                            >
+                                                                                                &#58;
+                                                                                                {
+                                                                                                    el
+                                                                                                }
+                                                                                            </span>
+                                                                                        ) : (
+                                                                                            <span
+                                                                                                key={
+                                                                                                    i
+                                                                                                }
+                                                                                            >
+                                                                                                {
+                                                                                                    el
+                                                                                                }
+                                                                                            </span>
+                                                                                        )}
+                                                                                    </>
+                                                                                )
+                                                                            )}
+                                                                    </span>
+                                                                </div>
+                                                            ) : null}
                                                         </div>
                                                         <div>
                                                             <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">
