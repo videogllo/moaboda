@@ -1,5 +1,4 @@
 //swiper
-import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -69,27 +68,24 @@ const BannerMain = () => {
                             navigation={true}
                             modules={[Pagination, Autoplay, Navigation]}
                         >
-                            {data.map((el) => (
-                                <a
+                            {/* 슬라이드 무작위 셔플 */}
+                            {data.sort(() => Math.random() - 0.5).map((el) => (
+                                <SwiperSlide
                                     key={el.id}
-                                    href="#"
-                                    className="group cursor-pointer"
+                                    onClick={() => {
+                                        window.open(el.tarUrl);
+                                    }}
                                 >
-                                    <SwiperSlide
-                                        onClick={() => {
-                                            window.open(el.tarUrl);
-                                        }}
-                                    >
-                                        <div className="relative h-40 sm:h-56 md:h-64 lg:h-80 w-full bg-slate-800/40">
-                                            <Image
-                                                src={el.imgUrl}
-                                                alt={el.title}
-                                                layout="fill"
-                                                objectFit="contain"
-                                            ></Image>
-                                        </div>
-                                    </SwiperSlide>
-                                </a>
+                                    <div className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800/40">
+                                        <Image
+                                            src={el.imgUrl}
+                                            alt={el.title}
+                                            layout="fill"
+                                            objectFit="contain"
+                                            priority={true} //image LCP 해결
+                                        ></Image>
+                                    </div>
+                                </SwiperSlide>
                             ))}
                         </Swiper>
                     </>

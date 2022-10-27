@@ -6,8 +6,8 @@ const Footer = () => {
     return (
         <footer className="mt-12 mb-6">
             <div className="my-6 w-full border border-slate-600 rounded-lg shadow-lg"></div>
-            <div className="flex items-center">
-                <div className="">
+            <div className="flex items-center w-full">
+                <div className="w-full">
                     <h2 className="font-bold text-base md:text-lg mb-2">
                         비데오글로(Videogllo)
                     </h2>
@@ -29,18 +29,18 @@ const Footer = () => {
                         </p>
                     </div>
                 </div>
-                <div className="w-36 h-14 relative ml-auto">
-                    <Link href="https:www.videogllo.com" passHref>
-                        <a target="_blank" rel="noopener noreferrer">
+                <Link href="https:www.videogllo.com" passHref>
+                    <a target="_blank" rel="noopener noreferrer">
+                        <div className="w-36 h-14 relative ml-auto">
                             <Image
                                 src="/image/logo/videogllo_dark.png"
                                 layout="fill"
                                 objectFit="contain"
                                 className="cursor-pointer"
                             ></Image>
-                        </a>
-                    </Link>
-                </div>
+                        </div>
+                    </a>
+                </Link>
             </div>
         </footer>
     );

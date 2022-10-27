@@ -23,7 +23,7 @@ export default function Home() {
             <div className="flex flex-col w-full">
                 <BannerLine></BannerLine>
 
-                <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3 relative">
+                <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[75%] 2xl:w-[70%] mx-auto flex-1 p-3 relative">
                     <Main></Main>
                     <Footer></Footer>
                 </div>

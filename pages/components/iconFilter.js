@@ -1,13 +1,11 @@
 //asset
 import Image from "next/image";
-import { useEffect } from "react";
 
 //statement
 import { useRecoilState } from "recoil";
 import { SELECT_FILTER } from "../../store/atom";
 
 //swiper
-// import "swiper/css/bundle";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
@@ -35,10 +33,6 @@ const iconData = [
 const IconFilter = () => {
     const [SELECTFILTER, setSELECTFILTER] = useRecoilState(SELECT_FILTER);
 
-    useEffect(() => {
-        console.log(SELECTFILTER);
-    }, [SELECTFILTER]);
-
     const selectFilter = (name) => {
         if (SELECTFILTER.includes(name)) {
             //중복된다면 배열에서 제거
@@ -50,8 +44,8 @@ const IconFilter = () => {
     };
 
     return (
-        <div className="mt-12">
-            <div className="flex items-center w-full">
+        <div className="mt-12 mx-auto">
+            <div className="flex items-center">
                 <div className="truncate">
                     {SELECTFILTER.length > 0 ? (
                         <>
@@ -145,36 +139,27 @@ const IconFilter = () => {
                         >
                             {iconData.map((el) => (
                                 <>
-                                    <a
-                                        key={el.id}
-                                        href="#"
-                                        className="group cursor-pointer"
-                                    >
-                                        <SwiperSlide>
-                                            <button
-                                                key={el.name}
-                                                className={
-                                                    // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
-                                                    SELECTFILTER.includes(
-                                                        el.name
-                                                    )
-                                                        ? "w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all opacity-100"
-                                                        : "w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all opacity-30"
-                                                }
-                                                id={el.name}
-                                                onClick={() =>
-                                                    selectFilter(el.name)
-                                                }
-                                            >
-                                                <Image
-                                                    src={el.imgUrl}
-                                                    layout="fill"
-                                                    objectFit="contain"
-                                                    className="rounded-lg scale-[1.02]"
-                                                ></Image>
-                                            </button>
-                                        </SwiperSlide>
-                                    </a>
+                                    <SwiperSlide key={el.name}>
+                                        <button
+                                            className={
+                                                // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
+                                                SELECTFILTER.includes(el.name)
+                                                    ? "border-g w-10 sm:w-12 md:w-14 lg:w-16 xl:w-18 h-10 sm:h-12 md:h-14 lg:h-16 xl:w-18 rounded-lg relative mx-2 my-2 transition-all opacity-100"
+                                                    : "border-g w-10 sm:w-12 md:w-14 lg:w-16 xl:w-18 h-10 sm:h-12 md:h-14 lg:h-16 xl:w-18 rounded-lg relative mx-2 my-2 transition-all opacity-30"
+                                            }
+                                            id={el.name}
+                                            onClick={() =>
+                                                selectFilter(el.name)
+                                            }
+                                        >
+                                            <Image
+                                                src={el.imgUrl}
+                                                layout="fill"
+                                                objectFit="contain"
+                                                className="rounded-lg scale-[1.02]"
+                                            ></Image>
+                                        </button>
+                                    </SwiperSlide>
                                 </>
                             ))}
                         </Swiper>
@@ -218,29 +203,20 @@ const IconFilter = () => {
                             modules={[Navigation]}
                         >
                             {iconData.map((el) => (
-                                <a
-                                    key={el.id}
-                                    href="#"
-                                    className="group cursor-pointer"
-                                >
-                                    <SwiperSlide>
-                                        <button
-                                            key={el.name}
-                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all"
-                                            id={el.name}
-                                            onClick={() =>
-                                                selectFilter(el.name)
-                                            }
-                                        >
-                                            <Image
-                                                src={el.imgUrl}
-                                                layout="fill"
-                                                objectFit="contain"
-                                                className="rounded-lg scale-[1.02]"
-                                            ></Image>
-                                        </button>
-                                    </SwiperSlide>
-                                </a>
+                                <SwiperSlide key={el.name}>
+                                    <button
+                                        className="border-g w-10 sm:w-12 md:w-14 lg:w-16 xl:w-18 h-10 sm:h-12 md:h-14 lg:h-16 xl:w-18 relative mx-2 my-2 transition-all"
+                                        id={el.name}
+                                        onClick={() => selectFilter(el.name)}
+                                    >
+                                        <Image
+                                            src={el.imgUrl}
+                                            layout="fill"
+                                            objectFit="contain"
+                                            className="scale-[1.02]"
+                                        ></Image>
+                                    </button>
+                                </SwiperSlide>
                             ))}
                         </Swiper>
                     </>
