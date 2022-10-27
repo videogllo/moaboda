@@ -37,54 +37,57 @@ function ResultListItem({item, platform}){
 function ResultList({result, filterData}) {
     console.log('오긴 왔는지?ㅋㅋㅎㅎ??????');
 
-    const youtubeClick = (e) => {
-        const id = e.target.id;
-        location.href='https://www.youtube.com/watch?v=' + id;
-    }
-
-    const twitchClick = (e) => {
-        const id = e.target.id;
-        location.href='https://www.twitch.tv/videos/' + id;
-    }
+    if(result != undefined || filterData != undefined){
+        const youtubeClick = (e) => {
+            const id = e.target.id;
+            location.href='https://www.youtube.com/watch?v=' + id;
+        }
     
-    if(filterData != undefined && filterData.length > 0 && filterData[0] != undefined){
-        console.log('resultPage!!!!!!!!!!!!!! filterData');
-        console.log(filterData.map((i) => i.map((j) => j.platform)));
-        return (
-            <div className=" w-full">
-                <ul>
-                    {
-                        filterData.map((i) => 
-                            i.map((item) => 
-                                item.platform == 'Youtube' ?
-                                <li key={item.id} id={item.id} onClick={youtubeClick}><ResultListItem item={item} platform={'youtube'}/></li>
-                                : item.platform == 'Twitch' ?
-                                <>
-                                <li key={item.id} id={item.id} onClick={twitchClick}><ResultListItem item={item} platform={'twitch'}/></li>
-                                </>
-                                : ''
+        const twitchClick = (e) => {
+            const id = e.target.id;
+            location.href='https://www.twitch.tv/videos/' + id;
+        }
+        if(filterData != undefined && filterData.length > 0 && filterData[0] != undefined){
+            console.log('resultPage!!!!!!!!!!!!!! filterData');
+            console.log(filterData.map((i) => i.map((j) => j.platform)));
+            return (
+                <div className=" w-full">
+                    <ul>
+                        {
+                            filterData.map((i) => 
+                                i.map((item) => 
+                                    item.platform == 'Youtube' ?
+                                    <li key={item.id} id={item.id} onClick={youtubeClick}><ResultListItem item={item} platform={'youtube'}/></li>
+                                    : item.platform == 'Twitch' ?
+                                    <>
+                                    <li key={item.id} id={item.id} onClick={twitchClick}><ResultListItem item={item} platform={'twitch'}/></li>
+                                    </>
+                                    : ''
+                                )
                             )
-                        )
-                    }
-                </ul>
-            </div>
-        )
-    } else if(result != undefined) {
-        console.log('resultPage!!!!!!!!!!!!!! result');
-        return (
-            <div className=" w-full">
-                <ul>
-                    {result.length < 1 ? '' :
-                        result.map((item) => item.platform == 'Youtube' ? 
-                        <li key={item.id} id={item.id} onClick={youtubeClick} ><ResultListItem item={item} platform={'youtube'}/></li>
-                        : item.platform == 'Twitch' ? 
-                        <li key={item.id} id={item.id} onClick={twitchClick} ><ResultListItem item={item} platform={'twitch'}/></li>
-                        : ''
-                    )}
-                </ul>
-            </div>
-        )  
-    } 
+                        }
+                    </ul>
+                </div>
+            )
+        } else if(result != undefined) {
+            console.log('resultPage!!!!!!!!!!!!!! result');
+            return (
+                <div className=" w-full">
+                    <ul>
+                        {result.length < 1 ? '' :
+                            result.map((item) => item.platform == 'Youtube' ? 
+                            <li key={item.id} id={item.id} onClick={youtubeClick} ><ResultListItem item={item} platform={'youtube'}/></li>
+                            : item.platform == 'Twitch' ? 
+                            <li key={item.id} id={item.id} onClick={twitchClick} ><ResultListItem item={item} platform={'twitch'}/></li>
+                            : ''
+                        )}
+                    </ul>
+                </div>
+            )  
+        } 
+    } else {
+        return('');
+    }
 }
 
 export default ResultList;

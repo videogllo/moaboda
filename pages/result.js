@@ -13,13 +13,13 @@ import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
 import ResultList from "./components/resultList";
 
-const Result = (props) => {
+function Result(props) {
 
-    const locationMain = (e) => {
-        location.href = process.env.NEXT_PUBLIC_API_URL;
-    };
-
-    if ((props.result) != undefined && (props.result) != null) {
+    console.log(props);
+    if ((props.result[0]) != undefined && (props.result[0]) != null && (props.result[0]).length > 0) {
+        const locationMain = (e) => {
+            location.href = process.env.NEXT_PUBLIC_API_URL;
+        };
         
         return (
             <>
@@ -70,13 +70,13 @@ const Result = (props) => {
                     {/* 카테고리 웹 */}
                     <div className="relative hidden md:flex md:flex-col md:justify-center md:py-7">
                         {
-                            props.result.length > 0 && props != undefined ? <Category props={props}></Category> : ''
+                            props.result[0].length > 0 && props != undefined ? <Category props={props}></Category> : ''
                         }
                     </div>
                     {/* 카테고리 모바일 */}
                     <div className="relative flex flex-col justify-center py-7 md:hidden">
                         {
-                            props.result.length > 0 && props != undefined ? <CategoryM props={props} ></CategoryM> : ''
+                            props.result[0].length > 0 && props != undefined ? <CategoryM props={props} ></CategoryM> : ''
                         }
                     </div>
 
@@ -132,7 +132,7 @@ const Result = (props) => {
                         </div>
                     </div>
                     <div className="relative flex justify-center py-7">
-                        <VideoAd></VideoAd>
+                        {/* <VideoAd></VideoAd> */}
                     </div>
                     <div className="relative flex justify-center"></div>
                     <div className="h-40"></div>
