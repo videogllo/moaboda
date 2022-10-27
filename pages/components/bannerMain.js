@@ -68,7 +68,6 @@ const BannerMain = () => {
                             }}
                             navigation={true}
                             modules={[Pagination, Autoplay, Navigation]}
-                            className="mySwiper-bannerMain"
                         >
                             {data.map((el) => (
                                 <a

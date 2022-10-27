@@ -171,14 +171,6 @@ body {
     cursor: pointer;
 }
 
-/* iconFilter */
-.iconActive {
-    opacity: 1;
-}
-.iconActiveNone {
-    opacity: 0.3;
-}
-
 /* 스크롤바 */
 #scroll::-webkit-scrollbar {
     height: 5px;

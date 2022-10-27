@@ -20,7 +20,7 @@ export default function Home() {
                 <link rel="icon" href="/image/logo/logo_small.svg" />
             </Head>
 
-            <div className="flex flex-col">
+            <div className="flex flex-col w-full">
                 <BannerLine></BannerLine>
 
                 <div className="w-full sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3 relative">

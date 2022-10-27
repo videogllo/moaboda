@@ -43,17 +43,9 @@ const IconFilter = () => {
         if (SELECTFILTER.includes(name)) {
             //중복된다면 배열에서 제거
             setSELECTFILTER(SELECTFILTER.filter((el) => el !== name));
-
-            //active효과 해제
-            // const tar = document.getElementById(name);
-            // tar.classList.remove("iconActive");
-            // tar.classList.add("iconActiveNone");
         } else {
             //중복안되면 배열에 추가
             setSELECTFILTER((prev) => [...prev, name]);
-            //active효과 추가
-            // const tar = document.getElementById(name);
-            // tar.classList.add("iconActive");
         }
     };
 
@@ -96,7 +88,6 @@ const IconFilter = () => {
                             <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                 인기 영화 및 TV 프로그램
                             </h2>
-                            {/* <p className="my-2">내용</p> */}
                         </>
                     )}
                 </div>
@@ -114,74 +105,128 @@ const IconFilter = () => {
             </div>
 
             <div className="mt-2 w-full">
-                {/* 필터가 1개라도 적용이 되었다면 */}
                 {SELECTFILTER.length > 0 ? (
-                    <div className="w-full">
-                        {iconData.map((el) => (
-                            <>
-                                {iconData.filter((el) =>
-                                    SELECTFILTER.some((el2) => el.name === el2)
-                                ) ? (
-                                    <>
-                                        <button
-                                            key={el.name}
-                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 iconActive transition-all"
-                                            id={el.name}
-                                            onClick={() =>
-                                                selectFilter(el.name)
-                                            }
-                                        >
-                                            <Image
-                                                src={el.imgUrl}
-                                                layout="fill"
-                                                objectFit="contain"
-                                                className="rounded-lg scale-[1.02]"
-                                            ></Image>
-                                        </button>
-                                    </>
-                                ) : (
-                                    <>
-                                        <button
-                                            key={el.name}
-                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 iconActiveNone transition-all"
-                                            id={el.name}
-                                            onClick={() =>
-                                                selectFilter(el.name)
-                                            }
-                                        >
-                                            <Image
-                                                src={el.imgUrl}
-                                                layout="fill"
-                                                objectFit="contain"
-                                                className="rounded-lg scale-[1.02]"
-                                            ></Image>
-                                        </button>
-                                    </>
-                                )}
-                            </>
-                        ))}
-                    </div>
+                    // 필터가 적용되었다면
+                    <>
+                        <Swiper
+                            slidesPerView={10}
+                            slidesPerGroup={10}
+                            spaceBetween={10}
+                            cssMode={true}
+                            navigation={true}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 6,
+                                    slidesPerGroup: 6,
+                                    spaceBetween: 6,
+                                },
+                                640: {
+                                    slidesPerView: 6,
+                                    slidesPerGroup: 6,
+                                    spaceBetween: 6,
+                                },
+                                768: {
+                                    slidesPerView: 7,
+                                    slidesPerGroup: 7,
+                                    spaceBetween: 7,
+                                },
+                                1024: {
+                                    slidesPerView: 8,
+                                    slidesPerGroup: 8,
+                                    spaceBetween: 8,
+                                },
+                                1280: {
+                                    slidesPerView: 9,
+                                    slidesPerGroup: 9,
+                                    spaceBetween: 9,
+                                },
+                            }}
+                            modules={[Navigation]}
+                        >
+                            {iconData.map((el) => (
+                                <>
+                                    <a
+                                        key={el.id}
+                                        href="#"
+                                        className="group cursor-pointer"
+                                    >
+                                        <SwiperSlide>
+                                            <button
+                                                key={el.name}
+                                                className={
+                                                    // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
+                                                    SELECTFILTER.includes(
+                                                        el.name
+                                                    )
+                                                        ? "w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all opacity-100"
+                                                        : "w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all opacity-30"
+                                                }
+                                                id={el.name}
+                                                onClick={() =>
+                                                    selectFilter(el.name)
+                                                }
+                                            >
+                                                <Image
+                                                    src={el.imgUrl}
+                                                    layout="fill"
+                                                    objectFit="contain"
+                                                    className="rounded-lg scale-[1.02]"
+                                                ></Image>
+                                            </button>
+                                        </SwiperSlide>
+                                    </a>
+                                </>
+                            ))}
+                        </Swiper>
+                    </>
                 ) : (
                     // 필터가 적용이 안되었다면
                     <>
-                        {/* <Swiper
+                        <Swiper
                             slidesPerView={10}
                             slidesPerGroup={10}
-                            spaceBetween={20}
+                            spaceBetween={10}
+                            cssMode={true}
                             navigation={true}
+                            breakpoints={{
+                                0: {
+                                    slidesPerView: 6,
+                                    slidesPerGroup: 6,
+                                    spaceBetween: 6,
+                                },
+                                640: {
+                                    slidesPerView: 6,
+                                    slidesPerGroup: 6,
+                                    spaceBetween: 6,
+                                },
+                                768: {
+                                    slidesPerView: 7,
+                                    slidesPerGroup: 7,
+                                    spaceBetween: 7,
+                                },
+                                1024: {
+                                    slidesPerView: 8,
+                                    slidesPerGroup: 8,
+                                    spaceBetween: 8,
+                                },
+                                1280: {
+                                    slidesPerView: 9,
+                                    slidesPerGroup: 9,
+                                    spaceBetween: 9,
+                                },
+                            }}
                             modules={[Navigation]}
-                            className="mySwiper-iconFilter"
                         >
                             {iconData.map((el) => (
                                 <a
-                                key={el.id}
-                                href="#"
-                                className="group cursor-pointer"
-                            >
-                                    <SwiperSlide className="!w-auto">
+                                    key={el.id}
+                                    href="#"
+                                    className="group cursor-pointer"
+                                >
+                                    <SwiperSlide>
                                         <button
                                             key={el.name}
-                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all iconActive"
+                                            className="w-[50px] h-[50px] bg-slate-200 rounded-lg relative mx-2 my-2 transition-all"
                                             id={el.name}
                                             onClick={() =>
                                                 selectFilter(el.name)
@@ -197,7 +242,7 @@ const IconFilter = () => {
                                     </SwiperSlide>
                                 </a>
                             ))}
-                        </Swiper> */}
+                        </Swiper>
                     </>
                 )}
             </div>
