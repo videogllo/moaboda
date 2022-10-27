@@ -172,7 +172,7 @@ body {
 }
 
 
-.on {
+.onM {
     position: relative;
     min-width: 110px;
     height: 35px;
@@ -184,7 +184,7 @@ body {
     cursor: pointer;
 }
 
-.off{
+.offM {
     position: relative;
     min-width: 110px;
     height: 35px;

@@ -887,7 +887,7 @@ function Category({props, queryValue}){
     
                     {/* 비디오광고 */}
                     <div className="relative flex justify-center w-full mt-12">
-                        {/* <VideoAd></VideoAd> */}
+                        <VideoAd></VideoAd>
                     </div>
     
                     <div className="relative flex justify-center mt-12 w-full">

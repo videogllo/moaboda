@@ -48,8 +48,8 @@ export default function CategoryM({props, queryValue}){
                     });
                 }
 
-                document.getElementById('플랫폼').classList.remove('on');
-                document.getElementById('플랫폼').classList.add('off');
+                document.getElementById('플랫폼').classList.remove('onM');
+                document.getElementById('플랫폼').classList.add('offM');
 
             } else {
                 filterData.length = 0;
@@ -69,8 +69,8 @@ export default function CategoryM({props, queryValue}){
                         }
                     }
 
-                    document.getElementById('플랫폼').classList.remove('off');
-                    document.getElementById('플랫폼').classList.add('on');
+                    // document.getElementById('플랫폼').classList.remove('offM');
+                    // document.getElementById('플랫폼').classList.add('onM');
 
                 } else if(selectTag.className === 'currentStyle') {
                     setTest(e.target.id);
@@ -103,8 +103,8 @@ export default function CategoryM({props, queryValue}){
                         document.getElementById('전체1').classList.remove('prevStyle');
                         document.getElementById('전체1').classList.add('currentStyle');
 
-                        document.getElementById('플랫폼').classList.remove('on');
-                        document.getElementById('플랫폼').classList.add('off');
+                        document.getElementById('플랫폼').classList.remove('onM');
+                        document.getElementById('플랫폼').classList.add('offM');
                     }
 
                 }
@@ -146,8 +146,10 @@ export default function CategoryM({props, queryValue}){
 
                     let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
 
-                    document.getElementById(parent).classList.remove('off');
-                    document.getElementById(parent).classList.add('on');
+                    // console.log(parent);
+
+                    // document.getElementById(parent).classList.remove('offM');
+                    // document.getElementById(parent).classList.add('onM');
 
                     document.getElementById('cateLi').classList.remove('hidden');
                     document.getElementById('cateLi').classList.add('flex');
@@ -172,9 +174,9 @@ export default function CategoryM({props, queryValue}){
                         document.getElementById('cateLi').classList.remove('flex');
                         document.getElementById('cateLi').classList.add('hidden');
 
-                        let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
-                        document.getElementById(parent).classList.remove('on');
-                        document.getElementById(parent).classList.add('off');
+                        // let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
+                        // document.getElementById(parent).classList.remove('onM');
+                        // document.getElementById(parent).classList.add('offM');
                     }
                 }
     
@@ -199,8 +201,8 @@ export default function CategoryM({props, queryValue}){
                 selectTag.classList.add('prevStyle');
 
                 let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
-                document.getElementById(parent).classList.remove('on');
-                document.getElementById(parent).classList.add('off');
+                document.getElementById(parent).classList.remove('onM');
+                document.getElementById(parent).classList.add('offM');
 
             }
             for(let i = 0; i < platformList.length; i++){
@@ -212,8 +214,8 @@ export default function CategoryM({props, queryValue}){
             document.getElementById('전체1').classList.remove('prevStyle');
             document.getElementById('전체1').classList.add('currentStyle');
 
-            document.getElementById('플랫폼').classList.remove('on');
-            document.getElementById('플랫폼').classList.add('off');
+            // document.getElementById('플랫폼').classList.remove('onM');
+            // document.getElementById('플랫폼').classList.add('offM');
 
             setPlatformList([]);
             setCategoryList([]);
@@ -228,11 +230,12 @@ export default function CategoryM({props, queryValue}){
         const displayBlock = (e) => {
             const targetTag = document.getElementById(e.target.id);
             const targetSub = document.getElementById(e.target.id+'sub');
+            console.log('targetTag' + targetTag);
             console.log(targetSub);
             const subList = ['플랫폼sub', '인기sub', '게임sub', '스포츠sub', '취미sub', '엔터테인먼트sub', '일상sub', '리뷰sub', '크리에이터 성별sub'];
 
-            if(!(targetTag.className.includes('on'))){
-                targetTag.classList.add('on');
+            if(!(targetTag.className.includes('open'))){
+                targetTag.classList.add('open');
                 targetSub.className = 'w-full border-t border-b mt-2';
 
                 for(let i = 0; i < subList.length; i++){
@@ -241,7 +244,7 @@ export default function CategoryM({props, queryValue}){
                     }
                 }
             } else {
-                targetTag.classList.remove('on');
+                targetTag.classList.remove('open');
                 targetSub.className = 'w-full border-t border-b mt-2 hidden';
             }
 
@@ -263,31 +266,31 @@ export default function CategoryM({props, queryValue}){
                                 </div>
                                 <p className="flex cursor-pointer text-sm">초기화</p>
                             </div>
-                            <div className="off" id="플랫폼" onClick={displayBlock}>
+                            <div className="offM" id="플랫폼" onClick={displayBlock}>
                                 플랫폼
                             </div>
-                            <div className="off" id="인기" onClick={displayBlock}>
+                            <div className="offM" id="인기" onClick={displayBlock}>
                                 인기
                             </div>
-                            <div className="off" id="게임" onClick={displayBlock}>
+                            <div className="offM" id="게임" onClick={displayBlock}>
                                 게임
                             </div>
-                            <div className="off" id="스포츠" onClick={displayBlock}>
+                            <div className="offM" id="스포츠" onClick={displayBlock}>
                                 스포츠
                             </div>
-                            <div className="off" id="취미" onClick={displayBlock}>
+                            <div className="offM" id="취미" onClick={displayBlock}>
                                 취미
                             </div>
-                            <div className="off" id="엔터테인먼트" onClick={displayBlock}>
+                            <div className="offM" id="엔터테인먼트" onClick={displayBlock}>
                                 엔터테인먼트
                             </div>
-                            <div className="off" id="일상" onClick={displayBlock}>
+                            <div className="offM" id="일상" onClick={displayBlock}>
                                 일상
                             </div>
-                            <div className="off" id="리뷰" onClick={displayBlock}>
+                            <div className="offM" id="리뷰" onClick={displayBlock}>
                                 리뷰
                             </div>
-                            <div className="off" id="크리에이터 성별" onClick={displayBlock}>
+                            <div className="offM" id="크리에이터 성별" onClick={displayBlock}>
                                 크리에이터 성별
                             </div>
                         </div>

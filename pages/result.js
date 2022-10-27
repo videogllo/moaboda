@@ -12,6 +12,7 @@ import CategoryM from "./components/categoryM";
 import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
 import ResultList from "./components/resultList";
+import BannerLine from "./components/bannerLine";
 
 function Result(props) {
 
@@ -31,9 +32,11 @@ function Result(props) {
                     />
                     <link rel="icon" href="/image/logo/logo_small.svg" />
                 </Head>
+                
 
                 {/* {props.result} */}
                 <div className="bg-slate-900 overflow-hidden">
+                    <BannerLine></BannerLine>
                     <div className="relative flex justify-center pt-7">
                         <div className="w-full md:w-[60%] flex justify-center items-center">
                             <div
