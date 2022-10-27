@@ -152,7 +152,7 @@ body {
 
 .currentStyle {
     color: white;
-    background-color: rgb(8 145 178);;
+    background-color: rgb(8 145 178);
     border-radius: 30px;
     padding-left: 8px;
     padding-right: 8px;
@@ -168,6 +168,31 @@ body {
     border-radius: 30px;
     padding: 2px 8px;
     margin: 0 5px;
+    cursor: pointer;
+}
+
+
+.on {
+    position: relative;
+    min-width: 110px;
+    height: 35px;
+    border: 1px solid rgb(8 145 178);
+    color: rgb(8 145 178);
+    padding: 4px 16px ;
+    border-radius: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.off{
+    position: relative;
+    min-width: 110px;
+    height: 35px;
+    border: 1px solid rgb(148 163 184);
+    color: rgb(148 163 184);
+    padding: 4px 16px;
+    border-radius: 8px;
+    margin-right: 10px;
     cursor: pointer;
 }
 

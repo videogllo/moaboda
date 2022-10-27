@@ -4,13 +4,13 @@ import Image from "next/image";
 import VideoAd from "./videoAd";
 import ResultList from "./resultList";
 import Research from "./research";
-
+import * as filter from "../api/filter";
 
 export default function CategoryM({props, queryValue}){
     // let URLSearch = new URLSearchParams(location.search);
     
-    if(props != undefined && props != ''){
-        const result = props.result[1];
+    if(props.result[0] != undefined && props.result[0] != ''){
+        const result = props.result[0];
 
         const [test, setTest] = useState();
         const [filterData, setFilterData] = useState([]);
@@ -29,19 +29,27 @@ export default function CategoryM({props, queryValue}){
                 document.getElementById('전체1').classList.add('currentStyle');
 
                 for(let i = 0; i < platformList.length; i++){
-                    document.getElementById(platformList[i]).classList.remove('currentStyle');
-                    document.getElementById(platformList[i]).classList.add('prevStyle');
+                    document.getElementById(platformList[i]+'1').classList.remove('currentStyle');
+                    document.getElementById(platformList[i]+'1').classList.add('prevStyle');
                 }
 
                 setPlatformList([]);
                 filterData.length = 0;
 
                 if(categoryList.length > 0){
-                    addSearchFilter({platformList, categoryList}).then(data => {
+                    const filterData = filter.addSearchFilter({platformList, categoryList});
+                    filterData.then(data => {
                         const items = data.results[0];
-                        setFilterData([items]);
+                        if(items.length > 0){
+                            setFilterData([items]);
+                        } else {
+                            setFilterData([]);
+                        }
                     });
                 }
+
+                document.getElementById('플랫폼').classList.remove('on');
+                document.getElementById('플랫폼').classList.add('off');
 
             } else {
                 filterData.length = 0;
@@ -60,6 +68,9 @@ export default function CategoryM({props, queryValue}){
                             filterData.push(result.filter((item) => item.platform === (platformList[i]).replace('1', '')));
                         }
                     }
+
+                    document.getElementById('플랫폼').classList.remove('off');
+                    document.getElementById('플랫폼').classList.add('on');
 
                 } else if(selectTag.className === 'currentStyle') {
                     setTest(e.target.id);
@@ -91,25 +102,33 @@ export default function CategoryM({props, queryValue}){
                         filterData.length = 0;
                         document.getElementById('전체1').classList.remove('prevStyle');
                         document.getElementById('전체1').classList.add('currentStyle');
+
+                        document.getElementById('플랫폼').classList.remove('on');
+                        document.getElementById('플랫폼').classList.add('off');
                     }
 
                 }
 
                 if(categoryList.length > 0){
-                    addSearchFilter({platformList, categoryList}).then(data => {
+                    const filterData = filter.addSearchFilter({platformList, categoryList});
+                    filterData.then(data => {
                         const items = data.results[0];
-                        setFilterData([items]);
+                        if(items.length > 0){
+                            setFilterData([items]);
+                        } else {
+                            setFilterData([]);
+                        }
                     });
                 }
                 
             }
-            const ott = ['NETFLIX1', 'Disney+1', '왓챠1', '웨이브1', '티빙1', '쿠팡플레이1', '프라임 비디오1', '애플TV1'];
+            const ott = ['NETFLIX', 'Disney+', '왓챠', '웨이브', '티빙', '쿠팡플레이', '프라임 비디오', '애플TV'];
             if(platformList.map((item) => ott.includes(item)).includes(true)){
-                document.getElementById('genderDiv').classList.remove('flex')
-                document.getElementById('genderDiv').classList.add('hidden')
+                document.getElementById('크리에이터 성별').classList.remove('flex')
+                document.getElementById('크리에이터 성별').classList.add('hidden')
             } else {
-                document.getElementById('genderDiv').classList.remove('hidden')
-                document.getElementById('genderDiv').classList.add('flex')
+                document.getElementById('크리에이터 성별').classList.remove('hidden')
+                document.getElementById('크리에이터 성별').classList.add('flex')
             }
            
         }
@@ -124,7 +143,12 @@ export default function CategoryM({props, queryValue}){
                     selectTag.classList.remove('prevStyle');
                     selectTag.classList.add('currentStyle');
                     categoryList.push((e.target.id).replace('1', ''));
-    
+
+                    let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
+
+                    document.getElementById(parent).classList.remove('off');
+                    document.getElementById(parent).classList.add('on');
+
                     document.getElementById('cateLi').classList.remove('hidden');
                     document.getElementById('cateLi').classList.add('flex');
     
@@ -147,10 +171,15 @@ export default function CategoryM({props, queryValue}){
     
                         document.getElementById('cateLi').classList.remove('flex');
                         document.getElementById('cateLi').classList.add('hidden');
+
+                        let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
+                        document.getElementById(parent).classList.remove('on');
+                        document.getElementById(parent).classList.add('off');
                     }
                 }
     
-                addSearchFilter({platformList, categoryList}).then(data => {
+                const filterData = filter.addSearchFilter({platformList, categoryList});
+                filterData.then(data => {
                     const items = data.results[0];
                     if(items.length > 0){
                         setFilterData([items]);
@@ -164,8 +193,15 @@ export default function CategoryM({props, queryValue}){
         const reset = (e) => {
             /* category 선택 버튼 모두 원 상태로 복귀 */
             for(let i = 0; i < categoryList.length; i++){
-                document.getElementById(categoryList[i] + '1').classList.remove('currentStyle');
-                document.getElementById(categoryList[i] + '1').classList.add('prevStyle');
+
+                let selectTag = document.getElementById(categoryList[i] + '1');
+                selectTag.classList.remove('currentStyle');
+                selectTag.classList.add('prevStyle');
+
+                let parent = selectTag.parentNode.parentNode.id.replace('sub', '');
+                document.getElementById(parent).classList.remove('on');
+                document.getElementById(parent).classList.add('off');
+
             }
             for(let i = 0; i < platformList.length; i++){
                 console.log(platformList[i] + '1');
@@ -175,8 +211,9 @@ export default function CategoryM({props, queryValue}){
             
             document.getElementById('전체1').classList.remove('prevStyle');
             document.getElementById('전체1').classList.add('currentStyle');
-            document.getElementById('크리에이터 성별sub').classList.remove('flex');
-            document.getElementById('크리에이터 성별sub').classList.add('hidden');
+
+            document.getElementById('플랫폼').classList.remove('on');
+            document.getElementById('플랫폼').classList.add('off');
 
             setPlatformList([]);
             setCategoryList([]);
@@ -225,31 +262,31 @@ export default function CategoryM({props, queryValue}){
                             </div>
                             <p className="flex cursor-pointer text-sm">초기화</p>
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="플랫폼" onClick={displayBlock}>
+                        <div className="off" id="플랫폼" onClick={displayBlock}>
                             플랫폼
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="인기" onClick={displayBlock}>
+                        <div className="off" id="인기" onClick={displayBlock}>
                             인기
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="게임" onClick={displayBlock}>
+                        <div className="off" id="게임" onClick={displayBlock}>
                             게임
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="스포츠" onClick={displayBlock}>
+                        <div className="off" id="스포츠" onClick={displayBlock}>
                             스포츠
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="취미" onClick={displayBlock}>
+                        <div className="off" id="취미" onClick={displayBlock}>
                             취미
                         </div>
-                        <div className="relative min-w-[130px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="엔터테인먼트" onClick={displayBlock}>
+                        <div className="off" id="엔터테인먼트" onClick={displayBlock}>
                             엔터테인먼트
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="일상" onClick={displayBlock}>
+                        <div className="off" id="일상" onClick={displayBlock}>
                             일상
                         </div>
-                        <div className="relative min-w-[110px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 rounded-lg cursor-pointer" id="리뷰" onClick={displayBlock}>
+                        <div className="off" id="리뷰" onClick={displayBlock}>
                             리뷰
                         </div>
-                        <div className="relative min-w-[140px] h-[35px] border border-slate-400 text-slate-400 px-4 py-1 mx-1 mr-5 rounded-lg cursor-pointer" id="크리에이터 성별" onClick={displayBlock}>
+                        <div className="off" id="크리에이터 성별" onClick={displayBlock}>
                             크리에이터 성별
                         </div>
                     </div>
@@ -389,175 +426,4 @@ export default function CategoryM({props, queryValue}){
     } else {
         return('');
     }
-}
-
-export async function addSearchFilter({platformList, categoryList}) {
-
-    console.log('함수 실행 확인!');
-    console.log(platformList);
-    console.log(categoryList);
-
-    const filterResult = [];
-    const twitchIds = [];
-    const videoId = [];
-    const result = [];
-    const results = [];
-
-    console.log('플랫폼 확인 : ' + platformList.includes('Youtube'));
-    console.log('플랫폼 확인 : ' + platformList.includes('Twitch'));
-
-    if(platformList.length === 0 || platformList.includes('Youtube')){
-        for(let i = 0; i < categoryList.length; i++){
-            if(categoryList[i] === '인기'){
-                await fetch(
-                    "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=kr"
-                    // "https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=kr"
-                )
-                .then((response) => response.json())
-                .then((data) => {
-                    let items = data.items;
-        
-                    if (items) {
-                        for (let i = 0; i < items.length; i++) {
-                            result.push({
-                                id: items[i].id, //영상 아이디
-                                title: items[i].snippet.title, //영상 제목
-                                channel: items[i].snippet.channelTitle, //채널명
-                                url: items[i].snippet.thumbnails.medium.url, //썸네일 경로
-                                date: items[i].snippet.publishedAt, //업로드 시간
-                                tags: items[i].snippet.tags, //영상에 등록된 태그
-                                platform: "Youtube", //플랫폼 종류
-                            });
-                        }
-                    }
-                });
-            } else {
-                await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&q=" + categoryList[i])
-                // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + categoryList[i])
-                // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&q=" + categoryList[i])
-                .then((response) => response.json())
-                .then((data) => {
-                    if(data.items != undefined){
-                        let items = data.items;
-                
-                        for(let i = 0; i < items.length; i++){
-                            videoId.push({id: items[i].id.videoId});
-                        }
-                    }
-                });
-            }
-        }
-    
-        for(let i = 0 ; i < videoId.length; i++){
-            await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&part=snippet&id=" + videoId[i].id)
-            // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&id=" + videoId[i].id)
-            // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&part=snippet&id=" + videoId[i].id)
-            .then((response) => response.json())
-            .then((data) => {
-                let items = data.items;
-                let temp = ['', '', '']
-    
-                if(items[0].snippet.tags == undefined){
-                    result.push({id: items[0].id, url: items[0].snippet.thumbnails.medium.url, title: items[0].snippet.title, channel: items[0].snippet.channelTitle, date: items[0].snippet.publishedAt, tags: temp, platform: 'Youtube'});
-                } else {
-                    result.push({id: items[0].id, url: items[0].snippet.thumbnails.medium.url, title: items[0].snippet.title, channel: items[0].snippet.channelTitle, date: items[0].snippet.publishedAt, tags: items[0].snippet.tags, platform: 'Youtube'});
-                }
-            });
-        }
-
-        results.push(result);
-        console.log('youtube result : ', results);
-    }
-
-
-    if(platformList.length === 0 || platformList.includes('Twitch')){
-        /* Twitch */
-        for(let i = 0; i < categoryList.length; i++){
-            if(categoryList[i] === '인기'){
-                await fetch("https://api.twitch.tv/helix/streams?language=ko&first=9", {
-                    method: "get",
-                    headers: {
-                        Authorization: "Bearer oimn0lk86ydwcxvqacucwhzfkq8hjo",
-                        "Client-Id": "g901hktaiu6c4v5dt4vkjoptq5vjtk",
-                    },
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    let items = data.data;
-        
-                    if (items) {
-                        for (let i = 0; i < items.length; i++) {
-                            result.push({id: items[i].id, url: items[i].thumbnail_url.replace('{width}x{height}', '350x200'), title: items[i].title, channel: items[i].user_name, date: items[i].started_at, link: items[i].user_login, platform: 'Twitch'});
-                        }
-                    }
-                });
-            } else {
-                await fetch("https://api.twitch.tv/helix/search/categories?query=" + categoryList[i], {
-                    method: 'get',
-                    headers: {
-                        'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
-                        'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
-                    }
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    if(data.data != undefined){
-                        let items = data.data;
-                        for(let i = 0; i < items.length; i++){
-                            twitchIds.push({id: items[i].id});
-                        }
-                    }
-                });
-            }
-        }
-        
-        if(twitchIds.length < 1){
-            for(let i = 0; i < categoryList.length; i++){
-                await fetch("https://api.twitch.tv/helix/search/channels?query=" + categoryList[i], {
-                method: 'get',
-                headers: {
-                    'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
-                    'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
-                }
-                })
-                .then((response) => response.json())
-                .then((data) => {
-                    if(data.data != undefined){
-                        let items = data.data;
-            
-                        for(let i = 0; i < items.length; i++){
-                            if(items[i].game_id > 0){
-                                twitchIds.push({id: items[i].game_id});
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    
-        for(let i = 0; i < twitchIds.length; i++){
-            await fetch("https://api.twitch.tv/helix/streams?language=ko&first=5&game_id=" + twitchIds[i].id, {
-                method: 'get',
-                headers: {
-                    'Authorization':'Bearer 09z7q6lphf4nrmu5rjfihquov5orow',
-                    'Client-Id':'g901hktaiu6c4v5dt4vkjoptq5vjtk'
-                }
-            })
-            .then((response) => response.json())
-            .then((data) => {
-                let items = data.data;
-                
-                for(let i = 0; i < items.length; i++){
-                    result.push({id: items[i].id, url: items[i].thumbnail_url.replace('{width}x{height}', '350x200'), title: items[i].title, channel: items[i].user_name, date: items[i].started_at, link: items[i].user_login, platform: 'Twitch'});
-                }
-            });
-        }
-    
-        results.push([...new Set(result.map(JSON.stringify))].map(JSON.parse));
-
-        console.log('twitch result : ', results);
-
-    }
-
-    return {results};
 }

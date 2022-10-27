@@ -1,5 +1,4 @@
 /** 카테고리 JSON */
-import { LazyResult } from "postcss";
 import jsonList from "../api/category.json";
 
 export default async function handler(req, res) {
@@ -8,30 +7,12 @@ export default async function handler(req, res) {
     let videoId = [];
     let twitchCateIds = [];
 
-    if(req.query.q != '') {
+    if((req.query.q).length > 0) {
 
-        if(jsonList.태그[0].게임.indexOf(req.query.q) >= 0 || jsonList.대분류[0].게임.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"게임"});
-        } else if(jsonList.태그[0].스포츠.indexOf(req.query.q) >= 0 || jsonList.대분류[0].스포츠.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"스포츠"});
-        } else if(jsonList.태그[0].영화.indexOf(req.query.q) >= 0 || jsonList.대분류[0].영화.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"영화"});
-        } else if(jsonList.태그[0].음악.indexOf(req.query.q) >= 0 || jsonList.대분류[0].음악.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"음악"});
-        } else if(jsonList.태그[0].일상.indexOf(req.query.q) >= 0 || jsonList.대분류[0].일상.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"일상"});
-        } else if(jsonList.태그[0].크리에이티브.indexOf(req.query.q) >= 0 || jsonList.대분류[0].크리에이티브.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"크리에이티브"});
-        } else if(jsonList.태그[0].학습.indexOf(req.query.q) >= 0 || jsonList.대분류[0].학습.indexOf(req.query.q) >= 0){
-            results.push({mainCategory:"학습"});
-        } else {
-            results.push({mainCategory:""});
-        }
-    
         /* Youtube */
-        await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&q=" + req.query.q)
+        // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&q=" + req.query.q)
         // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&q=" + req.query.q)
-        // await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&q=" + req.query.q)
+        await fetch("https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&q=" + req.query.q)
         .then((response) => response.json())
         .then((data) => {
             if(data.items != undefined){
@@ -44,9 +25,9 @@ export default async function handler(req, res) {
         });
     
         for(let i = 0 ; i < videoId.length; i++){
-            await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&part=snippet&id=" + videoId[i].id)
+            // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c&part=snippet&id=" + videoId[i].id)
             // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18&part=snippet&id=" + videoId[i].id)
-            // await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&part=snippet&id=" + videoId[i].id)
+            await fetch("https://www.googleapis.com/youtube/v3/videos?key=AIzaSyC11utgqze7bXLRbzE-xsG2KJCg8euCD18&part=snippet&id=" + videoId[i].id)
             .then((response) => response.json())
             .then((data) => {
                 let items = data.items;
@@ -59,7 +40,7 @@ export default async function handler(req, res) {
                 }
             });
         }
-    
+
         /* Twitch */
         await fetch("https://api.twitch.tv/helix/search/categories?query=" + req.query.q, {
             method: 'get',
@@ -120,6 +101,6 @@ export default async function handler(req, res) {
         }
         
         results.push([...new Set(result.map(JSON.stringify))].map(JSON.parse));
-        res.send({result: results});
+        res.send({result: results });
     }
 }
