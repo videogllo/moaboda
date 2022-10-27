@@ -12,7 +12,6 @@ const Footer = () => {
                         비데오글로(Videogllo)
                     </h2>
                     <div className="text-xs md:text:sm">
-                        <p>대표 : 김종훈</p>
                         <p>
                             주소 : 서울특별시 강서구 마곡중앙6로 11 315호
                             비데오글로

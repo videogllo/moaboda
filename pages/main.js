@@ -10,7 +10,16 @@ import SideMenu from "./components/sideMenu";
 
 //firestore test
 import { db } from "../firebase";
-import { collection, doc, addDoc, setDoc, deleteDoc, deleteField, updateDoc,deleteData  } from "firebase/firestore";
+import {
+    collection,
+    doc,
+    addDoc,
+    setDoc,
+    deleteDoc,
+    deleteField,
+    updateDoc,
+    deleteData,
+} from "firebase/firestore";
 
 const Main = () => {
     const addData = async () => {
@@ -27,7 +36,7 @@ const Main = () => {
 
     const deleteData = async () => {
         await deleteDoc(doc(db, "users2", "1243"));
-    }
+    };
 
     return (
         <>
