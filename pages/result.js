@@ -13,15 +13,19 @@ import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
 import ResultList from "./components/resultList";
 import BannerLine from "./components/bannerLine";
+import CategoryCopy from "./components/category_copy"; //dongseob 작업중
 
 function Result(props) {
-
     console.log(props);
-    if ((props.result[0]) != undefined && (props.result[0]) != null && (props.result[0]).length > 0) {
+    if (
+        props.result[0] != undefined &&
+        props.result[0] != null &&
+        props.result[0].length > 0
+    ) {
         const locationMain = (e) => {
             location.href = process.env.NEXT_PUBLIC_API_URL;
         };
-        
+
         return (
             <>
                 <Head>
@@ -32,7 +36,6 @@ function Result(props) {
                     />
                     <link rel="icon" href="/image/logo/logo_small.svg" />
                 </Head>
-                
 
                 {/* {props.result} */}
                 <div className="bg-slate-900 overflow-hidden">
@@ -69,18 +72,27 @@ function Result(props) {
                             <BannerMain></BannerMain>
                         </div>
                     </div>
-                    
+
+                    {/* dongseob 작업중 */}
+                    {/* <div className="flex justify-center">
+                        <CategoryCopy></CategoryCopy>
+                    </div> */}
+
                     {/* 카테고리 웹 */}
                     <div className="relative hidden md:flex md:flex-col md:justify-center md:py-7">
-                        {
-                            props.result[0].length > 0 && props != undefined ? <Category props={props}></Category> : ''
-                        }
+                        {props.result[0].length > 0 && props != undefined ? (
+                            <Category props={props}></Category>
+                        ) : (
+                            ""
+                        )}
                     </div>
                     {/* 카테고리 모바일 */}
                     <div className="relative flex flex-col justify-center py-7 md:hidden">
-                        {
-                            props.result[0].length > 0 && props != undefined ? <CategoryM props={props} ></CategoryM> : ''
-                        }
+                        {props.result[0].length > 0 && props != undefined ? (
+                            <CategoryM props={props}></CategoryM>
+                        ) : (
+                            ""
+                        )}
                     </div>
 
                     {/* <div className="relative flex justify-center py-7">
@@ -144,15 +156,15 @@ function Result(props) {
             </>
         );
     }
-};
+}
 
 export async function getServerSideProps(context) {
     const res = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + (context.query.q)
+        process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q
     );
     const data = await res.json();
 
-    return { props: data};
+    return { props: data };
 }
 
 export default Result;
