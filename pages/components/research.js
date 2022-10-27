@@ -9,13 +9,11 @@ const Research = ({queryValue}) => {
     const router = useRouter();
     const inputRef = useRef();
     // const [isLoading, setIsLoading] = useState(false);
-
     
-
-    const search = async (e) => {
+    const research = async (e) => {
         e.preventDefault();
         
-        if(document.getElementById('searchInput').value == null || document.getElementById('searchInput').value == ''){
+        if(document.getElementById('researchInput').value == null || document.getElementById('researchInput').value == ''){
             alert('검색어를 입력해주세요!');
             return false;
         }
@@ -31,7 +29,7 @@ const Research = ({queryValue}) => {
 
     return (
         <>
-            <form onSubmit={search}>
+            <form onSubmit={research}>
                 <div>
                     <div className="flex rounded-md shadow-sm">
                         <div className="relative flex flex-grow items-stretch focus-within:z-10">
@@ -42,7 +40,7 @@ const Research = ({queryValue}) => {
                             </label>
                             <input
                                 type="text"
-                                id="searchInput"
+                                id="researchInput"
                                 name="text"
                                 ref={inputRef}
                                 className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-700 placeholder:text-slate-200 text-cyan-300 pl-10 text-sm md:text-base lg:text-lg py-2 px-6"

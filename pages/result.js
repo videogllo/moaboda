@@ -13,21 +13,14 @@ import VideoAd from "./components/videoAd";
 import Footer from "./components/footer";
 import ResultList from "./components/resultList";
 
-const Result = (props) => {
-    const locationMain = (e) => {
-        location.href = process.env.NEXT_PUBLIC_API_URL;
-    };
+function Result(props) {
 
-    function getParameterByName(name) {
-        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-            results = regex.exec(location.search);
-        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-    }
-
-    let queryValue = getParameterByName('q');
-
-    if (props != undefined && props != null && props.result != "없음") {
+    console.log(props);
+    if ((props.result[0]) != undefined && (props.result[0]) != null && (props.result[0]).length > 0) {
+        const locationMain = (e) => {
+            location.href = process.env.NEXT_PUBLIC_API_URL;
+        };
+        
         return (
             <>
                 <Head>
@@ -77,13 +70,13 @@ const Result = (props) => {
                     {/* 카테고리 웹 */}
                     <div className="relative hidden md:flex md:flex-col md:justify-center md:py-7">
                         {
-                            props.result.length > 0 && props != undefined ? <Category props={props} queryValue={queryValue}></Category> : ''
+                            props.result[0].length > 0 && props != undefined ? <Category props={props}></Category> : ''
                         }
                     </div>
                     {/* 카테고리 모바일 */}
                     <div className="relative flex flex-col justify-center py-7 md:hidden">
                         {
-                            props.result.length > 0 && props != undefined ? <CategoryM props={props} queryValue={queryValue}></CategoryM> : ''
+                            props.result[0].length > 0 && props != undefined ? <CategoryM props={props} ></CategoryM> : ''
                         }
                     </div>
 
@@ -139,7 +132,7 @@ const Result = (props) => {
                         </div>
                     </div>
                     <div className="relative flex justify-center py-7">
-                        <VideoAd></VideoAd>
+                        {/* <VideoAd></VideoAd> */}
                     </div>
                     <div className="relative flex justify-center"></div>
                     <div className="h-40"></div>
@@ -152,12 +145,11 @@ const Result = (props) => {
 
 export async function getServerSideProps(context) {
     const res = await fetch(
-        process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + context.query.q
+        process.env.NEXT_PUBLIC_API_URL + `api/result?q=` + (context.query.q)
     );
-    console.log('res 확인~!');
-    console.log(res);
     const data = await res.json();
-    return { props: data };
+
+    return { props: data};
 }
 
 export default Result;
