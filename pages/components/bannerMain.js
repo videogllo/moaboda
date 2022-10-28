@@ -76,7 +76,7 @@ const BannerMain = () => {
                                         window.open(el.tarUrl);
                                     }}
                                 >
-                                    <div className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800/40">
+                                    <div className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800/40 rounded-lg">
                                         <Image
                                             src={el.imgUrl}
                                             alt={el.title}

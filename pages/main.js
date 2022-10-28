@@ -43,15 +43,10 @@ const Main = () => {
         <>
             {/* <div className="text-3xl" onClick={deleteData}>button</div> */}
 
-            <div className="w-full mx-auto sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
                 <Header></Header>
-            </div>
-
-            <div className="w-full mx-auto sm:w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%]">
                 <BannerMain></BannerMain>
                 <IconFilter></IconFilter>
-            </div>
-
+            
             <MainList></MainList>
         </>
     );

@@ -23,22 +23,11 @@ export default function Home() {
             <div className="flex flex-col w-full">
                 <BannerLine></BannerLine>
 
-                <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[75%] 2xl:w-[70%] mx-auto flex-1 p-3 relative">
+                <div className="w-full sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3">
                     <Main></Main>
                     <Footer></Footer>
                 </div>
-                
             </div>
         </div>
     );
 }
-
-// export const getServerSideProps = async () => {
-//     const res = await fetch(process.env.NEXT_PUBLIC_API_URL + `api/main`);
-
-//     const data = await res.json();
-
-//     console.log("client에서 받은 데이터 : ", data);
-
-//     return { props: data };
-// };
