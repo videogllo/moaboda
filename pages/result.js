@@ -3,8 +3,11 @@ import Head from "next/head";
 
 //component
 import BannerLine from "./components/bannerLine";
-import Header from "./components/header";
+import HeaderResult from "./components/headerResult";
 import BannerMain from "./components/bannerMain";
+import Category from "./components/category";
+import BannerSub from "./components/bannerSub";
+import ResultList from "./components/resultList";
 
 export default function Result() {
     return (
@@ -22,8 +25,11 @@ export default function Result() {
                 <BannerLine></BannerLine>
 
                 <div className="w-full sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3">
-                    <Header></Header>
+                    <HeaderResult></HeaderResult>
                     <BannerMain></BannerMain>
+                    <Category></Category>
+                    <BannerSub></BannerSub>
+                    <ResultList></ResultList>
                 </div>
             </div>
         </div>

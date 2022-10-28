@@ -43,11 +43,7 @@ const Main = () => {
         <>
             {/* <div className="text-3xl" onClick={deleteData}>button</div> */}
 
-                <Header></Header>
-                <BannerMain></BannerMain>
-                <IconFilter></IconFilter>
-            
-            <MainList></MainList>
+                
         </>
     );
 };

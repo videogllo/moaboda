@@ -1,12 +1,13 @@
 //functional
 import Head from "next/head";
 
-//default page
-import Main from "./main";
-
 //component
-import Footer from "./components/footer"
+import Footer from "./components/footer";
 import BannerLine from "./components/bannerLine";
+import MainList from "./components/mainList";
+import BannerMain from "./components/bannerMain";
+import IconFilter from "./components/iconFilter";
+import Header from "./components/header";
 
 export default function Home() {
     return (
@@ -24,7 +25,10 @@ export default function Home() {
                 <BannerLine></BannerLine>
 
                 <div className="w-full sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3">
-                    <Main></Main>
+                    <Header></Header>
+                    <BannerMain></BannerMain>
+                    <IconFilter></IconFilter>
+                    <MainList></MainList>
                     <Footer></Footer>
                 </div>
             </div>
