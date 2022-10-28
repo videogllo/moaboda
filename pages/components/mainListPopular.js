@@ -181,12 +181,20 @@ const MainListPopular = () => {
                                                                 />
                                                             </div>
                                                             {/* 데이터 중 playTime이 존재 하다면 출력 */}
-                                                            {el.playTime !==
-                                                                undefined ||
-                                                            null ? (
+                                                            {el.playTime !== undefined ? (
                                                                 <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
                                                                     <span>
                                                                         {/* 배열의 첫번째 값을 제외한 값 출력 */}
+                                                                        {el.playTime.slice(1).map((el,i) => (
+                                                                            <>
+                                                                                {/* 첫번째 값을 제외한 값의 앞에 ":" 추가 */}
+                                                                                {i !== 0 ? (
+                                                                                    <span key={el}>&#58;{el}</span>
+                                                                                ) : (
+                                                                                    <span key={i}>{el}</span>
+                                                                                )}
+                                                                            </>
+                                                                        ))}
                                                                     </span>
                                                                 </div>
                                                             ) : null}

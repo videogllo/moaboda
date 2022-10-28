@@ -23,7 +23,7 @@ export default async function handler(req, res) {
                         uploadDate: items[i].snippet.publishedAt, //업로드 시간
                         imgUrl: items[i].snippet.thumbnails.medium.url, //썸네일 경로
                         tag: items[i].snippet.tags, //영상에 등록된 태그
-                        playTime: Common.Iso8601_to_datetime(items[i].contentDetails.duration), //재생시간
+                        // playTime: items[i].contentDetails, //재생시간
                         viewCount: items[i].statistics.viewCount, //총 재생수
                         hit: items[i].statistics.viewCount, //videoowl의 인기도 점수
                     });
