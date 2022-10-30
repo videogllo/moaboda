@@ -17,8 +17,6 @@ const SearchForm = () => {
             alert('검색어를 입력해주세요!');
             return false;
         }
-        
-        // setIsLoading(true);
 
         router.push({
             pathname: "/result",
@@ -50,7 +48,7 @@ const SearchForm = () => {
                             type="submit"
                             className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md bg-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-800 focus:outline-none transition-all"
                         >
-                            <MagnifyingGlassIcon className="h-4 w-4"></MagnifyingGlassIcon>
+                            <MagnifyingGlassIcon className="h-4 w-4 md:h-5 md:w-5"></MagnifyingGlassIcon>
                         </button>
                     </div>
                 </div>

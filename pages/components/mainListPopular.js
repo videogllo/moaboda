@@ -46,7 +46,7 @@ const MainListPopular = () => {
 
     return (
         <>
-            <div className="flex flex-col gap-6 mt-12">
+            <div className="mt-8 md:mt-12 flex flex-col gap-6">
                 <div className="bg-slate-700 px-4 py-6 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline flex pb-4">
@@ -93,7 +93,7 @@ const MainListPopular = () => {
                         {data === null ? (
                             <Loading></Loading>
                         ) : (
-                            <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+                            <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                                 {/* 필터 활성화 */}
                                 {SELECTFILTER.length > 0 ? (
                                     <>

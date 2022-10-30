@@ -34,12 +34,12 @@ const Category = () => {
         // setCategoryState(((prev) => [...prev.main]))
     }
 
-    useEffect(() => {
-        console.log(categoryState)
-    }, [categoryState])
+    // useEffect(() => {
+    //     console.log(categoryState)
+    // }, [categoryState])
 
     return (
-        <div className="mt-12 w-full">
+        <div className="mt-8 md:mt-12 w-full">
             <div className="w-full mx-auto">
                 <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5">
                     <table className="min-w-full divide-y divide-slate-500 border border-slate-500">

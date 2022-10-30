@@ -44,7 +44,7 @@ const IconFilter = () => {
     };
 
     return (
-        <div className="mt-12 mx-auto">
+        <div className="mt-8 md:mt-12 mx-auto">
             <div className="flex items-center">
                 <div className="truncate">
                     {SELECTFILTER.length > 0 ? (
@@ -110,29 +110,29 @@ const IconFilter = () => {
                             navigation={true}
                             breakpoints={{
                                 0: {
-                                    slidesPerView: 6,
-                                    slidesPerGroup: 6,
-                                    spaceBetween: 6,
-                                },
-                                640: {
-                                    slidesPerView: 6,
-                                    slidesPerGroup: 6,
-                                    spaceBetween: 6,
-                                },
-                                768: {
                                     slidesPerView: 7,
                                     slidesPerGroup: 7,
                                     spaceBetween: 7,
                                 },
-                                1024: {
+                                640: {
                                     slidesPerView: 8,
                                     slidesPerGroup: 8,
                                     spaceBetween: 8,
                                 },
-                                1280: {
+                                768: {
                                     slidesPerView: 9,
                                     slidesPerGroup: 9,
                                     spaceBetween: 9,
+                                },
+                                1024: {
+                                    slidesPerView: 10,
+                                    slidesPerGroup: 10,
+                                    spaceBetween: 10,
+                                },
+                                1280: {
+                                    slidesPerView: 11,
+                                    slidesPerGroup: 11,
+                                    spaceBetween: 11,
                                 },
                             }}
                             modules={[Navigation]}
@@ -144,8 +144,8 @@ const IconFilter = () => {
                                             className={
                                                 // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
                                                 SELECTFILTER.includes(el.name)
-                                                    ? "border-g w-10 sm:w-12 md:w-14 lg:w-16 xl:w-18 h-10 sm:h-12 md:h-14 lg:h-16 xl:w-18 rounded-lg relative mx-2 my-2 transition-all opacity-100"
-                                                    : "border-g w-10 sm:w-12 md:w-14 lg:w-16 xl:w-18 h-10 sm:h-12 md:h-14 lg:h-16 xl:w-18 rounded-lg relative mx-2 my-2 transition-all opacity-30"
+                                                    ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative mx-2 my-2 transition-all opacity-100"
+                                                    : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative mx-2 my-2 transition-all opacity-30"
                                             }
                                             id={el.name}
                                             onClick={() =>
@@ -175,29 +175,29 @@ const IconFilter = () => {
                             navigation={true}
                             breakpoints={{
                                 0: {
-                                    slidesPerView: 6,
-                                    slidesPerGroup: 6,
-                                    spaceBetween: 6,
-                                },
-                                640: {
-                                    slidesPerView: 6,
-                                    slidesPerGroup: 6,
-                                    spaceBetween: 6,
-                                },
-                                768: {
                                     slidesPerView: 7,
                                     slidesPerGroup: 7,
                                     spaceBetween: 7,
                                 },
-                                1024: {
+                                640: {
                                     slidesPerView: 8,
                                     slidesPerGroup: 8,
                                     spaceBetween: 8,
                                 },
-                                1280: {
+                                768: {
                                     slidesPerView: 9,
                                     slidesPerGroup: 9,
                                     spaceBetween: 9,
+                                },
+                                1024: {
+                                    slidesPerView: 10,
+                                    slidesPerGroup: 10,
+                                    spaceBetween: 10,
+                                },
+                                1280: {
+                                    slidesPerView: 11,
+                                    slidesPerGroup: 11,
+                                    spaceBetween: 11,
                                 },
                             }}
                             modules={[Navigation]}
@@ -205,7 +205,7 @@ const IconFilter = () => {
                             {iconData.map((el) => (
                                 <SwiperSlide key={el.name}>
                                     <button
-                                        className="border-g w-10 sm:w-12 md:w-14 lg:w-16 xl:w-18 h-10 sm:h-12 md:h-14 lg:h-16 xl:w-18 relative mx-2 my-2 transition-all"
+                                        className="border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 relative mx-2 my-2 transition-all"
                                         id={el.name}
                                         onClick={() => selectFilter(el.name)}
                                     >

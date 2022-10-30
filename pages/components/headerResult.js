@@ -3,6 +3,10 @@ import LogoSmall from "./logoSmall";
 import UserForm from "./userForm";
 import SearchForm from "./searchForm";
 
+/**
+ * 결과 페이지에서는 헤더의 구조가 다르므로 따로 분리
+ * @returns 
+ */
 const Header = () => {
     return (
         <div className="flex flex-col mx-2">

@@ -21,7 +21,7 @@ export default async function handler(req, res) {
                         title: items[i].snippet.title, //영상 제목
                         channelName: items[i].snippet.channelTitle, //채널명
                         uploadDate: items[i].snippet.publishedAt, //업로드 시간
-                        imgUrl: items[i].snippet.thumbnails.medium.url, //썸네일 경로
+                        imgUrl: items[i].snippet.thumbnails.high.url, //썸네일 경로
                         tag: items[i].snippet.tags, //영상에 등록된 태그
                         // playTime: items[i].contentDetails, //재생시간
                         viewCount: items[i].statistics.viewCount, //총 재생수

@@ -44,7 +44,7 @@ const MainListNews = () => {
     const [data, setData] = useState("test"); //임시로 데이터 있게함 => default null로 변경할 것
 
     return (
-        <div className="mt-12">
+        <div className="mt-8 md:mt-12">
             {/* <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
                 영상 소식
             </h1> */}

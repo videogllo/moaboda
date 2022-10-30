@@ -46,7 +46,7 @@ const data = [
 
 const BannerMain = () => {
     return (
-        <div className="mt-12">
+        <div className="mt-8 md:mt-12">
             <div className="w-full rounded-lg">
                 {data == null ? (
                     <Loading></Loading>
@@ -75,6 +75,7 @@ const BannerMain = () => {
                                     onClick={() => {
                                         window.open(el.tarUrl);
                                     }}
+                                    className="cursor-pointer"
                                 >
                                     <div className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800/40 rounded-lg">
                                         <Image

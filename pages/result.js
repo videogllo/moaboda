@@ -1,5 +1,6 @@
 //functional
 import Head from "next/head";
+import axios from "axios";
 
 //component
 import BannerLine from "./components/bannerLine";
@@ -9,7 +10,7 @@ import Category from "./components/category";
 import BannerSub from "./components/bannerSub";
 import ResultList from "./components/resultList";
 
-export default function Result() {
+const Result = (props) => {
     return (
         <div className="bg-slate-900 overflow-hidden flex">
             <Head>
@@ -24,14 +25,29 @@ export default function Result() {
             <div className="flex flex-col w-full">
                 <BannerLine></BannerLine>
 
-                <div className="w-full sm:w-[80%] md:w-[75%] lg:w-[70%] xl:w-[65%] 2xl:w-[60%] mx-auto flex-1 p-3">
+                {/* asd: {props.map(el => (<div key={el.id}>{el.name}</div>))} */}
+
+                <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] mx-auto flex-1 p-3">
                     <HeaderResult></HeaderResult>
                     <BannerMain></BannerMain>
                     <Category></Category>
                     <BannerSub></BannerSub>
-                    <ResultList></ResultList>
+                    <ResultList result={props.result}></ResultList>
                 </div>
             </div>
         </div>
     );
+};
+
+export async function getServerSideProps(context) {
+    const res = await axios.get(
+        process.env.NEXT_PUBLIC_API_URL + "api/result?q=" + context.query.q
+    );
+    const result = res.data;
+
+    console.log("client: ", result)
+
+    return { props: { result } };
 }
+
+export default Result;
