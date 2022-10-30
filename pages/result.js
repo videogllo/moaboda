@@ -9,8 +9,9 @@ import BannerMain from "./components/bannerMain";
 import Category from "./components/category";
 import BannerSub from "./components/bannerSub";
 import ResultList from "./components/resultList";
+import Loading from "./components/loading";
 
-const Result = (props) => {
+const Result = () => {
     return (
         <div className="bg-slate-900 overflow-hidden flex">
             <Head>
@@ -32,22 +33,22 @@ const Result = (props) => {
                     <BannerMain></BannerMain>
                     <Category></Category>
                     <BannerSub></BannerSub>
-                    <ResultList result={props.result}></ResultList>
+                    <ResultList></ResultList>
                 </div>
             </div>
         </div>
     );
 };
 
-export async function getServerSideProps(context) {
-    const res = await axios.get(
-        process.env.NEXT_PUBLIC_API_URL + "api/result?q=" + context.query.q
-    );
-    const result = res.data;
+// export async function getServerSideProps(context) {
+//     const res = await axios.get(
+//         process.env.NEXT_PUBLIC_API_URL + "api/result?q=" + context.query.q
+//     );
+//     const result = res.data;
 
-    console.log("client: ", result)
+//     // console.log("client: ", result)
 
-    return { props: { result } };
-}
+//     return { props: { result } };
+// }
 
 export default Result;

@@ -10,7 +10,7 @@ import { SELECT_FILTER } from "../../store/atom";
 import { useRecoilState } from "recoil";
 
 const MainListPopular = () => {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState([]);
     const [SELECTFILTER] = useRecoilState(SELECT_FILTER);
 
     useEffect(() => {
