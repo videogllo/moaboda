@@ -10,8 +10,8 @@ export default async function handler(req, res) {
             part:"snippet",
             maxResults:5, //기본5개 최대50개
             type:"video",
-            key:"AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c", //api key
-            // key:"AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18", //api key2
+            // key:"AIzaSyAvAXu6DTBlvCfY2qFTC6nb1hMEhcX1S_c", //api key
+            key:"AIzaSyBLizbrwv_ltQLAD0Y4ovNP9HR1855hj18", //api key2
             q:req.query.q, //사용자 검색어
         }
     }).then(res => {
@@ -25,6 +25,9 @@ export default async function handler(req, res) {
                 imgUrl: items[i].snippet.thumbnails.high.url, //썸네일 경로
             })
         }
+    }).catch(e => {
+        console.log(e);
+        result.push({id:1, title:"title", href:"www.naver.com", imgUrl:"http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner2.jpg&w=1920&q=75"})
     })
 
     // console.log("server : ", result)

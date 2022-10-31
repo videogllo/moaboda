@@ -1,8 +1,20 @@
 //functional
 import Image from "next/image";
 import Link from "next/link";
+// import { useRouter } from "next/router";
 
 const Footer = () => {
+    // const router = useRouter();
+
+    // const fnDocument = (val) => {
+    //     if (val === "service") {
+    //         router.push({
+    //             pathname: "/companyDocument",
+    //             type: "service",
+    //         });
+    //     }
+    // };
+
     return (
         <footer className="mt-12 mb-6">
             <div className="my-6 w-full border border-slate-600 rounded-lg shadow-lg"></div>
@@ -21,15 +33,26 @@ const Footer = () => {
                         <p>제휴 문의 : videogllo@videogllo.com</p>
                     </div>
                     <div className="flex mt-2 text-xs md:text:sm gap-4">
-                        <p className="text-cyan-500 hover:text-cyan-700 transition-all cursor-pointer">
-                            이용약관
-                        </p>
-                        <p className="text-cyan-500 hover:text-cyan-700 transition-all cursor-pointer">
-                            개인정보 처리 방침
-                        </p>
+                        <Link href="../doc/service">
+                            <p
+                                className="text-cyan-500 hover:text-cyan-700 transition-all cursor-pointer"
+                                
+                            >
+                                이용약관
+                            </p>
+                        </Link>
+                        <Link href="../doc/policy">
+                            
+                            <p
+                                className="text-cyan-500 hover:text-cyan-700 transition-all cursor-pointer"
+                                
+                            >
+                                개인정보 처리 방침
+                            </p>
+                        </Link>
                     </div>
                 </div>
-                <Link href="https:www.videogllo.com" passHref>
+                <Link href="https://www.videogllo.com" passHref>
                     <a target="_blank" rel="noopener noreferrer">
                         <div className="w-36 h-14 relative ml-auto">
                             <Image

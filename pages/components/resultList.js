@@ -52,7 +52,7 @@ const ResultList = () => {
                             key={el.id}
                             className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                         >
-                            <div className="w-40 h-24 sm:w-48 sm:h-32 md:w-56 md:h-40 relative bg-red-400">
+                            <div className="w-40 max-w-52 relative flex basis-1/4">
                                 {/* <Image
                     src="https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png"
                     layout="fill"
@@ -60,15 +60,15 @@ const ResultList = () => {
                     width={100}
                     height={100}
                 ></Image> */}
-                                <a href={el.href} target="_blank">
+                                {/* <a href={el.href} target="_blank"> */}
                                     <img
                                         src={el.imgUrl}
                                         alt={el.title}
-                                        className="h-full w-full object-cover rounded-md"
+                                        className="h-full w-full object-contain object-center rounded-md"
                                     />
-                                </a>
+                                {/* </a> */}
                             </div>
-                            <div>
+                            <div className="flex flex-col basis-3/4 gap-1">
                                 <div className="flex gap-2 items-center">
                                     <div className="h-8 w-8 relative">
                                         <Image
@@ -78,7 +78,7 @@ const ResultList = () => {
                                             className="rounded-md"
                                         ></Image>
                                     </div>
-                                    <div className="text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
                                         {el.title}
                                     </div>
                                 </div>
