@@ -3,7 +3,7 @@ import Image from "next/image";
 
 //statement
 import { useRecoilState } from "recoil";
-import { SELECT_FILTER } from "../../store/atom";
+import { SELECT_ICON_FILTER } from "../../store/atom";
 
 //swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -31,15 +31,15 @@ const iconData = [
 ];
 
 const IconFilter = () => {
-    const [SELECTFILTER, setSELECTFILTER] = useRecoilState(SELECT_FILTER);
+    const [SELECTICONFILTER, setSELECTICONFILTER] = useRecoilState(SELECT_ICON_FILTER);
 
     const selectFilter = (name) => {
-        if (SELECTFILTER.includes(name)) {
+        if (SELECTICONFILTER.includes(name)) {
             //중복된다면 배열에서 제거
-            setSELECTFILTER(SELECTFILTER.filter((el) => el !== name));
+            setSELECTICONFILTER(SELECTICONFILTER.filter((el) => el !== name));
         } else {
             //중복안되면 배열에 추가
-            setSELECTFILTER((prev) => [...prev, name]);
+            setSELECTICONFILTER((prev) => [...prev, name]);
         }
     };
 
@@ -47,10 +47,10 @@ const IconFilter = () => {
         <div className="mt-8 md:mt-12 mx-auto">
             <div className="flex items-center">
                 <div className="truncate">
-                    {SELECTFILTER.length > 0 ? (
+                    {SELECTICONFILTER.length > 0 ? (
                         <>
                             {/* 필터 2개 이상 적용 */}
-                            {SELECTFILTER.length > 1 ? (
+                            {SELECTICONFILTER.length > 1 ? (
                                 <div className="flex truncate">
                                     <span className="text-xl xl:text-2xl font-bold tracking-tight">
                                         &nbsp;선택된 플랫폼에 대한 미디어 컨텐츠
@@ -61,7 +61,7 @@ const IconFilter = () => {
                                 <>
                                     {iconData
                                         .filter((el) =>
-                                            SELECTFILTER.some(
+                                        SELECTICONFILTER.some(
                                                 (el2) => el.name === el2
                                             )
                                         )
@@ -90,7 +90,7 @@ const IconFilter = () => {
                     <a
                         href="#"
                         className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all whitespace-nowrap ml-4"
-                        onClick={() => setSELECTFILTER([])}
+                        onClick={() => setSELECTICONFILTER([])}
                     >
                         초기화
                         <span aria-hidden="true">&nbsp;&#8635;</span>
@@ -99,7 +99,7 @@ const IconFilter = () => {
             </div>
 
             <div className="mt-2 w-full">
-                {SELECTFILTER.length > 0 ? (
+                {SELECTICONFILTER.length > 0 ? (
                     // 필터가 적용되었다면
                     <>
                         <Swiper
@@ -143,7 +143,7 @@ const IconFilter = () => {
                                         <button
                                             className={
                                                 // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
-                                                SELECTFILTER.includes(el.name)
+                                                SELECTICONFILTER.includes(el.name)
                                                     ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative mx-2 my-2 transition-all opacity-100"
                                                     : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative mx-2 my-2 transition-all opacity-30"
                                             }

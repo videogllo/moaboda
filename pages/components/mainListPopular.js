@@ -1,17 +1,18 @@
 //funcional
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import * as common from "../../js/common";
 
 //component
 import Loading from "./loading";
 
 //recoil
-import { SELECT_FILTER } from "../../store/atom";
+import { SELECT_ICON_FILTER } from "../../store/atom";
 import { useRecoilState } from "recoil";
 
 const MainListPopular = () => {
     const [data, setData] = useState([]);
-    const [SELECTFILTER] = useRecoilState(SELECT_FILTER);
+    const [SELECTICONFILTER] = useRecoilState(SELECT_ICON_FILTER);
 
     useEffect(() => {
         const fnMainList = async () => {
@@ -25,34 +26,15 @@ const MainListPopular = () => {
         fnMainList();
     }, []);
 
-    /**
-     * 플랫폼별로 사용하는 아이콘이 달라서 분기 함수
-     * @param val
-     * @returns
-     */
-    const dynamicIcon = (val) => {
-        let returnValue = "";
-
-        switch (val) {
-            case "Youtube":
-                returnValue = "/image/icon/youtube.png";
-                break;
-            case "Twitch":
-                returnValue = "/image/icon/twitch.png";
-                break;
-        }
-        return returnValue;
-    };
-
     return (
         <>
             <div className="mt-8 md:mt-12 flex flex-col gap-6">
                 <div className="bg-slate-700 px-4 py-6 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline flex pb-4">
-                            {SELECTFILTER.length > 0 ? (
+                            {SELECTICONFILTER.length > 0 ? (
                                 <>
-                                    {SELECTFILTER.map((el, i) => (
+                                    {SELECTICONFILTER.map((el, i) => (
                                         <>
                                             {i > 0 ? (
                                                 <span
@@ -95,11 +77,11 @@ const MainListPopular = () => {
                         ) : (
                             <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                                 {/* 필터 활성화 */}
-                                {SELECTFILTER.length > 0 ? (
+                                {SELECTICONFILTER.length > 0 ? (
                                     <>
                                         {data
                                             .filter((el) =>
-                                                SELECTFILTER.some(
+                                            SELECTICONFILTER.some(
                                                     (el2) => el.type === el2
                                                 )
                                             )
@@ -122,7 +104,7 @@ const MainListPopular = () => {
                                                             />
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
-                                                                    src={dynamicIcon(
+                                                                    src={common.dynamicIcon(
                                                                         el.type
                                                                     )}
                                                                     alt={
@@ -169,7 +151,7 @@ const MainListPopular = () => {
                                                             />
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
-                                                                    src={dynamicIcon(
+                                                                    src={common.dynamicIcon(
                                                                         el.type
                                                                     )}
                                                                     alt={

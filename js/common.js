@@ -1,14 +1,19 @@
 /**
-* iso8601 to datetime function
-* youtube에서 items.contentDetails.duration이(재생시간) iso8601 포맷임
- * @param {*} val 
+ * 각 플랫폼에 대한 아이콘을 map()할 때, 출력
+ * @param val
  * @returns
  */
-export const Iso8601_to_datetime = (val) => {
-    //example: PT15M51S
+export const dynamicIcon = (val) => {
+    let returnValue = "";
 
-    //dongseob - 나중에 다시 .. H도 있을수 있음
-    const returnValue = /^PT(\d+)M(\d+)S$/.exec(val)
+    switch (val) {
+        case "Youtube":
+            returnValue = "/image/icon/youtube.png";
+            break;
+        case "Twitch":
+            returnValue = "/image/icon/twitch.png";
+            break;
+    }
 
     return returnValue;
-}
+};
