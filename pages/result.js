@@ -4,12 +4,12 @@ import axios from "axios";
 
 //component
 import BannerLine from "./components/bannerLine";
-import HeaderResult from "./components/headerResult";
+// import HeaderResult from "./components/headerResult";
+import Header from "./components/header";
 import BannerMain from "./components/bannerMain";
 import Category from "./components/category";
 import BannerSub from "./components/bannerSub";
 import ResultList from "./components/resultList";
-import Loading from "./components/loading";
 
 const Result = () => {
     return (
@@ -29,7 +29,8 @@ const Result = () => {
                 {/* asd: {props.map(el => (<div key={el.id}>{el.name}</div>))} */}
 
                 <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] mx-auto flex-1 p-3">
-                    <HeaderResult></HeaderResult>
+                    {/* <HeaderResult></HeaderResult> */}
+                    <Header></Header>
                     <BannerMain></BannerMain>
                     <Category></Category>
                     <BannerSub></BannerSub>

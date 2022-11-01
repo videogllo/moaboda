@@ -33,19 +33,25 @@ export default async function handler(req, res) {
             }
         })
         .catch((e) => {
-            console.log(e);
+            // console.log(e);
             youtube.push(
                 {
                     id: 1,
-                    title: "title",
+                    title: "태그가 리그오브레전드인 유튜브 동영상",
                     href: "www.naver.com",
                     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner2.jpg&w=1920&q=75",
+                    tag: ["Youtube", "리그오브레전드"],
+                    // tag: ["리그오브레전드"],
+                    type: "Youtube",
                 },
                 {
                     id: 2,
-                    title: "title2",
+                    title: "태그가 배틀그라운드인 유튜브 동영상",
                     href: "www.naver.com",
                     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner1.jpg&w=1920&q=75",
+                    tag: ["Youtube", "배틀그라운드"],
+                    // tag: ["배틀그라운드"],
+                    type: "Youtube",
                 }
             );
         });
@@ -79,19 +85,25 @@ export default async function handler(req, res) {
             // }
         })
         .catch((e) => {
-            console.log(e);
+            // console.log(e);
             twitch.push(
                 {
                     id: 3,
-                    title: "title3",
+                    title: "태그가 골프, 아이스하키인 트위치 동영상",
                     href: "www.naver.com",
                     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner3.png&w=1920&q=75",
+                    tag: ["Twitch", "골프", "아이스하키"],
+                    // tag: ["골프", "아이스하키"],
+                    type: "Twitch",
                 },
                 {
                     id: 4,
-                    title: "title4",
+                    title: "태그가 축구, 배틀그라운드인 트위치 동영상",
                     href: "www.naver.com",
                     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner4.png&w=1920&q=75",
+                    tag: ["Twitch", "축구"],
+                    // tag: ["축구", "배틀그라운드"],
+                    type: "Twitch",
                 }
             );
         });

@@ -17,6 +17,8 @@ const iconData = [
     { name: "Twitch", imgUrl: "/image/icon/twitch.png" },
     { name: "Shorts", imgUrl: "/image/icon/shorts.png" },
     { name: "Reels", imgUrl: "/image/icon/reels2.png" },
+    { name: "NaverTV", imgUrl: "/image/icon/naverTV.png" },
+    { name: "KakaoTV", imgUrl: "/image/icon/kakaoTV.png" },
     { name: "Netflix", imgUrl: "/image/icon/netflix.png" },
     { name: "Tiktok", imgUrl: "/image/icon/tiktok.png" },
     { name: "AfreecaTV", imgUrl: "/image/icon/afreecaTV.png" },
@@ -105,34 +107,33 @@ const IconFilter = () => {
                         <Swiper
                             slidesPerView={10}
                             slidesPerGroup={10}
-                            spaceBetween={10}
+                            spaceBetween={0}
                             cssMode={true}
                             navigation={true}
                             breakpoints={{
                                 0: {
-                                    slidesPerView: 7,
-                                    slidesPerGroup: 7,
-                                    spaceBetween: 7,
-                                },
-                                640: {
                                     slidesPerView: 8,
                                     slidesPerGroup: 8,
-                                    spaceBetween: 8,
                                 },
-                                768: {
-                                    slidesPerView: 9,
-                                    slidesPerGroup: 9,
-                                    spaceBetween: 9,
-                                },
-                                1024: {
+                                640: {
                                     slidesPerView: 10,
                                     slidesPerGroup: 10,
-                                    spaceBetween: 10,
+                                },
+                                768: {
+                                    slidesPerView: 10,
+                                    slidesPerGroup: 10,
+                                },
+                                1024: {
+                                    slidesPerView: 12,
+                                    slidesPerGroup: 12,
                                 },
                                 1280: {
-                                    slidesPerView: 11,
-                                    slidesPerGroup: 11,
-                                    spaceBetween: 11,
+                                    slidesPerView: 14,
+                                    slidesPerGroup: 14,
+                                },
+                                1920: {
+                                    slidesPerView: 16,
+                                    slidesPerGroup: 16,
                                 },
                             }}
                             modules={[Navigation]}
@@ -170,42 +171,41 @@ const IconFilter = () => {
                         <Swiper
                             slidesPerView={10}
                             slidesPerGroup={10}
-                            spaceBetween={10}
+                            spaceBetween={0}
                             cssMode={true}
                             navigation={true}
                             breakpoints={{
                                 0: {
-                                    slidesPerView: 7,
-                                    slidesPerGroup: 7,
-                                    spaceBetween: 7,
-                                },
-                                640: {
                                     slidesPerView: 8,
                                     slidesPerGroup: 8,
-                                    spaceBetween: 8,
                                 },
-                                768: {
-                                    slidesPerView: 9,
-                                    slidesPerGroup: 9,
-                                    spaceBetween: 9,
-                                },
-                                1024: {
+                                640: {
                                     slidesPerView: 10,
                                     slidesPerGroup: 10,
-                                    spaceBetween: 10,
+                                },
+                                768: {
+                                    slidesPerView: 10,
+                                    slidesPerGroup: 10,
+                                },
+                                1024: {
+                                    slidesPerView: 12,
+                                    slidesPerGroup: 12,
                                 },
                                 1280: {
-                                    slidesPerView: 11,
-                                    slidesPerGroup: 11,
-                                    spaceBetween: 11,
+                                    slidesPerView: 14,
+                                    slidesPerGroup: 14,
+                                },
+                                1920: {
+                                    slidesPerView: 16,
+                                    slidesPerGroup: 16,
                                 },
                             }}
                             modules={[Navigation]}
                         >
                             {iconData.map((el) => (
-                                <SwiperSlide key={el.name}>
+                                <SwiperSlide key={el.name} className="w-full h-full">
                                     <button
-                                        className="border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 relative mx-2 my-2 transition-all"
+                                        className="border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 relative my-2 transition-all"
                                         id={el.name}
                                         onClick={() => selectFilter(el.name)}
                                     >
