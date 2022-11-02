@@ -41,21 +41,12 @@ const ResultList = () => {
                 method: "GET",
                 url: "/api/result",
             }).then((res) => {
-                // console.log("yogiyo1 : ", res.data);
                 setData(res.data);
-                // console.log("yogiyo3 : ", res.data[1].data[0][0].tag);
+                console.log(res.data);
             });
         };
         fnResultList();
     }, []);
-
-    useEffect(() => {
-        console.log("yogiyo 태그 : ", SELECTFILTER);
-    }, [SELECTFILTER]);
-
-    useEffect(() => {
-        console.log("yogiyo 플랫폼 : ", SELECTPLATFORMFILTER);
-    }, [SELECTPLATFORMFILTER]);
 
     return (
         <div className="mt-8 md:mt-12 mb-8 flex flex-col gap-2">
@@ -67,116 +58,251 @@ const ResultList = () => {
                     SELECTPLATFORMFILTER.length > 0 ? (
                         //필터가 플랫폼, 태그 중 한개라도 적용이 되었다면
                         <>
-                            {/* <>
-                                {SELECTPLATFORMFILTER.length > 0 ? (
+                            {/* 필터가 적용되었고 그것이 플랫폼만 이라면 */}
+                            {SELECTPLATFORMFILTER.length > 0 &&
+                                SELECTFILTER.length === 0 && (
                                     <>
                                         {data.map((el) => (
                                             <div
                                                 key={el.type}
                                                 className="flex flex-col gap-3"
                                             >
-                                                {data
+                                                {el.data[0]
                                                     .filter((el2) =>
-                                                        el2.type.some((el3) =>
+                                                        el2.tag.some((el3) =>
                                                             SELECTPLATFORMFILTER.includes(
                                                                 el3
                                                             )
                                                         )
                                                     )
-                                                    .map((el) => (
-                                                        <div key={el.type}>
-                                                            {el.type}
+                                                    .map((el2) => (
+                                                        <div
+                                                            key={el2.id}
+                                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                        >
+                                                            <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
+                                                                <a
+                                                                    href={
+                                                                        el2.href
+                                                                    }
+                                                                    target="_blank"
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            el2.imgUrl
+                                                                        }
+                                                                        alt={
+                                                                            el2.title
+                                                                        }
+                                                                        className="h-full w-full object-cover object-center rounded-md"
+                                                                    />
+                                                                </a>
+                                                            </div>
+                                                            <div className="flex flex-col basis-3/4 gap-1">
+                                                                <div className="flex gap-2 items-center">
+                                                                    <div className="h-8 w-8 relative">
+                                                                        <Image
+                                                                            src={common.dynamicIcon(
+                                                                                el.type
+                                                                            )}
+                                                                            alt={
+                                                                                el.title
+                                                                            }
+                                                                            layout="fill"
+                                                                            objectFit="contain"
+                                                                            className="rounded-md"
+                                                                        ></Image>
+                                                                    </div>
+                                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                                        {
+                                                                            el2.title
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    description
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     ))}
                                             </div>
                                         ))}
                                     </>
-                                ) : (
-                                    <>
-                                        {SELECTFILTER.length > 0 ? (
-                                            <>
-                                            </>
-                                        ) : (
-                                            <>
-                                                
-                                            </>
-                                        )}
-                                    </>
                                 )}
-                            </> */}
 
-                            {/* 태그 필터가 적용되었다면 */}
-                            {data.map((el) => (
-                                <div
-                                    key={el.type}
-                                    className="flex flex-col gap-3"
-                                >
-                                    {el.data[0]
-                                        .filter((el2) =>
-                                            el2.tag.some(
-                                                (el3) =>
-                                                    SELECTFILTER.includes(
-                                                        el3
-                                                    ) 
-                                                    // || SELEICONFILTER.includes(el3)
-                                            )
-                                        )
-                                        .map((el2) => (
+                            {/* 필터가 적용되었고 그것이 태그만 이라면 */}
+                            {SELECTFILTER.length > 0 &&
+                                SELECTPLATFORMFILTER.length === 0 && (
+                                    <>
+                                        {data.map((el) => (
                                             <div
-                                                key={el2.id}
-                                                className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                key={el.type}
+                                                className="flex flex-col gap-3"
                                             >
-                                                <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
-                                                    <a
-                                                        href={el2.href}
-                                                        target="_blank"
-                                                    >
-                                                        <img
-                                                            src={el2.imgUrl}
-                                                            alt={el2.title}
-                                                            className="h-full w-full object-cover object-center rounded-md"
-                                                        />
-                                                    </a>
-                                                </div>
-                                                <div className="flex flex-col basis-3/4 gap-1">
-                                                    <div className="flex gap-2 items-center">
-                                                        <div className="h-8 w-8 relative">
-                                                            <Image
-                                                                src={common.dynamicIcon(
-                                                                    el.type
-                                                                )}
-                                                                alt={el.title}
-                                                                layout="fill"
-                                                                objectFit="contain"
-                                                                className="rounded-md"
-                                                            ></Image>
+                                                {el.data[0]
+                                                    .filter((el2) =>
+                                                        el2.tag.some((el3) =>
+                                                            SELECTFILTER.includes(
+                                                                el3
+                                                            )
+                                                        )
+                                                    )
+                                                    .map((el2) => (
+                                                        <div
+                                                            key={el2.id}
+                                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                        >
+                                                            <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
+                                                                <a
+                                                                    href={
+                                                                        el2.href
+                                                                    }
+                                                                    target="_blank"
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            el2.imgUrl
+                                                                        }
+                                                                        alt={
+                                                                            el2.title
+                                                                        }
+                                                                        className="h-full w-full object-cover object-center rounded-md"
+                                                                    />
+                                                                </a>
+                                                            </div>
+                                                            <div className="flex flex-col basis-3/4 gap-1">
+                                                                <div className="flex gap-2 items-center">
+                                                                    <div className="h-8 w-8 relative">
+                                                                        <Image
+                                                                            src={common.dynamicIcon(
+                                                                                el.type
+                                                                            )}
+                                                                            alt={
+                                                                                el.title
+                                                                            }
+                                                                            layout="fill"
+                                                                            objectFit="contain"
+                                                                            className="rounded-md"
+                                                                        ></Image>
+                                                                    </div>
+                                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                                        {
+                                                                            el2.title
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    description
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
-                                                            {el2.title}
-                                                        </div>
-                                                    </div>
-                                                    <div>description</div>
-                                                </div>
+                                                    ))}
                                             </div>
                                         ))}
-                                </div>
-                            ))}
+                                    </>
+                                )}
+
+                            {/* 필터가 적용되었고 그것이 플랫폼과 태그 둘 다라면 */}
+                            {SELECTFILTER.length > 0 &&
+                                SELECTPLATFORMFILTER.length > 0 && (
+                                    <>
+                                        {data.map((el) => (
+                                            <div
+                                                key={el.type}
+                                                className="flex flex-col gap-3"
+                                            >
+                                                {el.data[0]
+                                                    .filter(
+                                                        (el2) =>
+                                                            el2.tag.some(
+                                                                (el3) =>
+                                                                    SELECTFILTER.includes(
+                                                                        el3
+                                                                    )
+                                                            ) &&
+                                                            el2.tag.some(
+                                                                (el3) =>
+                                                                    SELECTPLATFORMFILTER.includes(
+                                                                        el3
+                                                                    )
+                                                            )
+                                                    )
+                                                    .map((el2) => (
+                                                        <div
+                                                            key={el2.id}
+                                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                        >
+                                                            <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
+                                                                <a
+                                                                    href={
+                                                                        el2.href
+                                                                    }
+                                                                    target="_blank"
+                                                                >
+                                                                    <img
+                                                                        src={
+                                                                            el2.imgUrl
+                                                                        }
+                                                                        alt={
+                                                                            el2.title
+                                                                        }
+                                                                        className="h-full w-full object-cover object-center rounded-md"
+                                                                    />
+                                                                </a>
+                                                            </div>
+                                                            <div className="flex flex-col basis-3/4 gap-1">
+                                                                <div className="flex gap-2 items-center">
+                                                                    <div className="h-8 w-8 relative">
+                                                                        <Image
+                                                                            src={common.dynamicIcon(
+                                                                                el.type
+                                                                            )}
+                                                                            alt={
+                                                                                el.title
+                                                                            }
+                                                                            layout="fill"
+                                                                            objectFit="contain"
+                                                                            className="rounded-md"
+                                                                        ></Image>
+                                                                    </div>
+                                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                                        {
+                                                                            el2.title
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                                <div>
+                                                                    description
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
                         </>
                     ) : (
                         //필터가 플랫폼, 태그 중 아무것도 적용이 안되었다면
                         <>
                             {/* 모든 플랫폼을 순회하여 출력 */}
-                            {data.map((el) => (
+                            {data.map((el, i) => (
                                 <div
                                     key={el.type}
                                     className="flex flex-col gap-3"
                                 >
                                     {/* 각 플랫폼의 데이터를 출력 */}
-                                    {el.data[0].map((el2) => (
+                                    {el.data[0].map((el2, i2) => (
                                         <div
                                             key={el2.id}
                                             className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                                         >
+                                            {/* yogiyo - 각 리스트의 숫자를 알아야 무한 스크롤 가능할 것 같음 */}
+                                            {/* {i === 0 && <>{i2}</>}
+                                            {i > 0 && <>{i2 + (i + i2)}</>} */}
+                                            {/* {i2} */}
+
+
                                             <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
                                                 <a
                                                     href={el2.href}

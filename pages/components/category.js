@@ -83,11 +83,11 @@ const Category = () => {
                                     {/* 중분류 */}
                                     <td className="whitespace-nowrap p-4 flex gap-4 flex-wrap">
                                         {el.content.map((el2) => (
-                                            <>
-                                                {SELECTFILTER.includes(el2) ? (
+                                            <div key={el2}>
+                                                {SELECTFILTER.includes(el2) || SELECTPLATFORMFILTER.includes(el2) ? (
                                                     <>
                                                         <div
-                                                            key={el2}
+                                                            // key={el2}
                                                             onClick={() =>
                                                                 categoryClick(
                                                                     el2
@@ -101,7 +101,7 @@ const Category = () => {
                                                 ) : (
                                                     <>
                                                         <div
-                                                            key={el2}
+                                                            // key={el2}
                                                             onClick={() =>
                                                                 categoryClick(
                                                                     el2
@@ -113,7 +113,7 @@ const Category = () => {
                                                         </div>
                                                     </>
                                                 )}
-                                            </>
+                                            </div>
                                         ))}
                                     </td>
                                 </tr>
