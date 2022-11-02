@@ -9,7 +9,7 @@ import Loading from "./loading";
 
 //statement
 import { useRecoilState } from "recoil";
-import { SELECT_FILTER } from "../../store/atom";
+import { SELECT_FILTER, SELECT_PLATFORM_FILTER } from "../../store/atom";
 
 //image assets
 const iconData = [
@@ -33,6 +33,7 @@ const iconData = [
 const ResultList = () => {
     const [data, setData] = useState([]);
     const [SELECTFILTER] = useRecoilState(SELECT_FILTER);
+    const [SELECTPLATFORMFILTER] = useRecoilState(SELECT_PLATFORM_FILTER);
 
     useEffect(() => {
         const fnResultList = async () => {
@@ -49,8 +50,12 @@ const ResultList = () => {
     }, []);
 
     useEffect(() => {
-        console.log("yogiyo2 : ", SELECTFILTER);
+        console.log("yogiyo 태그 : ", SELECTFILTER);
     }, [SELECTFILTER]);
+
+    useEffect(() => {
+        console.log("yogiyo 플랫폼 : ", SELECTPLATFORMFILTER);
+    }, [SELECTPLATFORMFILTER]);
 
     return (
         <div className="mt-8 md:mt-12 mb-8 flex flex-col gap-2">
@@ -58,9 +63,49 @@ const ResultList = () => {
                 <Loading></Loading>
             ) : (
                 <div className="flex flex-col gap-3">
-                    {SELECTFILTER.length > 0 ? (
-                        //카테고리 필터가 적용되었다면
+                    {SELECTFILTER.length > 0 ||
+                    SELECTPLATFORMFILTER.length > 0 ? (
+                        //필터가 플랫폼, 태그 중 한개라도 적용이 되었다면
                         <>
+                            {/* <>
+                                {SELECTPLATFORMFILTER.length > 0 ? (
+                                    <>
+                                        {data.map((el) => (
+                                            <div
+                                                key={el.type}
+                                                className="flex flex-col gap-3"
+                                            >
+                                                {data
+                                                    .filter((el2) =>
+                                                        el2.type.some((el3) =>
+                                                            SELECTPLATFORMFILTER.includes(
+                                                                el3
+                                                            )
+                                                        )
+                                                    )
+                                                    .map((el) => (
+                                                        <div key={el.type}>
+                                                            {el.type}
+                                                        </div>
+                                                    ))}
+                                            </div>
+                                        ))}
+                                    </>
+                                ) : (
+                                    <>
+                                        {SELECTFILTER.length > 0 ? (
+                                            <>
+                                            </>
+                                        ) : (
+                                            <>
+                                                
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                            </> */}
+
+                            {/* 태그 필터가 적용되었다면 */}
                             {data.map((el) => (
                                 <div
                                     key={el.type}
@@ -68,8 +113,12 @@ const ResultList = () => {
                                 >
                                     {el.data[0]
                                         .filter((el2) =>
-                                            el2.tag.some((el3) =>
-                                                SELECTFILTER.includes(el3)
+                                            el2.tag.some(
+                                                (el3) =>
+                                                    SELECTFILTER.includes(
+                                                        el3
+                                                    ) 
+                                                    // || SELEICONFILTER.includes(el3)
                                             )
                                         )
                                         .map((el2) => (
@@ -114,7 +163,7 @@ const ResultList = () => {
                             ))}
                         </>
                     ) : (
-                        //카테고리 필터가 적용이 안되었다면
+                        //필터가 플랫폼, 태그 중 아무것도 적용이 안되었다면
                         <>
                             {/* 모든 플랫폼을 순회하여 출력 */}
                             {data.map((el) => (

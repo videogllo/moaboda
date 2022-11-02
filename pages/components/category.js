@@ -1,9 +1,9 @@
 //functional
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 //statement
 import { useRecoilState } from "recoil";
-import { SELECT_FILTER } from "../../store/atom";
+import { SELECT_FILTER, SELECT_PLATFORM_FILTER } from "../../store/atom";
 
 const categoryData = [
     {
@@ -30,6 +30,7 @@ const categoryData = [
 
 const Category = () => {
     const [SELECTFILTER, setSELECTFILTER] = useRecoilState(SELECT_FILTER);
+    const [SELECTPLATFORMFILTER, setSELECTPLATFORMFILTER] = useRecoilState(SELECT_PLATFORM_FILTER);
 
     /**
      * 카테고리 에서 중분류를 선택 시, 발생 이벤트
@@ -37,50 +38,27 @@ const Category = () => {
      * @param {*} val
      */
     const categoryClick = (val) => {
-        // if (SELECTFILTER.find((e) => e.main === mainValue)) {
-        //     //main이 이미 존재한다면
-        //     if (SELECTFILTER.find((e) => e.sub.includes(subValue))) {
-        //         //main은 존재하면서, sub도 존재할 경우 목록에서 제거
-        //         categoryDelete(subValue);
-        //     } else {
-        //         //main은 존재하지만, sub는 존재하지 않을 경우
-        //         setSELECTFILTER((prev) => [
-        //             ...prev,
-        //             { main: mainValue, sub: subValue, key: Math.random(1) },
-        //         ]);
-        //     }
-        // } else {
-        //     //main이 없다면
-        //     setSELECTFILTER((prev) => [
-        //         ...prev,
-        //         { main: mainValue, sub: subValue, key: Math.random(1) },
-        //     ]);
-        // }
 
-        //new
-        if (SELECTFILTER.find((el) => el === val)) {
-            //이미 선택된 카테고리라면
-            setSELECTFILTER(SELECTFILTER.filter((el) => el !== val));
-        } else {
-            //배열에 선택된 카테고리 추가
-            setSELECTFILTER((prev) => [...prev, val]);
+        if(val === "Youtube" || val === "Twitch"){
+            if (SELECTPLATFORMFILTER.find((el) => el === val)) {
+                //이미 선택된 카테고리라면
+                setSELECTPLATFORMFILTER(SELECTPLATFORMFILTER.filter((el) => el !== val));
+            } else {
+                //배열에 선택된 카테고리 추가
+                setSELECTPLATFORMFILTER((prev) => [...prev, val]);
+            }
+        }else{
+            if (SELECTFILTER.find((el) => el === val)) {
+                //이미 선택된 카테고리라면
+                setSELECTFILTER(SELECTFILTER.filter((el) => el !== val));
+            } else {
+                //배열에 선택된 카테고리 추가
+                setSELECTFILTER((prev) => [...prev, val]);
+            }
         }
+
+        
     };
-
-    /**
-     * 이미 목록에 있는 카테고리 선택 시, 혹은 지우고 싶은 카테고리의 'X' 버튼을 클릭하였을 때, 실행
-     * atom의 SELECT_FILTER에서 데이터를 지운다.
-     * subValue: 중분류
-     * @param {*} subValue
-     */
-    // const categoryDelete = (val) => {
-    //     //인자로 받은 subValue가 동일 하게 매칭 된다면 제거 => mainValue는 중복안될거라 판단하고 subValue만 검사
-    //     setSELECTFILTER(SELECTFILTER.filter(el => el !== val));
-    // };
-
-    useEffect(() => {
-        // setSELECTFILTER([]);
-    }, [SELECTFILTER]);
 
     return (
         <div className="mt-8 md:mt-12 w-full">
