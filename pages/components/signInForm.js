@@ -26,7 +26,7 @@ const SignInForm = () => {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    className="bg-slate-700 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
+                                    className="bg-slate-800 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
                                 />
                             </div>
                         </div>
@@ -45,7 +45,7 @@ const SignInForm = () => {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="bg-slate-700 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
+                                    className="bg-slate-800 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
                                 />
                             </div>
                         </div>
@@ -78,7 +78,7 @@ const SignInForm = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-cyan-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-cyan-800 transition-all focus:outline-none"
+                                className="flex w-full justify-center rounded-md bg-slate-900 py-2 px-4 text-sm font-medium text-slate-200 border shadow-sm hover:bg-pink-800 transition-all focus:outline-none"
                             >
                                 Sign in
                             </button>
@@ -91,7 +91,7 @@ const SignInForm = () => {
                                 <div className="w-full border-t border-gray-300" />
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="bg-slate-800 px-2">
+                                <span className="bg-slate-900 px-2">
                                     소셜 로그인
                                 </span>
                             </div>
@@ -101,7 +101,7 @@ const SignInForm = () => {
                             <div>
                                 <a
                                     href="#"
-                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-700"
+                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-800 transition-all"
                                 >
                                     <span className="sr-only">
                                         Sign in with Facebook
@@ -124,7 +124,7 @@ const SignInForm = () => {
                             <div>
                                 <a
                                     href="#"
-                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-700"
+                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-800 transition-all"
                                 >
                                     <span className="sr-only">
                                         Sign in with Twitter
@@ -143,7 +143,7 @@ const SignInForm = () => {
                             <div>
                                 <a
                                     href="#"
-                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-700"
+                                    className="inline-flex w-full justify-center rounded-md border py-2 px-4 text-sm font-medium shadow-sm hover:bg-slate-800 transition-all"
                                 >
                                     <span className="sr-only">
                                         Sign in with GitHub
@@ -171,7 +171,7 @@ const SignInForm = () => {
                                 <div className="w-full border-t border-gray-300" />
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="bg-slate-800 px-2">
+                                <span className="bg-slate-900 px-2">
                                     회원가입
                                 </span>
                             </div>
@@ -179,7 +179,7 @@ const SignInForm = () => {
                         <div className="mt-6">
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-cyan-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-cyan-800 transition-all focus:outline-none"
+                                className="flex w-full justify-center rounded-md bg-slate-800 py-2 px-4 text-sm font-medium text-slate-200 border shadow-sm hover:bg-pink-800 transition-all focus:outline-none"
                             >
                                 Sign up
                             </button>

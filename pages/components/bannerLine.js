@@ -24,7 +24,7 @@ const BannerLine = () => {
 
                     {/* <button
                         type="button"
-                        className="inline-flex items-center rounded-full border border-transparent text-white shadow-sm absolute right-4 hover:text-cyan-900 transition-all"
+                        className="inline-flex items-center rounded-full border border-transparent text-white shadow-sm absolute right-4 hover:text-pink-900 transition-all"
                     >
                         <XCircleIcon className="h-6 w-6" aria-hidden="true" />
                     </button> */}

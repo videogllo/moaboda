@@ -43,13 +43,13 @@ const Research = ({queryValue}) => {
                                 id="researchInput"
                                 name="text"
                                 ref={inputRef}
-                                className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-700 placeholder:text-slate-200 text-cyan-300 pl-10 text-sm md:text-base lg:text-lg py-2 px-6"
+                                className="block w-full focus:outline-none rounded-none rounded-l-md bg-slate-800 placeholder:text-slate-200 text-pink-300 pl-10 text-sm md:text-base lg:text-lg py-2 px-6"
                                 placeholder={queryValue}
                             />
                         </div>
                         <button
                             type="submit"
-                            className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md bg-slate-700 px-4 py-2 text-sm font-medium hover:bg-slate-800 focus:outline-none transition-all"
+                            className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md bg-slate-800 px-4 py-2 text-sm font-medium hover:bg-slate-800 focus:outline-none transition-all"
                         >
                             <MagnifyingGlassIcon className="h-4 w-4"></MagnifyingGlassIcon>
                         </button>

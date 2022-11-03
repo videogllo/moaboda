@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
 import * as common from "../../js/common";
+// import InfiniteScroll from "react-infinite-scroll-component";
 
 //component
 import Loading from "./loading";
@@ -32,24 +33,52 @@ const iconData = [
 
 const ResultList = () => {
     const [data, setData] = useState([]);
+    // const [data2, setData2] = useState([]);
     const [SELECTFILTER] = useRecoilState(SELECT_FILTER);
     const [SELECTPLATFORMFILTER] = useRecoilState(SELECT_PLATFORM_FILTER);
 
     useEffect(() => {
-        const fnResultList = async () => {
-            await axios({
-                method: "GET",
-                url: "/api/result",
-            }).then((res) => {
-                setData(res.data);
-                console.log(res.data);
-            });
-        };
-        fnResultList();
+        //최초 불러올 데이터
+        fetchData();
     }, []);
+
+    const fetchData = async () => {
+        await axios({
+            method: "GET",
+            url: "/api/result",
+        }).then((res) => {
+            setData(res.data);
+            console.log(res.data);
+        });
+    };
+
+    // const nextFetch = async () => {
+    //     setData(data.concat(data));
+    // };
 
     return (
         <div className="mt-8 md:mt-12 mb-8 flex flex-col gap-2">
+            {/* <InfiniteScroll
+                dataLength={items.length} //This is important field to render the next data
+                next={nextFetch}
+                hasMore={true}
+                loader={<h4>Loading...</h4>}
+                endMessage={
+                    <p
+                        style={{
+                            textAlign: "center",
+                        }}
+                    >
+                        <b>Yay! You have seen it all</b>
+                    </p>
+                }
+                // below props only if you need pull down functionality
+            >
+                {data.map((el) =>
+                    el.data[0].map((el2) => <div key={el2.id}>{el2.title}</div>)
+                )}
+            </InfiniteScroll> */}
+
             {data.length === 0 ? (
                 <Loading></Loading>
             ) : (
@@ -78,7 +107,7 @@ const ResultList = () => {
                                                     .map((el2) => (
                                                         <div
                                                             key={el2.id}
-                                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                            className="bg-slate-800 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                                                         >
                                                             <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
                                                                 <a
@@ -150,7 +179,7 @@ const ResultList = () => {
                                                     .map((el2) => (
                                                         <div
                                                             key={el2.id}
-                                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                            className="bg-slate-800 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                                                         >
                                                             <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
                                                                 <a
@@ -230,7 +259,7 @@ const ResultList = () => {
                                                     .map((el2) => (
                                                         <div
                                                             key={el2.id}
-                                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                                            className="bg-slate-800 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                                                         >
                                                             <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
                                                                 <a
@@ -286,55 +315,51 @@ const ResultList = () => {
                         //필터가 플랫폼, 태그 중 아무것도 적용이 안되었다면
                         <>
                             {/* 모든 플랫폼을 순회하여 출력 */}
-                            {data.map((el, i) => (
+                            {data.map((el) => (
                                 <div
                                     key={el.type}
                                     className="flex flex-col gap-3"
                                 >
                                     {/* 각 플랫폼의 데이터를 출력 */}
-                                    {el.data[0].map((el2, i2) => (
-                                        <div
-                                            key={el2.id}
-                                            className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
-                                        >
-                                            {/* yogiyo - 각 리스트의 숫자를 알아야 무한 스크롤 가능할 것 같음 */}
-                                            {/* {i === 0 && <>{i2}</>}
-                                            {i > 0 && <>{i2 + (i + i2)}</>} */}
-                                            {/* {i2} */}
-
-
-                                            <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md">
-                                                <a
-                                                    href={el2.href}
-                                                    target="_blank"
-                                                >
-                                                    <img
-                                                        src={el2.imgUrl}
-                                                        alt={el2.title}
-                                                        className="h-full w-full object-cover object-center rounded-md"
-                                                    />
-                                                </a>
-                                            </div>
-                                            <div className="flex flex-col basis-3/4 gap-1">
-                                                <div className="flex gap-2 items-center">
-                                                    <div className="h-8 w-8 relative">
-                                                        <Image
-                                                            src={common.dynamicIcon(
-                                                                el.type
-                                                            )}
-                                                            alt={el.title}
-                                                            layout="fill"
-                                                            objectFit="contain"
-                                                            className="rounded-md"
-                                                        ></Image>
-                                                    </div>
-                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
-                                                        {el2.title}
-                                                    </div>
+                                    {el.data[0].map((el2) => (
+                                        <>
+                                            <div
+                                                key={el2.id}
+                                                className="bg-slate-800 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
+                                            >
+                                                <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md overflow-hidden">
+                                                    {/* <a
+                                                        href={el2.href}
+                                                        target="_blank"
+                                                    > */}
+                                                        <img
+                                                            src={el2.imgUrl}
+                                                            alt={el2.title}
+                                                            className="h-full w-full object-cover object-center rounded-md hover:scale-110 transition-all duration-500"
+                                                        />
+                                                    {/* </a> */}
                                                 </div>
-                                                <div>description</div>
+                                                <div className="flex flex-col basis-3/4 gap-1">
+                                                    <div className="flex gap-2 items-center">
+                                                        <div className="h-8 w-8 relative">
+                                                            <Image
+                                                                src={common.dynamicIcon(
+                                                                    el.type
+                                                                )}
+                                                                alt={el.title}
+                                                                layout="fill"
+                                                                objectFit="contain"
+                                                                className="rounded-md"
+                                                            ></Image>
+                                                        </div>
+                                                        <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                            {el2.title}
+                                                        </div>
+                                                    </div>
+                                                    <div>description</div>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </>
                                     ))}
                                 </div>
                             ))}

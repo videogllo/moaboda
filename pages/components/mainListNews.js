@@ -40,8 +40,24 @@ const news = [
     },
 ];
 
+const feedMenu = [
+    {
+        id: 1,
+        title: "영화 / 드라마",
+    },
+    {
+        id: 2,
+        title: "크리에이터",
+    },
+    {
+        id: 3,
+        title: "플랫폼",
+    },
+];
+
 const MainListNews = () => {
     const [data, setData] = useState("test"); //임시로 데이터 있게함 => default null로 변경할 것
+    const [feed, setFeed] = useState(0); //현재 선택되있는 피드를 확인하기 위함 default: 0
 
     return (
         <div className="mt-8 md:mt-12">
@@ -50,20 +66,87 @@ const MainListNews = () => {
             </h1> */}
 
             <div className="flex flex-col w-full">
-                <div className="bg-slate-700 p-4 rounded-xl shadow-xl">
+                <div className="bg-slate-800 p-4 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline justify-between flex pb-4">
                             <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                 오늘의 피드
                             </h2>
-                            <a
+                            {/* <a
                                 href="#"
-                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all"
+                                className="text-xs md:text-sm font-semibold text-pink-500 xl:hover:text-pink-700 transition-all"
                             >
                                 더보기
                                 <span aria-hidden="true"> &rarr;</span>
-                            </a>
+                            </a> */}
+                            <span className="isolate inline-flex rounded-md shadow-sm">
+                                {feedMenu.map((el, i) => (
+                                    <div key={el.id}>
+                                        {feed === i ? (
+                                            <>
+                                                {i === 0 && (
+                                                    <button
+                                                        type="button"
+                                                        className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                    >
+                                                        {el.title}
+                                                    </button>
+                                                )}
+                                                {i > 0 &&
+                                                    i < feedMenu.length - 1 && (
+                                                        <button
+                                                            type="button"
+                                                            className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        >
+                                                            {el.title}
+                                                        </button>
+                                                    )}
+                                                {i === feedMenu.length - 1 && (
+                                                    <button
+                                                        type="button"
+                                                        className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                    >
+                                                        {el.title}
+                                                    </button>
+                                                )}
+                                            </>
+                                        ) : (
+                                            <>
+                                                {i === 0 && (
+                                                    <button
+                                                        type="button"
+                                                        className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        onClick={() => setFeed(i)}
+                                                    >
+                                                        {el.title}
+                                                    </button>
+                                                )}
+                                                {i > 0 &&
+                                                    i < feedMenu.length - 1 && (
+                                                        <button
+                                                            type="button"
+                                                            className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                            onClick={() => setFeed(i)}
+                                                        >
+                                                            {el.title}
+                                                        </button>
+                                                    )}
+                                                {i === feedMenu.length - 1 && (
+                                                    <button
+                                                        type="button"
+                                                        className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        onClick={() => setFeed(i)}
+                                                    >
+                                                        {el.title}
+                                                    </button>
+                                                )}
+                                            </>
+                                        )}
+                                    </div>
+                                ))}
+                            </span>
                         </div>
+
                         {data == null ? (
                             <Loading></Loading>
                         ) : (
@@ -85,7 +168,7 @@ const MainListNews = () => {
                                                     />
                                                 </div>
                                                 <div className="flex flex-col gap-1">
-                                                    <div className="text-cyan-500 font-NanumSquareNeo font-semibold line-clamp-2 text-base lg:text-lg">
+                                                    <div className="font-NanumSquareNeo font-semibold line-clamp-2 text-base lg:text-lg">
                                                         {el.title}
                                                     </div>
                                                     <div className="text-xs lg:text-sm line-clamp-2">
@@ -100,7 +183,10 @@ const MainListNews = () => {
                                     {news
                                         .filter((el) => el.id > 1)
                                         .map((el) => (
-                                            <div key={el.id} className="flex items-center gap-2">
+                                            <div
+                                                key={el.id}
+                                                className="flex items-center gap-2"
+                                            >
                                                 <div className="relative rounded-lg hover:opacity-80 w-1/2 h-20 lg:h-32 bg-slate-900">
                                                     <Image
                                                         src={el.imgUrl}
@@ -110,7 +196,7 @@ const MainListNews = () => {
                                                     />
                                                 </div>
                                                 <div className="w-1/2 flex flex-col gap-1">
-                                                    <div className="text-cyan-500 font-NanumSquareNeo font-semibold w-full line-clamp-2 text-base lg:text-lg">
+                                                    <div className="font-NanumSquareNeo font-semibold w-full line-clamp-2 text-base lg:text-lg">
                                                         {el.title}
                                                     </div>
                                                     <div className="text-xs lg:text-sm line-clamp-2">

@@ -29,11 +29,11 @@ const MainListPopular = () => {
     return (
         <>
             <div className="mt-8 md:mt-12 flex flex-col gap-6">
-                <div className="bg-slate-700 px-4 py-6 rounded-xl shadow-xl">
+                <div className="bg-slate-800 px-4 py-6 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline flex pb-4">
                             {SELECTICONFILTER.length > 0 ? (
-                                <>
+                                <div className="flex flex-wrap">
                                     {SELECTICONFILTER.map((el, i) => (
                                         <>
                                             {i > 0 ? (
@@ -56,7 +56,7 @@ const MainListPopular = () => {
                                     <span className="text-xl xl:text-2xl font-bold tracking-tight">
                                         검색 결과
                                     </span>
-                                </>
+                                </div>
                             ) : (
                                 <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                     인기 컨텐츠
@@ -65,7 +65,7 @@ const MainListPopular = () => {
 
                             <a
                                 href="#"
-                                className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all ml-auto"
+                                className="text-xs md:text-sm font-semibold text-pink-500 xl:hover:text-pink-700 transition-all ml-auto"
                             >
                                 더보기
                                 <span aria-hidden="true"> &rarr;</span>
@@ -81,7 +81,7 @@ const MainListPopular = () => {
                                     <>
                                         {data
                                             .filter((el) =>
-                                            SELECTICONFILTER.some(
+                                                SELECTICONFILTER.some(
                                                     (el2) => el.type === el2
                                                 )
                                             )
@@ -91,11 +91,11 @@ const MainListPopular = () => {
                                             .map((el) => (
                                                 <div key={el.id}>
                                                     <div className="relative">
-                                                        <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 hover:opacity-75 lg:aspect-none relative">
+                                                        <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 lg:aspect-none relative">
                                                             <img
                                                                 src={el.imgUrl}
                                                                 alt={el.title}
-                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer"
+                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer hover:scale-110 transition-all duration-500"
                                                                 onClick={() =>
                                                                     window.open(
                                                                         el.href
@@ -138,11 +138,11 @@ const MainListPopular = () => {
                                             .map((el) => (
                                                 <div key={el.id}>
                                                     <div className="relative">
-                                                        <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 hover:opacity-75 lg:aspect-none relative">
+                                                        <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-800 lg:aspect-none relative">
                                                             <img
                                                                 src={el.imgUrl}
                                                                 alt={el.title}
-                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer"
+                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer hover:scale-110 transition-all duration-500"
                                                                 onClick={() =>
                                                                     window.open(
                                                                         el.href
@@ -163,20 +163,48 @@ const MainListPopular = () => {
                                                                 />
                                                             </div>
                                                             {/* 데이터 중 playTime이 존재 하다면 출력 */}
-                                                            {el.playTime !== undefined ? (
+                                                            {el.playTime !==
+                                                            undefined ? (
                                                                 <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
                                                                     <span>
                                                                         {/* 배열의 첫번째 값을 제외한 값 출력 */}
-                                                                        {el.playTime.slice(1).map((el,i) => (
-                                                                            <>
-                                                                                {/* 첫번째 값을 제외한 값의 앞에 ":" 추가 */}
-                                                                                {i !== 0 ? (
-                                                                                    <span key={el}>&#58;{el}</span>
-                                                                                ) : (
-                                                                                    <span key={i}>{el}</span>
-                                                                                )}
-                                                                            </>
-                                                                        ))}
+                                                                        {el.playTime
+                                                                            .slice(
+                                                                                1
+                                                                            )
+                                                                            .map(
+                                                                                (
+                                                                                    el,
+                                                                                    i
+                                                                                ) => (
+                                                                                    <>
+                                                                                        {/* 첫번째 값을 제외한 값의 앞에 ":" 추가 */}
+                                                                                        {i !==
+                                                                                        0 ? (
+                                                                                            <span
+                                                                                                key={
+                                                                                                    el
+                                                                                                }
+                                                                                            >
+                                                                                                &#58;
+                                                                                                {
+                                                                                                    el
+                                                                                                }
+                                                                                            </span>
+                                                                                        ) : (
+                                                                                            <span
+                                                                                                key={
+                                                                                                    i
+                                                                                                }
+                                                                                            >
+                                                                                                {
+                                                                                                    el
+                                                                                                }
+                                                                                            </span>
+                                                                                        )}
+                                                                                    </>
+                                                                                )
+                                                                            )}
                                                                     </span>
                                                                 </div>
                                                             ) : null}

@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useEffect } from "react";
 
 //image assets
 const iconData = [
@@ -91,7 +92,7 @@ const IconFilter = () => {
                 <div className="ml-auto">
                     <a
                         href="#"
-                        className="text-xs md:text-sm font-semibold text-cyan-500 hover:text-cyan-700 transition-all whitespace-nowrap ml-4"
+                        className="text-xs md:text-sm font-semibold text-pink-500 xl:hover:text-pink-700 transition-all whitespace-nowrap ml-4"
                         onClick={() => setSELECTICONFILTER([])}
                     >
                         초기화
@@ -145,8 +146,8 @@ const IconFilter = () => {
                                             className={
                                                 // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
                                                 SELECTICONFILTER.includes(el.name)
-                                                    ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative mx-2 my-2 transition-all opacity-100"
-                                                    : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative mx-2 my-2 transition-all opacity-30"
+                                                    ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-100"
+                                                    : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-30"
                                             }
                                             id={el.name}
                                             onClick={() =>
@@ -172,6 +173,7 @@ const IconFilter = () => {
                             slidesPerView={10}
                             slidesPerGroup={10}
                             spaceBetween={0}
+                            rewind={true}
                             cssMode={true}
                             navigation={true}
                             breakpoints={{

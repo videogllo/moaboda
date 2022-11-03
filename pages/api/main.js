@@ -25,7 +25,7 @@ export default async function handler(req, res) {
                         tag: items[i].snippet.tags, //영상에 등록된 태그
                         // playTime: items[i].contentDetails, //재생시간
                         viewCount: items[i].statistics.viewCount, //총 재생수
-                        hit: items[i].statistics.viewCount, //videoowl의 인기도 점수
+                        hit: items[i].statistics.viewCount, //moaboda의 인기도 점수
                     });
                 }
             }
@@ -58,7 +58,7 @@ export default async function handler(req, res) {
                         viewerCount: items[i].viewer_count, //시청자 수 (라이브 영상만 해당)
                         startTime: items[i].started_at, //라이브 시작 시간 (라이브 영상만 해당)
                         tag: items[i].tag_ids, //영상에 등록된 태그(트위치는 정의된 태그가 없어서 현재 의미x => 서칭해봐야됨)
-                        hit: items[i].viewer_count, //videoowl의 인기도 점수
+                        hit: items[i].viewer_count, //moaboda의 인기도 점수
                     });
                 }
             }

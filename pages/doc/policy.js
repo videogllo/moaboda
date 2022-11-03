@@ -6,12 +6,12 @@ const Policy = () => {
             <div className="w-full lg:w-2/3 mx-auto flex flex-col gap-4">
                 <div className="flex">
                     <div
-                        className="text-cyan-500 hover:text-cyan-700 transition-all cursor-pointer"
+                        className="text-pink-500 hover:text-pink-700 transition-all cursor-pointer"
                         onClick={() => (window.location.href = "/")}
                     >
                         Back
                     </div>
-                    <Link href="./service"><div className="text-cyan-500 hover:text-cyan-700 transition-all text-left ml-auto cursor-pointer">이용약관</div></Link>
+                    <Link href="./service"><div className="text-pink-500 hover:text-pink-700 transition-all text-left ml-auto cursor-pointer">이용약관</div></Link>
                 </div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-NanumSquareNeo">
                     개인정보 처리 방침
@@ -22,11 +22,11 @@ const Policy = () => {
                     style={{ wordBreak: "keep-all" }}
                 >
                     <p>
-                        비데오아울(이하”회사”)는 이용자의 개인정보를 소중히
+                        모아보다(이하”회사”)는 이용자의 개인정보를 소중히
                         생각하며, 수집한 개인정보를 가장 적극적이고 효과적으로
                         처리하기 위하여 항상 최선을 다해 노력하고 있습니다.
                         개인정보 처리방침은 관련 법률 및 지침의 변경과
-                        비데오아울 내부 운영방침에 따라 변경 될 수 있습니다.
+                        모아보다 내부 운영방침에 따라 변경 될 수 있습니다.
                     </p>
 
                     <p>

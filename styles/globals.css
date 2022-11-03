@@ -120,13 +120,13 @@ body {
 .swiper-button-prev::after {
     color: rgb(226 232 240);
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 0.5rem;
 }
 .swiper-button-next::after {
     color: rgb(226 232 240);
     background-color: rgba(0, 0, 0, 0.3);
-    padding: 1rem;
+    padding: .5rem;
     border-radius: 0.5rem;
 }
 .swiper-button-disabled::after {

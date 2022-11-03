@@ -9,7 +9,7 @@ const searchRanking = [
 const SideMenu = () => {
     return (
         <div className="fixed right-4 top-[20%] bg-none z-30 rounded-lg shadow-lg hidden lg:block">
-            <div className="w-32 h-full bg-cyan-700 rounded-lg">
+            <div className="w-32 h-full bg-pink-700 rounded-lg">
                 <div className="mx-auto px-2">
                     <div className="items-baseline justify-center flex py-2">
                         <h2 className="text-base xl:text-lg font-bold tracking-tight text-gray-900">

@@ -93,7 +93,7 @@ const Category = () => {
                                                                     el2
                                                                 )
                                                             }
-                                                            className="hover:bg-cyan-800 bg-cyan-600 transition-all rounded-lg px-2 cursor-pointer"
+                                                            className="xl:hover:bg-pink-800 bg-pink-600 transition-all rounded-lg px-2 cursor-pointer"
                                                         >
                                                             {el2}
                                                         </div>
@@ -107,7 +107,7 @@ const Category = () => {
                                                                     el2
                                                                 )
                                                             }
-                                                            className="hover:bg-cyan-500 transition-all rounded-lg px-2 cursor-pointer"
+                                                            className="xl:hover:bg-pink-500 transition-all rounded-lg px-2 cursor-pointer focus:bg-none"
                                                         >
                                                             {el2}
                                                         </div>
