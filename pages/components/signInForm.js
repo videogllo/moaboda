@@ -1,6 +1,4 @@
-import Image from "next/image";
-
-const SignInForm = () => {
+const SignInForm = ({setIsSignIn, setIsSignUp}) => {
     return (
         <div className="flex min-h-full flex-col justify-center py-6 sm:px-6 lg:px-8 w-full">
             <div className="sm:mx-auto sm:w-full sm:max-w-md">
@@ -10,14 +8,14 @@ const SignInForm = () => {
             </div>
 
             <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-                <div className="py-8 px-4 sm:rounded-lg sm:px-10">
+                <div className="py-4 px-4 sm:rounded-lg sm:px-10">
                     <form className="space-y-6" action="#" method="POST">
                         <div>
                             <label
                                 htmlFor="email"
                                 className="block text-sm font-medium"
                             >
-                                Email address
+                                아이디
                             </label>
                             <div className="mt-1">
                                 <input
@@ -26,7 +24,7 @@ const SignInForm = () => {
                                     type="email"
                                     autoComplete="email"
                                     required
-                                    className="bg-slate-800 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
+                                    className="bg-slate-800 block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
                                 />
                             </div>
                         </div>
@@ -36,7 +34,7 @@ const SignInForm = () => {
                                 htmlFor="password"
                                 className="block text-sm font-medium"
                             >
-                                Password
+                                패스워드
                             </label>
                             <div className="mt-1">
                                 <input
@@ -45,7 +43,7 @@ const SignInForm = () => {
                                     type="password"
                                     autoComplete="current-password"
                                     required
-                                    className="bg-slate-800 focus:outline-none block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
+                                    className="bg-slate-800 block w-full appearance-none rounded-md px-3 py-2 placeholder-slate-200 shadow-sm sm:text-sm"
                                 />
                             </div>
                         </div>
@@ -78,9 +76,9 @@ const SignInForm = () => {
                         <div>
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-slate-900 py-2 px-4 text-sm font-medium text-slate-200 border shadow-sm hover:bg-pink-800 transition-all focus:outline-none"
+                                className="flex w-full justify-center rounded-md bg-slate-900 py-2 px-4 text-sm font-medium text-slate-200 border shadow-sm hover:bg-slate-800 transition-all focus:outline-none"
                             >
-                                Sign in
+                                로그인
                             </button>
                         </div>
                     </form>
@@ -171,17 +169,18 @@ const SignInForm = () => {
                                 <div className="w-full border-t border-gray-300" />
                             </div>
                             <div className="relative flex justify-center text-sm">
-                                <span className="bg-slate-900 px-2">
+                                {/* <span className="bg-slate-900 px-2">
                                     회원가입
-                                </span>
+                                </span> */}
                             </div>
                         </div>
                         <div className="mt-6">
                             <button
                                 type="submit"
-                                className="flex w-full justify-center rounded-md bg-slate-800 py-2 px-4 text-sm font-medium text-slate-200 border shadow-sm hover:bg-pink-800 transition-all focus:outline-none"
+                                className="flex w-full justify-center rounded-md bg-slate-900 py-2 px-4 text-sm font-medium text-slate-200 border shadow-sm hover:bg-slate-800 transition-all focus:outline-none"
+                                onClick={() => {setIsSignIn(false); setIsSignUp(true)}}
                             >
-                                Sign up
+                                회원가입
                             </button>
                         </div>
                     </div>

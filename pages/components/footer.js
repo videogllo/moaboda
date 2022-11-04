@@ -1,26 +1,17 @@
 //functional
 import Image from "next/image";
 import Link from "next/link";
-// import { useRouter } from "next/router";
 
 const Footer = () => {
-    // const router = useRouter();
-
-    // const fnDocument = (val) => {
-    //     if (val === "service") {
-    //         router.push({
-    //             pathname: "/companyDocument",
-    //             type: "service",
-    //         });
-    //     }
-    // };
-
     return (
         <footer className="mt-12 mb-6">
             <div className="my-6 w-full border border-slate-600 rounded-lg shadow-lg"></div>
-            <div className="flex items-center w-full">
+            <div className="flex w-full">
                 <div className="w-full">
-                    <h2 className="font-bold text-base md:text-lg mb-2">
+                    <h2
+                        className="font-bold text-base md:text-lg mb-2 text-[#ff0558] cursor-pointer hover:text-[#ff0558]/60"
+                        onClick={() => (window.location.href = "/")}
+                    >
                         모아보다(MOABODA)
                     </h2>
                     <div className="text-xs md:text:sm">
@@ -34,19 +25,12 @@ const Footer = () => {
                     </div>
                     <div className="flex mt-2 text-xs md:text:sm gap-4">
                         <Link href="../doc/service">
-                            <p
-                                className="text-pink-500 xl:hover:text-pink-700 transition-all cursor-pointer"
-                                
-                            >
+                            <p className="text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all cursor-pointer">
                                 이용약관
                             </p>
                         </Link>
                         <Link href="../doc/policy">
-                            
-                            <p
-                                className="text-pink-500 xl:hover:text-pink-700 transition-all cursor-pointer"
-                                
-                            >
+                            <p className="text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all cursor-pointer">
                                 개인정보 처리 방침
                             </p>
                         </Link>

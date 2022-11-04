@@ -8,7 +8,7 @@ module.exports = {
     fontFamily: {
       'NanumSquareNeo': ['NanumSquareNeo'],
       'NanumSquare': ['NanumSquare'],
-    }
+    },
   },
   plugins: [
     require('@tailwindcss/line-clamp'),

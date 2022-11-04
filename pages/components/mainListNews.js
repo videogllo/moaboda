@@ -72,13 +72,6 @@ const MainListNews = () => {
                             <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
                                 오늘의 피드
                             </h2>
-                            {/* <a
-                                href="#"
-                                className="text-xs md:text-sm font-semibold text-pink-500 xl:hover:text-pink-700 transition-all"
-                            >
-                                더보기
-                                <span aria-hidden="true"> &rarr;</span>
-                            </a> */}
                             <span className="isolate inline-flex rounded-md shadow-sm">
                                 {feedMenu.map((el, i) => (
                                     <div key={el.id}>
@@ -165,6 +158,7 @@ const MainListNews = () => {
                                                         layout="fill"
                                                         objectFit="contain"
                                                         alt={el.title}
+                                                        className="hover:scale-110 transition-all duration-500"
                                                     />
                                                 </div>
                                                 <div className="flex flex-col gap-1">
@@ -193,6 +187,7 @@ const MainListNews = () => {
                                                         layout="fill"
                                                         objectFit="contain"
                                                         alt={el.title}
+                                                        className="hover:scale-110 transition-all duration-500"
                                                     />
                                                 </div>
                                                 <div className="w-1/2 flex flex-col gap-1">

@@ -29,51 +29,26 @@ const MainListPopular = () => {
     return (
         <>
             <div className="mt-8 md:mt-12 flex flex-col gap-6">
-                <div className="bg-slate-800 px-4 py-6 rounded-xl shadow-xl">
+                <div className="bg-slate-800/60 px-4 py-6 rounded-xl shadow-xl">
                     <div className="mx-auto">
                         <div className="items-baseline flex pb-4">
-                            {SELECTICONFILTER.length > 0 ? (
-                                <div className="flex flex-wrap">
-                                    {SELECTICONFILTER.map((el, i) => (
-                                        <>
-                                            {i > 0 ? (
-                                                <span
-                                                    key={el}
-                                                    className="text-xl xl:text-2xl font-bold tracking-tight"
-                                                >
-                                                    &#44;&nbsp;{el}
-                                                </span>
-                                            ) : (
-                                                <span
-                                                    key={el}
-                                                    className="text-xl xl:text-2xl font-bold tracking-tight"
-                                                >
-                                                    {el}
-                                                </span>
-                                            )}
-                                        </>
-                                    ))}
-                                    <span className="text-xl xl:text-2xl font-bold tracking-tight">
-                                        검색 결과
-                                    </span>
-                                </div>
-                            ) : (
-                                <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                                    인기 컨텐츠
-                                </h2>
-                            )}
+                            <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
+                                인기 컨텐츠
+                            </h2>
 
                             <a
                                 href="#"
-                                className="text-xs md:text-sm font-semibold text-pink-500 xl:hover:text-pink-700 transition-all ml-auto"
+                                className="text-xs md:text-sm font-semibold text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all ml-auto"
                             >
                                 더보기
                                 <span aria-hidden="true"> &rarr;</span>
                             </a>
                         </div>
 
-                        {data === null ? (
-                            <Loading></Loading>
+                        {data.length === 0 ? (
+                            <>
+                                <Loading></Loading>
+                            </>
                         ) : (
                             <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
                                 {/* 필터 활성화 */}

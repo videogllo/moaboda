@@ -6,12 +6,12 @@ const Policy = () => {
             <div className="w-full lg:w-2/3 mx-auto flex flex-col gap-4">
                 <div className="flex">
                     <div
-                        className="text-pink-500 hover:text-pink-700 transition-all cursor-pointer"
+                        className="text-[#ff0558] hover:text-[#ff0558]/60 transition-all cursor-pointer"
                         onClick={() => (window.location.href = "/")}
                     >
                         Back
                     </div>
-                    <Link href="./service"><div className="text-pink-500 hover:text-pink-700 transition-all text-left ml-auto cursor-pointer">이용약관</div></Link>
+                    <Link href="./service"><div className="text-[#ff0558] hover:text-[#ff0558]/60 transition-all text-left ml-auto cursor-pointer">이용약관</div></Link>
                 </div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-NanumSquareNeo">
                     개인정보 처리 방침

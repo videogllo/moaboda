@@ -49,13 +49,13 @@ export default async function handler(req, res) {
                     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner1.jpg&w=1920&q=75",
                     tag: ["Youtube", "배틀그라운드"],
                 },
-                // {
-                //     id: 3,
-                //     title: "태그가 축구인 유튜브 동영상",
-                //     href: "www.naver.com",
-                //     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner1.jpg&w=1920&q=75",
-                //     tag: ["Youtube", "축구"],
-                // },
+                {
+                    id: 3,
+                    title: "태그가 축구인 유튜브 동영상",
+                    href: "www.naver.com",
+                    imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner1.jpg&w=1920&q=75",
+                    tag: ["Youtube", "축구"],
+                },
             );
         });
 
@@ -102,13 +102,13 @@ export default async function handler(req, res) {
                     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner4.png&w=1920&q=75",
                     tag: ["Twitch", "축구", "배틀그라운드"],
                 },
-                // {
-                //     id: 6,
-                //     title: "태그가 골프, 엘든링인 트위치 동영상",
-                //     href: "www.naver.com",
-                //     imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner4.png&w=1920&q=75",
-                //     tag: ["Twitch", "골프", "엘든링"],
-                // },
+                {
+                    id: 6,
+                    title: "태그가 골프, 엘든링인 트위치 동영상",
+                    href: "www.naver.com",
+                    imgUrl: "http://localhost:3000/_next/image?url=%2Fimage%2Fbanner%2FmainBanner4.png&w=1920&q=75",
+                    tag: ["Twitch", "골프", "엘든링"],
+                },
             );
         });
 

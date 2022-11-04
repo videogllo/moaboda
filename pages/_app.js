@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import { RecoilRoot } from "recoil";
+import "animate.css";
 
 function MyApp({ Component, pageProps }) {
     

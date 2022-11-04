@@ -7,7 +7,7 @@ const LogoSmall = () => {
             <a href="#">
                 <div className="w-[50px] h-[50px] relative">
                     <Image
-                        src="/image/logo/logo.png"
+                        src="/image/logo/logo2.png"
                         alt="logo_small"
                         layout="fill"
                         objectFit="contain"

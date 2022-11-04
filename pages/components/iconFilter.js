@@ -92,7 +92,7 @@ const IconFilter = () => {
                 <div className="ml-auto">
                     <a
                         href="#"
-                        className="text-xs md:text-sm font-semibold text-pink-500 xl:hover:text-pink-700 transition-all whitespace-nowrap ml-4"
+                        className="text-xs md:text-sm font-semibold text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all whitespace-nowrap ml-4"
                         onClick={() => setSELECTICONFILTER([])}
                     >
                         초기화
