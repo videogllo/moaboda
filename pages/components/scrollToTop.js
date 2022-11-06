@@ -13,10 +13,6 @@ const ScrollToTop = () => {
         setIsButton(false);
     };
 
-    // useEffect(() => {
-    //     console.log(scrollY);
-    // }, [scrollY]);
-
     useEffect(() => {
         const watch = () => {
             window.addEventListener("scroll", handleFollow);
@@ -40,7 +36,7 @@ const ScrollToTop = () => {
                     onClick={moveTop}
                     className="fixed bottom-6 right-4 lg:bottom-8 lg:right-6 z-30 bg-[#ff0558] hover:bg-[#ff0558]/60 rounded-lg flex items-center justify-center cursor-pointer"
                 >
-                    <div className="text-xl lg:text-2xl p-3 lg:p-4">👆🏼</div>
+                    <div className="text-xl 2xl:text-2xl p-2 lg:p-3">👆🏼</div>
                 </div>
             )}
         </>

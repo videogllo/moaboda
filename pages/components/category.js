@@ -1,13 +1,15 @@
 //functional
 // import { useEffect } from "react";
-import { useState } from "react";
-
-//style
-import { Transition } from "@headlessui/react";
+import { useState, useRef } from "react";
 
 //statement
 import { useRecoilState } from "recoil";
 import { SELECT_FILTER, SELECT_PLATFORM_FILTER } from "../../store/atom";
+
+//icon
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
 const categoryData = [
     {
@@ -37,7 +39,8 @@ const Category = () => {
     const [SELECTPLATFORMFILTER, setSELECTPLATFORMFILTER] = useRecoilState(
         SELECT_PLATFORM_FILTER
     ); //플랫폼
-    const [isCategory, setIsCategory] = useState(true);
+    const [isCategory, setIsCategory] = useState(true); //카테고리를 보여줄지 말지
+    const categoryRef = useRef(null); //카테고리 박스
 
     /**
      * 카테고리 에서 중분류를 선택 시, 발생 이벤트
@@ -66,46 +69,63 @@ const Category = () => {
         }
     };
 
+    //카테고리 토글 클릭 이벤트
+    const categoryToggle = (val) => {
+        if (val === false) {
+            categoryRef.current.classList.remove("animate__fadeIn");
+            categoryRef.current.classList.add("animate__fadeOut");
+            setTimeout(() => {
+                setIsCategory(false);
+            }, 500);
+        } else {
+            setIsCategory(true);
+        }
+    };
+
     return (
         <div className="mt-8 md:mt-12 w-full flex flex-col">
             {/* 접힘 / 펼침 */}
-            <div className="ml-auto text-lg lg:text-xl pb-1">
+            <div className="ml-auto text-sm pb-1 text-[#ff0558]">
                 {isCategory === true ? (
-                    <button onClick={() => setIsCategory(false)}>🔼</button>
+                    <button
+                        onClick={() => categoryToggle(false)}
+                        className="h-6 w-6"
+                    >
+                        <FontAwesomeIcon icon={faChevronUp} />
+                    </button>
                 ) : (
-                    <button onClick={() => setIsCategory(true)}>🔽</button>
+                    <button
+                        onClick={() => categoryToggle(true)}
+                        className="h-6 w-6"
+                    >
+                        <FontAwesomeIcon icon={faChevronDown} />
+                    </button>
                 )}
             </div>
-
-            <Transition
-                show={isCategory}
-                enter="transition-opacity duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="transition-opacity duration-300"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-            >
-                {/* 카테고리 테이블 */}
-                <div className="w-full mx-auto transition-all duration-300 ease-in-out">
+            {/* 카테고리 테이블 */}
+            {isCategory && (
+                <div
+                    className="w-full mx-auto transition-all duration-300 ease-in-out animate__animated animate__fadeIn"
+                    ref={categoryRef}
+                >
                     <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5">
                         <table className="min-w-full divide-y divide-slate-500 border border-slate-500">
                             <colgroup>
                                 <col width="20%"></col>
                                 <col width="80%"></col>
                             </colgroup>
-                            <tbody className="divide-y divide-slate-500 bg-slate-800 text-sm">
+                            <tbody className="divide-y divide-slate-500 bg-slate-800">
                                 {categoryData.map((el) => (
                                     <tr
                                         key={el.title}
                                         className="divide-x divide-slate-500"
                                     >
                                         {/* 대분류 */}
-                                        <th className="whitespace-nowrap pl-4 pr-4 text-base sm:pl-6">
+                                        <th className="whitespace-nowrap pl-4 pr-4 text-sm sm:pl-6">
                                             {el.title}
                                         </th>
                                         {/* 중분류 */}
-                                        <td className="whitespace-nowrap p-4 flex gap-4 flex-wrap">
+                                        <td className="whitespace-nowrap p-4 flex gap-4 flex-wrap text-xs">
                                             {el.content.map((el2) => (
                                                 <div key={el2}>
                                                     {SELECTFILTER.includes(
@@ -151,7 +171,7 @@ const Category = () => {
                         </table>
                     </div>
                 </div>
-            </Transition>
+            )}
         </div>
     );
 };

@@ -1,0 +1,105 @@
+/* swiper style */
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    /* background: none; */
+}
+
+/* swiper slider bg color */
+.swiper-slide {
+    background: none;
+    overflow: hidden;
+}
+.swiper-slide-shadow {
+    background: none;
+}
+
+.swiper-button-prev{left:0 !important}
+
+.swiper-button-next{right: 0 !important;}
+
+/* swiper navigation style */
+.swiper-button-prev::after {
+    color: rgb(226 232 240);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: .5rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem !important;
+}
+.swiper-button-next::after {
+    color: rgb(226 232 240);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: .5rem;
+    border-radius: 0.5rem;
+    font-size: 1.6rem !important;
+}
+.swiper-button-disabled::after {
+    opacity: 0 !important;
+}
+
+/* swiper pagination style */
+.swiper-pagination-bullet {
+    background-color: rgb(226 232 240) !important;
+}
+
+/* 스크롤바 */
+#scroll::-webkit-scrollbar {
+    height: 5px;
+    background-color: rgb(15 23 42);;
+}
+  
+#scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2);
+}
+  
+#scroll::-webkit-scrollbar-thumb  {
+    background-color: white;
+}
+
+#categoryScroll::-webkit-scrollbar {
+    height: 2px;
+    background-color: rgba(15, 23, 42, 0);
+}
+  
+#categoryScroll::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0);
+}
+  
+#categoryScroll::-webkit-scrollbar-thumb  {
+    background-color: rgba(15, 23, 42, 0);
+}
+
+/* swiper에서 border-radius를 컨트롤 하기 위한 용도 */
+.border-g span{
+    border-radius: .5rem;
+}
+
+/* .swiper-wrapper{
+    width: 80% !important;
+    margin: 0 auto;
+} */

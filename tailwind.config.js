@@ -7,7 +7,6 @@ module.exports = {
     extend: {},
     fontFamily: {
       'NanumSquareNeo': ['NanumSquareNeo'],
-      'NanumSquare': ['NanumSquare'],
     },
   },
   plugins: [

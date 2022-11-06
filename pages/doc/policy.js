@@ -13,7 +13,7 @@ const Policy = () => {
                     </div>
                     <Link href="./service"><div className="text-[#ff0558] hover:text-[#ff0558]/60 transition-all text-left ml-auto cursor-pointer">이용약관</div></Link>
                 </div>
-                <div className="text-2xl sm:text-3xl md:text-4xl font-bold font-NanumSquareNeo">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold">
                     개인정보 처리 방침
                 </div>
 

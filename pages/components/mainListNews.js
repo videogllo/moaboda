@@ -61,7 +61,7 @@ const MainListNews = () => {
 
     return (
         <div className="mt-8 md:mt-12">
-            {/* <h1 className="text-2xl xl:text-3xl font-extrabold font-NanumSquareNeo">
+            {/* <h1 className="text-2xl xl:text-3xl font-extrabold">
                 영상 소식
             </h1> */}
 
@@ -70,9 +70,9 @@ const MainListNews = () => {
                     <div className="mx-auto">
                         <div className="items-baseline justify-between flex pb-4">
                             <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                                오늘의 피드
+                                📰&nbsp;오늘의 피드
                             </h2>
-                            <span className="isolate inline-flex rounded-md shadow-sm">
+                            <span className="isolate inline-flex rounded-md shadow-md text-xs">
                                 {feedMenu.map((el, i) => (
                                     <div key={el.id}>
                                         {feed === i ? (
@@ -80,7 +80,7 @@ const MainListNews = () => {
                                                 {i === 0 && (
                                                     <button
                                                         type="button"
-                                                        className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-900 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
                                                     >
                                                         {el.title}
                                                     </button>
@@ -89,7 +89,7 @@ const MainListNews = () => {
                                                     i < feedMenu.length - 1 && (
                                                         <button
                                                             type="button"
-                                                            className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                            className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-900 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
                                                         >
                                                             {el.title}
                                                         </button>
@@ -97,7 +97,7 @@ const MainListNews = () => {
                                                 {i === feedMenu.length - 1 && (
                                                     <button
                                                         type="button"
-                                                        className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-900 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-900 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
                                                     >
                                                         {el.title}
                                                     </button>
@@ -108,7 +108,7 @@ const MainListNews = () => {
                                                 {i === 0 && (
                                                     <button
                                                         type="button"
-                                                        className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-700 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
                                                         onClick={() => setFeed(i)}
                                                     >
                                                         {el.title}
@@ -118,7 +118,7 @@ const MainListNews = () => {
                                                     i < feedMenu.length - 1 && (
                                                         <button
                                                             type="button"
-                                                            className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                            className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-700 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
                                                             onClick={() => setFeed(i)}
                                                         >
                                                             {el.title}
@@ -127,7 +127,7 @@ const MainListNews = () => {
                                                 {i === feedMenu.length - 1 && (
                                                     <button
                                                         type="button"
-                                                        className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-700 px-4 py-2 text-sm font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
+                                                        className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-700 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
                                                         onClick={() => setFeed(i)}
                                                     >
                                                         {el.title}
@@ -162,7 +162,7 @@ const MainListNews = () => {
                                                     />
                                                 </div>
                                                 <div className="flex flex-col gap-1">
-                                                    <div className="font-NanumSquareNeo font-semibold line-clamp-2 text-base lg:text-lg">
+                                                    <div className="font-semibold line-clamp-2 text-base lg:text-lg">
                                                         {el.title}
                                                     </div>
                                                     <div className="text-xs lg:text-sm line-clamp-2">
@@ -191,7 +191,7 @@ const MainListNews = () => {
                                                     />
                                                 </div>
                                                 <div className="w-1/2 flex flex-col gap-1">
-                                                    <div className="font-NanumSquareNeo font-semibold w-full line-clamp-2 text-base lg:text-lg">
+                                                    <div className="font-semibold w-full line-clamp-2 text-base lg:text-lg">
                                                         {el.title}
                                                     </div>
                                                     <div className="text-xs lg:text-sm line-clamp-2">

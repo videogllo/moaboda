@@ -33,16 +33,16 @@ const MainListPopular = () => {
                     <div className="mx-auto">
                         <div className="items-baseline flex pb-4">
                             <h2 className="text-xl xl:text-2xl font-bold tracking-tight">
-                                인기 컨텐츠
+                                🔥&nbsp;인기 컨텐츠
                             </h2>
 
-                            <a
+                            {/* <a
                                 href="#"
                                 className="text-xs md:text-sm font-semibold text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all ml-auto"
                             >
                                 더보기
                                 <span aria-hidden="true"> &rarr;</span>
-                            </a>
+                            </a> */}
                         </div>
 
                         {data.length === 0 ? (
@@ -50,7 +50,7 @@ const MainListPopular = () => {
                                 <Loading></Loading>
                             </>
                         ) : (
-                            <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5">
+                            <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 2xl:grid-cols-4">
                                 {/* 필터 활성화 */}
                                 {SELECTICONFILTER.length > 0 ? (
                                     <>
@@ -95,7 +95,7 @@ const MainListPopular = () => {
                                                             </div> */}
                                                         </div>
                                                         <div>
-                                                            <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">
+                                                            <h3 className="text-sm font-semibold w-full lg:text-base break-all line-clamp-2 mt-2">
                                                                 {el.title}
                                                             </h3>
                                                         </div>
@@ -185,7 +185,7 @@ const MainListPopular = () => {
                                                             ) : null}
                                                         </div>
                                                         <div>
-                                                            <h3 className="text-sm font-NanumSquareNeo font-semibold w-full lg:text-base break-all line-clamp-2">
+                                                            <h3 className="text-sm font-semibold w-full lg:text-base break-all line-clamp-2 mt-2">
                                                                 {el.title}
                                                             </h3>
                                                         </div>
