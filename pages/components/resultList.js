@@ -142,7 +142,7 @@ const ResultList = () => {
                                                                             className="rounded-md"
                                                                         ></Image>
                                                                     </div>
-                                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                                    <div className="w-full text-lg font-semibold line-clamp-1">
                                                                         {
                                                                             el2.title
                                                                         }
@@ -214,7 +214,7 @@ const ResultList = () => {
                                                                             className="rounded-md"
                                                                         ></Image>
                                                                     </div>
-                                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                                    <div className="w-full text-lg font-semibold line-clamp-1">
                                                                         {
                                                                             el2.title
                                                                         }
@@ -294,7 +294,7 @@ const ResultList = () => {
                                                                             className="rounded-md"
                                                                         ></Image>
                                                                     </div>
-                                                                    <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                                    <div className="w-full text-lg font-semibold line-clamp-1">
                                                                         {
                                                                             el2.title
                                                                         }
@@ -352,7 +352,7 @@ const ResultList = () => {
                                                                 className="rounded-md"
                                                             ></Image>
                                                         </div>
-                                                        <div className="w-full text-lg font-semibold font-NanumSquareNeo line-clamp-1">
+                                                        <div className="w-full text-lg font-semibold line-clamp-1">
                                                             {el2.title}
                                                         </div>
                                                     </div>

@@ -13,7 +13,7 @@ import ScrollToTop from "./components/scrollToTop";
 
 const Result = () => {
     return (
-        <div className="bg-slate-900 overflow-hidden flex">
+        <div className="bg-slate-900 overflow-hidden flex min-h-screen">
             <Head>
                 <title>MOABODA | 종합 컨텐츠 큐레이션 플랫폼</title>
                 <meta

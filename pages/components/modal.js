@@ -1,58 +1,58 @@
 //functional
-import { Fragment, useEffect, useState } from "react";
-
-//lib
-import { Dialog, Transition } from "@headlessui/react";
+import { useEffect, useState, useRef } from "react";
 
 //form
 import SignInForm from "./signInForm";
 import SignUpForm from "./signUpForm";
 
-const Modal = ({setIsModal}) => {
-    const [open, setOpen] = useState(true);
-    // const [isLogin, setIsLogin] = useState(false);
+const Modal = ({ setIsModal }) => {
     const [isSignIn, setIsSignIn] = useState(false);
     const [isSignUp, setIsSignUp] = useState(false);
 
+    const modalRef = useRef(null); //배경 영역
+    const modalBoxRef = useRef(null); //모달박스 영역
+
     useEffect(() => {
+        //최초 로그인 화면 출력 => 로그인이 되어있다면 다른 화면 출력 해야함
         setIsSignIn(true);
-    },[])
+    }, []);
+
+    const modalClose = (e) => {
+        //모달외의 영역과 일치했다면 close
+        if (e.target === modalRef.current) {
+            //모달을 닫을 때는 다른 애니메이션 효과 부여
+            modalBoxRef.current.classList.remove("animate__zoomIn");
+            modalBoxRef.current.classList.add("animate__zoomOut");
+            setTimeout(() => {
+                setIsModal(false);
+            }, 400);
+        }
+    };
 
     return (
-        <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-30" onClose={setOpen} onClick={() => {setIsModal(false)}}>
-                <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
-                    <div className="fixed inset-0 bg-black/60 transition-opacity" />
-                </Transition.Child>
-
-                <div className="fixed inset-0 z-10 overflow-y-auto">
-                    <div className="flex items-center min-h-full justify-center p-4 text-center sm:items-center sm:p-0">
-                        <Transition.Child
-                            as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                            enterTo="opacity-100 translate-y-0 sm:scale-100"
-                            leave="ease-in duration-200"
-                            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                        >
-                            <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-slate-900/90 px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 w-5/6 sm:max-w-lg sm:p-6 flex justify-center">
-                                    {isSignIn && <SignInForm setIsSignIn={setIsSignIn} setIsSignUp={setIsSignUp}></SignInForm>}
-                                    {isSignUp && <SignUpForm setIsSignIn={setIsSignIn} setIsSignUp={setIsSignUp}></SignUpForm>}
-                            </Dialog.Panel>
-                        </Transition.Child>
-                    </div>
-                </div>
-            </Dialog>
-        </Transition.Root>
+        <div
+            className="bg-black/70 fixed top-0 left-0 w-full h-full z-30 flex items-center justify-center"
+            onClick={(e) => modalClose(e)}
+            ref={modalRef}
+        >
+            <div
+                className="bg-slate-900 w-3/4 max-w-[500px] h-auto p-6 px-12 rounded-lg shadow-lg z-40 animate__animated animate__zoomIn"
+                ref={modalBoxRef}
+            >
+                {isSignIn && (
+                    <SignInForm
+                        setIsSignIn={setIsSignIn}
+                        setIsSignUp={setIsSignUp}
+                    ></SignInForm>
+                )}
+                {isSignUp && (
+                    <SignUpForm
+                        setIsSignIn={setIsSignIn}
+                        setIsSignUp={setIsSignUp}
+                    ></SignUpForm>
+                )}
+            </div>
+        </div>
     );
 };
 export default Modal;
