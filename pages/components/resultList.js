@@ -126,6 +126,9 @@ const ResultList = () => {
                                                                             layout="fill"
                                                                             objectFit="contain"
                                                                             className="rounded-md"
+                                                                            unoptimized={
+                                                                                true
+                                                                            }
                                                                         ></Image>
                                                                     </div>
                                                                     <div className="w-full text-lg font-semibold line-clamp-1">
@@ -203,6 +206,9 @@ const ResultList = () => {
                                                                             layout="fill"
                                                                             objectFit="contain"
                                                                             className="rounded-md"
+                                                                            unoptimized={
+                                                                                true
+                                                                            }
                                                                         ></Image>
                                                                     </div>
                                                                     <div className="w-full text-lg font-semibold line-clamp-1">
@@ -287,6 +293,9 @@ const ResultList = () => {
                                                                             }
                                                                             layout="fill"
                                                                             objectFit="contain"
+                                                                            unoptimized={
+                                                                                true
+                                                                            }
                                                                             className="rounded-md"
                                                                         ></Image>
                                                                     </div>
@@ -348,6 +357,9 @@ const ResultList = () => {
                                                                 layout="fill"
                                                                 objectFit="contain"
                                                                 className="rounded-md"
+                                                                unoptimized={
+                                                                    true
+                                                                }
                                                             ></Image>
                                                         </div>
                                                         <div className="w-full text-lg font-semibold line-clamp-1">

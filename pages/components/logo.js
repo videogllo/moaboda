@@ -12,6 +12,7 @@ const Logo = () => {
                         alt="logo"
                         layout="fill"
                         objectFit="contain"
+                        unoptimized={true}
                         className="cursor-pointer"
                     ></Image>
                 </div>

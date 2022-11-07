@@ -44,6 +44,7 @@ const Footer = () => {
                                 layout="fill"
                                 objectFit="contain"
                                 className="cursor-pointer"
+                                unoptimized={true}
                             ></Image>
                         </div>
                     </a>

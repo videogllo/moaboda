@@ -11,6 +11,7 @@ const BannerLine = () => {
                             src="/image/banner/bannerLine.png"
                             alt="bannerLine"
                             layout="fill"
+                            unoptimized={true}
                             objectFit="contain"
                         ></Image>
                     </div>
