@@ -9,35 +9,7 @@ import BannerMain from "./components/bannerMain";
 import IconFilter from "./components/iconFilter";
 import Header from "./components/header";
 
-//firestore test
-import { db } from "../firebase";
-import {
-    collection,
-    doc,
-    addDoc,
-    setDoc,
-    deleteDoc,
-    deleteField,
-    updateDoc,
-    deleteData,
-} from "firebase/firestore";
-
 const Main = () => {
-    const addData = async () => {
-        try {
-            const res = await setDoc(doc(db, "users2", "1243"), {
-                title: "title name",
-                imgUrl: "https://naver.com",
-            });
-            console.log(res);
-        } catch (e) {
-            console.log(e);
-        }
-    };
-
-    const deleteData = async () => {
-        await deleteDoc(doc(db, "users2", "1243"));
-    };
 
     return (
         <>
