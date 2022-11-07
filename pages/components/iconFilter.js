@@ -108,7 +108,8 @@ const IconFilter = () => {
                             slidesPerView={10}
                             slidesPerGroup={10}
                             spaceBetween={0}
-                            cssMode={true}
+                            rewind={true}
+                            // cssMode={true}
                             navigation={true}
                             breakpoints={{
                                 0: {
@@ -173,7 +174,7 @@ const IconFilter = () => {
                             slidesPerGroup={10}
                             spaceBetween={0}
                             rewind={true}
-                            cssMode={true}
+                            // cssMode={true}
                             navigation={true}
                             breakpoints={{
                                 0: {
