@@ -45,7 +45,7 @@ const BannerMain = () => {
 
     useEffect(() => {
         // setTimeout(() => {
-            setData(dataOrigin);
+        setData(dataOrigin);
         // }, 3000);
     }, []);
 
@@ -90,6 +90,7 @@ const BannerMain = () => {
                                                 alt={el.title}
                                                 layout="fill"
                                                 objectFit="contain"
+                                                unoptimized={true}
                                                 priority={true} //image LCP 해결
                                             ></Image>
                                         </div>

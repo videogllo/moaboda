@@ -87,6 +87,9 @@ const MainListPopular = () => {
                                                                     }
                                                                     layout="fill"
                                                                     objectFit="contain"
+                                                                    unoptimized={
+                                                                        true
+                                                                    }
                                                                     className="rounded-md"
                                                                 />
                                                             </div>
@@ -134,6 +137,9 @@ const MainListPopular = () => {
                                                                     }
                                                                     layout="fill"
                                                                     objectFit="contain"
+                                                                    unoptimized={
+                                                                        true
+                                                                    }
                                                                     className="rounded-md"
                                                                 />
                                                             </div>

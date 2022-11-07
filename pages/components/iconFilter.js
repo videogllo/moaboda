@@ -36,7 +36,8 @@ const iconData = [
 ];
 
 const IconFilter = () => {
-    const [SELECTICONFILTER, setSELECTICONFILTER] = useRecoilState(SELECT_ICON_FILTER);
+    const [SELECTICONFILTER, setSELECTICONFILTER] =
+        useRecoilState(SELECT_ICON_FILTER);
 
     const selectFilter = (name) => {
         if (SELECTICONFILTER.includes(name)) {
@@ -66,7 +67,7 @@ const IconFilter = () => {
                                 <>
                                     {iconData
                                         .filter((el) =>
-                                        SELECTICONFILTER.some(
+                                            SELECTICONFILTER.some(
                                                 (el2) => el.name === el2
                                             )
                                         )
@@ -147,7 +148,9 @@ const IconFilter = () => {
                                         <button
                                             className={
                                                 // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
-                                                SELECTICONFILTER.includes(el.name)
+                                                SELECTICONFILTER.includes(
+                                                    el.name
+                                                )
                                                     ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-100"
                                                     : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-30"
                                             }
@@ -160,6 +163,7 @@ const IconFilter = () => {
                                                 src={el.imgUrl}
                                                 layout="fill"
                                                 objectFit="contain"
+                                                unoptimized={true}
                                                 className="rounded-lg scale-[1.02]"
                                             ></Image>
                                         </button>
@@ -207,7 +211,10 @@ const IconFilter = () => {
                             modules={[Navigation]}
                         >
                             {iconData.map((el) => (
-                                <SwiperSlide key={el.name} className="w-full h-full">
+                                <SwiperSlide
+                                    key={el.name}
+                                    className="w-full h-full"
+                                >
                                     <button
                                         className="border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 relative my-2 transition-all"
                                         id={el.name}
@@ -220,14 +227,11 @@ const IconFilter = () => {
                                             className="scale-[1.02]"
                                         ></Image> */}
                                         <Image
-                                            src={common.dynamicIcon(
-                                                el.name
-                                            )}
-                                            alt={
-                                                el.title
-                                            }
+                                            src={common.dynamicIcon(el.name)}
+                                            alt={el.title}
                                             layout="fill"
                                             objectFit="contain"
+                                            unoptimized={true}
                                             className="rounded-md"
                                         />
                                     </button>

@@ -109,7 +109,9 @@ const MainListNews = () => {
                                                     <button
                                                         type="button"
                                                         className="relative inline-flex items-center rounded-l-md border border-slate-300 bg-slate-700 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
-                                                        onClick={() => setFeed(i)}
+                                                        onClick={() =>
+                                                            setFeed(i)
+                                                        }
                                                     >
                                                         {el.title}
                                                     </button>
@@ -119,7 +121,9 @@ const MainListNews = () => {
                                                         <button
                                                             type="button"
                                                             className="relative -ml-px inline-flex items-center border border-slate-300 bg-slate-700 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
-                                                            onClick={() => setFeed(i)}
+                                                            onClick={() =>
+                                                                setFeed(i)
+                                                            }
                                                         >
                                                             {el.title}
                                                         </button>
@@ -128,7 +132,9 @@ const MainListNews = () => {
                                                     <button
                                                         type="button"
                                                         className="relative -ml-px inline-flex items-center rounded-r-md border border-slate-300 bg-slate-700 px-4 py-2 font-medium text-slate-200 hover:bg-slate-800 focus:z-10 focus:border-slate-500 focus:outline-none focus:ring-1 focus:ring-slate-500 transition-all"
-                                                        onClick={() => setFeed(i)}
+                                                        onClick={() =>
+                                                            setFeed(i)
+                                                        }
                                                     >
                                                         {el.title}
                                                     </button>
@@ -158,6 +164,7 @@ const MainListNews = () => {
                                                         layout="fill"
                                                         objectFit="contain"
                                                         alt={el.title}
+                                                        unoptimized={true}
                                                         className="hover:scale-110 transition-all duration-500"
                                                     />
                                                 </div>
@@ -187,6 +194,7 @@ const MainListNews = () => {
                                                         layout="fill"
                                                         objectFit="contain"
                                                         alt={el.title}
+                                                        unoptimized={true}
                                                         className="hover:scale-110 transition-all duration-500"
                                                     />
                                                 </div>
