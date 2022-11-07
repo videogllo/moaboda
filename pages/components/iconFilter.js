@@ -11,6 +11,9 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
+//functional
+import * as common from "../../js/common";
+
 //image assets
 const iconData = [
     { name: "Youtube", imgUrl: "/image/icon/youtube.png" },
@@ -108,8 +111,7 @@ const IconFilter = () => {
                             slidesPerView={10}
                             slidesPerGroup={10}
                             spaceBetween={0}
-                            rewind={true}
-                            // cssMode={true}
+                            cssMode={true}
                             navigation={true}
                             breakpoints={{
                                 0: {
@@ -211,12 +213,23 @@ const IconFilter = () => {
                                         id={el.name}
                                         onClick={() => selectFilter(el.name)}
                                     >
-                                        <Image
+                                        {/* <Image
                                             src={el.imgUrl}
                                             layout="fill"
                                             objectFit="contain"
                                             className="scale-[1.02]"
-                                        ></Image>
+                                        ></Image> */}
+                                        <Image
+                                            src={common.dynamicIcon(
+                                                el.name
+                                            )}
+                                            alt={
+                                                el.title
+                                            }
+                                            layout="fill"
+                                            objectFit="contain"
+                                            className="rounded-md"
+                                        />
                                     </button>
                                 </SwiperSlide>
                             ))}

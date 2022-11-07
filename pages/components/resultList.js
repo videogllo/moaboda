@@ -12,25 +12,6 @@ import Loading from "./loading";
 import { useRecoilState } from "recoil";
 import { SELECT_FILTER, SELECT_PLATFORM_FILTER } from "../../store/atom";
 
-//image assets
-const iconData = [
-    { name: "Youtube", imgUrl: "/image/icon/youtube.png" },
-    { name: "Twitch", imgUrl: "/image/icon/twitch.png" },
-    { name: "Shorts", imgUrl: "/image/icon/shorts.png" },
-    { name: "Reels", imgUrl: "/image/icon/reels2.png" },
-    { name: "Netflix", imgUrl: "/image/icon/netflix.png" },
-    { name: "Tiktok", imgUrl: "/image/icon/tiktok.png" },
-    { name: "AfreecaTV", imgUrl: "/image/icon/afreecaTV.png" },
-    { name: "AppleTV", imgUrl: "/image/icon/appleTV.png" },
-    { name: "Watcha", imgUrl: "/image/icon/watcha.png" },
-    { name: "Wavve", imgUrl: "/image/icon/wavve.png" },
-    { name: "CoupangPlay", imgUrl: "/image/icon/coupangPlay.png" },
-    { name: "DisneyPlus", imgUrl: "/image/icon/disneyPlus.png" },
-    { name: "HboMax", imgUrl: "/image/icon/hboMax.png" },
-    { name: "PrimeVideo", imgUrl: "/image/icon/primeVideo.png" },
-    { name: "Tving", imgUrl: "/image/icon/tving.png" },
-];
-
 const ResultList = () => {
     const [data, setData] = useState([]);
     // const [data2, setData2] = useState([]);
@@ -116,15 +97,20 @@ const ResultList = () => {
                                                                     }
                                                                     target="_blank"
                                                                 >
-                                                                    <img
+                                                                    <Image
                                                                         src={
                                                                             el2.imgUrl
                                                                         }
                                                                         alt={
                                                                             el2.title
                                                                         }
-                                                                        className="h-full w-full object-cover object-center rounded-md"
-                                                                    />
+                                                                        layout="fill"
+                                                                        objectFit="cover"
+                                                                        unoptimized={
+                                                                            true
+                                                                        }
+                                                                        className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                                    ></Image>
                                                                 </a>
                                                             </div>
                                                             <div className="flex flex-col basis-3/4 gap-1">
@@ -188,15 +174,20 @@ const ResultList = () => {
                                                                     }
                                                                     target="_blank"
                                                                 >
-                                                                    <img
+                                                                    <Image
                                                                         src={
                                                                             el2.imgUrl
                                                                         }
                                                                         alt={
                                                                             el2.title
                                                                         }
-                                                                        className="h-full w-full object-cover object-center rounded-md"
-                                                                    />
+                                                                        layout="fill"
+                                                                        objectFit="cover"
+                                                                        unoptimized={
+                                                                            true
+                                                                        }
+                                                                        className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                                    ></Image>
                                                                 </a>
                                                             </div>
                                                             <div className="flex flex-col basis-3/4 gap-1">
@@ -268,15 +259,20 @@ const ResultList = () => {
                                                                     }
                                                                     target="_blank"
                                                                 >
-                                                                    <img
+                                                                    <Image
                                                                         src={
                                                                             el2.imgUrl
                                                                         }
                                                                         alt={
                                                                             el2.title
                                                                         }
-                                                                        className="h-full w-full object-cover object-center rounded-md"
-                                                                    />
+                                                                        layout="fill"
+                                                                        objectFit="cover"
+                                                                        unoptimized={
+                                                                            true
+                                                                        }
+                                                                        className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                                    ></Image>
                                                                 </a>
                                                             </div>
                                                             <div className="flex flex-col basis-3/4 gap-1">
@@ -328,16 +324,18 @@ const ResultList = () => {
                                                 className="bg-slate-800 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                                             >
                                                 <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md overflow-hidden">
-                                                    {/* <a
+                                                    <a
                                                         href={el2.href}
                                                         target="_blank"
-                                                    > */}
-                                                        <img
+                                                    >
+                                                        <Image
                                                             src={el2.imgUrl}
-                                                            alt={el2.title}
-                                                            className="h-full w-full object-cover object-center rounded-md hover:scale-110 transition-all duration-500"
-                                                        />
-                                                    {/* </a> */}
+                                                            layout="fill"
+                                                            objectFit="cover"
+                                                            unoptimized={true}
+                                                            className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                        ></Image>
+                                                    </a>
                                                 </div>
                                                 <div className="flex flex-col basis-3/4 gap-1">
                                                     <div className="flex gap-2 items-center">
