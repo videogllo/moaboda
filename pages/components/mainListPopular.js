@@ -67,16 +67,16 @@ const MainListPopular = () => {
                                                 <div key={el.id}>
                                                     <div className="relative">
                                                         <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-800 lg:aspect-none relative">
-                                                            <img
+                                                            <Image
                                                                 src={el.imgUrl}
                                                                 alt={el.title}
-                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer hover:scale-110 transition-all duration-500"
-                                                                onClick={() =>
-                                                                    window.open(
-                                                                        el.href
-                                                                    )
+                                                                layout="fill"
+                                                                objectFit="cover"
+                                                                unoptimized={
+                                                                    true
                                                                 }
-                                                            />
+                                                                className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                            ></Image>
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
                                                                     src={common.dynamicIcon(
@@ -114,16 +114,16 @@ const MainListPopular = () => {
                                                 <div key={el.id}>
                                                     <div className="relative">
                                                         <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-800 lg:aspect-none relative">
-                                                            <img
+                                                            <Image
                                                                 src={el.imgUrl}
                                                                 alt={el.title}
-                                                                className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer hover:scale-110 transition-all duration-500"
-                                                                onClick={() =>
-                                                                    window.open(
-                                                                        el.href
-                                                                    )
+                                                                layout="fill"
+                                                                objectFit="cover"
+                                                                unoptimized={
+                                                                    true
                                                                 }
-                                                            />
+                                                                className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                            ></Image>
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
                                                                     src={common.dynamicIcon(

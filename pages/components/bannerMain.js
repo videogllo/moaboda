@@ -10,8 +10,9 @@ import Loading from "./loading";
 
 //functional
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const data = [
+const dataOrigin = [
     {
         id: 1,
         title: "tencent1",
@@ -32,12 +33,6 @@ const data = [
     },
     {
         id: 4,
-        title: "tencent4",
-        imgUrl: "/image/banner/mainBanner4.png",
-        tarUrl: "https://www.youtube.com/channel/UCdtRAcd3L_UpV4tMXCw63NQ",
-    },
-    {
-        id: 5,
         title: "tencent5",
         imgUrl: "/image/banner/mainBanner5.png",
         tarUrl: "https://www.youtube.com/c/%EB%B9%A0%EB%8B%88%EB%B3%B4%ED%8B%80PaniBottle",
@@ -45,11 +40,21 @@ const data = [
 ];
 
 const BannerMain = () => {
+    // const [isLoading, setIsLoading] = useState(false);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        // setTimeout(() => {
+            setData(dataOrigin);
+        // }, 3000);
+    }, []);
+
     return (
         <div className="mt-8 md:mt-12">
             <div className="w-full rounded-lg">
-                {data == null ? (
-                    <Loading></Loading>
+                {data.length === 0 ? (
+                    // <Loading></Loading>
+                    <div className="h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800 rounded-lg relative animate-pulse2 shadow-lg"></div>
                 ) : (
                     <>
                         <Swiper
@@ -69,25 +74,27 @@ const BannerMain = () => {
                             modules={[Pagination, Autoplay, Navigation]}
                         >
                             {/* 슬라이드 무작위 셔플 */}
-                            {data.sort(() => Math.random() - 0.5).map((el) => (
-                                <SwiperSlide
-                                    key={el.id}
-                                    onClick={() => {
-                                        window.open(el.tarUrl);
-                                    }}
-                                    className="cursor-pointer"
-                                >
-                                    <div className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800/40 rounded-lg">
-                                        <Image
-                                            src={el.imgUrl}
-                                            alt={el.title}
-                                            layout="fill"
-                                            objectFit="contain"
-                                            priority={true} //image LCP 해결
-                                        ></Image>
-                                    </div>
-                                </SwiperSlide>
-                            ))}
+                            {data
+                                .sort(() => Math.random() - 0.5)
+                                .map((el) => (
+                                    <SwiperSlide
+                                        key={el.id}
+                                        onClick={() => {
+                                            window.open(el.tarUrl);
+                                        }}
+                                        className="cursor-pointer"
+                                    >
+                                        <div className="relative h-40 sm:h-52 md:h-64 lg:h-72 w-full bg-slate-800/40 rounded-lg">
+                                            <Image
+                                                src={el.imgUrl}
+                                                alt={el.title}
+                                                layout="fill"
+                                                objectFit="contain"
+                                                priority={true} //image LCP 해결
+                                            ></Image>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
                         </Swiper>
                     </>
                 )}

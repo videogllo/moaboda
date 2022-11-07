@@ -1,5 +1,5 @@
 //functional
-// import { useEffect } from "react";
+import { useEffect } from "react";
 import { useState, useRef } from "react";
 
 //statement
@@ -8,31 +8,9 @@ import { SELECT_FILTER, SELECT_PLATFORM_FILTER } from "../../store/atom";
 
 //icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-const categoryData = [
-    {
-        title: "플랫폼",
-        content: ["Youtube", "Twitch", "AfreecaTV"],
-    },
-    {
-        title: "게임",
-        content: [
-            "리그오브레전드",
-            "배틀그라운드",
-            "엘든링",
-            "다크소울",
-            "인왕2",
-            "GTA5",
-            "스텔라리스",
-        ],
-    },
-    {
-        title: "스포츠",
-        content: ["골프", "축구", "아이스하키"],
-    },
-];
+import categoryData from  "/data/category.json";
 
 const Category = () => {
     const [SELECTFILTER, setSELECTFILTER] = useRecoilState(SELECT_FILTER); //플랫폼을 제외한 카테고리
@@ -115,7 +93,7 @@ const Category = () => {
                                 <col width="80%"></col>
                             </colgroup>
                             <tbody className="divide-y divide-slate-500 bg-slate-800">
-                                {categoryData.map((el) => (
+                                {categoryData.category.map((el) => (
                                     <tr
                                         key={el.title}
                                         className="divide-x divide-slate-500"
