@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "cross-env ANALYZE=true npm run build",
+    "serve": "serve .next/analyze"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
@@ -16,6 +18,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "animate.css": "^4.1.1",
     "axios": "^1.1.2",
+    "cross-env": "^7.0.3",
     "mongoose": "^6.7.1",
     "next": "12.3.1",
     "next-connect": "^0.13.0",
