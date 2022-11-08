@@ -12,30 +12,29 @@ import Loading from "./loading";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+//image
+import Banner1 from "../../public/image/banner/mainBanner1.jpg"
+import Banner2 from "../../public/image/banner/mainBanner2.jpg"
+import Banner3 from "../../public/image/banner/mainBanner3.png"
+
 const dataOrigin = [
     {
         id: 1,
         title: "tencent1",
-        imgUrl: "/image/banner/mainBanner1.jpg",
+        imgUrl: Banner1,
         tarUrl: "https://www.netflix.com/kr/title/81040344",
     },
     {
         id: 2,
         title: "tencent2",
-        imgUrl: "/image/banner/mainBanner2.jpg",
+        imgUrl: Banner2,
         tarUrl: "https://www.netflix.com/kr/title/81343748",
     },
     {
         id: 3,
         title: "tencent3",
-        imgUrl: "/image/banner/mainBanner3.png",
+        imgUrl: Banner3,
         tarUrl: "https://www.youtube.com/channel/UC1B6SalAoiJD7eHfMUA9QrA",
-    },
-    {
-        id: 4,
-        title: "tencent5",
-        imgUrl: "/image/banner/mainBanner5.png",
-        tarUrl: "https://www.youtube.com/c/%EB%B9%A0%EB%8B%88%EB%B3%B4%ED%8B%80PaniBottle",
     },
 ];
 

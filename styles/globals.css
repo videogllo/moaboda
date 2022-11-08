@@ -27,21 +27,25 @@
     font-family: "NanumSquareNeo";
     src: url("/font/NanumSquareNeo/NanumSquareNeoL.woff2");
     font-weight: 300;
+    font-display: swap;
 }
 @font-face {
     font-family: "NanumSquareNeo";
     src: url("/font/NanumSquareNeo/NanumSquareNeoR.woff2");
     font-weight: 400;
+    font-display: swap;
 }
 @font-face {
     font-family: "NanumSquareNeo";
     src: url("/font/NanumSquareNeo/NanumSquareNeoB.woff2");
     font-weight: 700;
+    font-display: swap;
 }
 @font-face {
     font-family: "NanumSquareNeo";
     src: url("/font/NanumSquareNeo/NanumSquareNeoEB.woff2");
     font-weight: 800;
+    font-display: swap;
 }
 
 html,

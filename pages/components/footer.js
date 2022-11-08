@@ -38,12 +38,12 @@ const Footer = () => {
                 </div>
                 <Link href="https://www.videogllo.com" passHref>
                     <a target="_blank" rel="noopener noreferrer">
-                        <div className="w-36 h-14 relative ml-auto">
+                        <div className="w-36 h-14 relative ml-auto cursor-pointer">
                             <Image
                                 src="/image/logo/videogllo_dark.png"
+                                alt=""
                                 layout="fill"
                                 objectFit="contain"
-                                className="cursor-pointer"
                                 unoptimized={true}
                             ></Image>
                         </div>

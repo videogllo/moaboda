@@ -23,7 +23,9 @@ const MainListPopular = () => {
                     setData(data.result);
                 });
         };
+        // setTimeout(() => {
         fnMainList();
+        // }, 3000);
     }, []);
 
     return (
@@ -47,7 +49,14 @@ const MainListPopular = () => {
 
                         {data.length === 0 ? (
                             <>
-                                <Loading></Loading>
+                                <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 2xl:grid-cols-4">
+                                    {new Array(12).fill().map((el) => (
+                                        <div
+                                            key={el}
+                                            className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-700 lg:aspect-none relative animate-pulse2"
+                                        ></div>
+                                    ))}
+                                </div>
                             </>
                         ) : (
                             <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 2xl:grid-cols-4">
@@ -72,6 +81,7 @@ const MainListPopular = () => {
                                                                 alt={el.title}
                                                                 layout="fill"
                                                                 objectFit="cover"
+                                                                priority={true}
                                                                 unoptimized={
                                                                     true
                                                                 }
@@ -113,90 +123,109 @@ const MainListPopular = () => {
                                             .sort(function (a, b) {
                                                 return b.hit - a.hit;
                                             })
-                                            .map((el) => (
-                                                <div key={el.id}>
-                                                    <div className="relative">
-                                                        <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-800 lg:aspect-none relative">
-                                                            <Image
-                                                                src={el.imgUrl}
-                                                                alt={el.title}
-                                                                layout="fill"
-                                                                objectFit="cover"
-                                                                unoptimized={
-                                                                    true
-                                                                }
-                                                                className="cursor-pointer hover:scale-110 transition-all duration-500"
-                                                            ></Image>
-                                                            <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
-                                                                <Image
-                                                                    src={common.dynamicIcon(
-                                                                        el.type
-                                                                    )}
-                                                                    alt={
-                                                                        el.title
-                                                                    }
-                                                                    layout="fill"
-                                                                    objectFit="contain"
-                                                                    unoptimized={
-                                                                        true
-                                                                    }
-                                                                    className="rounded-md"
-                                                                />
-                                                            </div>
-                                                            {/* 데이터 중 playTime이 존재 하다면 출력 */}
-                                                            {el.playTime !==
-                                                            undefined ? (
-                                                                <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
-                                                                    <span>
-                                                                        {/* 배열의 첫번째 값을 제외한 값 출력 */}
-                                                                        {el.playTime
-                                                                            .slice(
-                                                                                1
-                                                                            )
-                                                                            .map(
-                                                                                (
-                                                                                    el,
-                                                                                    i
-                                                                                ) => (
-                                                                                    <>
-                                                                                        {/* 첫번째 값을 제외한 값의 앞에 ":" 추가 */}
-                                                                                        {i !==
-                                                                                        0 ? (
-                                                                                            <span
-                                                                                                key={
-                                                                                                    el
-                                                                                                }
-                                                                                            >
-                                                                                                &#58;
-                                                                                                {
-                                                                                                    el
-                                                                                                }
-                                                                                            </span>
-                                                                                        ) : (
-                                                                                            <span
-                                                                                                key={
-                                                                                                    i
-                                                                                                }
-                                                                                            >
-                                                                                                {
-                                                                                                    el
-                                                                                                }
-                                                                                            </span>
-                                                                                        )}
-                                                                                    </>
-                                                                                )
+                                            .map((el, i) => (
+                                                <>
+                                                    {/* 8개로 개수 제한 */}
+                                                    {i < 8 && (
+                                                        <div key={el.id}>
+                                                            <div className="relative">
+                                                                <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-800 lg:aspect-none relative">
+                                                                    <Image
+                                                                        src={
+                                                                            el.imgUrl
+                                                                        }
+                                                                        alt={
+                                                                            el.title
+                                                                        }
+                                                                        layout="fill"
+                                                                        objectFit="contain"
+                                                                        priority={
+                                                                            true
+                                                                        }
+                                                                        className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                                        unoptimized={
+                                                                            true
+                                                                        }
+                                                                        onClick={() => {
+                                                                            window.open(
+                                                                                el.href,
+                                                                                "_blank"
+                                                                            );
+                                                                        }}
+                                                                    ></Image>
+                                                                    <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
+                                                                        <Image
+                                                                            src={common.dynamicIcon(
+                                                                                el.type
                                                                             )}
-                                                                    </span>
+                                                                            alt={
+                                                                                el.title
+                                                                            }
+                                                                            layout="fill"
+                                                                            objectFit="contain"
+                                                                            unoptimized={
+                                                                                true
+                                                                            }
+                                                                        />
+                                                                    </div>
+                                                                    {/* 데이터 중 playTime이 존재 하다면 출력 */}
+                                                                    {el.playTime !==
+                                                                    undefined ? (
+                                                                        <div className="absolute top-0 right-0 w-auto rounded-md p-1 bg-black/60 text-xs  text-center">
+                                                                            <span>
+                                                                                {/* 배열의 첫번째 값을 제외한 값 출력 */}
+                                                                                {el.playTime
+                                                                                    .slice(
+                                                                                        1
+                                                                                    )
+                                                                                    .map(
+                                                                                        (
+                                                                                            el,
+                                                                                            i
+                                                                                        ) => (
+                                                                                            <>
+                                                                                                {/* 첫번째 값을 제외한 값의 앞에 ":" 추가 */}
+                                                                                                {i !==
+                                                                                                0 ? (
+                                                                                                    <span
+                                                                                                        key={
+                                                                                                            el
+                                                                                                        }
+                                                                                                    >
+                                                                                                        &#58;
+                                                                                                        {
+                                                                                                            el
+                                                                                                        }
+                                                                                                    </span>
+                                                                                                ) : (
+                                                                                                    <span
+                                                                                                        key={
+                                                                                                            i
+                                                                                                        }
+                                                                                                    >
+                                                                                                        {
+                                                                                                            el
+                                                                                                        }
+                                                                                                    </span>
+                                                                                                )}
+                                                                                            </>
+                                                                                        )
+                                                                                    )}
+                                                                            </span>
+                                                                        </div>
+                                                                    ) : null}
                                                                 </div>
-                                                            ) : null}
+                                                                <div>
+                                                                    <h3 className="text-sm font-semibold w-full lg:text-base break-all line-clamp-2 mt-2">
+                                                                        {
+                                                                            el.title
+                                                                        }
+                                                                    </h3>
+                                                                </div>
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <h3 className="text-sm font-semibold w-full lg:text-base break-all line-clamp-2 mt-2">
-                                                                {el.title}
-                                                            </h3>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                    )}
+                                                </>
                                             ))}
                                     </>
                                 )}

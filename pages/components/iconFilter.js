@@ -145,14 +145,14 @@ const IconFilter = () => {
                             {iconData.map((el) => (
                                 <>
                                     <SwiperSlide key={el.name}>
-                                        <button
+                                        <div
                                             className={
                                                 // 배열에 있는 값과 선택한 아이콘이 같은 이름인지 구별
                                                 SELECTICONFILTER.includes(
                                                     el.name
                                                 )
-                                                    ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-100"
-                                                    : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-30"
+                                                    ? "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-100 cursor-pointer"
+                                                    : "border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 rounded-lg relative my-2 transition-all opacity-30 cursor-pointer"
                                             }
                                             id={el.name}
                                             onClick={() =>
@@ -161,12 +161,12 @@ const IconFilter = () => {
                                         >
                                             <Image
                                                 src={el.imgUrl}
+                                                alt=""
                                                 layout="fill"
                                                 objectFit="contain"
                                                 unoptimized={true}
-                                                className="rounded-lg scale-[1.02]"
                                             ></Image>
-                                        </button>
+                                        </div>
                                     </SwiperSlide>
                                 </>
                             ))}
@@ -215,26 +215,19 @@ const IconFilter = () => {
                                     key={el.name}
                                     className="w-full h-full"
                                 >
-                                    <button
-                                        className="border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 relative my-2 transition-all"
+                                    <div
+                                        className="border-g w-10 md:w-12 xl:w-14 h-10 md:h-12 xl:h-14 relative my-2 transition-all cursor-pointer"
                                         id={el.name}
                                         onClick={() => selectFilter(el.name)}
                                     >
-                                        {/* <Image
-                                            src={el.imgUrl}
-                                            layout="fill"
-                                            objectFit="contain"
-                                            className="scale-[1.02]"
-                                        ></Image> */}
                                         <Image
                                             src={common.dynamicIcon(el.name)}
-                                            alt={el.title}
+                                            alt=""
                                             layout="fill"
                                             objectFit="contain"
                                             unoptimized={true}
-                                            className="rounded-md"
                                         />
-                                    </button>
+                                    </div>
                                 </SwiperSlide>
                             ))}
                         </Swiper>
