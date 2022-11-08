@@ -61,7 +61,24 @@ const ResultList = () => {
             </InfiniteScroll> */}
 
             {data.length === 0 ? (
-                <Loading></Loading>
+                <>
+                    <div className="flex flex-col gap-3">
+                        {new Array(10).fill().map((el) => (
+                            <div className="bg-slate-700 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3">
+                                <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-600 relative flex basis-1/4 justify-center rounded-md animate-pulse2"></div>
+                                <div className="flex flex-col basis-3/4 gap-4">
+                                    <div className="flex gap-3">
+                                        <div className="h-6 w-8 bg-slate-600 rounded-lg animate-pulse2"></div>
+                                        <div className="h-6 w-1/2 bg-slate-600 rounded-lg animate-pulse2"></div>
+                                    </div>
+                                    <div className="h-6 w-1/3 bg-slate-600 rounded-lg animate-pulse2"></div>
+                                    <div className="h-6 w-1/4 bg-slate-600 rounded-lg animate-pulse2"></div>
+                                    <div className="h-6 w-1/2 bg-slate-600 rounded-lg animate-pulse2"></div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </>
             ) : (
                 <div className="flex flex-col gap-3">
                     {SELECTFILTER.length > 0 ||
@@ -332,19 +349,23 @@ const ResultList = () => {
                                                 key={el2.id}
                                                 className="bg-slate-800 w-full shadow-lg rounded-lg p-2 py-4 flex gap-3"
                                             >
-                                                <div className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md overflow-hidden">
-                                                    <a
-                                                        href={el2.href}
-                                                        target="_blank"
-                                                    >
-                                                        <Image
-                                                            src={el2.imgUrl}
-                                                            layout="fill"
-                                                            objectFit="cover"
-                                                            unoptimized={true}
-                                                            className="cursor-pointer hover:scale-110 transition-all duration-500"
-                                                        ></Image>
-                                                    </a>
+                                                <div
+                                                    className="w-40 max-w-52 h-40 md:h-48 xl:h-56 bg-slate-900 relative flex basis-1/4 justify-center rounded-md overflow-hidden"
+                                                    onClick={() => {
+                                                        window.open(
+                                                            el2.href,
+                                                            "_blank"
+                                                        );
+                                                    }}
+                                                >
+                                                    <Image
+                                                        src={el2.imgUrl}
+                                                        layout="fill"
+                                                        objectFit="contain"
+                                                        unoptimized={true}
+                                                        priority={true}
+                                                        className="cursor-pointer hover:scale-110 transition-all duration-500"
+                                                    ></Image>
                                                 </div>
                                                 <div className="flex flex-col basis-3/4 gap-1">
                                                     <div className="flex gap-2 items-center">

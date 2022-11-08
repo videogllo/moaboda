@@ -46,6 +46,7 @@ const BannerSub = () => {
                     layout="fill"
                     objectFit="contain"
                     unoptimized={true}
+                    priority={true}
                 ></Image>
             </div>
         </div>

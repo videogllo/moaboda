@@ -24,8 +24,7 @@ const UserForm = () => {
 
     return (
         <>
-            <button
-                type="button"
+            <div
                 className="relative rounded-full border border-transparent bg-slate-800 px-2 py-2 text-sm font-medium transition-all shadow-sm hover:bg-slate-800/80 focus:outline-none focus:ring-2 focus:ring-slate-800/80 focus:ring-offset-2"
                 onClick={userClick}
             >
@@ -40,7 +39,7 @@ const UserForm = () => {
                 )}
 
                 {isPopup && <UserPopup setIsPopup={setIsPopup}></UserPopup>}
-            </button>
+            </div>
 
             {isModal && <Modal setIsModal={setIsModal}></Modal>}
         </>

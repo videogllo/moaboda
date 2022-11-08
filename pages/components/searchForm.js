@@ -49,6 +49,7 @@ const SearchForm = () => {
                             />
                         </div>
                         <button
+                            aria-label="submit"
                             type="submit"
                             className="relative -ml-px inline-flex items-center space-x-2 rounded-r-md bg-slate-800/60 px-4 py-2 text-sm font-medium hover:bg-slate-800 focus:outline-none transition-all focus:ring-[#ff0558]/80 focus:ring-2"
                         >

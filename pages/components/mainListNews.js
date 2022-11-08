@@ -165,6 +165,7 @@ const MainListNews = () => {
                                                         objectFit="contain"
                                                         alt={el.title}
                                                         unoptimized={true}
+                                                        priority={true}
                                                         className="hover:scale-110 transition-all duration-500"
                                                     />
                                                 </div>
@@ -195,6 +196,7 @@ const MainListNews = () => {
                                                         objectFit="contain"
                                                         alt={el.title}
                                                         unoptimized={true}
+                                                        priority={true}
                                                         className="hover:scale-110 transition-all duration-500"
                                                     />
                                                 </div>
