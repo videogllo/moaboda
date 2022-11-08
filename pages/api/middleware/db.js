@@ -19,5 +19,4 @@ export default async function dbMiddleware(req, res, next) {
     console.error(e);
   }
   return next();  
-
 }
