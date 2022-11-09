@@ -20,6 +20,7 @@ const MainListPopular = () => {
     useEffect(() => {
         const fnMainList = async () => {
 
+            
             await axios.get("/api/popular").then(function(resp) {
                 let mainData = resp.data.data;
                 
@@ -148,7 +149,6 @@ const MainListPopular = () => {
                                             .map((el, i) => (
                                                 <>
                                                     {/* 8개로 개수 제한 */}
-                                                    {i < 8 && (
                                                         <div key={el.id}>
                                                             <div className="relative">
                                                                 <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-800 lg:aspect-none relative">
@@ -246,7 +246,6 @@ const MainListPopular = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    )}
                                                 </>
                                             ))}
                                     </>
