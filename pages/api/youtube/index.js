@@ -4,12 +4,7 @@ import Youtube from "../models/youtube";
 const app = createHandler();
 
 app.get(async (req, res) => {
-  if(count > 0){
-    const count = req.query.count; //요청 개수
-    const youtube = await Youtube.find({}).limit(req.query.count);
-  }else{
-    const youtube = await Youtube.find({});
-  }
+  const youtube = await Youtube.find({});
   return res.status(200).json({ data: youtube });
 });
 

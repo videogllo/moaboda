@@ -22,9 +22,9 @@ const MainListPopular = () => {
             await axios({
                 method:"GET",
                 url:"/api/popular/index",
-                params:{
-                    count: 8 //요청 데이터 개수
-                }
+                // params:{
+                //     count: 8 //요청 데이터 개수
+                // }
             }).then((res) => {
                 alert()
                 let mainData = res.data.data;
