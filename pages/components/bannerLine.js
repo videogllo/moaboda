@@ -12,7 +12,7 @@ const BannerLine = () => {
                             alt="bannerLine"
                             layout="fill"
                             unoptimized={true}
-                            objectFit="full"
+                            objectFit="contain"
                         ></Image>
                     </div>
                 </div>
