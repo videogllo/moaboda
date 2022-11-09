@@ -6,7 +6,7 @@ const cors = require('cors');
 
 app.use(cookieParser());
 app.use(cors());
-app.listen(process.env.PORT || 5000);
+// app.listen(process.env.PORT || 5000);
 
 const CLIENT_KEY = 'awks87106fu78eb9' // this value can be found in app's developer portal
 
