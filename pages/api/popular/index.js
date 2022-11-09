@@ -4,12 +4,17 @@ import Popular from "../models/popular";
 const app = createHandler();
 
 app.get(async (req, res) => {
-  const popular = await Popular.find({});
+  const count = req.query.count; //요청 개수
+
+  if(count > 0){
+    const popular = await Popular.find({}).limit(req.query.count);
+  }else{
+    const popular = await Popular.find({});
+  }
   return res.status(200).json({ data: popular });
 });
 
 app.post(async (req, res) => {
-  console.log("yogiyo2");
   console.log('db 저장 해보자고~! (popular API)');
   console.log(req.body);
 
