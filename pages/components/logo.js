@@ -8,11 +8,7 @@ const Logo = () => {
             <a href="#">
                 <div className="w-[200px] md:w-[220px] lg:w-[240px] h-16 md:h-20 lg:h-24 relative">
                     <Image
-<<<<<<< HEAD
                         src="/image/logo/logo.png"
-=======
-                        src="image/logo/logo.png"
->>>>>>> feb6a1b75bd1d3f3bdd2715c579e04bbf8d0013f
                         alt="logo"
                         layout="fill"
                         objectFit="contain"
