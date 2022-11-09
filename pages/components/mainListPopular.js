@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import * as common from "../../js/common";
 
+import axios from "axios";
+import React from "react";
+
 //component
 import Loading from "./loading";
 
@@ -16,12 +19,31 @@ const MainListPopular = () => {
 
     useEffect(() => {
         const fnMainList = async () => {
-            await fetch("/api/main")
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data.result);
-                    setData(data.result);
-                });
+
+            await axios.get("/api/popular").then(function(resp) {
+                let mainData = resp.data.data;
+                
+                if(mainData.length < 1){
+                    axios.get("/api/main").then(function(resp){
+                        console.log(resp.data.result);
+
+                        const saveData = resp.data.result;
+                        console.log(saveData);
+                        axios.post("/api/popular", saveData).then(function(resp){
+                            console.log(resp);
+                            if(resp.status === 200){
+                                axios.get("/api/popular").then(function(resp) {
+                                    let mainData = resp.data.data;
+                                    console.log(resp);
+                                    setData(mainData);
+                                });
+                            }
+                        });
+                    });
+                } else {
+                    setData(mainData);
+                }
+            });
         };
         // setTimeout(() => {
         fnMainList();
