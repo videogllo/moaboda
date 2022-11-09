@@ -1,5 +1,5 @@
-import createHandler from "../middleware";
-import Twitch from "../models/twitch";
+import createHandler from "./middleware";
+import Twitch from "./models/twitch";
 
 const app = createHandler();
 

@@ -1,5 +1,5 @@
-import createHandler from "../middleware";
-import Youtube from "../models/youtube";
+import createHandler from "./middleware";
+import Youtube from "./models/youtube";
 
 const app = createHandler();
 

@@ -1,5 +1,5 @@
-import createHandler from "../middleware";
-import Popular from "../models/popular";
+import createHandler from "./middleware";
+import Popular from "./models/popular"
 
 const app = createHandler();
 
