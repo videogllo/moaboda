@@ -21,20 +21,23 @@ const MainListPopular = () => {
         const fnMainList = async () => {
             await axios({
                 method:"GET",
-                url:"/api/popular",
+                url:"/api/popular/index",
                 params:{
                     count: 8 //요청 데이터 개수
                 }
             }).then((res) => {
+                alert()
                 let mainData = res.data.data;
                 setData(mainData);
                 console.log("data : ", mainData);
-            });
+            }).catch((e) => {
+                console.log(e)
+            })
+
+            ;
         };
 
-        // setTimeout(() => {
         fnMainList();
-        // }, 3000);
     }, []);
 
     return (
