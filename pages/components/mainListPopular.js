@@ -18,34 +18,52 @@ const MainListPopular = () => {
     const [SELECTICONFILTER] = useRecoilState(SELECT_ICON_FILTER);
 
     useEffect(() => {
+        console.log("data : ", data);
+    },data)
+
+    useEffect(() => {
         const fnMainList = async () => {
-
-            
-            await axios.get("/api/popular").then(function(resp) {
-                let mainData = resp.data.data;
-                
-                if(mainData.length < 1){
-                    axios.get("/api/main").then(function(resp){
-                        console.log(resp.data.result);
-
-                        const saveData = resp.data.result;
-                        console.log(saveData);
-                        axios.post("/api/popular", saveData).then(function(resp){
-                            console.log(resp);
-                            if(resp.status === 200){
-                                axios.get("/api/popular").then(function(resp) {
-                                    let mainData = resp.data.data;
-                                    console.log(resp);
-                                    setData(mainData);
-                                });
-                            }
-                        });
-                    });
-                } else {
-                    setData(mainData);
-                }
+            await axios({
+                method:"GET",
+                url:"/api/popular"
+            }).then((res) => {
+                let mainData = res.data.data;
+                setData(mainData);
             });
         };
+
+        // const fnMainList = async () => {
+        // await axios.get("/api/popular").then(function(resp) {
+        //     let mainData = resp.data.data;
+
+        //     console.log("yogiyo1 : ", mainData)
+            
+        //     if(mainData.length < 1){
+        //         axios.get("/api/main").then(function(resp){
+        //             console.log(resp.data.result);
+
+        //             const saveData = resp.data.result;
+        //             console.log(saveData);
+        //             axios.post("/api/popular", saveData).then(function(resp){
+        //                 console.log(resp);
+        //                 if(resp.status === 200){
+        //                     axios.get("/api/popular").then(function(resp) {
+        //                         let mainData = resp.data.data;
+        //                         console.log(resp);
+        //                         setData(mainData);
+
+        //                         console.log("yogiyo2 : ", mainData)
+        //                     });
+        //                 }
+        //             });
+        //         });
+        //     } else {
+        //         setData(mainData);
+        //     }
+        // });};
+
+
+
         // setTimeout(() => {
         fnMainList();
         // }, 3000);
@@ -70,7 +88,7 @@ const MainListPopular = () => {
                             </a> */}
                         </div>
 
-                        {data.length === 0 ? (
+                        {data.length < 1 ? (
                             <>
                                 <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 2xl:grid-cols-4">
                                     {new Array(12).fill().map((el) => (
