@@ -37,7 +37,7 @@ const ResultList = () => {
     const fetchData2 = async () => {
         await axios({
             method: "GET",
-            url: "/api/youtube/index",
+            url: "/api/youtube",
             params:{
                 count: 2 //요청 데이터 개수
             }
