@@ -202,7 +202,7 @@ const ResultList = () => {
                                                                             el2.title
                                                                         }
                                                                         layout="fill"
-                                                                        objectFit="cover"
+                                                                        objectFit="cover" 
                                                                         unoptimized={
                                                                             true
                                                                         }
