@@ -361,7 +361,7 @@ const ResultList = () => {
                                                     <Image
                                                         src={el2.imgUrl}
                                                         layout="fill"
-                                                        objectFit="contain"
+                                                        objectFit="cover"
                                                         unoptimized={true}
                                                         priority={true}
                                                         className="cursor-pointer hover:scale-110 transition-all duration-500"

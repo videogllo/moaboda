@@ -9,7 +9,7 @@ const Footer = () => {
             <div className="flex w-full">
                 <div className="w-full">
                     <h2
-                        className="font-bold text-base md:text-lg mb-2 text-[#ff0558] cursor-pointer hover:text-[#ff0558]/60"
+                        className="font-bold text-base md:text-lg mb-2 text-[#fce90a] cursor-pointer hover:text-[#fce90a]/60"
                         onClick={() => (window.location.href = "/")}
                     >
                         모아보다(MOABODA)
@@ -25,12 +25,12 @@ const Footer = () => {
                     </div>
                     <div className="flex mt-2 text-xs md:text:sm gap-4">
                         <Link href="../doc/service">
-                            <p className="text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all cursor-pointer">
+                            <p className="text-[#fce90a] xl:hover:text-[#fce90a]/60 transition-all cursor-pointer">
                                 이용약관
                             </p>
                         </Link>
                         <Link href="../doc/policy">
-                            <p className="text-[#ff0558] xl:hover:text-[#ff0558]/60 transition-all cursor-pointer">
+                            <p className="text-[#fce90a] xl:hover:text-[#fce90a]/60 transition-all cursor-pointer">
                                 개인정보 처리 방침
                             </p>
                         </Link>

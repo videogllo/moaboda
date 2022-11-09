@@ -18,10 +18,6 @@ const MainListPopular = () => {
     const [SELECTICONFILTER] = useRecoilState(SELECT_ICON_FILTER);
 
     useEffect(() => {
-        console.log("data : ", data);
-    },data)
-
-    useEffect(() => {
         const fnMainList = async () => {
             await axios({
                 method:"GET",
@@ -29,41 +25,10 @@ const MainListPopular = () => {
             }).then((res) => {
                 let mainData = res.data.data;
                 setData(mainData);
+                console.log("data : ", mainData);
             });
         };
-
-        // const fnMainList = async () => {
-        // await axios.get("/api/popular").then(function(resp) {
-        //     let mainData = resp.data.data;
-
-        //     console.log("yogiyo1 : ", mainData)
-            
-        //     if(mainData.length < 1){
-        //         axios.get("/api/main").then(function(resp){
-        //             console.log(resp.data.result);
-
-        //             const saveData = resp.data.result;
-        //             console.log(saveData);
-        //             axios.post("/api/popular", saveData).then(function(resp){
-        //                 console.log(resp);
-        //                 if(resp.status === 200){
-        //                     axios.get("/api/popular").then(function(resp) {
-        //                         let mainData = resp.data.data;
-        //                         console.log(resp);
-        //                         setData(mainData);
-
-        //                         console.log("yogiyo2 : ", mainData)
-        //                     });
-        //                 }
-        //             });
-        //         });
-        //     } else {
-        //         setData(mainData);
-        //     }
-        // });};
-
-
-
+        
         // setTimeout(() => {
         fnMainList();
         // }, 3000);
@@ -107,7 +72,7 @@ const MainListPopular = () => {
                                         {data
                                             .filter((el) =>
                                                 SELECTICONFILTER.some(
-                                                    (el2) => el.type === el2
+                                                    (el2) => el.platform === el2
                                                 )
                                             )
                                             .sort(function (a, b) {
@@ -131,7 +96,7 @@ const MainListPopular = () => {
                                                             <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                 <Image
                                                                     src={common.dynamicIcon(
-                                                                        el.type
+                                                                        el.platform
                                                                     )}
                                                                     alt={
                                                                         el.title
@@ -178,7 +143,7 @@ const MainListPopular = () => {
                                                                             el.title
                                                                         }
                                                                         layout="fill"
-                                                                        objectFit="contain"
+                                                                        objectFit="cover"
                                                                         priority={
                                                                             true
                                                                         }
@@ -196,7 +161,7 @@ const MainListPopular = () => {
                                                                     <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
                                                                         <Image
                                                                             src={common.dynamicIcon(
-                                                                                el.type
+                                                                                el.platform
                                                                             )}
                                                                             alt={
                                                                                 el.title
