@@ -36,7 +36,7 @@ const ScrollToTop = () => {
                     onClick={moveTop}
                     className="fixed bottom-6 right-4 lg:bottom-8 lg:right-6 z-30 bg-[#fce90a] hover:bg-[#fce90a]/60 rounded-lg flex items-center justify-center cursor-pointer"
                 >
-                    <div className="text-xl 2xl:text-2xl p-2 lg:p-3">👆🏼</div>
+                    <div className="text-xl 2xl:text-2xl p-2 lg:p-3">👆🏻👆🏻👆🏿👆🏼👆🏽👆🏽</div>
                 </div>
             )}
         </>
