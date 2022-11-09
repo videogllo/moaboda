@@ -4,13 +4,7 @@ import Popular from "../models/popular";
 const app = createHandler();
 
 app.get(async (req, res) => {
-  const count = req.query.count; //요청 개수
-
-  if(count > 0){
-    const popular = await Popular.find({}).limit(req.query.count);
-  }else{
-    const popular = await Popular.find({});
-  }
+  const popular = await Popular.find({});
   return res.status(200).json({ data: popular });
 });
 

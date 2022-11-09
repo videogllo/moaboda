@@ -20,7 +20,8 @@ const ResultList = () => {
 
     useEffect(() => {
         //최초 불러올 데이터
-        fetchData();
+        // fetchData();
+        fetchData2();
     }, []);
 
     const fetchData = async () => {
@@ -33,9 +34,19 @@ const ResultList = () => {
         });
     };
 
-    // const nextFetch = async () => {
-    //     setData(data.concat(data));
-    // };
+    const fetchData2 = async () => {
+        await axios({
+            method: "GET",
+            url: "/api/youtube/index",
+            params:{
+                count: 2 //요청 데이터 개수
+            }
+        }).then((res) => {
+            let youtubeData = res.data.data;
+            setData(youtubeData);
+            console.log("data : ", youtubeData);
+        });
+    };
 
     return (
         <div className="mt-8 md:mt-12 mb-8 flex flex-col gap-2">
