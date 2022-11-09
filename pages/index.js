@@ -27,6 +27,7 @@ export default function Home() {
                 <BannerLine></BannerLine>
 
                 <div className="w-full md:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] mx-auto flex-1 p-3">
+                    <a href='/oauth'>Continue with TikTok</a>
                     <Header></Header>
                     <BannerMain></BannerMain>
                     <IconFilter></IconFilter>
