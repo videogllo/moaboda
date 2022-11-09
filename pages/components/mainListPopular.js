@@ -3,6 +3,9 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import * as common from "../../js/common";
 
+import axios from "axios";
+import React from "react";
+
 //component
 import Loading from "./loading";
 
@@ -16,12 +19,32 @@ const MainListPopular = () => {
 
     useEffect(() => {
         const fnMainList = async () => {
-            await fetch("/api/main")
-                .then((res) => res.json())
-                .then((data) => {
-                    console.log(data.result);
-                    setData(data.result);
-                });
+
+            
+            await axios.get("/api/popular").then(function(resp) {
+                let mainData = resp.data.data;
+                
+                if(mainData.length < 1){
+                    axios.get("/api/main").then(function(resp){
+                        console.log(resp.data.result);
+
+                        const saveData = resp.data.result;
+                        console.log(saveData);
+                        axios.post("/api/popular", saveData).then(function(resp){
+                            console.log(resp);
+                            if(resp.status === 200){
+                                axios.get("/api/popular").then(function(resp) {
+                                    let mainData = resp.data.data;
+                                    console.log(resp);
+                                    setData(mainData);
+                                });
+                            }
+                        });
+                    });
+                } else {
+                    setData(mainData);
+                }
+            });
         };
         // setTimeout(() => {
         fnMainList();
@@ -126,7 +149,6 @@ const MainListPopular = () => {
                                             .map((el, i) => (
                                                 <>
                                                     {/* 8개로 개수 제한 */}
-                                                    {i < 8 && (
                                                         <div key={el.id}>
                                                             <div className="relative">
                                                                 <div className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-800 lg:aspect-none relative">
@@ -224,7 +246,6 @@ const MainListPopular = () => {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    )}
                                                 </>
                                             ))}
                                     </>
