@@ -25,16 +25,29 @@ const MainListPopular = () => {
                 
                 if(mainData.length < 1){
                     axios.get("/api/main").then(function(resp){
-                        console.log(resp.data.result);
-
+                        // console.log(resp.data.result);
                         const saveData = resp.data.result;
-                        console.log(saveData);
+                        // console.log(saveData);
                         axios.post("/api/popular", saveData).then(function(resp){
-                            console.log(resp);
+                            // console.log(resp);
                             if(resp.status === 200){
                                 axios.get("/api/popular").then(function(resp) {
                                     let mainData = resp.data.data;
-                                    console.log(resp);
+                                    // console.log(resp);
+                                    setData(mainData);
+                                });
+                            }
+                        });
+                    });
+                    axios.get("/api/mainTiktok").then(function(resp){
+                        const saveData = resp.data.result;
+                        // console.log(saveData);
+                        axios.post("/api/popular", saveData).then(function(resp){
+                            // console.log(resp);
+                            if(resp.status === 200){
+                                axios.get("/api/popular").then(function(resp) {
+                                    let mainData = resp.data.data;
+                                    // console.log(resp);
                                     setData(mainData);
                                 });
                             }

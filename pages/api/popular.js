@@ -10,7 +10,7 @@ app.get(async (req, res) => {
 
 app.post(async (req, res) => {
   console.log('db 저장 해보자고~! (popular API)');
-  console.log(req.body);
+  // console.log(req.body);
 
   const items = req.body;
   let result = null;

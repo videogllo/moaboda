@@ -1,5 +1,5 @@
-import * as Common from "../../js/common";
 const axios = require("axios");
+const TikTokScraper = require('tiktok-scraper');
 
 export default async function handler(req, res) {
     let results = [];
@@ -65,52 +65,117 @@ export default async function handler(req, res) {
                 }
             }
         });
+
+        // TikTok
+        // let tiktokData = [];
+        // (async () => {
+        //     try {
+        //         const posts = await TikTokScraper.user(`moaboda2022`, {
+        //             number: 100,
+        //             by_user_id: true,
+        //             sessionList: ['sid_tt=d538fab41c3541e8afc0cfebcaff729e;']
+        //         });
+        //         const headers = posts.headers;
+        
+        //         const tiktok = await TikTokScraper.trend('WEB_VIDEO_URL', {headers}).then(function(resp) {
+        //             resp.collector.map((data) => {
+        //                 tiktokData.push({
+        //                     id: data.id,
+        //                     title: data.text,
+        //                     href: data.webVideoUrl,
+        //                     imgUrl: data.covers.origin,
+        //                     channel: data.authorMeta.name,
+        //                     quality: data.playCount,
+        //                     date: new Date(data.createTime * 1000),
+        //                     tag: data.hashtags,
+        //                     platform: "TikTok"
+        //                 });
+        //             })
+        //         });
+        //         const test = tiktok;
+        //     } catch (error) {
+        //         console.log(error);
+        //     }
+        // })();
+        
         
         // TMDB
+        let tmdbIds = [];
+        await axios.all([axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=1"),
+                        axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=2"),
+                        axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=3"),
+                        axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=4"),
+                        axios.get("https://api.themoviedb.org/3/trending/all/day?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=5")])
+        .then(async function(resp){
+            resp.map((i) => i.data.results.map((j) => tmdbIds.push(j.id)));
 
-        await axios.all([axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=1"), axios.get("https://api.themoviedb.org/3/movie/popular?api_key=e134931ac620c57b8200b44c971fd541&language=ko-KR&page=2")])
-        .then(
-            await axios.spread(async(res1, res2) => {
-                for(let i = 0; i < res1.data.results.length; i++){
-                    await axios.get("https://api.themoviedb.org/3/movie/" + res1.data.results[i].id + "?api_key=e134931ac620c57b8200b44c971fd541&language=ko")
-                    .then(function(resp) {
+            for(let i = 0; i < tmdbIds.length; i++){
+                await axios.get("https://api.themoviedb.org/3/movie/" + tmdbIds[i] + "?api_key=e134931ac620c57b8200b44c971fd541&language=ko")
+                .then(function(resp) {
+                    if((resp.data.homepage).includes('netflix')){
+                        results.push({
+                            id: resp.data.id,                                                                       //영상 아이디
+                            title: resp.data.title,                                                                 //영상 제목
+                            href: resp.data.homepage,                                                               //영상 주소
+                            imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+resp.data.poster_path,   //썸네일 경로
+                            channel: '/image/ott/neflix.svg',                                                       //채널명
+                            quality: resp.data.popularity,                                                          //총 재생수
+                            date: resp.data.release_date,                                                           //업로드일
+                            tag: resp.data.genres,                                                                  //영상에 등록된 태그
+                            platform: "Netflix",                                                                    //플랫폼 종류
+                        });
+                    }
+                    
+                    if((resp.data.homepage).includes('disney')){
+                        results.push({
+                            id: resp.data.id,                                                                       //영상 아이디
+                            title: resp.data.title,                                                                 //영상 제목
+                            href: resp.data.homepage,                                                               //영상 주소
+                            imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+resp.data.poster_path,   //썸네일 경로
+                            channel: '/image/ott/neflix.svg',                                                       //채널명
+                            quality: resp.data.popularity,                                                          //총 재생수
+                            date: resp.data.release_date,                                                           //업로드일
+                            tag: resp.data.genres,                                                                  //영상에 등록된 태그
+                            platform: "Disney",                                                                     //플랫폼 종류
+                        });
+                    }
+                })
+                .catch(async function(resp) {
+                    await axios.get(resp.config.url.replace("/movie/", "/tv/"))
+                    .then(function(resp){
                         if((resp.data.homepage).includes('netflix')){
-                            console.log(resp.data);
                             results.push({
                                 id: resp.data.id,                                                                       //영상 아이디
-                                title: resp.data.title,                                                                 //영상 제목
+                                title: resp.data.name,                                                                 //영상 제목
                                 href: resp.data.homepage,                                                               //영상 주소
                                 imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+resp.data.poster_path,   //썸네일 경로
                                 channel: '/image/ott/neflix.svg',                                                       //채널명
                                 quality: resp.data.popularity,                                                          //총 재생수
-                                date: resp.data.release_date,                                                           //업로드일
+                                date: resp.data.last_air_date,                                                          //업로드일
                                 tag: resp.data.genres,                                                                  //영상에 등록된 태그
                                 platform: "Netflix",                                                                    //플랫폼 종류
-                            });
+                            })
                         }
-                    })
-                }
-                for(let i = 0; i < res2.data.results.length; i++){
-                    await axios.get("https://api.themoviedb.org/3/movie/" + res2.data.results[i].id + "?api_key=e134931ac620c57b8200b44c971fd541&language=ko")
-                    .then(function(resp) {
-                        if((resp.data.homepage).includes('netflix')){
-                            console.log(resp.data);
+                        
+                        if((resp.data.homepage).includes('disney')){
+                            
                             results.push({
                                 id: resp.data.id,                                                                       //영상 아이디
-                                title: resp.data.title,                                                                 //영상 제목
+                                title: resp.data.name,                                                                  //영상 제목
                                 href: resp.data.homepage,                                                               //영상 주소
                                 imgUrl: 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'+resp.data.poster_path,   //썸네일 경로
                                 channel: '/image/ott/neflix.svg',                                                       //채널명
                                 quality: resp.data.popularity,                                                          //총 재생수
-                                date: resp.data.release_date,                                                           //업로드일
+                                date: resp.data.last_air_date,                                                          //업로드일
                                 tag: resp.data.genres,                                                                  //영상에 등록된 태그
-                                platform: "Netflix",                                                                    //플랫폼 종류
-                            });
+                                platform: "Disney",                                                                     //플랫폼 종류
+                            })
                         }
                     })
-                }
+                })
+            }
+        })
 
-            })
-        )
-    res.send({ result: results });
+        // console.log(results.map((i) => i.platform))
+        res.send({ result: results });
 }
