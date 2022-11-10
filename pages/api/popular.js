@@ -4,15 +4,26 @@ import Popular from "./models/popular";
 const app = createHandler();
 
 app.get(async (req, res) => {
-  //요청 파라미터에 개수 제한 요청이 있다면
-  if(req.query.count){
-    const count = req.query.count;
-    const popular = await Popular.find({}).limit(count);
-    return res.status(200).json({ data: popular });
-  }else{
-    const popular = await Popular.find({});
-    return res.status(200).json({ data: popular });
-  }
+    const count = req.query.count; //불러올 데이터 개수
+
+    if (req.query.filter) {
+        //요청 파라미터에 플랫폼 필터 요청이 있다면
+        const result = await Popular.find({
+            platform: { $in: req.query.filter.split(",") },
+        }).limit(count);
+        const length = await Popular.find({}).count();
+        return res.status(200).json({ data: result, maxLength: length });
+    } else if (req.query.count) {
+        //요청 파라미터에 개수 제한 요청이 있다면
+        const result = await Popular.find({}).limit(count);
+        const length = await Popular.find({}).count();
+        return res.status(200).json({ data: result, maxLength: length });
+    } else {
+        //전체
+        const result = await Popular.find({});
+        const length = await Popular.find({}).count();
+        return res.status(200).json({ data: result, maxLength: length });
+    }
 });
 
 app.post(async (req, res) => {

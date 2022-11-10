@@ -1,6 +1,7 @@
 //functional
+import axios from "axios";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //component
 import Loading from "./loading";
@@ -58,6 +59,29 @@ const feedMenu = [
 const MainListNews = () => {
     const [data, setData] = useState("test"); //임시로 데이터 있게함 => default null로 변경할 것
     const [feed, setFeed] = useState(0); //현재 선택되있는 피드를 확인하기 위함 default: 0
+
+    // useEffect(() => {
+    //     const fnNews = async () => {
+    //         await axios({
+    //           method: "GET",  
+    //           url: "https://openapi.naver.com/v1/search/news",
+    //           headers:{
+    //             "X-Naver-Client-Id": "kP6U9LrDGc59NbaBpypj",
+    //             "X-Naver-Client-Secret": "tHCOMz0cBi",
+    //           },
+    //           params:{
+    //             query:"크리에이터",
+    //             display:2,
+    //             sort:"sim",
+    //           }
+    //         })
+    //         .then((res) => {
+    //             console.log("test")
+    //         })
+    //     }
+
+    //     fnNews();
+    // },[])
 
     return (
         <div className="mt-8 md:mt-12">
