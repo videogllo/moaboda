@@ -21,7 +21,7 @@ const Footer = () => {
                         </p>
                         <p>사업자 등록번호 : 114-54-04443</p>
                         <p>대표 번호 : 02-2039-1690</p>
-                        <p>제휴 문의 : videogllo@videogllo.com</p>
+                        <p>제휴 문의 : moaboda@moaboda.com</p>
                     </div>
                     <div className="flex mt-2 text-xs md:text:sm gap-4">
                         <Link href="../doc/service">
@@ -40,7 +40,7 @@ const Footer = () => {
                     <a target="_blank" rel="noopener noreferrer">
                         <div className="w-36 h-14 relative ml-auto cursor-pointer">
                             <Image
-                                src="/image/logo/videogllo_dark.png"
+                                src="/image/logo/footer_logo.png"
                                 alt=""
                                 layout="fill"
                                 objectFit="contain"
