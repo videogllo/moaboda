@@ -12,7 +12,6 @@ import Loading from "./loading";
 //recoil
 import { SELECT_ICON_FILTER } from "../../store/atom";
 import { useRecoilState } from "recoil";
-import e from "cors";
 
 const MainListPopular = () => {
     const [data, setData] = useState([]);
@@ -22,7 +21,7 @@ const MainListPopular = () => {
     const moreRef = useRef(null);
 
     useEffect(() => {
-        console.log("yogiyo : ", data)
+        console.log(data)
     },[data])
 
     //최초 세팅
@@ -139,7 +138,7 @@ const MainListPopular = () => {
                         {data.length < 1 ? (
                             <>
                                 <div className="grid gap-y-10 gap-x-6 xl:gap-x-8 grid-cols-2 md:grid-cols-3 2xl:grid-cols-4">
-                                    {new Array(12).fill().map((el) => (
+                                    {new Array(8).fill().map((el) => (
                                         <div
                                             key={el}
                                             className="h-56 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-slate-700 lg:aspect-none relative animate-pulse2"
@@ -164,7 +163,7 @@ const MainListPopular = () => {
                                                                 src={el.imgUrl}
                                                                 alt={el.title}
                                                                 layout="fill"
-                                                                objectFit="cover"
+                                                                objectFit="contain"
                                                                 priority={true}
                                                                 className="cursor-pointer hover:scale-110 transition-all duration-500"
                                                                 unoptimized={
@@ -176,9 +175,8 @@ const MainListPopular = () => {
                                                                         "_blank"
                                                                     );
                                                                 }}
-                                                                lazy
                                                             ></Image>
-                                                            <div className="absolute top-0 left-0 w-8 h-8 rounded-md bg-slate-200">
+                                                            <div className="absolute top-0 left-0 w-8 h-8">
                                                                 <Image
                                                                     src={common.dynamicIcon(
                                                                         el.platform
@@ -191,6 +189,7 @@ const MainListPopular = () => {
                                                                     unoptimized={
                                                                         true
                                                                     }
+                                                                    className="rounded-md bg-red-500"
                                                                 />
                                                             </div>
                                                             {/* 데이터 중 playTime이 존재 하다면 출력 */}

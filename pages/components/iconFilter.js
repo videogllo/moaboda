@@ -161,7 +161,7 @@ const IconFilter = () => {
                                         >
                                             <Image
                                                 src={el.imgUrl}
-                                                alt=""
+                                                alt={el.name}
                                                 layout="fill"
                                                 objectFit="contain"
                                                 unoptimized={true}
@@ -222,7 +222,7 @@ const IconFilter = () => {
                                     >
                                         <Image
                                             src={common.dynamicIcon(el.name)}
-                                            alt=""
+                                            alt={el.name}
                                             layout="fill"
                                             objectFit="contain"
                                             unoptimized={true}
