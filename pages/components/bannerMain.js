@@ -88,7 +88,7 @@ const BannerMain = () => {
                                                 src={el.imgUrl}
                                                 alt={el.title}
                                                 layout="fill"
-                                                objectFit="contain"
+                                                objectFit="full"
                                                 unoptimized={true}
                                                 priority={true} //image LCP 해결
                                             ></Image>
