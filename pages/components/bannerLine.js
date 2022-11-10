@@ -17,6 +17,7 @@ const BannerLine = () => {
                             unoptimized={true}
                             objectFit="full"
                         ></Image>
+                        
                     </div>
                 </div>
             </div>
