@@ -44,7 +44,7 @@ const ResultList = () => {
         }).then((res) => {
             let youtubeData = res.data.data;
             setData(youtubeData);
-            console.log("data : ", youtubeData);
+            console.log("data : ", youtubeData); 
         });
     };
 
